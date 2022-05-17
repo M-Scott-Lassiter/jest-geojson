@@ -1,0 +1,52 @@
+name: Documentation Request
+description: Request additional or clarified documentation
+title: '[Docs Request]: '
+labels: ['documentation']
+assignees:
+  - m-scott-lassiter
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you taking the time to fill out this request!
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Details
+      description: How can I get in touch with you if needed for more info?
+      placeholder: ex. email@example.com
+    validations:
+      required: false
+  - type: input
+    id: component
+    attributes:
+      label: Component
+      description: What part of the project are you requesting documentation on?
+      placeholder: i.e. JSDoc, function (specify name), README, API, CONTRIBUTING, etc.
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: How specifically can the documentation improve?
+      placeholder: By adding...
+    validations:
+      required: true
+  - type: dropdown
+    id: contribute
+    attributes:
+      label: Are you able/willing to make the change? (It's ok if you're not!)
+      multiple: false
+      options:
+        - 'No'
+        - 'Yes'
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      options:
+        - label: I agree to follow this project's [Code of Conduct](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/CODE_OF_CONDUCT.md)
+          required: true
