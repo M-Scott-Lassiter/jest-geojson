@@ -1,0 +1,71 @@
+{
+    "name": "jest-geojson",
+    "version": "0.0.1",
+    "description": "Additional Jest matchers for GeoJSON",
+    "keywords": [
+        "jest",
+        "geojson",
+        "matchers",
+        "test",
+        "testing",
+        "assertions"
+    ],
+    "homepage": "https://github.com/M-Scott-Lassiter/jest-geojson#readme",
+    "bugs": "https://github.com/M-Scott-Lassiter/jest-geojson/issues",
+    "license": "MIT",
+    "author": "M. Scott Lassiter",
+    "files": [
+        "./src",
+        "LICENSE",
+        "package.json",
+        "package-lock.json"
+    ],
+    "main": "./src/index.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/M-Scott-Lassiter/jest-geojson.git"
+    },
+    "scripts": {
+        "build": "npm run lint && npm run test && npm run docs && npm run tableofcontents && npm run format && echo \"Build process complete.\" && exit 0",
+        "cz": "cz",
+        "docs": "jsdoc -c jsdoc.json",
+        "format": "npx prettier . --write",
+        "tableofcontents": "markdown-toc -i ./README.md && markdown-toc -i ./CONTRIBUTING.md",
+        "test": "jest --coverage --verbose",
+        "test:dev": "jest --watch --coverage --verbose",
+        "lint": "eslint . --ext .js --fix",
+        "prepare": "husky install"
+    },
+    "sideEffects": false,
+    "config": {
+        "commitizen": {
+            "path": "node_modules/cz-customizable"
+        }
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "@semantic-release/changelog": "^6.0.1",
+        "@semantic-release/git": "^10.0.1",
+        "@types/jest": "^27.5.0",
+        "commitizen": "^4.2.4",
+        "cz-customizable": "^6.3.0",
+        "docdash": "^1.2.0",
+        "eslint": "^8.12.0",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-import": "^2.26.0",
+        "eslint-plugin-jest": "^26.1.4",
+        "eslint-plugin-jsdoc": "^39.2.9",
+        "eslint-plugin-prettier": "^4.0.0",
+        "husky": "^7.0.4",
+        "jest": "^27.5.1",
+        "jsdoc": "^3.6.10",
+        "lint-staged": "^12.4.1",
+        "markdown-toc": "^1.2.0",
+        "prettier": "^2.6.2",
+        "semantic-release": "^19.0.2"
+    },
+    "engines": {
+        "node": ">=10"
+    }
+}

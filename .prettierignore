@@ -1,0 +1,5 @@
+# Documentation output
+out
+coverage
+node_modules
+CHANGELOG.md

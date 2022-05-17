@@ -1,0 +1,37 @@
+{
+    "docdash": {
+        "static": true,
+        "sort": true,
+        "search": true,
+        "collapse": false,
+        "typedefs": true,
+        "removeQuotes": "none",
+        "scripts": [],
+        "menu": {
+            "Github repo": {
+                "href": "https://github.com/M-Scott-Lassiter/jest-geojson",
+                "target": "_blank",
+                "class": "menu-item",
+                "id": "repository"
+            }
+        }
+    },
+    "opts": {
+        "access": "all",
+        "readme": "README.md",
+        "recurse": true,
+        "template": "node_modules/docdash"
+    },
+    "plugins": [],
+    "templates": {
+        "default": {
+            "includeDate": true,
+            "useLongnameInNav": true
+        }
+    },
+    "source": {
+        "include": ["./src"],
+        "includePattern": ".+\\.js$"
+    },
+    "wrap": true
+}
