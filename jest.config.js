@@ -1,3 +1,3 @@
-// module.exports = {
-//     setupFilesAfterEnv: ['./src/JestMatchers/JestSetup.js']
-// }
+module.exports = {
+    setupFilesAfterEnv: ['./src/JestSetup.js']
+}
