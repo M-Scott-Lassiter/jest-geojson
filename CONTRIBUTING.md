@@ -25,15 +25,18 @@ Before contributing, please take a moment to read through this document. This gu
 -   [Code of Conduct](#code-of-conduct)
 -   [How can I Contribute?](#how-can-i-contribute)
     -   [Submit Issues](#submit-issues)
+    -   [Recommend New Matchers](#recommend-new-matchers)
     -   [Submit a Pull Request](#submit-a-pull-request)
 -   [Development](#development)
     -   [Local Installation](#local-installation)
     -   [Project Structure](#project-structure)
     -   [Building](#building)
     -   [Linting and Formatting](#linting-and-formatting)
-    -   [Testing](#testing)
+    -   [Running Tests](#running-tests)
+    -   [Adding New Tests](#adding-new-tests)
     -   [Documentation](#documentation)
 -   [Commits](#commits)
+    -   [Example Commit Message](#example-commit-message)
     -   [Commit Header Format](#commit-header-format)
     -   [Commit Body Format](#commit-body-format)
     -   [Commit Footer Format](#commit-footer-format)
@@ -51,23 +54,25 @@ Please help keep this project open and inclusive. Refer to the [Code of Conduct]
 
 ### Submit Issues
 
-**Bug Reports**: Be as detailed as possible, and fill out all information requested in the [bug report template].
+**Bug Reports**: Be as detailed as possible, and fill out all information requested in the [bug report template](https://github.com/M-Scott-Lassiter/jest-geojson/issues/new/choose).
 
 _For security related issues, see the [security policy](https://github.com/M-Scott-Lassiter/jest-geojson/security/policy)._
 
-**New Matcher Requests**: These are welcome! Before submitting:
+**Documentation Requests**: Is something unclear in the documentation or the API? Submit a [documentation change request](https://github.com/M-Scott-Lassiter/jest-geojson/issues/new/choose)! Be as detailed as possible. If you have the question, chances are someone else will also who isn't as willing to speak up as you are. If you want to do it yourself, see the [documentation guidelines](#documentation) for instructions.
+
+### Recommend New Matchers
+
+These are welcome! Before submitting:
 
 -   Take a moment to make sure your matcher idea fits within the scope and aims of this project. Remember, `jest-geojson` exports ONLY matchers for Jest to aide test driven developers, not generic GeoJSON functions. For that, refer to [Turf.js](https://github.com/Turfjs/turf).
 -   Search the issues for [new matchers](https://github.com/M-Scott-Lassiter/jest-geojson/labels/new%20matcher) to make sure this isn't already in the works.
 -   Be as detailed as possible, and fill out a [new matcher request](https://github.com/M-Scott-Lassiter/jest-geojson/issues/new/choose). It is up to you to make your case of why the matcher should get included.
 
-**Documentation Requests**: Is something unclear in the documentation or the API? Submit a [documentation change request](https://github.com/M-Scott-Lassiter/jest-geojson/issues/new/choose)! Be as detailed as possible. If you have the question, chances are someone else will also who isn't as willing to speak up as you are. If you want to do it yourself, see the [documentation guidelines](#documentation) for instructions.
+**Please ask** before embarking on any significant undertaking (e.g. implementing a new matcher, major code refactoring), otherwise you risk wasting time on something that might not fit well with the project. Do this by opening an issue for the proposal.
 
 ### Submit a Pull Request
 
 Good pull requests are outstanding help. They should remain focused in scope and avoid unrelated commits.
-
-**Please ask** before embarking on any significant undertaking (e.g. implementing a new matcher, major code refactoring), otherwise you risk wasting time on something that might not fit well with the project. Do this by opening an issue for the proposal.
 
 To submit a pull request,
 
@@ -116,8 +121,6 @@ The `index.js` serves two functions:
 
 When adding a new matcher, refer to the comments at the top of this file for instructions.
 
-The project's Jest configuration file calls `JestSetup.js` before the test suite runs. This extends Jest's built in matchers with all of the `jest-geojson` matchers and is consistent with how it will get used by other developers in their own projects.
-
 ### Building
 
 After installing, run
@@ -129,7 +132,7 @@ npm run build
 
 This will lint, test, document, and format everything automatically.
 
-You should run this script right
+You should run this script after installing to verify you do not encounter run time errors before you get started.
 
 ### Linting and Formatting
 
@@ -141,14 +144,38 @@ npm run lint  # Runs ESLint
 npm run format  # Runs Prettier
 ```
 
-### Testing
+### Running Tests
 
-This project uses Jest for testing. Tests are contained in `src/tests`. The package.json has the following testing scripts:
+This project provides high working confidence to developers by uses Jest itself for unit testing. Test locally using one of the following scripts:
 
 ```bash
 npm run test # Runs all tests and generates coverage report
 
 npm run test:dev # Runs tests in watch mode
+```
+
+### Adding New Tests
+
+Tests [reside separately](https://github.com/M-Scott-Lassiter/jest-geojson/tree/main/src) from the source code.
+
+The [Jest configuration file](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/jest.config.js) calls [`JestSetup.js`](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/src/JestSetup.js) before the test suite runs. This extends Jest's built in matchers with all of the `jest-geojson` matchers and is consistent with how it will get used by other developers in their own projects.
+
+When creating new matchers, make sure you provide 100% test coverage. Use the opened issue to fully describe and document the logic on how this matcher works. This provides a reference point for the logic and drives the tests.
+
+Because matchers return the message as an arrow function, Jest doesn't actually execute these when running which prevents getting code coverage to 100% by normal methods.
+
+To make sure these messages work correctly, you need to use Jest's [`toThrowErrorMatchingSnapshot`](https://jestjs.io/docs/expect#tothrowerrormatchingsnapshothint) matcher. Put these in their own describe block.
+
+```javascript
+describe('Error Snapshot Testing', () => {
+    test('.not.isValid2DCoordinate', () => {
+        expect(() => expect([0, 0]).not.isValid2DCoordinate()).toThrowErrorMatchingSnapshot()
+    })
+
+    test('.isValid2DCoordinate', () => {
+        expect(() => expect(false).isValid2DCoordinate()).toThrowErrorMatchingSnapshot()
+    })
+})
 ```
 
 ### Documentation
@@ -196,6 +223,16 @@ When the body is present it must be at least 20 characters long and must conform
 
 The `footer` is optional unless resolving issues. The [Commit Message Footer](#commit-footer-format) format describes what the footer is used for and the structure it must have.
 
+### Example Commit Message
+
+```
+feat(isValid2DCoordinate): add new matcher function
+
+This matcher verifies that a 2D GeoJSON coordinate is appropriately formatted and in range.
+
+Resolves: #1
+```
+
 ### Commit Header Format
 
 The header contains succinct description of the change:
@@ -210,7 +247,7 @@ The header contains succinct description of the change:
 │ │ │
 │ │ └─⫸ Summary in present tense. Not capitalized. No period at the end.
 │ │
-│ └─⫸ Commit Scope: api|contributing|license|readme|security
+│ └─⫸ Commit Scope: <matcher>|api|contributing|license|readme|security
 │
 └─⫸ Commit Type: build|ci|docs|feat|fix|perf|refactor|revert|test
 ```
@@ -233,6 +270,8 @@ Required. Must be one of the following:
 
 Optional. If used, must be one of the following supported scopes:
 
+-   `<matcher>`: If adding or updating matchers, use the matcher's function name as the scope.
+    -   If using Commitizen (`npm run cz`), choose 'custom'
 -   `api`: Any documentation that helps developers or end users understand how to better employ a tool or feature
 -   `contributing`: Contributions to this guidance or the [Code of Conduct](CODE_OF_CONDUCT.md)
 -   `license`: Changes to terms or copyright status within the [license](LICENSE).
