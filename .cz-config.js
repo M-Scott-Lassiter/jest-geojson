@@ -9,7 +9,7 @@ module.exports = {
             name: 'ci:       Changes to CI configuration files and scripts (e.g. release configs, YAML scripts)'
         },
         { value: 'docs', name: 'docs:     Documentation only changes' },
-        { value: 'feat', name: 'feat:     Adds a new feature' },
+        { value: 'feat', name: 'feat:     Adds or enhances a new matcher' },
         {
             value: 'fix',
             name: 'fix:      Fixes a bug in an existing feature. Also used for non-dev dependency updates.'

@@ -25,19 +25,19 @@ Before contributing, please take a moment to read through this document. This gu
 -   [Code of Conduct](#code-of-conduct)
 -   [How can I Contribute?](#how-can-i-contribute)
     -   [Submit Issues](#submit-issues)
-    -   [Improve Documentation](#improve-documentation)
     -   [Submit a Pull Request](#submit-a-pull-request)
--   [Continuous Integration/Continuous Deployment Setup](#continuous-integrationcontinuous-deployment-setup)
+-   [Development](#development)
     -   [Local Installation](#local-installation)
     -   [Project Structure](#project-structure)
+    -   [Building](#building)
     -   [Linting and Formatting](#linting-and-formatting)
     -   [Testing](#testing)
     -   [Documentation](#documentation)
-    -   [Commits](#commits)
-        -   [Commit Header Format](#commit-header-format)
-        -   [Commit Body Format](#commit-body-format)
-        -   [Commit Footer Format](#commit-footer-format)
-    -   [Versioning Triggers](#versioning-triggers)
+-   [Commits](#commits)
+    -   [Commit Header Format](#commit-header-format)
+    -   [Commit Body Format](#commit-body-format)
+    -   [Commit Footer Format](#commit-footer-format)
+-   [Continuous Integration and Deployment](#continuous-integration-and-deployment)
 
 <!-- tocstop -->
 
@@ -55,85 +55,117 @@ Please help keep this project open and inclusive. Refer to the [Code of Conduct]
 
 _For security related issues, see the [security policy](https://github.com/M-Scott-Lassiter/jest-geojson/security/policy)._
 
-**Feature Request**: These are welcome, just take a moment to consider whether your idea fits within the scope and aims of this project. It is up to you to make your case of why the feature should get included. Be as detailed as possible, and fill out a [feature request].
+**New Matcher Requests**: These are welcome! Before submitting:
 
-**Documentation Request**: Is something unclear in the documentation or the API? Submit a [documentation change request]! Be as detailed as possible. If you have the question, chances are someone else will also who isn't willing to speak up. If you want to do it yourself, see the [documentation guidelines](#documentation) first.
+-   Take a moment to make sure your matcher idea fits within the scope and aims of this project. Remember, `jest-geojson` exports ONLY matchers for Jest to aide test driven developers, not generic GeoJSON functions. For that, refer to [Turf.js](https://github.com/Turfjs/turf).
+-   Search the issues for [new matchers](https://github.com/M-Scott-Lassiter/jest-geojson/labels/new%20matcher) to make sure this isn't already in the works.
+-   Be as detailed as possible, and fill out a [new matcher request](https://github.com/M-Scott-Lassiter/jest-geojson/issues/new/choose). It is up to you to make your case of why the matcher should get included.
 
-### Improve Documentation
-
-Open a new issue [here](https://github.com/M-Scott-Lassiter/jest-geojson/issues/new/choose).
+**Documentation Requests**: Is something unclear in the documentation or the API? Submit a [documentation change request](https://github.com/M-Scott-Lassiter/jest-geojson/issues/new/choose)! Be as detailed as possible. If you have the question, chances are someone else will also who isn't as willing to speak up as you are. If you want to do it yourself, see the [documentation guidelines](#documentation) for instructions.
 
 ### Submit a Pull Request
 
 Good pull requests are outstanding help. They should remain focused in scope and avoid unrelated commits.
 
-**Please [ask]** before embarking on any significant pull request (e.g. implementing features, refactoring code), otherwise you risk wasting time on something that might not fit well with the project.
+**Please ask** before embarking on any significant undertaking (e.g. implementing a new matcher, major code refactoring), otherwise you risk wasting time on something that might not fit well with the project. Do this by opening an issue for the proposal.
 
 To submit a pull request,
 
-1. Fork the repository
+1. Fork and clone the repository
 1. Create a branch for your edits
-1. Make sure your work follows the Follow the [commits](#commits) guidance
+1. Make sure your work follows the [commits](#commits) guidance
 
-## Continuous Integration/Continuous Deployment Setup
-
-`alphanumeric-encoder` uses [Semantic Versioning](https://semver.org/) and updates automatically based on specific [versioning triggers](#versioning-triggers).
+## Development
 
 ### Local Installation
 
-```
+```bash
 git clone https://github.com/M-Scott-Lassiter/jest-geojson.git
-cd alphanumeric-encoder
-npm install # or `yarn install`
+cd jest-geojson
+npm install
 ```
 
 ### Project Structure
 
-A single file, `index.js` contains all functionality. Before submitting changes, run the build script locally then commit:
+All distribution files are contained in the `src` folder. The `tests` folder contains the scripts used to verify the matchers work as designed (using the matchers themselves!)
 
 ```
+├── src
+│   ├── matchers
+│   │   ├── boundingBoxes
+│   │   ├── coordinates
+│   │   ├── features
+│   │   ├── geometries
+│   │   ├── properties
+│   │   └── winding
+|   ├── index.js
+|   └── JestSetup.js
+├── tests
+│   │   ├── boundingBoxes
+│   │   ├── coordinates
+│   │   ├── features
+│   │   ├── geometries
+│   │   ├── properties
+│   │   └── winding
+```
+
+The `index.js` serves two functions:
+
+-   Document the project's JSDoc type definitions
+-   Export each matcher function individually
+
+When adding a new matcher, refer to the comments at the top of this file for instructions.
+
+The project's Jest configuration file calls `JestSetup.js` before the test suite runs. This extends Jest's built in matchers with all of the `jest-geojson` matchers and is consistent with how it will get used by other developers in their own projects.
+
+### Building
+
+After installing, run
+Before submitting changes, run the build script locally, then commit:
+
+```bash
 npm run build
 ```
 
 This will lint, test, document, and format everything automatically.
 
+You should run this script right
+
 ### Linting and Formatting
 
 Prettier provides formatting, and ESLint does linting using the Airbnb style guide. To lint, run the following:
 
-```
-npm run lint
-```
+```bash
+npm run lint  # Runs ESLint
 
-To format all files with Prettier, run:
-
-```
-npm run format
+npm run format  # Runs Prettier
 ```
 
 ### Testing
 
-This project uses Jest for testing. `index.test.js` contains the test suite. To execute it, run:
+This project uses Jest for testing. Tests are contained in `src/tests`. The package.json has the following testing scripts:
 
-```
-npm run test
+```bash
+npm run test # Runs all tests and generates coverage report
+
+npm run test:dev # Runs tests in watch mode
 ```
 
 ### Documentation
 
 API Documentation is automatically generated from [JSDoc comments](https://jsdoc.app/) within the scripts. To generate, run:
 
-```
+```bash
 npm run docs
 ```
 
 The table of contents in this guide and the main README are automatically generated using the [`markdown-toc`](https://github.com/jonschlinkert/markdown-toc) package. To generate, run:
 
-```
+```bash
 npm run tableofcontents
 ```
 
-### Commits
+## Commits
 
 _This specification is inspired by and supersedes the [Angular Commit Message](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit)._
 
@@ -149,7 +181,7 @@ This project uses very precise rules over how Git commit messages must be format
 
 Each commit message consists of a **header**, a **body**, and a **footer**.
 
-```
+```bash
 <header>
 <BLANK LINE>
 <body>
@@ -164,7 +196,7 @@ When the body is present it must be at least 20 characters long and must conform
 
 The `footer` is optional unless resolving issues. The [Commit Message Footer](#commit-footer-format) format describes what the footer is used for and the structure it must have.
 
-#### Commit Header Format
+### Commit Header Format
 
 The header contains succinct description of the change:
 
@@ -190,7 +222,7 @@ Required. Must be one of the following:
 -   `build`: Changes that affect the build system configuration, package scripts, or dev dependencies (i.e. adds/remove/modify/update)
 -   `ci`: Changes to CI configuration files and scripts (e.g. release configs, YAML scripts)
 -   `docs`: Documentation only changes
--   `feat`: Adds a new feature
+-   `feat`: Adds or enhances a new matcher
 -   `fix`: Fixes a bug in an existing feature. Also used for non-dev dependency updates.
 -   `perf`: A code change that improves performance
 -   `refactor`: A code change that neither fixes a bug nor adds a feature
@@ -202,22 +234,25 @@ Required. Must be one of the following:
 Optional. If used, must be one of the following supported scopes:
 
 -   `api`: Any documentation that helps developers or end users understand how to better employ a tool or feature
--   `contributing`: Contributions to this guidance or the [Code of Conduct](/../../blob/main/CODE_OF_CONDUCT.md)
--   `license`: Changes to terms or copyright status within the [license](/../../blob/main/LICENSE). _NOTE: Any wholesale change in license type MUST include a BREAKING CHANGE._
+-   `contributing`: Contributions to this guidance or the [Code of Conduct](CODE_OF_CONDUCT.md)
+-   `license`: Changes to terms or copyright status within the [license](LICENSE).
+    -   _Any change in license type MUST include a BREAKING CHANGE_
 -   `readme`: Contributions to the main [README.md](https://github.com/M-Scott-Lassiter/jest-geojson#README)
 -   `security`: Changes that address code related security issues or security policies
 
-#### Commit Body Format
+### Commit Body Format
 
 Provide a plain text description of _why_ you made this change. This is the place for you to explain your thought process, developer to developer. If helpful, include a comparison of the previous behavior with the new behavior to illustrate the change's impact.
 
 If there are breaking changes, start the body with `BREAKING CHANGE: <breaking change summary>.`
 
-#### Commit Footer Format
+### Commit Footer Format
 
 The footer identifies which issues this commit fixes. If none, leave it blank. Otherwise, use the format `Resolves #<issue number>`. If more than one issue is resolved, separate them with a comma.
 
-### Versioning Triggers
+## Continuous Integration and Deployment
+
+`jest-geojson` uses [Semantic Versioning](https://semver.org/) and updates automatically based on specific versioning triggers.
 
 Pushes to the main branch causes `semantic-release` to check all commits since the last version for any triggers that would cause a new version. This project extends the defaults:
 
