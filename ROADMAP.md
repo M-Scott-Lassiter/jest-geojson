@@ -15,6 +15,13 @@ This document divides the intended matchers into categories and lists them in pr
 -   [ ] toHaveMaxPrecision (num decimal places)
 -   [ ] toHaveMinPrecision (num decimal places)
 -   [ ] toHavePrecisionBetween (min decimal places, max decimal places)
+-   [ ] hasPointCountOf (# of points)
+-   [ ] hasMinPointCountOf
+-   [ ] hasMaxPointCountOf
+-   [ ] hasPointCountBetween (min, max)
+-   [ ] containsAnyCoordinatesIn ([unordered array of points])
+-   [ ] containsAllCoordinatesIn ([unordered array of points])
+-   [ ] containsPointsInOrder ([array of ordered points])
 
 ## Geometries
 
@@ -51,16 +58,6 @@ This document divides the intended matchers into categories and lists them in pr
 -   [ ] toIncludeSouthPole
 -   [ ] toIncludeEitherPole
 -   [ ] toBeContainedWithinBBox
-
-## Points
-
--   [ ] hasPointCountOf (# of points)
--   [ ] hasMinPointCountOf
--   [ ] hasMaxPointCountOf
--   [ ] hasPointCountBetween (min, max)
--   [ ] containsAnyCoordinatesIn ([unordered array of points])
--   [ ] containsAllCoordinatesIn ([unordered array of points])
--   [ ] containsPointsInOrder ([array of ordered points])
 
 ## Properties and Foreign Members
 
