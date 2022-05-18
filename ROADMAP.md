@@ -1,36 +1,34 @@
 # Discussion
 
-This project aims to provide a comprehensive set of matchers for the Jest framework. The data below lists the intended matchers it will ultimately contain.
+This library aims to provide a comprehensive set of GeoJSON matchers to extend the Jest unit testing framework.
 
-# Matching Modules
+# Matchers
+
+This document divides the intended matchers into categories and lists them in priority development order.
 
 ## Coordiantes
 
--   [ ] isValidCoordinate
--   [ ] isValid2DCoordinate
--   [ ] isValid3DCoordinate
--   [ ] hasExactPrecision(decimal places)
--   [ ] hasPrecisionBetween(min decimal places, max decimal places)
--   [ ] hasMaxPrecision(decimal places)
--   [ ] hasMinPrecision(decimal places)
+-   [ ] areValid2DCoordinates
+-   [ ] areValid3DCoordinates
+-   [ ] areValidCoordinates
+-   [ ] toHaveExactPrecision (num decimal places)
+-   [ ] toHaveMaxPrecision (num decimal places)
+-   [ ] toHaveMinPrecision (num decimal places)
+-   [ ] toHavePrecisionBetween (min decimal places, max decimal places)
 
 ## Geometries
 
--   [ ] toHaveAnyGeometry(optional min count, optional max count)
--   [ ] toHavePointGeometry(optional min count, optional max count)
--   [ ] toHaveMultiPointGeometry(optional min count, optional max count)
--   [ ] toHaveLineStringGeometry(optional min count, optional max count)
--   [ ] toHaveMultiLineStringGeometry(optional min count, optional max count)
--   [ ] toHavePolygonGeometry(optional min count, optional max count)
--   [ ] toHaveMultiPolygonGeometry(optional min count, optional max count)
--   [ ] toHaveGeometryCollection(optional min count, optional max count)
+-   [ ] toBePointGeometry
+-   [ ] toBeMultiPointGeometry
+-   [ ] toBeLineStringGeometry
+-   [ ] toBeMultiLineStringGeometry
+-   [ ] toBePolygonGeometry
+-   [ ] toBeMultiPolygonGeometry
+-   [ ] toBeGeometryCollection
+-   [ ] toBeAnyGeometry
 
 ## Features
 
--   [ ] toBeValidGeoJSON
--   [ ] toBeFeatureCollection
--   [ ] toBeFeatureCollectionOf(array<types>)
--   [ ] toBeAnyFeature
 -   [ ] toBePointFeature
 -   [ ] toBeMultiPointFeature
 -   [ ] toBeLineStringFeature
@@ -38,42 +36,46 @@ This project aims to provide a comprehensive set of matchers for the Jest framew
 -   [ ] toBePolygonFeature
 -   [ ] toBeMultiPolygonFeature
 -   [ ] toBeGeometryCollectionFeature
--   [ ] toContainFeatures[feature type, optional min count, optional max count]
+-   [ ] toBeAnyFeature
+-   [ ] toBeFeatureCollection
+-   [ ] toContainFeatureTypes (array of feature type strings, optional min count, optional max count)
+-   [ ] toBeValidGeoJSON
 
 ## Bounding Boxes
 
--   [ ] toHaveBoundingBox
 -   [ ] toHave2DBoundingBox
 -   [ ] toHave3DBoundingBox
--   [ ] crossesAntimeridian
--   [ ] includesNorthPole
--   [ ] includesSouthPole
--   [ ] includesEitherPole
+-   [ ] toHaveBoundingBox
+-   [ ] toCrossAntimeridian
+-   [ ] toIncludeNorthPole
+-   [ ] toIncludeSouthPole
+-   [ ] toIncludeEitherPole
+-   [ ] toBeContainedWithinBBox
 
 ## Points
 
--   [ ] hasPointCountOf(# of points)
+-   [ ] hasPointCountOf (# of points)
 -   [ ] hasMinPointCountOf
 -   [ ] hasMaxPointCountOf
--   [ ] hasPointCountOfRange(min, max)
--   [ ] containsAnyPoints([array of points])
--   [ ] containsSpecificPoints([array of points])
--   [ ] containsPointsInOrder([array of ordered points])
+-   [ ] hasPointCountBetween (min, max)
+-   [ ] containsAnyCoordinatesIn ([unordered array of points])
+-   [ ] containsAllCoordinatesIn ([unordered array of points])
+-   [ ] containsPointsInOrder ([array of ordered points])
 
 ## Properties and Foreign Members
 
--   [ ] hasID
--   [ ] hasStringID
--   [ ] hasNumericID
--   [ ] hasOnlyUniqueIDs
--   [ ] containsSpecificIDs
--   [ ] containsOnlyIDs
--   [ ] hasProperties
--   [ ] hasSpecificProperty
--   [ ] hasForeignMembers
--   [ ] hasSpecificForeignMember
+-   [ ] toHaveStringIDs
+-   [ ] toHaveNumericIDs
+-   [ ] toHaveIDs
+-   [ ] toContainOnlyUniqueIDs
+-   [ ] toContainSpecificIDs ([unordered array of IDs])
+-   [ ] toContainOnlyIDs ([unordered array of IDs])
+-   [ ] toHaveProperties (boolean)
+-   [ ] toHaveSpecificProperty (string or object to compare)
+-   [ ] toHaveForeignMembers (boolean)
+-   [ ] toHaveSpecificForeignMember (string or object to compare)
 
-## Winding
+## Winding and Other
 
 -   [ ] isCounterClockwiseWound
 -   [ ] isClockwiseWound
