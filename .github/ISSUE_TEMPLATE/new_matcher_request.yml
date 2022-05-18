@@ -1,7 +1,7 @@
-name: Documentation Request
-description: Request additional or clarified documentation
-title: '[Docs Request]: '
-labels: ['documentation']
+name: Feature Request
+description: Request a new feature
+title: '[New Matcher Request]: '
+labels: ['new matcher']
 assignees:
   - m-scott-lassiter
 body:
@@ -9,20 +9,18 @@ body:
     attributes:
       value: |
         Thank you taking the time to fill out this request!
-  - type: input
-    id: component
-    attributes:
-      label: Component
-      description: What part of the project are you requesting documentation on?
-      placeholder: i.e. JSDoc, function (specify name), README, API, CONTRIBUTING, etc.
-    validations:
-      required: true
   - type: textarea
     id: description
     attributes:
       label: Description
-      description: How specifically can the documentation improve?
-      placeholder: By adding...
+      description: Give an overview of this matcher and why it is necessary. Include links for citations.
+    validations:
+      required: true
+  - type: textarea
+    id: tests
+    attributes:
+      label: Tests
+      description: What tests will be required to verify this behavior works correctly? Include both passing and failing behaviors.
     validations:
       required: true
   - type: dropdown
