@@ -117,55 +117,15 @@ describe('Passing Bad Individual Coordinate Values to Expect', () => {
 })
 
 describe('Arrays Nested Too Deeply', () => {
-    test.each([
-        [
-            [
-                [
-                    [1, 1],
-                    [0, 0]
-                ]
-            ]
-        ],
-        [
-            [
-                [
-                    [10, 20],
-                    [2, 59]
-                ]
-            ]
-        ],
-        [
-            [
-                [
-                    [10, 20],
-                    [2, 90],
-                    [95, 5]
-                ]
-            ]
-        ],
-        [
-            [
-                [
-                    [
-                        [1, 1],
-                        [0, 0]
-                    ]
-                ]
-            ]
-        ],
-        [
-            [
-                [
-                    [
-                        [
-                            [2, 2],
-                            [3, 3]
-                        ]
-                    ]
-                ]
-            ]
-        ]
-    ])('Expect to fail with bad input: expect(%p)', (badInput) => {
-        expect(badInput).not.isValid2DCoordinate()
-    })
+    const testArray = [
+        [10, 20],
+        [2, 90],
+        [95, 5]
+    ]
+    test.each([[testArray], [[testArray]], [[[testArray]]]])(
+        'Expect to fail with bad input: expect(%p)',
+        (badInput) => {
+            expect([badInput]).not.isValid2DCoordinate()
+        }
+    )
 })
