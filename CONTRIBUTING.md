@@ -160,7 +160,7 @@ Tests [reside separately](https://github.com/M-Scott-Lassiter/jest-geojson/tree/
 
 The [Jest configuration file](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/jest.config.js) calls [`JestSetup.js`](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/src/JestSetup.js) before the test suite runs. This extends Jest's built in matchers with all of the `jest-geojson` matchers and is consistent with how it will get used by other developers in their own projects.
 
-When creating new matchers, make sure you provide 100% test coverage. Use the opened issue to fully describe and document the logic on how this matcher works. This provides a reference point for the logic and drives the tests.
+When creating new matchers, make sure you provide 100% test coverage. Use the opened issue to fully describe and document the logic on how this matcher works. This provides a reference point for the logic that drives the tests.
 
 Because matchers return the message as an arrow function, Jest doesn't actually execute these when running which prevents getting code coverage to 100% by normal methods.
 
@@ -177,6 +177,20 @@ describe('Error Snapshot Testing', () => {
     })
 })
 ```
+
+If you change the error messages, the snapshots will also change. Once you manually verify it still works as intended, update the snapshot:
+
+```bash
+npm run test -- -u
+```
+
+For consistency, organize your tests under the following three `describe` blocks:
+
+-   Valid Use Cases
+-   Invalid Use Cases
+-   Error Snapshot Testing
+
+Refer to any of the [test files](https://github.com/M-Scott-Lassiter/jest-geojson/tree/main/tests) for an example.
 
 ### Documentation
 

@@ -1,17 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Error Snapshot Testing .isValid2DCoordinate 1`] = `
-"[2mexpect([22m[31m[longitude, latitude][39m[2m).isValid2DCoordinate()[22m
-
-Expected a two element array with longitude between (-90 to 90) and latitude between (-180 to 180).
-
-Received:  [31mfalse[39m"
-`;
-
-exports[`Error Snapshot Testing .not.isValid2DCoordinate 1`] = `
+exports[`Error Snapshot Testing. Throws error: expect([0, 0]).not.isValid3DCoordinate 1`] = `
 "[2mexpect([22m[31m[longitude, latitude][39m[2m).not.isValid2DCoordinate()[22m
 
 Expected input to not be a two element array with longitude between (-90 to 90) and latitude between (-180 to 180).
 
 Received:  [31m[0, 0][39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: expect(false).isValid2DCoordinate() 1`] = `
+"[2mexpect([22m[31m[longitude, latitude][39m[2m).isValid2DCoordinate()[22m
+
+Expected a two element array with longitude between (-90 to 90) and latitude between (-180 to 180).
+
+Received:  [31mfalse[39m"
 `;

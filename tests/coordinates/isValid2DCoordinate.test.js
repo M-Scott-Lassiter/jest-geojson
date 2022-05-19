@@ -45,87 +45,80 @@ const invalidInputValues = [
     '[0, 0]',
     '[[0, 0], [0, 0]]'
 ]
-
-describe('Passing Good Coordinates to Expect', () => {
-    test.each([...goodCoordinates])(
-        'Expect to pass with good coordinate: expect([%p, %p])',
-        (longitude, latitude) => {
+describe('Valid Use Cases', () => {
+    describe('Expect to pass with good coordinates:', () => {
+        test.each([...goodCoordinates])('expect([%p, %p])', (longitude, latitude) => {
             expect([longitude, latitude]).isValid2DCoordinate()
-        }
-    )
+        })
+    })
 
-    test.each([...goodBoundaryCoordinates])(
-        'Expect to pass with good boundary coordinate: expect([%p, %p])',
-        (longitude, latitude) => {
+    describe('Expect to pass with good boundary coordinates:', () => {
+        test.each([...goodBoundaryCoordinates])('expect([%p, %p])', (longitude, latitude) => {
             expect([longitude, latitude]).isValid2DCoordinate()
-        }
-    )
+        })
+    })
 })
 
-describe('Error Snapshot Testing', () => {
-    test('.not.isValid2DCoordinate', () => {
+describe('Inalid Use Cases', () => {
+    describe('Expect to fail with bad inputs:', () => {
+        test.each([...invalidInputValues])('expect(%p)', (badInput) => {
+            expect(badInput).not.isValid2DCoordinate()
+        })
+    })
+
+    describe('Expect to fail with incorrect number of array elements:', () => {
+        test.each([[[]], [[20]], [[20, 30, 0]], [[20, 30, 0, 20, 30, 0, 20, 30, 0]]])(
+            'expect(%p)',
+            (badInput) => {
+                expect(badInput).not.isValid2DCoordinate()
+            }
+        )
+    })
+
+    describe('Expect to fail with out of range coordinate:', () => {
+        test.each([...coordinatesOutOfRange])('expect([%p, %p])', (longitude, latitude) => {
+            expect([longitude, latitude]).not.isValid2DCoordinate()
+        })
+    })
+
+    describe('Passing Bad Individual Coordinate Values', () => {
+        describe('Expect to fail with bad longitude value:', () => {
+            test.each([...invalidInputValues])('expect([%p, 0])', (longitude) => {
+                expect([longitude, 0]).not.isValid2DCoordinate()
+            })
+        })
+
+        describe('Expect to fail with bad latitude value:', () => {
+            test.each([...invalidInputValues])('expect([0, %p])', (latitude) => {
+                expect([0, latitude]).not.isValid2DCoordinate()
+            })
+        })
+
+        describe('Expect to fail with bad values for both:', () => {
+            test.each([...invalidInputValues])('expect(<val>, <val>), <val> = %p', (input) => {
+                expect([input, input]).not.isValid2DCoordinate()
+            })
+        })
+    })
+
+    describe('Expect to fail when arrays are nested too deeply:', () => {
+        const testArray = [
+            [10, 20],
+            [2, 90],
+            [95, 5]
+        ]
+        test.each([[testArray], [[testArray]], [[[testArray]]]])('expect(%p)', (badInput) => {
+            expect([badInput]).not.isValid2DCoordinate()
+        })
+    })
+})
+
+describe('Error Snapshot Testing. Throws error:', () => {
+    test('expect([0, 0]).not.isValid3DCoordinate', () => {
         expect(() => expect([0, 0]).not.isValid2DCoordinate()).toThrowErrorMatchingSnapshot()
     })
 
-    test('.isValid2DCoordinate', () => {
+    test('expect(false).isValid2DCoordinate()', () => {
         expect(() => expect(false).isValid2DCoordinate()).toThrowErrorMatchingSnapshot()
     })
-})
-
-describe('Passing Bad Inputs to Expect', () => {
-    test.each([...invalidInputValues])('Expect to fail with bad input: expect(%p)', (badInput) => {
-        expect(badInput).not.isValid2DCoordinate()
-    })
-})
-
-describe('Passing Incorrect Number of Arguments to Expect', () => {
-    test.each([[[]], [[20]], [[20, 30, 0]], [[20, 30, 0, 20, 30, 0, 20, 30, 0]]])(
-        'Expect to fail with bad input: expect(%p)',
-        (badInput) => {
-            expect(badInput).not.isValid2DCoordinate()
-        }
-    )
-})
-
-describe('Passing Coordinates out of Range to Expect', () => {
-    test.each([...coordinatesOutOfRange])(
-        'Expect to fail with out of range coordinate: expect([%p, %p])',
-        (longitude, latitude) => {
-            expect([longitude, latitude]).not.isValid2DCoordinate()
-        }
-    )
-})
-
-describe('Passing Bad Individual Coordinate Values to Expect', () => {
-    test.each([...invalidInputValues])(
-        'Expect to fail with bad longitude value: expect([%p, 0])',
-        (longitude) => {
-            expect([longitude, 0]).not.isValid2DCoordinate()
-        }
-    )
-
-    test.each([...invalidInputValues])(
-        'Expect to fail with bad latitude value: expect([0, %p])',
-        (latitude) => {
-            expect([0, latitude]).not.isValid2DCoordinate()
-        }
-    )
-
-    test.each([...invalidInputValues])('Expect to fail with bad values for both: %p', (input) => {
-        expect([input, input]).not.isValid2DCoordinate()
-    })
-})
-
-describe('Arrays Nested Too Deeply', () => {
-    const testArray = [
-        [10, 20],
-        [2, 90],
-        [95, 5]
-    ]
-    test.each([[testArray], [[testArray]], [[[testArray]]]])(
-        'Expect to fail with bad input: expect(%p)',
-        (badInput) => {
-            expect([badInput]).not.isValid2DCoordinate()
-        }
-    )
 })
