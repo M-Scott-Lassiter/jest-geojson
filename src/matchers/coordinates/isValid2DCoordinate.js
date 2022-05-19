@@ -49,14 +49,14 @@ function isValid2DCoordinate(coordinateArray) {
     const { printReceived, matcherHint } = this.utils
     const passMessage =
         // eslint-disable-next-line prefer-template
-        matcherHint('.not.isValid2dCoordinate', '[longitude, latitude]', '') +
+        matcherHint('.not.isValid2DCoordinate', '[longitude, latitude]', '') +
         '\n\n' +
         `Expected input to not be a two element array with longitude between (-90 to 90) and latitude between (-180 to 180).\n\n` +
         `Received:  ${printReceived(coordinateArray)}`
 
     const failMessage =
         // eslint-disable-next-line prefer-template
-        matcherHint('.isValid2dCoordinate', '[longitude, latitude]', '') +
+        matcherHint('.isValid2DCoordinate', '[longitude, latitude]', '') +
         '\n\n' +
         `Expected a two element array with longitude between (-90 to 90) and latitude between (-180 to 180).\n\n` +
         `Received:  ${printReceived(coordinateArray)}`
