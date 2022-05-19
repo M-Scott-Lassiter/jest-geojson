@@ -2,23 +2,23 @@
 
 # jest-geojson
 
-<!-- [![Tests](https://github.com/M-Scott-Lassiter/jest-geojson/actions/workflows/test.yml/badge.svg)](https://github.com/M-Scott-Lassiter/jest-geojson/actions/workflows/test.yml)
+[![NPM Version](https://img.shields.io/npm/v/jest-geojson)](https://www.npmjs.com/package/jest-geojson)
+[![NPM Package Size](https://img.shields.io/bundlephobia/min/jest-geojson)](https://www.npmjs.com/package/jest-geojson)
+[![License](https://img.shields.io/github/license/M-Scott-Lassiter/jest-geojson?color=blue)](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/LICENSE)
+
+---
+
+[![Tests](https://github.com/M-Scott-Lassiter/jest-geojson/actions/workflows/test.yml/badge.svg)](https://github.com/M-Scott-Lassiter/jest-geojson/actions/workflows/test.yml)
 [![Build](https://github.com/M-Scott-Lassiter/jest-geojson/actions/workflows/publish.yml/badge.svg)](https://github.com/M-Scott-Lassiter/jest-geojson/actions/workflows/publish.yml)
 [![codecov](https://codecov.io/github/M-Scott-Lassiter/jest-geojson/branch/main/graph/badge.svg?token=MLCXIHQJGA)](https://codecov.io/github/M-Scott-Lassiter/jest-geojson)
 [![Dependency status](https://img.shields.io/librariesio/release/npm/jest-geojson)](https://www.npmjs.com/package/jest-geojson?activeTab=dependencies)
-![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/jest-geojson) -->
-
+![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/jest-geojson)
 [![Open Issues](https://img.shields.io/github/issues/m-scott-lassiter/jest-geojson/bug)](https://github.com/M-Scott-Lassiter/jest-geojson/labels/bug)
 
 [![Maintained](https://img.shields.io/badge/Maintained%3F-yes-brightgreen.svg)](#envelope-contact)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](/../../blob/main/CONTRIBUTING.md)
 
----
-
-<!-- [![NPM Version](https://img.shields.io/npm/v/jest-geojson)](https://www.npmjs.com/package/jest-geojson)
-![NPM Package Size](https://img.shields.io/bundlephobia/min/jest-geojson) -->
-
-[![License](https://img.shields.io/github/license/M-Scott-Lassiter/jest-geojson)](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/LICENSE)
+## Note: This project is still in beta
 
 </div>
 
@@ -32,6 +32,7 @@
 -   [Purpose](#purpose)
 -   [Getting Started](#getting-started)
     -   [Install as a Dev Dependency](#install-as-a-dev-dependency)
+    -   [Configure Jest](#configure-jest)
 -   [License and Development](#license-and-development)
 -   [Contact](#contact)
 
@@ -53,7 +54,9 @@
 npm install --save-dev jest-geojson
 ```
 
-###
+## Configure Jest
+
+< Under Construction >
 
 ---
 
