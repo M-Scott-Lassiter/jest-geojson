@@ -9,7 +9,7 @@ on:
 
 jobs:
   publish:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js 16
@@ -18,11 +18,8 @@ jobs:
           node-version: '16.x'
       - name: Clean Install
         run: npm ci
-        # The tests are failing in Github due to the snapshots.
+        # The FORCE_COLOR is required because tests were failing in Github due to the snapshots.
         # See: https://stackoverflow.com/questions/72311493/jest-snapshots-causing-github-action-tests-to-fail
-        #
-        # For now, I am commenting out the build script. Builds work locally, so this will just require dilligence
-        #   in making sure the build is run before pushing.
       - name: Build
         run: npm run build
         env:

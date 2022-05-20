@@ -27,8 +27,12 @@ jobs:
           cache: 'npm'
       - name: Clean Install
         run: npm ci
+        # The FORCE_COLOR is required because tests were failing in Github due to the snapshots.
+        # See: https://stackoverflow.com/questions/72311493/jest-snapshots-causing-github-action-tests-to-fail
       - name: Test
         run: npm run test
+        env:
+          FORCE_COLOR: true
       # Uncomment this once connected to Codecov
       # - name: Upload Coverage to Codecov
       #   uses: codecov/codecov-action@v2
