@@ -23,8 +23,10 @@ jobs:
         #
         # For now, I am commenting out the build script. Builds work locally, so this will just require dilligence
         #   in making sure the build is run before pushing.
-      # - name: Build
-      #   run: npm run build
+      - name: Build
+        run: npm run build
+        env:
+          FORCE_COLOR: true
       - name: Release new version to NPM
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
