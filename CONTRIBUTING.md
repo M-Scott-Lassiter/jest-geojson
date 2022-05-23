@@ -60,7 +60,7 @@ _For security related issues, see the [security policy](https://github.com/M-Sco
 These are welcome! Before submitting:
 
 -   Take a moment to make sure your matcher idea fits within the scope and aims of this project. Remember, `jest-geojson` exports ONLY matchers for Jest to aide test driven developers, not generic GeoJSON functions. For that, refer to [Turf.js](https://github.com/Turfjs/turf).
--   Search the issues for [new matchers](https://github.com/M-Scott-Lassiter/jest-geojson/labels/new%20matcher) to make sure this isn't already in the works.
+-   Search the issues for [new matchers](https://github.com/M-Scott-Lassiter/jest-geojson/issues?q=label%3A%22new+matcher%22+) to make sure this isn't already in the works.
 -   Be as detailed as possible, and fill out a [new matcher request](https://github.com/M-Scott-Lassiter/jest-geojson/issues/new/choose). It is up to you to make your case of why the matcher should get included.
 
 **Please ask** before embarking on any significant undertaking (e.g. implementing a new matcher, major code refactoring), otherwise you risk wasting time on something that might not fit well with the project. Do this by opening an issue for the proposal.
