@@ -30,9 +30,20 @@
 <!-- toc -->
 
 -   [Purpose](#purpose)
+    -   [What This Library Does](#what-this-library-does)
+    -   [What This Library Does Not Do](#what-this-library-does-not-do)
 -   [Getting Started](#getting-started)
     -   [Install as a Dev Dependency](#install-as-a-dev-dependency)
     -   [Configure Jest](#configure-jest)
+    -   [Import the Core Engine](#import-the-core-engine)
+-   [Matchers](#matchers)
+    -   [Coordiante Matchers](#coordiante-matchers)
+    -   [Bounding Box Matchers](#bounding-box-matchers)
+    -   [Geometry Matchers](#geometry-matchers)
+    -   [Geometry Collection Matchers](#geometry-collection-matchers)
+    -   [Feature Matchers](#feature-matchers)
+    -   [Feature Collection Matchers](#feature-collection-matchers)
+    -   [Functional Matchers](#functional-matchers)
 -   [License and Development](#license-and-development)
 -   [Contact](#contact)
 

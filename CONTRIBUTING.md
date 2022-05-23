@@ -36,11 +36,6 @@ Before contributing, please take a moment to read through this document. This gu
     -   [Adding New Tests](#adding-new-tests)
     -   [Documentation](#documentation)
 -   [Commits](#commits)
-    -   [Example Commit Message](#example-commit-message)
-    -   [Commit Header Format](#commit-header-format)
-    -   [Commit Body Format](#commit-body-format)
-    -   [Commit Footer Format](#commit-footer-format)
--   [Continuous Integration and Deployment](#continuous-integration-and-deployment)
 
 <!-- tocstop -->
 
@@ -97,21 +92,23 @@ All distribution files are contained in the `src` folder. The `tests` folder con
 ```
 ├── src
 │   ├── matchers
-│   │   ├── boundingBoxes
-│   │   ├── coordinates
-│   │   ├── features
-│   │   ├── geometries
-│   │   ├── properties
-│   │   └── winding
+│   │   ├── boundingBox
+│   │   ├── coordinate
+│   │   ├── feature
+│   │   ├── featureCollection
+│   │   ├── functional
+│   │   ├── geometry
+│   │   └── geometryCollection
 |   ├── index.js
 |   └── JestSetup.js
 ├── tests
-│   │   ├── boundingBoxes
-│   │   ├── coordinates
-│   │   ├── features
-│   │   ├── geometries
-│   │   ├── properties
-│   │   └── winding
+│   │   ├── boundingBox
+│   │   ├── coordinate
+│   │   ├── feature
+│   │   ├── featureCollection
+│   │   ├── functional
+│   │   ├── geometry
+│   │   └── geometryCollection
 ```
 
 The `index.js` serves two functions:
@@ -119,7 +116,7 @@ The `index.js` serves two functions:
 -   Document the project's JSDoc type definitions
 -   Export each matcher function individually
 
-When adding a new matcher, refer to the comments at the top of this file for instructions.
+When adding a new matcher, refer to the comments at the top of `index.js` for instructions.
 
 ### Building
 
@@ -160,7 +157,7 @@ Tests [reside separately](https://github.com/M-Scott-Lassiter/jest-geojson/tree/
 
 The [Jest configuration file](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/jest.config.js) calls [`JestSetup.js`](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/src/JestSetup.js) before the test suite runs. This extends Jest's built in matchers with all of the `jest-geojson` matchers and is consistent with how it will get used by other developers in their own projects.
 
-When creating new matchers, make sure you provide 100% test coverage. Use the opened issue to fully describe and document the logic on how this matcher works. This provides a reference point for the logic that drives the tests.
+Provide 100% test coverage when creating new matchers. Use the opened issue to fully describe and document the logic on how this matcher works. This provides a persistent reference point for the logic that drives the tests.
 
 Because matchers return the message as an arrow function, Jest doesn't actually execute these when running which prevents getting code coverage to 100% by normal methods.
 
@@ -208,116 +205,8 @@ npm run tableofcontents
 
 ## Commits
 
-_This specification is inspired by and supersedes the [Angular Commit Message](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit)._
+All commits must follow the common commit guidance in [@m-scott-lassiter/semantic-release-github-npm-config](https://github.com/M-Scott-Lassiter/semantic-release-github-npm-config#commits).
 
-If possible, make [atomic commits](https://en.wikipedia.org/wiki/Atomic_commit), which means:
+This project uses [Commitizen](http://commitizen.github.io/cz-cli/) and [Husky](https://github.com/typicode/husky) hooks to help enforce good commit practices. Work on matcher functions must use that matcher function name as the scope.
 
--   a commit should contain exactly one self-contained functional change
--   a functional change should be contained in exactly one commit
--   a commit should not create an inconsistent state (such as test errors, linting errors, partial fix, feature with documentation etc...)
-
-A complex feature can be broken down into multiple commits as long as each one maintains a consistent state and consists of a self-contained change.
-
-This project uses very precise rules over how Git commit messages must be formatted. This leads to **easier to read commit history**.
-
-Each commit message consists of a **header**, a **body**, and a **footer**.
-
-```bash
-<header>
-<BLANK LINE>
-<body>
-<BLANK LINE>
-<footer>
-```
-
-The `header` is mandatory and must conform to the [Commit Message Header](#commit-header-format) format.
-
-The `body` is mandatory for all commits except for those of type "docs".
-When the body is present it must be at least 20 characters long and must conform to the [Commit Message Body](#commit-body-format) format.
-
-The `footer` is optional unless resolving issues. The [Commit Message Footer](#commit-footer-format) format describes what the footer is used for and the structure it must have.
-
-### Example Commit Message
-
-```
-feat(isValid2DCoordinate): add new matcher function
-
-This matcher verifies that a 2D GeoJSON coordinate is appropriately formatted and in range.
-
-Resolves: #1
-```
-
-### Commit Header Format
-
-The header contains succinct description of the change:
-
--   use the imperative, present tense: "change" not "changed" nor "changes"
--   don't capitalize first letter
--   no dot (.) at the end
--   if the commit is of type `revert`, include `reverts commit <hash>`, where the hash is the SHA of the commit being reverted
-
-```
-<type>(<scope>): <short summary>
-│ │ │
-│ │ └─⫸ Summary in present tense. Not capitalized. No period at the end.
-│ │
-│ └─⫸ Commit Scope: <matcher>|api|contributing|license|readme|security
-│
-└─⫸ Commit Type: build|ci|docs|feat|fix|perf|refactor|revert|test
-```
-
-**Types**
-
-Required. Must be one of the following:
-
--   `build`: Changes that affect the build system configuration, package scripts, or dev dependencies (i.e. adds/remove/modify/update)
--   `ci`: Changes to CI configuration files and scripts (e.g. release configs, YAML scripts)
--   `docs`: Documentation only changes
--   `feat`: Adds or enhances a new matcher
--   `fix`: Fixes a bug in an existing feature. Also used for non-dev dependency updates.
--   `perf`: A code change that improves performance
--   `refactor`: A code change that neither fixes a bug nor adds a feature
--   `revert`: Revert to a commit
--   `test`: Add missing tests or correct existing tests
-
-**Scopes**
-
-Optional. If used, must be one of the following supported scopes:
-
--   `<matcher>`: If adding or updating matchers, use the matcher's function name as the scope.
-    -   If using Commitizen (`npm run cz`), choose 'custom'
--   `api`: Any documentation that helps developers or end users understand how to better employ a tool or feature
--   `contributing`: Contributions to this guidance or the [Code of Conduct](CODE_OF_CONDUCT.md)
--   `license`: Changes to terms or copyright status within the [license](LICENSE).
-    -   _Any change in license type MUST include a BREAKING CHANGE_
--   `readme`: Contributions to the main [README.md](https://github.com/M-Scott-Lassiter/jest-geojson#README)
--   `security`: Changes that address code related security issues or security policies
-
-### Commit Body Format
-
-Provide a plain text description of _why_ you made this change. This is the place for you to explain your thought process, developer to developer. If helpful, include a comparison of the previous behavior with the new behavior to illustrate the change's impact.
-
-If there are breaking changes, start the body with `BREAKING CHANGE: <breaking change summary>.`
-
-### Commit Footer Format
-
-The footer identifies which issues this commit fixes. If none, leave it blank. Otherwise, use the format `Resolves #<issue number>`. If more than one issue is resolved, separate them with a comma.
-
-## Continuous Integration and Deployment
-
-`jest-geojson` uses [Semantic Versioning](https://semver.org/) and updates automatically based on specific versioning triggers.
-
-Pushes to the main branch causes `semantic-release` to check all commits since the last version for any triggers that would cause a new version. This project extends the defaults:
-
--   Patch
-    -   `fix`
-    -   `perf`
-    -   `(api)`
--   Version
-    -   `feat`
--   Major
-    -   `BREAKING CHANGE`
-
-Extensions from the [semantic-release default](https://github.com/semantic-release/semantic-release#commit-message-format):
-
--   `api` scope (regardless of commit type) triggers a patch. This keeps API documentation for the end user as a first-class citizen without patching for any and all changes to the README or other supporting docs.
+When adding a new matcher, you must update this project's [Commitizen configuration](.cz-config.js) so the matcher shows up in the scope list.
