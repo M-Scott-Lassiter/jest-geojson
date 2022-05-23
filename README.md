@@ -44,19 +44,178 @@
 
 # Purpose
 
-`jest-geojson` provides a comprehensive set of matchers for use while testing [GeoJSON objects](https://geojson.org/) with the Jest framework.
+## What This Library Does
+
+`jest-geojson` extends the [Jest](https://github.com/facebook/jest) unit testing framework with a comprehensive set of matchers tailored to checking [GeoJSON object](https://geojson.org/) validity and other typical geodesy attributes. For example:
+
+```javascript
+test('Object is valid GeoJSON', () => {
+    expect(myGeoJSONObject).toBeValidGeoJSON()
+})
+```
+
+Additionally, you can use the underlying engine outside of the Jest context so you can directly use the validation functions within your own code.
+
+## What This Library Does Not Do
+
+This library does not create or manipulate GeoJSON.
+
+Other projects have done that (and better), such as the venerable [Turf.js](https://github.com/Turfjs/turf). This library complements, not competes with, those tools.
 
 # Getting Started
 
 ## Install as a Dev Dependency
 
 ```javascript
-npm install --save-dev jest-geojson
+npm install --save-dev jest jest-geojson
 ```
 
 ## Configure Jest
 
 < Under Construction >
+
+---
+
+## Import the Core Engine
+
+```javascript
+const jest-geojson = require(jest-geojson).core
+```
+
+# Matchers
+
+`jest-geojson` organizes matchers by categories that correspond to the input type passed to `expect()`.
+
+Functional matchers assess for more generic attributes or qualities and accept multiple input types.
+
+Release version 1.0.0 will contain the minimum matchers (listed in priority development order) needed to validate GeoJSON elements.
+
+## Coordiante Matchers
+
+_1.0.0_
+
+-   [x] isValid2DCoordinate
+-   [x] isValid3DCoordinate
+-   [ ] isValidCoordinate
+
+## Bounding Box Matchers
+
+_1.0.0_
+
+-   [ ] isValid2DBoundingBox
+-   [ ] isValid3DBoundingBox
+-   [ ] isValidBoundingBox
+
+## Geometry Matchers
+
+_1.0.0_
+
+-   [ ] toBePointGeometry
+-   [ ] toBeMultiPointGeometry
+-   [ ] toBeLineStringGeometry
+-   [ ] toBeMultiLineStringGeometry
+-   [ ] toBePolygonGeometry
+-   [ ] toBeMultiPolygonGeometry
+-   [ ] toBeAnyGeometry
+
+---
+
+_Future_
+
+-   [ ] isMultiPolygonWithHole
+
+## Geometry Collection Matchers
+
+_1.0.0_
+
+-   [ ] toBeGeometryCollection
+
+---
+
+_Future_
+
+-   [ ] toHaveMinGeometryCount
+-   [ ] toHaveMaxGeometeyCount
+-   [ ] toHaveGeometeyCount (equal/min, max)
+-   [ ] toContainGeometryTypes (array of Geometry type strings, optional min count, optional max count)
+
+## Feature Matchers
+
+_1.0.0_
+
+-   [ ] toBePointFeature
+-   [ ] toBeMultiPointFeature
+-   [ ] toBeLineStringFeature
+-   [ ] toBeMultiLineStringFeature
+-   [ ] toBePolygonFeature
+-   [ ] toBeMultiPolygonFeature
+-   [ ] toBeGeometryCollectionFeature
+-   [ ] toBeAnyFeature
+
+---
+
+_Future_
+
+-   [ ] toHaveID
+-   [ ] toHaveStringID
+-   [ ] toHaveNumericID
+-   [ ] toHave2DBoundingBox
+-   [ ] toHave3DBoundingBox
+-   [ ] toHaveBoundingBox
+-   [ ] toHaveProperties
+-   [ ] toHaveForeignMembers
+
+## Feature Collection Matchers
+
+_1.0.0_
+
+-   [ ] toBeFeatureCollection
+
+---
+
+_Future_
+
+-   [ ] toContainFeatureTypes (array of feature type strings, optional min count, optional max count)
+-   [ ] toContainIDs ([optional unordered array of IDs])
+-   [ ] toContainStringIDs
+-   [ ] toContainNumericIDs
+-   [ ] toContainUniqueIDs
+-   [ ] toContainAnyIDs
+-   [ ] toContainOnlyIDs ([unordered array of IDs])
+
+## Functional Matchers
+
+_1.0.0_
+
+-   [ ] toBeValidGeoJSON
+
+---
+
+_Future_
+
+-   [ ] toHaveMinPointCountOf
+-   [ ] toHaveMaxPointCountOf
+-   [ ] toHavePointCount (equal/min, optional max)
+-   [ ] toHaveMaxPrecision (num decimal places)
+-   [ ] toHaveMinPrecision (num decimal places)
+-   [ ] toHavePrecision (equal to/min decimal places, optional max decimal places)
+-   [ ] toCrossAntimeridian
+-   [ ] toIncludeNorthPole
+-   [ ] toIncludeSouthPole
+-   [ ] toIncludeEitherPole
+-   [ ] toContainGeometryTypes
+-   [ ] toContainAnyCoordinates ([unordered array of points])
+-   [ ] toContainAllCoordinates ([unordered array of points])
+-   [ ] toContainOnlyCoordinates
+-   [ ] toContainOrderedCoordinates ([array of ordered points])
+-   [ ] isCounterClockwiseWound
+-   [ ] isClockwiseWound
+-   [ ] isKinked
+-   [ ] toBeContainedWithinBBox
+-   [ ] isInNorthernHemisphere
+-   [ ] isInSouthernHemisphere
+-   [ ] isInEasternernHemisphere
+-   [ ] isInWesternHemisphere
 
 ---
 
@@ -76,3 +235,5 @@ Maintained by M. Scott Lassiter.
 [![Twitter Badge Profile](https://img.shields.io/badge/Twitter-1DA1F2?style=plastic&logo=twitter&logoColor=white)](https://twitter.com/MScottLassiter)
 [![LinkedIn Badge Profile](https://img.shields.io/badge/LinkedIn-0077B5?style=plastic&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mscottlassiter)
 [![Stackoverflow Badge Profile](https://img.shields.io/badge/stackoverflow-orange.svg?longCache=true&style=plastic&logo=stackoverflow&logoColor=white)](https://stackoverflow.com/users/6186333/sandpiper)
+README.md
+Displaying README.md.
