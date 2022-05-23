@@ -99,7 +99,7 @@ const jest-geojson = require(jest-geojson).core
 
 Functional matchers assess for more generic attributes or qualities and accept multiple input types.
 
-Release version 1.0.0 will contain the minimum matchers (listed in priority development order) needed to validate GeoJSON elements.
+[Release version 1.0.0](https://github.com/M-Scott-Lassiter/jest-geojson/milestone/1) will contain the minimum matchers (listed in priority development order) needed to validate GeoJSON elements.
 
 ## Coordiante Matchers
 
