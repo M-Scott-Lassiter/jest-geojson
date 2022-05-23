@@ -46,7 +46,7 @@
         }
     },
     "devDependencies": {
-        "@m-scott-lassiter/semantic-release-github-npm-config": "^1.0.3",
+        "@m-scott-lassiter/semantic-release-github-npm-config": "^2.0.0",
         "@types/jest": "^27.5.0",
         "commitizen": "^4.2.4",
         "conventional-changelog-conventionalcommits": "^4.6.3",
