@@ -5,7 +5,7 @@ name: CI Tests
 
 on:
   push:
-    branches: [main]
+    branches: [main, beta] # remove beta once version 1.0.0 is merged and released on main
   pull_request:
     branches: [main, next]
 
