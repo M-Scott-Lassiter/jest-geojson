@@ -1,3 +1,16 @@
+## [1.0.0-beta.2](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2022-05-24)
+
+
+### :building_construction: Build Changes
+
+* move release configuration into a separate shareable file ([fa6e50d](https://github.com/M-Scott-Lassiter/jest-geojson/commit/fa6e50d8b3facad9902d749fb69adcc45ba734fe))
+* **package:** update the commitizen config for customized scopes ([ac05626](https://github.com/M-Scott-Lassiter/jest-geojson/commit/ac05626a146717f0b7b64a7f34d5e269f593b652))
+
+
+### :gift: Feature Changes
+
+* **isValidCoordinate:** add new matcher function ([d7e5b70](https://github.com/M-Scott-Lassiter/jest-geojson/commit/d7e5b70ae19d2a2285af6a49414f4d552dc2c374)), closes [#4](https://github.com/M-Scott-Lassiter/jest-geojson/issues/4)
+
 ## 1.0.0-beta.1 (2022-05-19)
 
 
