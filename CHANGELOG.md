@@ -1,3 +1,10 @@
+## [1.0.0-beta.3](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2022-05-24)
+
+
+### :gift: Feature Changes
+
+* split package exports into matcher and core functionality ([a7340d9](https://github.com/M-Scott-Lassiter/jest-geojson/commit/a7340d9cd0f57a207322941a6abc8a8f1524c1b0)), closes [#5](https://github.com/M-Scott-Lassiter/jest-geojson/issues/5)
+
 ## [1.0.0-beta.2](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2022-05-24)
 
 
