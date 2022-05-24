@@ -1,6 +1,10 @@
 // When adding new matchers, place them in alphabetical order inside the appropriate category
 
-const coordinateMatchers = [{ name: 'isValid2DCoordinate' }, { name: 'isValid3DCoordinate' }]
+const coordinateMatchers = [
+    { name: 'isValid2DCoordinate' },
+    { name: 'isValid3DCoordinate' },
+    { name: 'isValidCoordinate' }
+]
 
 const boundingBoxMatchers = []
 
@@ -82,6 +86,7 @@ module.exports = {
             { name: 'package' }
         ],
         docs: documentationScopes,
+        feat: allMatchers,
         fix: allMatchers,
         perf: allMatchers,
         refactor: allMatchers,
@@ -108,7 +113,7 @@ module.exports = {
 
     // limit subject length
     subjectLimit: 100,
-    // breaklineChar: '|', // It is supported for fields body and footer.
+    breaklineChar: '|', // It is supported for fields body and footer.
     footerPrefix: 'Resolves:'
     // askForBreakingChangeFirst : true, // default is false
 }

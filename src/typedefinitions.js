@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 /* This is the entry point the jest-geojson package. Example usage in other projects:
 
        import * as matchers from 'jest-extended'
@@ -46,21 +47,3 @@
  * @example
  * { pass: true, message: () => 'This test passed' }
  */
-
-// //////////////////// Module Exports Begin Here //////////////////// //
-
-// Bounding Boxes
-
-// Coordinates
-exports.isValid2DCoordinate =
-    require('./matchers/coordinates/isValid2DCoordinate').isValid2DCoordinate
-exports.isValid3DCoordinate =
-    require('./matchers/coordinates/isValid3DCoordinate').isValid3DCoordinate
-exports.isValidCoordinate = require('./matchers/coordinates/isValidCoordinate').isValidCoordinate
-// Features
-
-// Geometries
-
-// Properties
-
-// Winding

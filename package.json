@@ -7,6 +7,7 @@
         "jest-tests",
         "jest-geojson",
         "geojson",
+        "gis",
         "matchers",
         "jest-matchers",
         "test",
@@ -23,7 +24,11 @@
         "package.json",
         "package-lock.json"
     ],
-    "main": "./src/index.js",
+    "exports": {
+        ".": "./src/matchers.js",
+        "./core": "./src/core.js",
+        "./setup/all": "./src/matchers.js"
+    },
     "repository": {
         "type": "git",
         "url": "https://github.com/M-Scott-Lassiter/jest-geojson.git"
@@ -36,6 +41,7 @@
         "tableofcontents": "markdown-toc -i ./README.md && markdown-toc -i ./CONTRIBUTING.md",
         "test": "jest --coverage --verbose",
         "test:dev": "jest --watch --coverage --verbose",
+        "test-coordinates": "jest tests/coordinates --coverage --verbose",
         "lint": "eslint . --ext .js --fix",
         "prepare": "husky install"
     },

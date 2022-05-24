@@ -81,17 +81,51 @@ Other projects have done that (and better), such as the venerable [Turf.js](http
 npm install --save-dev jest jest-geojson
 ```
 
+<!-- Future expansion: Add instructions for yarn -->
+
 ## Configure Jest
 
-< Under Construction >
+Jest [allows you to run scripts](https://jestjs.io/docs/configuration#setupfilesafterenv-array) after its environment loads. You can take advantage of that to load all `jest-geojson` matchers automatically so your test script can make use of them without any further steps.
+
+To do so, either create a `jest.config.js` file:
+
+```javascript
+module.exports = {
+    setupFilesAfterEnv: ['jest-geojson/setup/all']
+}
+```
+
+or add a key to your `package.json`:
+
+```json
+{
+    "name": "myPackageName",
+    ...
+    "jest": {
+        "setupFilesAfterEnv": ["jest-geojson/setup/all"]
+    }
+}
+```
+
+<!-- Eventually, add a tutorial for doing custom matcher loading -->
 
 ---
 
 ## Import the Core Engine
 
+You can directly import the functions driving the test matchers. The core object groups the functions by category.
+
 ```javascript
-const jest-geojson = require(jest-geojson).core
+const jest-geojson = require(jest-geojson/core)
 ```
+
+You can also import the matcher functions without automatically loading them. These matchers are also grouped by category.
+
+```javascript
+const jest-geojson = require(jest-geojson)
+```
+
+These are
 
 # Matchers
 
@@ -246,5 +280,3 @@ Maintained by M. Scott Lassiter.
 [![Twitter Badge Profile](https://img.shields.io/badge/Twitter-1DA1F2?style=plastic&logo=twitter&logoColor=white)](https://twitter.com/MScottLassiter)
 [![LinkedIn Badge Profile](https://img.shields.io/badge/LinkedIn-0077B5?style=plastic&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mscottlassiter)
 [![Stackoverflow Badge Profile](https://img.shields.io/badge/stackoverflow-orange.svg?longCache=true&style=plastic&logo=stackoverflow&logoColor=white)](https://stackoverflow.com/users/6186333/sandpiper)
-README.md
-Displaying README.md.
