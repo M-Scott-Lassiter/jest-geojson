@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error Snapshot Testing. Throws error: expect([0, 0, 0]).isValidCoordinate 1`] = `
+"[2mexpect([22m[31m[longitude, latitude, (altitude)][39m[2m).isValidCoordinate()[22m
+
+Latitude must be a number between -90 and 90.
+
+Received:  [31m[0, 95, 0][39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: expect([0, 0, 0]).not.isValidCoordinate 1`] = `
+"[2mexpect([22m[31m[longitude, latitude, (altitude)][39m[2m).not.isValidCoordinate()[22m
+
+Expected input to not be a two or three element array with longitude between (-90 to 90), 
+        latitude between (-180 to 180), and (if a 3D coordinate) numeric altitude.
+
+Received:  [31m[0, 0, 0][39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: expect([0, 0]).isValidCoordinate 1`] = `
+"[2mexpect([22m[31m[longitude, latitude, (altitude)][39m[2m).isValidCoordinate()[22m
+
+Latitude must be a number between -90 and 90.
+
+Received:  [31m[0, 95][39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: expect([0, 0]).not.isValidCoordinate 1`] = `
+"[2mexpect([22m[31m[longitude, latitude, (altitude)][39m[2m).not.isValidCoordinate()[22m
+
+Expected input to not be a two or three element array with longitude between (-90 to 90), 
+        latitude between (-180 to 180), and (if a 3D coordinate) numeric altitude.
+
+Received:  [31m[0, 0][39m"
+`;

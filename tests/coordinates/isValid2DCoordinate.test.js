@@ -1,33 +1,33 @@
 const goodCoordinates = [
-    [0, 0],
-    [102.0, 0.5],
-    [172.0, -15],
-    [-10.9, 77],
-    [-152.0, -33.33333]
+    [[0, 0]],
+    [[102.0, 0.5]],
+    [[172.0, -15]],
+    [[-10.9, 77]],
+    [[-152.0, -33.33333]]
 ]
 const goodBoundaryCoordinates = [
-    [180, 0],
-    [-180, 0],
-    [0, 90],
-    [0, -90],
-    [180, 90],
-    [180, -90],
-    [-180, 90],
-    [-180, -90]
+    [[180, 0]],
+    [[-180, 0]],
+    [[0, 90]],
+    [[0, -90]],
+    [[180, 90]],
+    [[180, -90]],
+    [[-180, 90]],
+    [[-180, -90]]
 ]
 const coordinatesOutOfRange = [
-    [0, 90.0000001],
-    [0, -90.0000001],
-    [0, 900000],
-    [0, -900000],
-    [180.0000001, 0],
-    [-180.0000001, 0],
-    [1800000, 0],
-    [-1800000, 0],
-    [181, 91],
-    [181, -91],
-    [-181, 91],
-    [-181, -91]
+    [[0, 90.0000001]],
+    [[0, -90.0000001]],
+    [[0, 900000]],
+    [[0, -900000]],
+    [[180.0000001, 0]],
+    [[-180.0000001, 0]],
+    [[1800000, 0]],
+    [[-1800000, 0]],
+    [[181, 91]],
+    [[181, -91]],
+    [[-181, 91]],
+    [[-181, -91]]
 ]
 const invalidInputValues = [
     undefined,
@@ -47,14 +47,16 @@ const invalidInputValues = [
 ]
 describe('Valid Use Cases', () => {
     describe('Expect to pass with good coordinates:', () => {
-        test.each([...goodCoordinates])('expect([%p, %p])', (longitude, latitude) => {
-            expect([longitude, latitude]).isValid2DCoordinate()
+        test.each([...goodCoordinates])('expect(%p)', (coordinate) => {
+            expect(coordinate).isValid2DCoordinate()
+            expect(coordinate).isValidCoordinate()
         })
     })
 
     describe('Expect to pass with good boundary coordinates:', () => {
-        test.each([...goodBoundaryCoordinates])('expect([%p, %p])', (longitude, latitude) => {
-            expect([longitude, latitude]).isValid2DCoordinate()
+        test.each([...goodBoundaryCoordinates])('expect(%p)', (coordinate) => {
+            expect(coordinate).isValid2DCoordinate()
+            expect(coordinate).isValidCoordinate()
         })
     })
 })
@@ -63,6 +65,7 @@ describe('Inalid Use Cases', () => {
     describe('Expect to fail with bad inputs:', () => {
         test.each([...invalidInputValues])('expect(%p)', (badInput) => {
             expect(badInput).not.isValid2DCoordinate()
+            expect(badInput).not.isValidCoordinate()
         })
     })
 
@@ -76,8 +79,9 @@ describe('Inalid Use Cases', () => {
     })
 
     describe('Expect to fail with out of range coordinate:', () => {
-        test.each([...coordinatesOutOfRange])('expect([%p, %p])', (longitude, latitude) => {
-            expect([longitude, latitude]).not.isValid2DCoordinate()
+        test.each([...coordinatesOutOfRange])('expect(%p)', (coordinate) => {
+            expect(coordinate).not.isValid2DCoordinate()
+            expect(coordinate).not.isValidCoordinate()
         })
     })
 
@@ -85,18 +89,21 @@ describe('Inalid Use Cases', () => {
         describe('Expect to fail with bad longitude value:', () => {
             test.each([...invalidInputValues])('expect([%p, 0])', (longitude) => {
                 expect([longitude, 0]).not.isValid2DCoordinate()
+                expect([longitude, 0]).not.isValidCoordinate()
             })
         })
 
         describe('Expect to fail with bad latitude value:', () => {
             test.each([...invalidInputValues])('expect([0, %p])', (latitude) => {
                 expect([0, latitude]).not.isValid2DCoordinate()
+                expect([0, latitude]).not.isValidCoordinate()
             })
         })
 
         describe('Expect to fail with bad values for both:', () => {
             test.each([...invalidInputValues])('expect(<val>, <val>), <val> = %p', (input) => {
                 expect([input, input]).not.isValid2DCoordinate()
+                expect([input, input]).not.isValidCoordinate()
             })
         })
     })
@@ -109,6 +116,7 @@ describe('Inalid Use Cases', () => {
         ]
         test.each([[testArray], [[testArray]], [[[testArray]]]])('expect(%p)', (badInput) => {
             expect([badInput]).not.isValid2DCoordinate()
+            expect([badInput]).not.isValidCoordinate()
         })
     })
 })

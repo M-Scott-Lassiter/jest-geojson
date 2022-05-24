@@ -1,33 +1,33 @@
 const goodCoordinates = [
-    [0, 0, 0],
-    [102.0, 0.5, 1000],
-    [172.0, -15, -1000],
-    [-10.9, 77, 5000],
-    [-152.0, -33.33333, -5000]
+    [[0, 0, 0]],
+    [[102.0, 0.5, 1000]],
+    [[172.0, -15, -1000]],
+    [[-10.9, 77, 5000]],
+    [[-152.0, -33.33333, -5000]]
 ]
 const goodBoundaryCoordinates = [
-    [180, 0, Infinity],
-    [-180, 0, Infinity],
-    [0, 90, Infinity],
-    [0, -90, Infinity],
-    [180, 90, -Infinity],
-    [180, -90, -Infinity],
-    [-180, 90, -Infinity],
-    [-180, -90, -Infinity]
+    [[180, 0, Infinity]],
+    [[-180, 0, Infinity]],
+    [[0, 90, Infinity]],
+    [[0, -90, Infinity]],
+    [[180, 90, -Infinity]],
+    [[180, -90, -Infinity]],
+    [[-180, 90, -Infinity]],
+    [[-180, -90, -Infinity]]
 ]
 const coordinatesOutOfRange = [
-    [0, 90.0000001, 0],
-    [0, -90.0000001, 0],
-    [0, 900000, 0],
-    [0, -900000, 0],
-    [180.0000001, 0, 0],
-    [-180.0000001, 0, 0],
-    [1800000, 0, 0],
-    [-1800000, 0, 0],
-    [181, 91, 0],
-    [181, -91, 0],
-    [-181, 91, 0],
-    [-181, -91, 0]
+    [[0, 90.0000001, 0]],
+    [[0, -90.0000001, 0]],
+    [[0, 900000, 0]],
+    [[0, -900000, 0]],
+    [[180.0000001, 0, 0]],
+    [[-180.0000001, 0, 0]],
+    [[1800000, 0, 0]],
+    [[-1800000, 0, 0]],
+    [[181, 91, 0]],
+    [[181, -91, 0]],
+    [[-181, 91, 0]],
+    [[-181, -91, 0]]
 ]
 const invalidInputValues = [
     undefined,
@@ -45,7 +45,7 @@ const invalidInputValues = [
     '[0, 0, 0]',
     '[[0, 0, 0], [0, 0, 0]]'
 ]
-const InvalidAltitudeValues = [
+const invalidAltitudeValues = [
     undefined,
     null,
     true,
@@ -60,18 +60,17 @@ const InvalidAltitudeValues = [
 
 describe('Valid Use Cases', () => {
     describe('Expect to pass with good coordinates:', () => {
-        test.each([...goodCoordinates])('expect([%p, %p, %p])', (longitude, latitude, altitude) => {
-            expect([longitude, latitude, altitude]).isValid3DCoordinate()
+        test.each([...goodCoordinates])('expect(%p)', (coordinate) => {
+            expect(coordinate).isValid3DCoordinate()
+            expect(coordinate).isValidCoordinate()
         })
     })
 
     describe('Expect to pass with good boundary coordinates:', () => {
-        test.each([...goodBoundaryCoordinates])(
-            'expect([%p, %p, %p])',
-            (longitude, latitude, altitude) => {
-                expect([longitude, latitude, altitude]).isValid3DCoordinate()
-            }
-        )
+        test.each([...goodBoundaryCoordinates])('expect([%p])', (coordinate) => {
+            expect(coordinate).isValid3DCoordinate()
+            expect(coordinate).isValidCoordinate()
+        })
     })
 })
 
@@ -79,6 +78,7 @@ describe('Invalid Use Cases', () => {
     describe('Expect to fail with bad inputs:', () => {
         test.each([...invalidInputValues])('expect(%p)', (badInput) => {
             expect(badInput).not.isValid3DCoordinate()
+            expect(badInput).not.isValidCoordinate()
         })
     })
 
@@ -92,30 +92,31 @@ describe('Invalid Use Cases', () => {
     })
 
     describe('Expect to fail with out of range lon/lat coordinates:', () => {
-        test.each([...coordinatesOutOfRange])(
-            'expect([%p, %p, %p])',
-            (longitude, latitude, altitude) => {
-                expect([longitude, latitude, altitude]).not.isValid3DCoordinate()
-            }
-        )
+        test.each([...coordinatesOutOfRange])('expect(%p)', (coordinate) => {
+            expect(coordinate).not.isValid3DCoordinate()
+            expect(coordinate).not.isValidCoordinate()
+        })
     })
 
     describe('Passing Bad Individual Coordinate Values', () => {
         describe('Expect to fail with bad longitude value:', () => {
             test.each([...invalidInputValues])('expect([%p, 0, 0])', (longitude) => {
                 expect([longitude, 0, 0]).not.isValid3DCoordinate()
+                expect([longitude, 0, 0]).not.isValidCoordinate()
             })
         })
 
         describe('Expect to fail with bad latitude value:', () => {
             test.each([...invalidInputValues])('expect([0, %p, 0])', (latitude) => {
                 expect([0, latitude, 0]).not.isValid3DCoordinate()
+                expect([0, latitude, 0]).not.isValidCoordinate()
             })
         })
 
         describe('Expect to fail with bad altitude value:', () => {
-            test.each([...InvalidAltitudeValues])('expect([0, 0, %p])', (altitude) => {
+            test.each([...invalidAltitudeValues])('expect([0, 0, %p])', (altitude) => {
                 expect([0, 0, altitude]).not.isValid3DCoordinate()
+                expect([0, 0, altitude]).not.isValidCoordinate()
             })
         })
 
@@ -124,6 +125,7 @@ describe('Invalid Use Cases', () => {
                 'expect(<val>, <val>, <val>), <val> = %p',
                 (input) => {
                     expect([input, input, input]).not.isValid3DCoordinate()
+                    expect([input, input, input]).not.isValidCoordinate()
                 }
             )
         })
@@ -131,12 +133,13 @@ describe('Invalid Use Cases', () => {
 
     describe('Expect to fail when arrays are nested too deeply:', () => {
         const testArray = [
-            [10, 20],
-            [2, 90],
-            [95, 5]
+            [10, 20, 0],
+            [2, 90, 0],
+            [95, 5, 0]
         ]
         test.each([[testArray], [[testArray]], [[[testArray]]]])('expect(%p)', (badInput) => {
             expect([badInput]).not.isValid2DCoordinate()
+            expect([badInput]).not.isValidCoordinate()
         })
     })
 })

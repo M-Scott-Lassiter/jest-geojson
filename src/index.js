@@ -56,6 +56,7 @@ exports.isValid2DCoordinate =
     require('./matchers/coordinates/isValid2DCoordinate').isValid2DCoordinate
 exports.isValid3DCoordinate =
     require('./matchers/coordinates/isValid3DCoordinate').isValid3DCoordinate
+exports.isValidCoordinate = require('./matchers/coordinates/isValidCoordinate').isValidCoordinate
 // Features
 
 // Geometries

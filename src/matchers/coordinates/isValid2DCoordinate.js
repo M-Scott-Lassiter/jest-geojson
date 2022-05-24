@@ -12,8 +12,9 @@ const { valid2DCoordinate } = require('../../core/coordinates/valid2DCoordinate'
  * expect([22, 45.733]).isValid2DCoordinate()
  * expect([180, 90]).isValid2DCoordinate()
  * @example
- * expect([22, 100.56]).not.isValid2DCoordinate()
- * expect([22, 45.733, 0]).not.isValid2DCoordinate()
+ * expect([22, 100.56]).not.isValid2DCoordinate() // Latitude out of range
+ * expect([22, 45.733, 0]).not.isValid2DCoordinate() //3D coordinate
+ * // Nested Arrays
  * expect([[22, 45.733, 0]]).not.isValid2DCoordinate()
  * expect([[22, 45.733], [180, 90]]).not.isValid2DCoordinate()
  */

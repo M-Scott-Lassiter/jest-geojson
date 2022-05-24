@@ -1,35 +1,37 @@
-const { valid3DCoordinate } = require('../../core/coordinates/valid3DCoordinate')
+const { validCoordinate } = require('../../core/coordinates/validCoordinate')
 
 // eslint-disable-next-line jsdoc/require-returns
 /**
- * Verifies a three element coordinate meets WGS-84 and GeoJSON validity requirements.
+ * Verifies a two or three element coordinate meets WGS-84 and GeoJSON validity requirements.
  *
  * @memberof Coordinates
- * @param {number[]} coordinateArray A three element array of numbers in format [longitude, latitude, altitude].
+ * @param {number[]} coordinateArray A two or three element array of numbers in format
+ * [longitude, latitude] or [longitude, latitude, altitude].
  *
  * Longitude must be between -180 to 180.
  * Latitude must be between -90 to 90.
  * Altitude must be a number between -Infinity to Infinity.
  * The standard does not specify units altitude represents (i.e. meters, feet, etc.).
  * @example
- * expect([22, 45.733, 20]).isValid3DCoordinate()
- * expect([180, 90, -10000]).isValid3DCoordinate()
+ * expect([22, 45.733]).isValidCoordinate()
+ * expect([180, 90]).isValidCoordinate()
+ * expect([22, 45.733, 20]).isValidCoordinate()
+ * expect([180, 90, -10000]).isValidCoordinate()
  * @example
- * expect([22, 100.56, 0]).not.isValid3DCoordinate() // Latitude out of range
- * expect([22, 45.733]).isValid3DCoordinate() // 2D coordinate
- * expect([22, 45.733, '0']).not.isValid3DCoordinate() // Non-numeric altitude
+ * expect([220, 56]).not.isValidCoordinate() // Longitude out of range
+ * expect([22, 45.733, '0']).not.isValidCoordinate()
  * // Nested Arrays
- * expect([[22, 45.733, 0]]).not.isValid3DCoordinate()
- * expect([[22, 45.733, 0], [180, 90, 0]]).not.isValid3DCoordinate()
+ * expect([[22, 45.733, 0]]).not.isValidCoordinate()
+ * expect([[22, 45.733, 0], [180, 90, 0]]).not.isValidCoordinate()
  */
-function isValid3DCoordinate(coordinateArray) {
+function isValidCoordinate(coordinateArray) {
     const { printReceived, matcherHint } = this.utils
     const passMessage =
         // eslint-disable-next-line prefer-template
-        matcherHint('.not.isValid3DCoordinate', '[longitude, latitude, altitude]', '') +
+        matcherHint('.not.isValidCoordinate', '[longitude, latitude, (altitude)]', '') +
         '\n\n' +
-        `Expected input to not be a three element array with longitude between (-90 to 90), 
-        latitude between (-180 to 180), and numeric altitude.\n\n` +
+        `Expected input to not be a two or three element array with longitude between (-90 to 90), 
+        latitude between (-180 to 180), and (if a 3D coordinate) numeric altitude.\n\n` +
         `Received:  ${printReceived(coordinateArray)}`
 
     /**
@@ -42,7 +44,7 @@ function isValid3DCoordinate(coordinateArray) {
     function failMessage(errorMessage) {
         return (
             // eslint-disable-next-line prefer-template, no-unused-expressions
-            matcherHint('.isValid3DCoordinate', '[longitude, latitude, altitude]', '') +
+            matcherHint('.isValidCoordinate', '[longitude, latitude, (altitude)]', '') +
             '\n\n' +
             `${errorMessage}\n\n` +
             `Received:  ${printReceived(coordinateArray)}`
@@ -50,11 +52,11 @@ function isValid3DCoordinate(coordinateArray) {
     }
 
     try {
-        valid3DCoordinate(coordinateArray)
+        validCoordinate(coordinateArray)
     } catch (err) {
         return { pass: false, message: () => failMessage(err.message) }
     }
     return { pass: true, message: () => passMessage }
 }
 
-exports.isValid3DCoordinate = isValid3DCoordinate
+exports.isValidCoordinate = isValidCoordinate
