@@ -1,40 +1,4 @@
-/**
- * A helper function used to verify a coordinate has appropriate longitude and latitude values.
- *
- * @memberof Core.Coordinates
- * @param {GeoJSON-Coordinate} coordinate A WGS-84 array of [longitude, latitude]
- * @returns {boolean} True if a valid 2D GeoJSON coordinate. If invalid, it will throw an error.
- * @throws {Error} Input must be an array of only two elments
- * @throws {RangeError} Longitude must be a number between -180 and 180
- * @throws {RangeError} Latitude must be a number between -90 and 90
- */
-function valid2D(coordinate) {
-    if (!Array.isArray(coordinate) || coordinate.length !== 2) {
-        throw new Error('Input must be an array of only two elments.')
-    }
-
-    if (
-        typeof coordinate[0] !== 'number' ||
-        coordinate[0] < -180 ||
-        coordinate[0] > 180 ||
-        // eslint-disable-next-line no-self-compare
-        coordinate[0] !== coordinate[0] // Accounts for NaN
-    ) {
-        throw new Error('Longitude must be a number between -180 and 180.')
-    }
-
-    if (
-        typeof coordinate[1] !== 'number' ||
-        coordinate[1] < -90 ||
-        coordinate[1] > 90 ||
-        // eslint-disable-next-line no-self-compare
-        coordinate[1] !== coordinate[1] // Accounts for NaN
-    ) {
-        throw new Error('Latitude must be a number between -90 and 90.')
-    }
-
-    return true
-}
+const { valid2DCoordinate } = require('../../core/coordinates/valid2DCoordinate')
 
 // eslint-disable-next-line jsdoc/require-returns
 /**
@@ -81,12 +45,11 @@ function isValid2DCoordinate(coordinateArray) {
     }
 
     try {
-        valid2D(coordinateArray)
+        valid2DCoordinate(coordinateArray)
     } catch (err) {
         return { pass: false, message: () => failMessage(err.message) }
     }
     return { pass: true, message: () => passMessage }
 }
 
-exports.valid2D = valid2D
 exports.isValid2DCoordinate = isValid2DCoordinate

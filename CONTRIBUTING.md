@@ -87,10 +87,20 @@ npm install
 
 ### Project Structure
 
-All distribution files are contained in the `src` folder. The `tests` folder contains the scripts used to verify the matchers work as designed (using the matchers themselves!)
+All distribution files are contained in the `src` folder. The `tests` folder contains the scripts used to verify the matchers work as designed (using the matchers themselves!).
+
+`core` contains the functions that `matchers` use.
 
 ```
 ├── src
+│   ├── core
+│   │   ├── boundingBoxes
+│   │   ├── coordinates
+│   │   ├── features
+│   │   ├── featureCollections
+│   │   ├── functional
+│   │   ├── geometries
+│   │   └── geometryCollections
 │   ├── matchers
 │   │   ├── boundingBox
 │   │   ├── coordinate

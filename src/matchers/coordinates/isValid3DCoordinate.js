@@ -1,30 +1,4 @@
-const { valid2D } = require('./isValid2DCoordinate')
-/**
- * A helper function used to verify a coordinate has appropriate longitude, latitude, and altitude values.
- *
- * @memberof Core.Coordinates
- * @param {GeoJSON-Coordinate} coordinate A WGS-84 array of [longitude, latitude, alititude]
- * @returns {boolean} True if a valid 3D GeoJSON coordinate. If invalid, it will throw an error.
- * @throws {Error} Input must be an array of only three elments
- * @throws {Error} Altitude value must be numeric
- */
-function valid3D(coordinate) {
-    if (!Array.isArray(coordinate) || coordinate.length !== 3) {
-        throw new Error('Input must be an array of only three elments.')
-    }
-
-    // The first two elements have to match the same validity requirements as a 2D coordinate.
-    // Reuse the logic from that function.
-    valid2D([coordinate[0], coordinate[1]])
-
-    // eslint-disable-next-line no-self-compare
-    if (typeof coordinate[2] !== 'number' || coordinate[2] !== coordinate[2]) {
-        // Self compare accounts for NaN
-        throw new Error('Altitude value must be numeric.')
-    }
-
-    return true
-}
+const { valid3DCoordinate } = require('../../core/coordinates/valid3DCoordinate')
 
 // eslint-disable-next-line jsdoc/require-returns
 /**
@@ -74,12 +48,11 @@ function isValid3DCoordinate(coordinateArray) {
     }
 
     try {
-        valid3D(coordinateArray)
+        valid3DCoordinate(coordinateArray)
     } catch (err) {
         return { pass: false, message: () => failMessage(err.message) }
     }
     return { pass: true, message: () => passMessage }
 }
 
-exports.valid3D = valid3D
 exports.isValid3DCoordinate = isValid3DCoordinate
