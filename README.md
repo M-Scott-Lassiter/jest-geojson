@@ -2,7 +2,7 @@
 
 # jest-geojson
 
-[![NPM Version](https://img.shields.io/npm/v/jest-geojson)](https://www.npmjs.com/package/jest-geojson)
+[![NPM Version](https://img.shields.io/npm/v/jest-geojson/beta)](https://www.npmjs.com/package/jest-geojson)
 [![NPM Package Size](https://img.shields.io/bundlephobia/min/jest-geojson)](https://www.npmjs.com/package/jest-geojson)
 [![License](https://img.shields.io/github/license/M-Scott-Lassiter/jest-geojson?color=blue)](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/LICENSE)
 
@@ -18,7 +18,7 @@
 [![Maintained](https://img.shields.io/badge/Maintained%3F-yes-brightgreen.svg)](#envelope-contact)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](/../../blob/main/CONTRIBUTING.md)
 
-## Note: This project is still in beta
+## [Note: This project is still in beta](https://github.com/M-Scott-Lassiter/jest-geojson/tree/beta)
 
 </div>
 
@@ -107,7 +107,7 @@ _1.0.0_
 
 -   [x] isValid2DCoordinate
 -   [x] isValid3DCoordinate
--   [ ] isValidCoordinate
+-   [x] isValidCoordinate
 
 ## Bounding Box Matchers
 
