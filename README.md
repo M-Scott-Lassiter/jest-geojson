@@ -6,6 +6,9 @@
 [![NPM Package Size](https://img.shields.io/bundlephobia/min/jest-geojson)](https://www.npmjs.com/package/jest-geojson)
 [![License](https://img.shields.io/github/license/M-Scott-Lassiter/jest-geojson?color=blue)](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/LICENSE)
 
+[![Powered by Jest](https://jestjs.io/img/jest-badge.svg)](https://github.com/facebook/jest)
+[![New matchers proposed](https://img.shields.io/github/issues/m-scott-lassiter/jest-geojson/new%20matcher%20proposal?label=new%20matchers)](https://github.com/M-Scott-Lassiter/jest-geojson/issues?q=is%3Aissue+is%3Aopen+label%3A%22new+matcher+proposal%22)
+
 ---
 
 [![Tests](https://github.com/M-Scott-Lassiter/jest-geojson/actions/workflows/test.yml/badge.svg)](https://github.com/M-Scott-Lassiter/jest-geojson/actions/workflows/test.yml)
