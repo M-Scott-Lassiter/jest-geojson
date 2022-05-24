@@ -1,6 +1,6 @@
 name: Documentation Request
 description: Request additional or clarified documentation
-title: '[Docs Request]: '
+title: 'Description'
 labels: ['documentation']
 assignees:
   - m-scott-lassiter

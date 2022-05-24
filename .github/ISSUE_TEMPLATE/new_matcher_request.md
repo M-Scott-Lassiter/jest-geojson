@@ -1,8 +1,8 @@
 ---
 name: New Matcher Request
 about: Suggest a new matcher for this project
-title: '[New Matcher]: '
-labels: 'new matcher'
+title: 'newMatcherName'
+labels: 'new matcher proposal'
 assignees: m-scott-lassiter
 ---
 
