@@ -19,11 +19,17 @@
  */
 
 /**
- * Functions used internal to jest-geojson.
+ * Core functionality used internal to jest-geojson.
  *
  * @private
- * @ignore
- * @namespace Helpers
+ * @namespace Core
+ */
+
+/**
+ * Coordinate functions used within Core.
+ *
+ * @private
+ * @namespace Core.Coordinates
  */
 
 /**
