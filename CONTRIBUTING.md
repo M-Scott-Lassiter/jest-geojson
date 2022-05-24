@@ -25,17 +25,23 @@ Before contributing, please take a moment to read through this document. This gu
 -   [Code of Conduct](#code-of-conduct)
 -   [How can I Contribute?](#how-can-i-contribute)
     -   [Submit Issues](#submit-issues)
-    -   [Recommend New Matchers](#recommend-new-matchers)
+    -   [Propose New Matchers](#propose-new-matchers)
     -   [Submit a Pull Request](#submit-a-pull-request)
+-   [New Matcher Submission Checklist](#new-matcher-submission-checklist)
+-   [Commits](#commits)
 -   [Development](#development)
     -   [Local Installation](#local-installation)
     -   [Project Structure](#project-structure)
     -   [Building](#building)
     -   [Linting and Formatting](#linting-and-formatting)
     -   [Running Tests](#running-tests)
-    -   [Adding New Tests](#adding-new-tests)
     -   [Documentation](#documentation)
--   [Commits](#commits)
+-   [Adding New Matchers](#adding-new-matchers)
+    -   [Creating Core Functions](#creating-core-functions)
+    -   [Creating New Tests](#creating-new-tests)
+    -   [Error Snapshot Testing](#error-snapshot-testing)
+    -   [Updating Error Snapshots](#updating-error-snapshots)
+    -   [Export Both Core and Matcher Functions](#export-both-core-and-matcher-functions)
 
 <!-- tocstop -->
 
@@ -55,7 +61,7 @@ _For security related issues, see the [security policy](https://github.com/M-Sco
 
 **Documentation Requests**: Is something unclear in the documentation or the API? Submit a [documentation change request](https://github.com/M-Scott-Lassiter/jest-geojson/issues/new/choose)! Be as detailed as possible. If you have the question, chances are someone else will also who isn't as willing to speak up as you are. If you want to do it yourself, see the [documentation guidelines](#documentation) for instructions.
 
-### Recommend New Matchers
+### Propose New Matchers
 
 These are welcome! Before submitting:
 
@@ -74,6 +80,37 @@ To submit a pull request,
 1. Fork and clone the repository
 1. Create a branch for your edits
 1. Make sure your work follows the [commits](#commits) guidance
+
+## New Matcher Submission Checklist
+
+-   [ ] Open an issue with detailed description of the purpose and required behavior
+-   <u>Create Core Function</u>
+    -   [ ] Create a core function under `src/core/<category>`
+    -   [ ] Document the function using JSDoc. Refer to the issue.
+    -   [ ] Register the core function in `src/core.js`
+-   <u>Create Matcher Function</u>
+    -   [ ] Create a matcher function under `src/matchers/<category>`
+    -   [ ] Document the matcher using JSDoc. Refer to the issue.
+    -   [ ] Register the matcher in `src/matchers.js`
+-   <u>Add Testing</u>
+    -   [ ] Create a test for the matcher under `tests/<category>`
+    -   [ ] Add a test to `tests/core.test.js`
+    -   [ ] Add a test to `matchers.test.js`
+    -   [ ] Verify all tests pass and have 100% coverage
+-   <u>Setup</u>
+    -   [ ] Register the matcher under `src/setup/all.js`
+    -   [ ] Register the matcher under `src/setup/<category>.js`
+-   [ ] Add the matcher to the README.md list (alphabetical order within category)
+-   [ ] Run the `build` script locally
+-   [ ] Push to Github then open pull request
+
+## Commits
+
+All commits must follow the common commit guidance in [@m-scott-lassiter/semantic-release-github-npm-config](https://github.com/M-Scott-Lassiter/semantic-release-github-npm-config#commits).
+
+This project uses [Commitizen](http://commitizen.github.io/cz-cli/) and [Husky](https://github.com/typicode/husky) hooks to help enforce good commit practices. Work on matcher functions must use that matcher function name as the scope.
+
+When adding a new matcher, you must update this project's [Commitizen configuration](.cz-config.js) so the matcher shows up in the scope list.
 
 ## Development
 
@@ -102,13 +139,17 @@ All distribution files are contained in the `src` folder. The `tests` folder con
 │   │   ├── geometries
 │   │   └── geometryCollections
 │   ├── matchers
-│   │   ├── boundingBox
-│   │   ├── coordinate
-│   │   ├── feature
-│   │   ├── featureCollection
+│   │   ├── boundingBoxes
+│   │   ├── coordinates
+│   │   ├── features
+│   │   ├── featureCollections
 │   │   ├── functional
-│   │   ├── geometry
-│   │   └── geometryCollection
+│   │   ├── geometries
+│   │   └── geometryCollections
+│   ├── setup
+│   │   ├── all.js
+│   │   ├── boundingBoxes.js
+│   │   └── coordinates.js
 |   ├── index.js
 |   └── JestSetup.js
 ├── tests
@@ -161,13 +202,45 @@ npm run test # Runs all tests and generates coverage report
 npm run test:dev # Runs tests in watch mode
 ```
 
-### Adding New Tests
+### Documentation
+
+API Documentation is automatically generated from [JSDoc comments](https://jsdoc.app/) within the scripts. To generate, run:
+
+```bash
+npm run docs
+```
+
+The table of contents in this guide and the main README are automatically generated using the [`markdown-toc`](https://github.com/jonschlinkert/markdown-toc) package. To generate, run:
+
+```bash
+npm run tableofcontents
+```
+
+## Adding New Matchers
+
+### Creating Core Functions
+
+All matcher functionality should have a core function that goes along with it. This goes under the `src/core/<category>` folder.
+
+The corresponding matcher goes under `src/matchers/<category>`.
+
+### Creating New Tests
 
 Tests [reside separately](https://github.com/M-Scott-Lassiter/jest-geojson/tree/main/src) from the source code.
 
-The [Jest configuration file](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/jest.config.js) calls [`JestSetup.js`](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/src/JestSetup.js) before the test suite runs. This extends Jest's built in matchers with all of the `jest-geojson` matchers and is consistent with how it will get used by other developers in their own projects.
-
 Provide 100% test coverage when creating new matchers. Use the opened issue to fully describe and document the logic on how this matcher works. This provides a persistent reference point for the logic that drives the tests.
+
+The [Jest configuration file](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/jest.config.js) calls [a setup script](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/src/setup/all.js) before the test suite runs that extends Jest's built in matchers with all of the `jest-geojson` matchers. This is consistent with how it will get used by other developers in their own projects.
+
+For consistency, organize your tests under the following three `describe` blocks:
+
+-   Valid Use Cases
+-   Invalid Use Cases
+-   Error Snapshot Testing
+
+Refer to any of the [test files](https://github.com/M-Scott-Lassiter/jest-geojson/tree/main/tests) for an example.
+
+### Error Snapshot Testing
 
 Because matchers return the message as an arrow function, Jest doesn't actually execute these when running which prevents getting code coverage to 100% by normal methods.
 
@@ -185,38 +258,16 @@ describe('Error Snapshot Testing', () => {
 })
 ```
 
+### Updating Error Snapshots
+
 If you change the error messages, the snapshots will also change. Once you manually verify it still works as intended, update the snapshot:
 
 ```bash
 npm run test -- -u
 ```
 
-For consistency, organize your tests under the following three `describe` blocks:
+### Export Both Core and Matcher Functions
 
--   Valid Use Cases
--   Invalid Use Cases
--   Error Snapshot Testing
+The files `src/core.js` and `src/matchers.js` each export their respective functions within an object for each category. Add any new matcher or function in alphabetical order under the appropriate category.
 
-Refer to any of the [test files](https://github.com/M-Scott-Lassiter/jest-geojson/tree/main/tests) for an example.
-
-### Documentation
-
-API Documentation is automatically generated from [JSDoc comments](https://jsdoc.app/) within the scripts. To generate, run:
-
-```bash
-npm run docs
-```
-
-The table of contents in this guide and the main README are automatically generated using the [`markdown-toc`](https://github.com/jonschlinkert/markdown-toc) package. To generate, run:
-
-```bash
-npm run tableofcontents
-```
-
-## Commits
-
-All commits must follow the common commit guidance in [@m-scott-lassiter/semantic-release-github-npm-config](https://github.com/M-Scott-Lassiter/semantic-release-github-npm-config#commits).
-
-This project uses [Commitizen](http://commitizen.github.io/cz-cli/) and [Husky](https://github.com/typicode/husky) hooks to help enforce good commit practices. Work on matcher functions must use that matcher function name as the scope.
-
-When adding a new matcher, you must update this project's [Commitizen configuration](.cz-config.js) so the matcher shows up in the scope list.
+Ensure `tests/core.test.js` and `tests/matchers.test.js` each have a test that verifies the function and matcher successfully export.
