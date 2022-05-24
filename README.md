@@ -2,23 +2,23 @@
 
 # jest-geojson
 
-<!-- [![Tests](https://github.com/M-Scott-Lassiter/jest-geojson/actions/workflows/test.yml/badge.svg)](https://github.com/M-Scott-Lassiter/jest-geojson/actions/workflows/test.yml)
-[![Build](https://github.com/M-Scott-Lassiter/jest-geojson/actions/workflows/publish.yml/badge.svg)](https://github.com/M-Scott-Lassiter/jest-geojson/actions/workflows/publish.yml)
-[![codecov](https://codecov.io/github/M-Scott-Lassiter/jest-geojson/branch/main/graph/badge.svg?token=MLCXIHQJGA)](https://codecov.io/github/M-Scott-Lassiter/jest-geojson)
-[![Dependency status](https://img.shields.io/librariesio/release/npm/jest-geojson)](https://www.npmjs.com/package/jest-geojson?activeTab=dependencies)
-![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/jest-geojson) -->
+[![NPM Version](https://img.shields.io/npm/v/jest-geojson/beta)](https://www.npmjs.com/package/jest-geojson)
+[![NPM Package Size](https://img.shields.io/bundlephobia/min/jest-geojson)](https://www.npmjs.com/package/jest-geojson)
+[![License](https://img.shields.io/github/license/M-Scott-Lassiter/jest-geojson?color=blue)](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/LICENSE)
 
+---
+
+[![Tests](https://github.com/M-Scott-Lassiter/jest-geojson/actions/workflows/test.yml/badge.svg)](https://github.com/M-Scott-Lassiter/jest-geojson/actions/workflows/test.yml)
+[![Build](https://github.com/M-Scott-Lassiter/jest-geojson/actions/workflows/publish.yml/badge.svg)](https://github.com/M-Scott-Lassiter/jest-geojson/actions/workflows/publish.yml)
+[![codecov](https://codecov.io/gh/M-Scott-Lassiter/jest-geojson/branch/main/graph/badge.svg?token=vdb7uefciA)](https://codecov.io/gh/M-Scott-Lassiter/jest-geojson)
+[![Dependency status](https://img.shields.io/librariesio/release/npm/jest-geojson)](https://www.npmjs.com/package/jest-geojson?activeTab=dependencies)
+![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/jest-geojson)
 [![Open Issues](https://img.shields.io/github/issues/m-scott-lassiter/jest-geojson/bug)](https://github.com/M-Scott-Lassiter/jest-geojson/labels/bug)
 
 [![Maintained](https://img.shields.io/badge/Maintained%3F-yes-brightgreen.svg)](#envelope-contact)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](/../../blob/main/CONTRIBUTING.md)
 
----
-
-<!-- [![NPM Version](https://img.shields.io/npm/v/jest-geojson)](https://www.npmjs.com/package/jest-geojson)
-![NPM Package Size](https://img.shields.io/bundlephobia/min/jest-geojson) -->
-
-[![License](https://img.shields.io/github/license/M-Scott-Lassiter/jest-geojson)](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/LICENSE)
+## [Note: This project is still in beta](https://github.com/M-Scott-Lassiter/jest-geojson/tree/beta)
 
 </div>
 
@@ -30,8 +30,20 @@
 <!-- toc -->
 
 -   [Purpose](#purpose)
+    -   [What This Library Does](#what-this-library-does)
+    -   [What This Library Does Not Do](#what-this-library-does-not-do)
 -   [Getting Started](#getting-started)
     -   [Install as a Dev Dependency](#install-as-a-dev-dependency)
+    -   [Configure Jest](#configure-jest)
+    -   [Import the Core Engine](#import-the-core-engine)
+-   [Matchers](#matchers)
+    -   [Coordiante Matchers](#coordiante-matchers)
+    -   [Bounding Box Matchers](#bounding-box-matchers)
+    -   [Geometry Matchers](#geometry-matchers)
+    -   [Geometry Collection Matchers](#geometry-collection-matchers)
+    -   [Feature Matchers](#feature-matchers)
+    -   [Feature Collection Matchers](#feature-collection-matchers)
+    -   [Functional Matchers](#functional-matchers)
 -   [License and Development](#license-and-development)
 -   [Contact](#contact)
 
@@ -43,17 +55,212 @@
 
 # Purpose
 
-`jest-geojson` provides a comprehensive set of matchers for use while testing [GeoJSON objects](https://geojson.org/) with the Jest framework.
+## What This Library Does
+
+`jest-geojson` extends the [Jest](https://github.com/facebook/jest) unit testing framework with a comprehensive set of matchers tailored to checking [GeoJSON object](https://geojson.org/) validity and other typical geodesy attributes. For example:
+
+```javascript
+test('Object is valid GeoJSON', () => {
+    expect(myGeoJSONObject).toBeValidGeoJSON()
+})
+```
+
+Additionally, you can use the underlying engine outside of the Jest context so you can directly use the validation functions within your own code.
+
+## What This Library Does Not Do
+
+This library does not create or manipulate GeoJSON.
+
+Other projects have done that (and better), such as the venerable [Turf.js](https://github.com/Turfjs/turf). This library complements, not competes with, those tools.
 
 # Getting Started
 
 ## Install as a Dev Dependency
 
 ```javascript
-npm install --save-dev jest-geojson
+npm install --save-dev jest jest-geojson
 ```
 
-###
+<!-- Future expansion: Add instructions for yarn -->
+
+## Configure Jest
+
+Jest [allows you to run scripts](https://jestjs.io/docs/configuration#setupfilesafterenv-array) after its environment loads. You can take advantage of that to load all `jest-geojson` matchers automatically so your test script can make use of them without any further steps.
+
+To do so, either create a `jest.config.js` file:
+
+```javascript
+module.exports = {
+    setupFilesAfterEnv: ['jest-geojson/setup/all']
+}
+```
+
+or add a key to your `package.json`:
+
+```json
+{
+    "name": "myPackageName",
+    ...
+    "jest": {
+        "setupFilesAfterEnv": ["jest-geojson/setup/all"]
+    }
+}
+```
+
+<!-- Eventually, add a tutorial for doing custom matcher loading -->
+
+---
+
+## Import the Core Engine
+
+You can directly import the functions driving the test matchers. The core object groups the functions by category.
+
+```javascript
+const jest-geojson = require(jest-geojson/core)
+```
+
+You can also import the matcher functions without automatically loading them. These matchers are also grouped by category.
+
+```javascript
+const jest-geojson = require(jest-geojson)
+```
+
+These are
+
+# Matchers
+
+`jest-geojson` organizes matchers by categories that correspond to the input type passed to `expect()`.
+
+Functional matchers assess for more generic attributes or qualities and accept multiple input types.
+
+[Release version 1.0.0](https://github.com/M-Scott-Lassiter/jest-geojson/milestone/1) will contain the minimum matchers (listed in priority development order) needed to validate GeoJSON elements.
+
+## Coordiante Matchers
+
+_1.0.0_
+
+-   [x] isValid2DCoordinate
+-   [x] isValid3DCoordinate
+-   [x] isValidCoordinate
+
+## Bounding Box Matchers
+
+_1.0.0_
+
+-   [ ] isValid2DBoundingBox
+-   [ ] isValid3DBoundingBox
+-   [ ] isValidBoundingBox
+
+## Geometry Matchers
+
+_1.0.0_
+
+-   [ ] toBePointGeometry
+-   [ ] toBeMultiPointGeometry
+-   [ ] toBeLineStringGeometry
+-   [ ] toBeMultiLineStringGeometry
+-   [ ] toBePolygonGeometry
+-   [ ] toBeMultiPolygonGeometry
+-   [ ] toBeAnyGeometry
+
+---
+
+_Future_
+
+-   [ ] isMultiPolygonWithHole
+
+## Geometry Collection Matchers
+
+_1.0.0_
+
+-   [ ] toBeGeometryCollection
+
+---
+
+_Future_
+
+-   [ ] toHaveMinGeometryCount
+-   [ ] toHaveMaxGeometeyCount
+-   [ ] toHaveGeometeyCount (equal/min, max)
+-   [ ] toContainGeometryTypes (array of Geometry type strings, optional min count, optional max count)
+
+## Feature Matchers
+
+_1.0.0_
+
+-   [ ] toBePointFeature
+-   [ ] toBeMultiPointFeature
+-   [ ] toBeLineStringFeature
+-   [ ] toBeMultiLineStringFeature
+-   [ ] toBePolygonFeature
+-   [ ] toBeMultiPolygonFeature
+-   [ ] toBeGeometryCollectionFeature
+-   [ ] toBeAnyFeature
+
+---
+
+_Future_
+
+-   [ ] toHaveID
+-   [ ] toHaveStringID
+-   [ ] toHaveNumericID
+-   [ ] toHave2DBoundingBox
+-   [ ] toHave3DBoundingBox
+-   [ ] toHaveBoundingBox
+-   [ ] toHaveProperties
+-   [ ] toHaveForeignMembers
+
+## Feature Collection Matchers
+
+_1.0.0_
+
+-   [ ] toBeFeatureCollection
+
+---
+
+_Future_
+
+-   [ ] toContainFeatureTypes (array of feature type strings, optional min count, optional max count)
+-   [ ] toContainIDs ([optional unordered array of IDs])
+-   [ ] toContainStringIDs
+-   [ ] toContainNumericIDs
+-   [ ] toContainUniqueIDs
+-   [ ] toContainAnyIDs
+-   [ ] toContainOnlyIDs ([unordered array of IDs])
+
+## Functional Matchers
+
+_1.0.0_
+
+-   [ ] toBeValidGeoJSON
+
+---
+
+_Future_
+
+-   [ ] toHaveMinPointCountOf
+-   [ ] toHaveMaxPointCountOf
+-   [ ] toHavePointCount (equal/min, optional max)
+-   [ ] toHaveMaxPrecision (num decimal places)
+-   [ ] toHaveMinPrecision (num decimal places)
+-   [ ] toHavePrecision (equal to/min decimal places, optional max decimal places)
+-   [ ] toCrossAntimeridian
+-   [ ] toIncludeNorthPole
+-   [ ] toIncludeSouthPole
+-   [ ] toIncludeEitherPole
+-   [ ] toContainGeometryTypes
+-   [ ] toContainAnyCoordinates ([unordered array of points])
+-   [ ] toContainAllCoordinates ([unordered array of points])
+-   [ ] toContainOnlyCoordinates
+-   [ ] toContainOrderedCoordinates ([array of ordered points])
+-   [ ] isCounterClockwiseWound
+-   [ ] isClockwiseWound
+-   [ ] isKinked
+-   [ ] toBeContainedWithinBBox
+-   [ ] isInNorthernHemisphere
+-   [ ] isInSouthernHemisphere
+-   [ ] isInEasternernHemisphere
+-   [ ] isInWesternHemisphere
 
 ---
 
