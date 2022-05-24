@@ -10,7 +10,7 @@
 
 [![Tests](https://github.com/M-Scott-Lassiter/jest-geojson/actions/workflows/test.yml/badge.svg)](https://github.com/M-Scott-Lassiter/jest-geojson/actions/workflows/test.yml)
 [![Build](https://github.com/M-Scott-Lassiter/jest-geojson/actions/workflows/publish.yml/badge.svg)](https://github.com/M-Scott-Lassiter/jest-geojson/actions/workflows/publish.yml)
-[![codecov](https://codecov.io/github/M-Scott-Lassiter/jest-geojson/branch/main/graph/badge.svg?token=MLCXIHQJGA)](https://codecov.io/github/M-Scott-Lassiter/jest-geojson)
+[![codecov](https://codecov.io/gh/M-Scott-Lassiter/jest-geojson/branch/main/graph/badge.svg?token=vdb7uefciA)](https://codecov.io/gh/M-Scott-Lassiter/jest-geojson)
 [![Dependency status](https://img.shields.io/librariesio/release/npm/jest-geojson)](https://www.npmjs.com/package/jest-geojson?activeTab=dependencies)
 ![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/jest-geojson)
 [![Open Issues](https://img.shields.io/github/issues/m-scott-lassiter/jest-geojson/bug)](https://github.com/M-Scott-Lassiter/jest-geojson/labels/bug)
