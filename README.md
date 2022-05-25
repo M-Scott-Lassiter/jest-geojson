@@ -152,7 +152,7 @@ _1.0.0_
 
 -   [x] isValid2DBoundingBox
 -   [x] isValid3DBoundingBox
--   [ ] isValidBoundingBox
+-   [x] isValidBoundingBox
 
 ## Geometry Matchers
 

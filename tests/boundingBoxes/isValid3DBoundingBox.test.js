@@ -77,12 +77,14 @@ describe('Valid Use Cases', () => {
     describe('Expect to pass with good coordinates:', () => {
         test.each([...goodBBoxes])('expect(%p)', (bboxArray) => {
             expect(bboxArray).isValid3DBoundingBox()
+            expect(bboxArray).isValidBoundingBox()
         })
     })
 
     describe('Expect to pass with good boundary coordinates:', () => {
         test.each([...goodBoundaryCoordinates])('expect(%p)', (bboxArray) => {
             expect(bboxArray).isValid3DBoundingBox()
+            expect(bboxArray).isValidBoundingBox()
         })
     })
 })
@@ -91,6 +93,7 @@ describe('Inalid Use Cases', () => {
     describe('Expect to fail with bad inputs:', () => {
         test.each([...invalidInputValues])('expect(%p)', (badInput) => {
             expect(badInput).not.isValid3DBoundingBox()
+            expect(badInput).not.isValidBoundingBox()
         })
     })
 
@@ -112,16 +115,21 @@ describe('Inalid Use Cases', () => {
     describe('Expect to fail with out of range coordinate:', () => {
         test.each([...coordinatesOutOfRange])('expect(%p)', (coordinate) => {
             expect(coordinate).not.isValid3DBoundingBox()
+            expect(coordinate).not.isValidBoundingBox()
         })
     })
 
     describe('Expect to fail with illogical BBox:', () => {
         test('Northern boundary less than southern: expect([-10, 20, 0, 10, -20, 0])', () => {
-            expect([-10, 20, 0, 10, -20, 0]).not.isValid3DBoundingBox()
+            const illogicalBBox = [-10, 20, 0, 10, -20, 0]
+            expect(illogicalBBox).not.isValid3DBoundingBox()
+            expect(illogicalBBox).not.isValidBoundingBox()
         })
 
         test('Altitude less than depth: expect([-10, -20, 200, 20, 10, 150])', () => {
-            expect([-10, -20, 200, 20, 10, 150]).not.isValid3DBoundingBox()
+            const illogicalBBox = [-10, -20, 200, 20, 10, 150]
+            expect(illogicalBBox).not.isValid3DBoundingBox()
+            expect(illogicalBBox).not.isValidBoundingBox()
         })
     })
 
@@ -129,49 +137,58 @@ describe('Inalid Use Cases', () => {
         describe('Expect to fail with bad western value:', () => {
             test.each([...invalidInputValues])('expect([%p, -10, 0, 10, 10, 0])', (input) => {
                 expect([input, -10, 0, 10, 10, 0]).not.isValid3DBoundingBox()
+                expect([input, -10, 0, 10, 10, 0]).not.isValidBoundingBox()
             })
         })
 
         describe('Expect to fail with bad southern value:', () => {
             test.each([...invalidInputValues])('expect([-10, %p, 0, 10, 10, 0])', (input) => {
                 expect([-10, input, 0, 10, 10, 0]).not.isValid3DBoundingBox()
+                expect([-10, input, 0, 10, 10, 0]).not.isValidBoundingBox()
             })
         })
 
         describe('Expect to fail with bad depth value:', () => {
             test.each([...invalidAltitudeValues])('expect([-10, -10, %p, 10, 10, 0])', (input) => {
                 expect([-10, -10, input, 10, 10, 0]).not.isValid3DBoundingBox()
+                expect([-10, -10, input, 10, 10, 0]).not.isValidBoundingBox()
             })
         })
 
         describe('Expect to fail with bad eastern value:', () => {
             test.each([...invalidInputValues])('expect([-10, -10, 0, %p, 10, 0])', (input) => {
                 expect([-10, -10, 0, input, 10, 0]).not.isValid3DBoundingBox()
+                expect([-10, -10, 0, input, 10, 0]).not.isValidBoundingBox()
             })
         })
 
         describe('Expect to fail with bad northern value:', () => {
             test.each([...invalidInputValues])('expect([-10, -10, 0, 10, %p, 0])', (input) => {
                 expect([-10, -10, 0, 10, input, 0]).not.isValid3DBoundingBox()
+                expect([-10, -10, 0, 10, input, 0]).not.isValidBoundingBox()
             })
         })
 
         describe('Expect to fail with bad altitude value:', () => {
             test.each([...invalidAltitudeValues])('expect([-10, -10, 0, 10, 10, %p])', (input) => {
                 expect([-10, -10, 0, 10, 10, input]).not.isValid3DBoundingBox()
+                expect([-10, -10, 0, 10, 10, input]).not.isValidBoundingBox()
             })
         })
 
         describe('Expect to fail with bad inputs for all values:', () => {
             test.each([...invalidInputValues])('expect([%p, %p, %p, %p, %p, %p])', (input) => {
                 expect([input, input, input, input, input, input]).not.isValid3DBoundingBox()
+                expect([input, input, input, input, input, input]).not.isValidBoundingBox()
             })
         })
     })
 
     describe('Expect to fail when BBox values are arrays of otherwise valid numbers:', () => {
         test('expect([[-20], [10], [0], [-10], [20], [0]])', () => {
-            expect([[-20], [10], [0], [-10], [20], [0]]).not.isValid3DBoundingBox()
+            const nestedArrays = [[-20], [10], [0], [-10], [20], [0]]
+            expect(nestedArrays).not.isValid3DBoundingBox()
+            expect(nestedArrays).not.isValidBoundingBox()
         })
     })
 })

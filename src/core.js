@@ -2,7 +2,8 @@
 
 exports.boundingBoxes = {
     valid2DBoundingBox: require('./core/boundingBoxes/valid2DBoundingBox'),
-    valid3DBoundingBox: require('./core/boundingBoxes/valid3DBoundingBox')
+    valid3DBoundingBox: require('./core/boundingBoxes/valid3DBoundingBox'),
+    validBoundingBox: require('./core/boundingBoxes/validBoundingBox')
 }
 
 exports.coordinates = {

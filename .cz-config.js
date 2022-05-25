@@ -5,6 +5,7 @@ const coordinateMatchers = [
     { name: 'isValid2DCoordinate' },
     { name: 'isValid3DBoundingBox' },
     { name: 'isValid3DCoordinate' },
+    { name: 'isValidBoundingBox' },
     { name: 'isValidCoordinate' }
 ]
 

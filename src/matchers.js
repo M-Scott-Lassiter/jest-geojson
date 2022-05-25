@@ -8,7 +8,8 @@ exports.boundingBoxes = {
     isValid2DBoundingBox: require('./matchers/boundingBoxes/isValid2DBoundingBox')
         .isValid2DBoundingBox,
     isValid3DBoundingBox: require('./matchers/boundingBoxes/isValid3DBoundingBox')
-        .isValid3DBoundingBox
+        .isValid3DBoundingBox,
+    isValidBoundingBox: require('./matchers/boundingBoxes/isValidBoundingBox').isValidBoundingBox
 }
 // Coordinates
 exports.coordinates = {

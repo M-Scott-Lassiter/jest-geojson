@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error Snapshot Testing. Throws error: expect([0, -95, 0, 0, 0, 0]).isValidBoundingBox 1`] = `
+"[2mexpect([22m[31m[west, south, (depth), east, north, (altitude)][39m[2m).isValidBoundingBox()[22m
+
+Southern value must be a number between -90 and 90.
+
+Received:  [31m[0, -95, 0, 0, 0, 0][39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: expect([0, 0, 0, 0, 0, 0]).not.isValidBoundingBox 1`] = `
+"[2mexpect([22m[31m[west, south, (depth), east, north, (altitude)][39m[2m).not.isValidBoundingBox()[22m
+
+Expected input to not be a four or six element bounding box array.
+
+Received:  [31m[0, 0, 0, 0, 0, 0][39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: expect([0, 0, 0, 0]).not.isValidBoundingBox 1`] = `
+"[2mexpect([22m[31m[west, south, (depth), east, north, (altitude)][39m[2m).not.isValidBoundingBox()[22m
+
+Expected input to not be a four or six element bounding box array.
+
+Received:  [31m[-20, 10, -10, 20][39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: expect([0, 0, 95, 0]).isValidBoundingBox 1`] = `
+"[2mexpect([22m[31m[west, south, (depth), east, north, (altitude)][39m[2m).isValidBoundingBox()[22m
+
+Northern value must be a number between -90 and 90.
+
+Received:  [31m[0, 0, 0, 95][39m"
+`;

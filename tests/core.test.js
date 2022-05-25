@@ -24,4 +24,8 @@ describe('Bounding Box Functions Exported', () => {
     test('valid3DBoundingBox', () => {
         expect('valid3DBoundingBox' in core.boundingBoxes).toBeTruthy()
     })
+
+    test('validBoundingBox', () => {
+        expect('validBoundingBox' in core.boundingBoxes).toBeTruthy()
+    })
 })

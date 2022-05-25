@@ -58,12 +58,14 @@ describe('Valid Use Cases', () => {
     describe('Expect to pass with good coordinates:', () => {
         test.each([...goodBBoxes])('expect(%p)', (bboxArray) => {
             expect(bboxArray).isValid2DBoundingBox()
+            expect(bboxArray).isValidBoundingBox()
         })
     })
 
     describe('Expect to pass with good boundary coordinates:', () => {
         test.each([...goodBoundaryCoordinates])('expect(%p)', (bboxArray) => {
             expect(bboxArray).isValid2DBoundingBox()
+            expect(bboxArray).isValidBoundingBox()
         })
     })
 })
@@ -72,6 +74,7 @@ describe('Inalid Use Cases', () => {
     describe('Expect to fail with bad inputs:', () => {
         test.each([...invalidInputValues])('expect(%p)', (badInput) => {
             expect(badInput).not.isValid2DBoundingBox()
+            expect(badInput).not.isValidBoundingBox()
         })
     })
 
@@ -92,12 +95,15 @@ describe('Inalid Use Cases', () => {
     describe('Expect to fail with out of range coordinate:', () => {
         test.each([...coordinatesOutOfRange])('expect(%p)', (coordinate) => {
             expect(coordinate).not.isValid2DBoundingBox()
+            expect(coordinate).not.isValidBoundingBox()
         })
     })
 
     describe('Expect to fail with illogical BBox:', () => {
         test('Northern boundary less than southern: expect([-10, 20, 10, -20])', () => {
-            expect([-10, 20, 10, -20]).not.isValid2DBoundingBox()
+            const invalidBBox = [-10, 20, 10, -20]
+            expect(invalidBBox).not.isValid2DBoundingBox()
+            expect(invalidBBox).not.isValidBoundingBox()
         })
     })
 
@@ -105,37 +111,44 @@ describe('Inalid Use Cases', () => {
         describe('Expect to fail with bad western value:', () => {
             test.each([...invalidInputValues])('expect([%p, -10, 10, 10])', (input) => {
                 expect([input, -10, 10, 10]).not.isValid2DBoundingBox()
+                expect([input, -10, 10, 10]).not.isValidBoundingBox()
             })
         })
 
         describe('Expect to fail with bad southern value:', () => {
             test.each([...invalidInputValues])('expect([-10, %p, 10, 10])', (input) => {
                 expect([-10, input, 10, 10]).not.isValid2DBoundingBox()
+                expect([-10, input, 10, 10]).not.isValidBoundingBox()
             })
         })
 
         describe('Expect to fail with bad eastern value:', () => {
             test.each([...invalidInputValues])('expect([-10, -10, %p, 10])', (input) => {
                 expect([-10, -10, input, 10]).not.isValid2DBoundingBox()
+                expect([-10, -10, input, 10]).not.isValidBoundingBox()
             })
         })
 
         describe('Expect to fail with bad northern value:', () => {
             test.each([...invalidInputValues])('expect([-10, -10, 10, %p])', (input) => {
                 expect([-10, -10, 10, input]).not.isValid2DBoundingBox()
+                expect([-10, -10, 10, input]).not.isValidBoundingBox()
             })
         })
 
         describe('Expect to fail with bad inputs for all values:', () => {
             test.each([...invalidInputValues])('expect([%p, %p, %p, %p])', (input) => {
                 expect([input, input, input, input]).not.isValid2DBoundingBox()
+                expect([input, input, input, input]).not.isValidBoundingBox()
             })
         })
     })
 
     describe('Expect to fail when BBox values are arrays of otherwise valid numbers:', () => {
         test('expect([[-20], [10], [-10], [20]])', () => {
-            expect([[-20], [10], [-10], [20]]).not.isValid2DBoundingBox()
+            const nestedArrays = [[-20], [10], [-10], [20]]
+            expect(nestedArrays).not.isValid2DBoundingBox()
+            expect(nestedArrays).not.isValidBoundingBox()
         })
     })
 })
