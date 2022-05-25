@@ -109,25 +109,25 @@ describe('Inalid Use Cases', () => {
         })
 
         describe('Expect to fail with bad southern value:', () => {
-            test.each([...invalidInputValues])('expect([%p, -10, 10, 10])', (input) => {
+            test.each([...invalidInputValues])('expect([-10, %p, 10, 10])', (input) => {
                 expect([-10, input, 10, 10]).not.isValid2DBoundingBox()
             })
         })
 
         describe('Expect to fail with bad eastern value:', () => {
-            test.each([...invalidInputValues])('expect([%p, -10, 10, 10])', (input) => {
+            test.each([...invalidInputValues])('expect([-10, -10, %p, 10])', (input) => {
                 expect([-10, -10, input, 10]).not.isValid2DBoundingBox()
             })
         })
 
         describe('Expect to fail with bad northern value:', () => {
-            test.each([...invalidInputValues])('expect([%p, -10, 10, 10])', (input) => {
+            test.each([...invalidInputValues])('expect([-10, -10, 10, %p])', (input) => {
                 expect([-10, -10, 10, input]).not.isValid2DBoundingBox()
             })
         })
 
         describe('Expect to fail with bad inputs for all values:', () => {
-            test.each([...invalidInputValues])('expect([%p, -10, 10, 10])', (input) => {
+            test.each([...invalidInputValues])('expect([%p, %p, %p, %p])', (input) => {
                 expect([input, input, input, input]).not.isValid2DBoundingBox()
             })
         })
@@ -141,7 +141,7 @@ describe('Inalid Use Cases', () => {
 })
 
 describe('Error Snapshot Testing. Throws error:', () => {
-    test('expect([0, 0]).not.isValid2DBoundingBox', () => {
+    test('expect([10, 10, 20, 20]).not.isValid2DBoundingBox', () => {
         expect(() =>
             expect([10, 10, 20, 20]).not.isValid2DBoundingBox()
         ).toThrowErrorMatchingSnapshot()

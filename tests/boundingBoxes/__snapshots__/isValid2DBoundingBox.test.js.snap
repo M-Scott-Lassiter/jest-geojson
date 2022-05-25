@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Error Snapshot Testing. Throws error: expect([0, 0]).not.isValid2DBoundingBox 1`] = `
+exports[`Error Snapshot Testing. Throws error: expect([10, 10, 20, 20]).not.isValid2DBoundingBox 1`] = `
 "[2mexpect([22m[31m[east, south, west, north][39m[2m).not.isValid2DBoundingBox()[22m
 
 Expected input to not be a four element array of numbers with longitude between (-90 to 90),
