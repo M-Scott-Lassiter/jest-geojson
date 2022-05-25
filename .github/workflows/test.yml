@@ -33,5 +33,3 @@ jobs:
         run: npm run test
         env:
           FORCE_COLOR: true
-      - name: Upload Coverage to Codecov
-        uses: codecov/codecov-action@v2
