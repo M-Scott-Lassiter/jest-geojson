@@ -4,7 +4,10 @@
 /* eslint-disable global-require */
 
 // Bounding Boxes
-
+exports.boundingBoxes = {
+    isValid2DBoundingBox: require('./matchers/boundingBoxes/isValid2DBoundingBox')
+        .isValid2DBoundingBox
+}
 // Coordinates
 exports.coordinates = {
     isValid2DCoordinate: require('./matchers/coordinates/isValid2DCoordinate').isValid2DCoordinate,

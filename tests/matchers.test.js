@@ -2,7 +2,7 @@
 
 const matchers = require('../src/matchers')
 
-describe('Coordinate Functions Exported', () => {
+describe('Coordinate Matchers Exported', () => {
     test('isValid2DCoordinate', () => {
         expect('isValid2DCoordinate' in matchers.coordinates).toBeTruthy()
     })
@@ -13,5 +13,11 @@ describe('Coordinate Functions Exported', () => {
 
     test('isValidCoordinate', () => {
         expect('isValidCoordinate' in matchers.coordinates).toBeTruthy()
+    })
+})
+
+describe('Bounding Box Matchers Exported', () => {
+    test('isValid2DBoundingBox', () => {
+        expect('isValid2DBoundingBox' in matchers.boundingBoxes).toBeTruthy()
     })
 })

@@ -150,7 +150,7 @@ _1.0.0_
 
 _1.0.0_
 
--   [ ] isValid2DBoundingBox
+-   [x] isValid2DBoundingBox
 -   [ ] isValid3DBoundingBox
 -   [ ] isValidBoundingBox
 

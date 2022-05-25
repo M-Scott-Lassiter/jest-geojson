@@ -42,6 +42,7 @@
         "test": "jest --coverage --verbose",
         "test:dev": "jest --watch --coverage --verbose",
         "test-coordinates": "jest tests/coordinates --coverage --verbose",
+        "test-boundingboxes": "jest tests/boundingBoxes --coverage --verbose",
         "lint": "eslint . --ext .js --fix",
         "prepare": "husky install"
     },

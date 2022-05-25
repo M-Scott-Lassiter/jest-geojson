@@ -15,3 +15,9 @@ describe('Coordinate Functions Exported', () => {
         expect('validCoordinate' in core.coordinates).toBeTruthy()
     })
 })
+
+describe('Bounding Box Functions Exported', () => {
+    test('valid2DBoundingBox', () => {
+        expect('valid2DBoundingBox' in core.boundingBoxes).toBeTruthy()
+    })
+})

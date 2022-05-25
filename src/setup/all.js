@@ -12,7 +12,7 @@ const jestExpect = global.expect
 
 if (jestExpect !== undefined) {
     expect.extend(matchers.coordinates)
-    // expect.extend(matchers.boundingBoxes)
+    expect.extend(matchers.boundingBoxes)
 } else {
     exports.throwJestRuntimeError()
 }

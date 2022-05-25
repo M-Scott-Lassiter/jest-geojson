@@ -1,6 +1,7 @@
 // When adding new matchers, place them in alphabetical order inside the appropriate category
 
 const coordinateMatchers = [
+    { name: 'isValid2DBoundingBox' },
     { name: 'isValid2DCoordinate' },
     { name: 'isValid3DCoordinate' },
     { name: 'isValidCoordinate' }

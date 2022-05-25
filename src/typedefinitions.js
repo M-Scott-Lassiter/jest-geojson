@@ -20,6 +20,13 @@
  */
 
 /**
+ * A set of matchers related to validating coordinates and coordinate properties.
+ *
+ * @see https://datatracker.ietf.org/doc/html/rfc7946#section-5
+ * @namespace BoundingBoxes
+ */
+
+/**
  * Core functionality used internal to jest-geojson.
  *
  * @private
@@ -31,6 +38,13 @@
  *
  * @private
  * @namespace Core.Coordinates
+ */
+
+/**
+ * Coordinate functions used within Core.
+ *
+ * @private
+ * @namespace Core.BoundingBoxes
  */
 
 /**
