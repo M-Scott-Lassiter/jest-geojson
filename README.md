@@ -10,7 +10,7 @@
 [![NPM Package Size](https://shields.shivering-isles.com:/bundlephobia/min/jest-geojson?label=size)](https://www.npmjs.com/package/jest-geojson/v/beta)
 [![License](https://img.shields.io/github/license/M-Scott-Lassiter/jest-geojson?color=blue)](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/LICENSE)
 
-[![This project is still in beta](https://img.shields.io/github/milestones/progress-percent/m-scott-lassiter/jest-geojson/1)](https://github.com/M-Scott-Lassiter/jest-geojson/tree/beta)
+[![This project is still in beta](https://img.shields.io/github/milestones/progress-percent/m-scott-lassiter/jest-geojson/1)](https://github.com/M-Scott-Lassiter/jest-geojson/milestone/1)
 
 ---
 
