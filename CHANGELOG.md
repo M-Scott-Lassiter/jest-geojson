@@ -1,3 +1,26 @@
+## [1.0.0-beta.4](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2022-05-25)
+
+
+### :building_construction: Build Changes
+
+* **package:** add entry points for all, boundingboxes, and coordinates ([8c1d312](https://github.com/M-Scott-Lassiter/jest-geojson/commit/8c1d312d01d2c74e969a6598e11a44a3f5255113))
+
+
+### :gift: Feature Changes
+
+* **isValid2DBoundingBox:** add new matcher function ([7fe56f3](https://github.com/M-Scott-Lassiter/jest-geojson/commit/7fe56f359d4f87bc1b6aa709498e5c316e58bce2)), closes [#6](https://github.com/M-Scott-Lassiter/jest-geojson/issues/6)
+* **isValid3DBoundingBox:** add new matcher ([6ee8cc6](https://github.com/M-Scott-Lassiter/jest-geojson/commit/6ee8cc6b9ce57b72cb20eaa9a044279ee289d741)), closes [#7](https://github.com/M-Scott-Lassiter/jest-geojson/issues/7)
+
+
+### :dart: Test Changes
+
+* **isValid2DBoundingBox:** fix typo in test descriptions ([df94c27](https://github.com/M-Scott-Lassiter/jest-geojson/commit/df94c276b2932046d133a6e2e2cecce88f43f9b3))
+
+
+### :compass: API Documentation Changes
+
+* update JSDoc organization ([7ab7eca](https://github.com/M-Scott-Lassiter/jest-geojson/commit/7ab7eca06bbc67acde85a7f7d06fac4388a1c953))
+
 ## [1.0.0-beta.3](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2022-05-24)
 
 
