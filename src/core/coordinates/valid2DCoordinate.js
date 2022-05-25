@@ -1,5 +1,5 @@
 /**
- * A helper function used to verify a coordinate has appropriate longitude and latitude values.
+ * Verifies a two element coordinate meets WGS-84 and GeoJSON validity requirements.
  *
  * @memberof Core.Coordinates
  * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/1

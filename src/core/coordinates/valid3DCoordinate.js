@@ -1,7 +1,7 @@
 const { valid2DCoordinate } = require('./valid2DCoordinate')
 
 /**
- * A helper function used to verify a coordinate has appropriate longitude, latitude, and altitude values.
+ * Verifies a three element coordinate meets WGS-84 and GeoJSON validity requirements.
  *
  * @memberof Core.Coordinates
  * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/2
