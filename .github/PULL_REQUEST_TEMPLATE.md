@@ -36,6 +36,7 @@ Please check if your PR fulfills the following requirements:
     -   [ ] Register the matcher under `src/setup/all.js`
     -   [ ] Register the matcher under `src/setup/<category>.js`
 -   [ ] Add the matcher to the README.md list (alphabetical order within category)
+-   [ ] Add the matcher to the `.cz-config.js` list (alphabetical order under the `coordinateMatchers` variable)
 -   [ ] I built (`npm run build`) locally and pushed all changes
 
 Issues Addressed: (e.g. #1, #5, #22)

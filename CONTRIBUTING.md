@@ -101,6 +101,7 @@ To submit a pull request,
     -   [ ] Register the matcher under `src/setup/all.js`
     -   [ ] Register the matcher under `src/setup/<category>.js`
 -   [ ] Add the matcher to the README.md list (alphabetical order within category)
+-   [ ] Add the matcher to the `.cz-config.js` list (alphabetical order under the `coordinateMatchers` variable)
 -   [ ] Run the `build` script locally
 -   [ ] Push to Github then open pull request
 
