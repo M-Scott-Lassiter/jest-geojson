@@ -1,7 +1,8 @@
 /* eslint-disable global-require */
 
 exports.boundingBoxes = {
-    valid2DBoundingBox: require('./core/boundingBoxes/valid2DBoundingBox')
+    valid2DBoundingBox: require('./core/boundingBoxes/valid2DBoundingBox'),
+    valid3DBoundingBox: require('./core/boundingBoxes/valid3DBoundingBox')
 }
 
 exports.coordinates = {

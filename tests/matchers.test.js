@@ -20,4 +20,8 @@ describe('Bounding Box Matchers Exported', () => {
     test('isValid2DBoundingBox', () => {
         expect('isValid2DBoundingBox' in matchers.boundingBoxes).toBeTruthy()
     })
+
+    test('isValid3DBoundingBox', () => {
+        expect('isValid2DBoundingBox' in matchers.boundingBoxes).toBeTruthy()
+    })
 })
