@@ -2,6 +2,7 @@
  * A helper function used to verify a coordinate has appropriate longitude and latitude values.
  *
  * @memberof Core.Coordinates
+ * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/1
  * @param {GeoJSON-Coordinate} coordinate A WGS-84 array of [longitude, latitude]
  * @returns {boolean} True if a valid 2D GeoJSON coordinate. If invalid, it will throw an error.
  * @throws {Error} Input must be an array of only two elments

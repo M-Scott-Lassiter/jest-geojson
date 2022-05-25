@@ -5,6 +5,7 @@ const { validCoordinate } = require('../../core/coordinates/validCoordinate')
  * Verifies a two or three element coordinate meets WGS-84 and GeoJSON validity requirements.
  *
  * @memberof Coordinates
+ * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/4
  * @param {number[]} coordinateArray A two or three element array of numbers in format
  * [longitude, latitude] or [longitude, latitude, altitude].
  *

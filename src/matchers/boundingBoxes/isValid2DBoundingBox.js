@@ -5,12 +5,12 @@ const { valid2DBoundingBox } = require('../../core/boundingBoxes/valid2DBounding
  * Verifies a two dimensional bounding box meets WGS-84 and GeoJSON validity requirements.
  *
  * @memberof BoundingBoxes
+ * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/6
  * @param {number[]} bboxArray A four element array of numbers in format [west, south, east, north].
  * Longitude must be between -180 to 180.
  * Latitude must be between -90 to 90.
  * North must be greater than or equal to south.
  * Bounding boxes that cross the antimeridian will have an eastern value less than the western value.
- * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/6
  * @example
  * expect([-20, 10, -10, 20]).isValid2DBoundingBox()
  * expect([170, -20, -170, 20]).isValid2DBoundingBox() // Crosses antimeridian
