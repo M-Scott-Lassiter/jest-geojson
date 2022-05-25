@@ -1,3 +1,17 @@
+## [1.0.0-beta.5](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2022-05-25)
+
+
+### :compass: API Documentation Changes
+
+* update JSDoc descriptions of coordinate core functions ([f5658f3](https://github.com/M-Scott-Lassiter/jest-geojson/commit/f5658f3a981aea534514d7457a6cf281c8fbe45c))
+* **isValidCoordinate:** update returns description ([70bd43e](https://github.com/M-Scott-Lassiter/jest-geojson/commit/70bd43eba7bc1ebde699a36e351ae92307416ba0))
+* **isValidCoordinate:** update the error and parameter descriptions ([7e3e8ed](https://github.com/M-Scott-Lassiter/jest-geojson/commit/7e3e8ed9e8603d8295ee77f4391dd3fe4077af91))
+
+
+### :gift: Feature Changes
+
+* **isValidBoundingBox:** add new matcher ([9a8b7ed](https://github.com/M-Scott-Lassiter/jest-geojson/commit/9a8b7ed39381e61a51c8d27878ff3b47a6a92c2a)), closes [#8](https://github.com/M-Scott-Lassiter/jest-geojson/issues/8)
+
 ## [1.0.0-beta.4](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2022-05-25)
 
 
