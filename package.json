@@ -27,7 +27,9 @@
     "exports": {
         ".": "./src/matchers.js",
         "./core": "./src/core.js",
-        "./setup/all": "./src/matchers.js"
+        "./setup/all": "./src/setup/all.js",
+        "./setup/boundingboxes": "./src/setup/boundingBoxes.js",
+        "./setup/coordinates": "./src/setup/coordinates.js"
     },
     "repository": {
         "type": "git",
