@@ -151,7 +151,7 @@ _1.0.0_
 _1.0.0_
 
 -   [x] isValid2DBoundingBox
--   [ ] isValid3DBoundingBox
+-   [x] isValid3DBoundingBox
 -   [ ] isValidBoundingBox
 
 ## Geometry Matchers
