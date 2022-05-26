@@ -3,7 +3,7 @@
 # jest-geojson
 
 [![Powered by Jest](https://img.shields.io/badge/Powered%20by-Jest-99424f?logo=jest&labelColor=white&logoColor=99424f)](https://github.com/facebook/jest)
-[![Completed and deployed matchers](https://img.shields.io/github/issues-search/m-scott-lassiter/jest-geojson?color=brightgreen&label=matchers&query=is%3Aissue%20is%3Aclosed%20label%3A%22matchers%2Fboundingbox%22%2C%22matchers%2Fcoordinates%22)](#matchers)
+[![Completed and deployed matchers](https://img.shields.io/github/issues-search/m-scott-lassiter/jest-geojson?color=brightgreen&label=matchers&query=is%3Aissue%20is%3Aclosed%20label%3A%22matchers%2Fboundingbox%22%2C%22matchers%2Fcoordinates%22%2C%22matchers%2Fgeometries%22%2C%22matchers%2Fgeometrycollections%22%2C%22matchers%2Ffeatures%22%2C%22matchers%2Ffeaturecollections%22%2C%22matchers%2Ffunctional%22)](#matchers)
 [![Proposed new matchers](https://img.shields.io/github/issues-search/m-scott-lassiter/jest-geojson?color=important&label=proposed&query=is%3Aissue%20is%3Aopen%20label%3A%22new%20matcher%20proposal%22)](https://github.com/M-Scott-Lassiter/jest-geojson/issues?q=is%3Aissue+is%3Aopen+label%3A%22new+matcher+proposal%22)
 
 [![NPM Version](https://img.shields.io/npm/v/jest-geojson/beta)](https://www.npmjs.com/package/jest-geojson/v/beta)
