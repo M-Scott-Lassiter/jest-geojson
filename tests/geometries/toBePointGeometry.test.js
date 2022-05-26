@@ -46,7 +46,6 @@ describe('Valid Use Cases', () => {
                 type: 'Point',
                 coordinates: [-100.0, -15.0, 2000]
             }
-
             expect(testPoint).toBePointGeometry()
         })
 
@@ -55,7 +54,6 @@ describe('Valid Use Cases', () => {
                 type: 'Point',
                 coordinates: []
             }
-
             expect(testPoint).toBePointGeometry()
         })
     })
@@ -84,7 +82,6 @@ describe('Valid Use Cases', () => {
                 id: input,
                 coordinates: [25, 90]
             }
-
             expect(testPoint).toBePointGeometry()
         })
 
