@@ -22,7 +22,7 @@
 [![Open Issues](https://img.shields.io/github/issues/m-scott-lassiter/jest-geojson/bug)](https://github.com/M-Scott-Lassiter/jest-geojson/labels/bug)
 
 [![Maintained](https://img.shields.io/badge/Maintained%3F-yes-brightgreen.svg)](#envelope-contact)
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](/../../blob/main/CONTRIBUTING.md)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](/../../blob/main/CONTRIBUTING.md#contributing-guide)
 
 </div>
 
@@ -34,12 +34,10 @@
 <!-- toc -->
 
 -   [Purpose](#purpose)
-    -   [What This Library Does](#what-this-library-does)
-    -   [What This Library Does Not Do](#what-this-library-does-not-do)
 -   [Getting Started](#getting-started)
-    -   [Install as a Dev Dependency](#install-as-a-dev-dependency)
+    -   [Install as a Dependency](#install-as-a-dependency)
     -   [Configure Jest](#configure-jest)
-    -   [Import the Core Engine](#import-the-core-engine)
+-   [Import the Core Engine](#import-the-core-engine)
 -   [Matchers](#matchers)
     -   [Coordiante Matchers](#coordiante-matchers)
     -   [Bounding Box Matchers](#bounding-box-matchers)
@@ -59,27 +57,20 @@
 
 # Purpose
 
-## What This Library Does
-
-`jest-geojson` extends the [Jest](https://github.com/facebook/jest) unit testing framework with a comprehensive set of matchers tailored to checking [GeoJSON object](https://geojson.org/) validity and other typical geodesy attributes. For example:
+`jest-geojson` extends the [Jest](https://github.com/facebook/jest) unit testing framework with a comprehensive set of matchers tailored to checking [GeoJSON object](https://geojson.org/) validity and other geodesy attributes. For example:
 
 ```javascript
 test('Object is valid GeoJSON', () => {
     expect(myGeoJSONObject).toBeValidGeoJSON()
 })
 ```
-
-Additionally, you can use the underlying engine outside of the Jest context so you can directly use the validation functions within your own code.
-
-## What This Library Does Not Do
-
-This library does not create or manipulate GeoJSON.
+This library **does not** create or manipulate GeoJSON.
 
 Other projects have done that (and better), such as the venerable [Turf.js](https://github.com/Turfjs/turf). This library complements, not competes with, those tools.
 
 # Getting Started
 
-## Install as a Dev Dependency
+## Install as a Dependency
 
 ```javascript
 npm install --save-dev jest jest-geojson
@@ -89,7 +80,7 @@ npm install --save-dev jest jest-geojson
 
 ## Configure Jest
 
-Jest [allows you to run scripts](https://jestjs.io/docs/configuration#setupfilesafterenv-array) after its environment loads. You can take advantage of that to load all `jest-geojson` matchers automatically so your test script can make use of them without any further steps.
+Jest [allows you to run scripts](https://jestjs.io/docs/configuration#setupfilesafterenv-array) after its environment loads. You can take advantage of that to load all `jest-geojson` matchers automatically.
 
 To do so, either create a `jest.config.js` file:
 
@@ -112,30 +103,29 @@ or add a key to your `package.json`:
 ```
 
 <!-- Eventually, add a tutorial for doing custom matcher loading -->
-
----
-
-## Import the Core Engine
-
-You can directly import the functions driving the test matchers. The core object groups the functions by category.
+You can also import the matcher functions without automatically loading them.
 
 ```javascript
-const jest-geojson = require(jest-geojson/core)
+const matchers = require(jest-geojson)
 ```
+The matchers object contains each matcher grouped by category.
+<!-- add link to documentation when online -->
 
-You can also import the matcher functions without automatically loading them. These matchers are also grouped by category.
+# Import the Core Engine
+
+You can import the functions that drive the test matchers.
 
 ```javascript
-const jest-geojson = require(jest-geojson)
+const core = require(jest-geojson/core)
 ```
-
-These are
+The core object contains the functions grouped by category. You can then use these functions elsewhere in your code, or even port `jest-geojson` into another testing framework.
+<!-- add link to documentation when online -->
 
 # Matchers
 
 `jest-geojson` organizes matchers by categories that correspond to the input type passed to `expect()`.
 
-Functional matchers assess for more generic attributes or qualities and accept multiple input types.
+Functional matchers assess more generic attributes and qualities and accept multiple input types.
 
 [Release version 1.0.0](https://github.com/M-Scott-Lassiter/jest-geojson/milestone/1) will contain the minimum matchers (listed in priority development order) needed to validate GeoJSON elements.
 
