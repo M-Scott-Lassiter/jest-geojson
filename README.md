@@ -41,7 +41,7 @@
 -   [Matchers](#matchers)
     -   [Coordiantes](#coordiantes)
     -   [Bounding Boxes](#bounding-boxes)
-    -   [Geometry](#geometry)
+    -   [Geometries](#geometries)
     -   [Geometry Collections](#geometry-collections)
     -   [Features](#features)
     -   [Feature Collections](#feature-collections)
@@ -151,11 +151,11 @@ _1.0.0_
 -   [x] isValid3DBoundingBox
 -   [x] isValidBoundingBox
 
-## Geometry
+## Geometries
 
 _1.0.0_
 
--   [ ] toBePointGeometry
+-   [x] toBePointGeometry
 -   [ ] toBeMultiPointGeometry
 -   [ ] toBeLineStringGeometry
 -   [ ] toBeMultiLineStringGeometry

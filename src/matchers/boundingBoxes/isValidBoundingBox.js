@@ -4,7 +4,7 @@ const { validBoundingBox } = require('../../core/boundingBoxes/validBoundingBox'
 /**
  * Verifies a two or three dimensional bounding box meets WGS-84 and GeoJSON validity requirements.
  *
- * @memberof BoundingBoxes
+ * @memberof Matchers.BoundingBoxes
  * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/8
  * @param {number[]} coordinateArray A WGS-84 array of [west, south, east, north] or
  * [west, south, depth, east, north, altitude].

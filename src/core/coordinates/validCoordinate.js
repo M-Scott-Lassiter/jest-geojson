@@ -12,7 +12,7 @@ const { valid3DCoordinate } = require('./valid3DCoordinate')
  */
 function validCoordinate(coordinate) {
     if (!Array.isArray(coordinate) || coordinate.length < 2 || coordinate.length > 3) {
-        throw new Error('Input must be an array of either two or three elments.')
+        throw new Error('Coordinate must be an array of either two or three elments.')
     }
 
     if (coordinate.length === 2) {

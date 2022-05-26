@@ -1,4 +1,4 @@
-// When adding new matchers, place them in alphabetical order inside the appropriate category
+// When adding new matchers, place them in alphabetical order inside the coordinateMatchers array
 
 const coordinateMatchers = [
     { name: 'isValid2DBoundingBox' },
@@ -6,7 +6,8 @@ const coordinateMatchers = [
     { name: 'isValid3DBoundingBox' },
     { name: 'isValid3DCoordinate' },
     { name: 'isValidBoundingBox' },
-    { name: 'isValidCoordinate' }
+    { name: 'isValidCoordinate' },
+    { name: 'toBePointGeometry' }
 ]
 
 const boundingBoxMatchers = []

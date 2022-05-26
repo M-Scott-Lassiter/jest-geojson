@@ -17,11 +17,11 @@ const { valid3DBoundingBox } = require('./valid3DBoundingBox')
  */
 function validBoundingBox(bboxArray) {
     if (!Array.isArray(bboxArray)) {
-        throw new Error('Input must be an array.')
+        throw new Error('Bounding box must be an array.')
     }
 
     if (bboxArray.length < 4 || bboxArray.length > 6 || bboxArray.length === 5) {
-        throw new Error('Input must be an array of either four or six elments.')
+        throw new Error('Bounding box must be an array of either four or six elments.')
     }
 
     if (bboxArray.length === 4) {

@@ -21,6 +21,9 @@ exports.coordinates = {
 // Features
 
 // Geometries
+exports.geometries = {
+    toBePointGeometry: require('./matchers/geometries/toBePointGeometry').toBePointGeometry
+}
 
 // Properties
 

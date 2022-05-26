@@ -4,7 +4,7 @@ const { valid2DCoordinate } = require('../../core/coordinates/valid2DCoordinate'
 /**
  * Verifies a two element coordinate meets WGS-84 and GeoJSON validity requirements.
  *
- * @memberof Coordinates
+ * @memberof Matchers.Coordinates
  * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/1
  * @param {number[]} coordinateArray A two element array of numbers in format [longitude, latitude].
  * Longitude must be between -180 to 180.

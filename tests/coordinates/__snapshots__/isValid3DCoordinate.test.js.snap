@@ -12,7 +12,7 @@ Received:  [31m[0, 0, 0][39m"
 exports[`Error Snapshot Testing. Throws error: expect([0, 0]).isValid3DCoordinate 1`] = `
 "[2mexpect([22m[31m[longitude, latitude, altitude][39m[2m).isValid3DCoordinate()[22m
 
-Input must be an array of only three elments.
+Coordinate must be an array of only three elments.
 
 Received:  [31m[0, 0][39m"
 `;

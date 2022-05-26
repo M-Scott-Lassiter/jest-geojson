@@ -3,7 +3,7 @@
 exports[`Error Snapshot Testing. Throws error: expect([0, 0, 0]).isValidCoordinate 1`] = `
 "[2mexpect([22m[31m[longitude, latitude, (altitude)][39m[2m).isValidCoordinate()[22m
 
-Latitude must be a number between -90 and 90.
+Coordinate latitude must be a number between -90 and 90.
 
 Received:  [31m[0, 95, 0][39m"
 `;
@@ -20,7 +20,7 @@ Received:  [31m[0, 0, 0][39m"
 exports[`Error Snapshot Testing. Throws error: expect([0, 0]).isValidCoordinate 1`] = `
 "[2mexpect([22m[31m[longitude, latitude, (altitude)][39m[2m).isValidCoordinate()[22m
 
-Latitude must be a number between -90 and 90.
+Coordinate latitude must be a number between -90 and 90.
 
 Received:  [31m[0, 95][39m"
 `;

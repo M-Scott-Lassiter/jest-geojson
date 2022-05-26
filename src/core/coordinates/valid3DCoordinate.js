@@ -12,7 +12,7 @@ const { valid2DCoordinate } = require('./valid2DCoordinate')
  */
 function valid3DCoordinate(coordinate) {
     if (!Array.isArray(coordinate) || coordinate.length !== 3) {
-        throw new Error('Input must be an array of only three elments.')
+        throw new Error('Coordinate must be an array of only three elments.')
     }
 
     // The first two elements have to match the same validity requirements as a 2D coordinate.
@@ -22,7 +22,7 @@ function valid3DCoordinate(coordinate) {
     // eslint-disable-next-line no-self-compare
     if (typeof coordinate[2] !== 'number' || coordinate[2] !== coordinate[2]) {
         // Self compare accounts for NaN
-        throw new Error('Altitude value must be numeric.')
+        throw new Error('Coordinate altitude value must be numeric.')
     }
 
     return true

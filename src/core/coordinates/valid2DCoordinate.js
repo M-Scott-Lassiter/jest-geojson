@@ -11,7 +11,7 @@
  */
 function valid2DCoordinate(coordinate) {
     if (!Array.isArray(coordinate) || coordinate.length !== 2) {
-        throw new Error('Input must be an array of only two elments.')
+        throw new Error('Coordinate must be an array of only two elments.')
     }
 
     if (
@@ -21,7 +21,7 @@ function valid2DCoordinate(coordinate) {
         // eslint-disable-next-line no-self-compare
         coordinate[0] !== coordinate[0] // Accounts for NaN
     ) {
-        throw new Error('Longitude must be a number between -180 and 180.')
+        throw new Error('Coordinate longitude must be a number between -180 and 180.')
     }
 
     if (
@@ -31,7 +31,7 @@ function valid2DCoordinate(coordinate) {
         // eslint-disable-next-line no-self-compare
         coordinate[1] !== coordinate[1] // Accounts for NaN
     ) {
-        throw new Error('Latitude must be a number between -90 and 90.')
+        throw new Error('Coordinate latitude must be a number between -90 and 90.')
     }
 
     return true

@@ -13,17 +13,31 @@
 */
 
 /**
- * A set of matchers related to validating coordinates and coordinate properties.
+ * GeoJSON tailored matchers used to extend the Jest testing framework.
  *
- * @see https://datatracker.ietf.org/doc/html/rfc7946#section-4
- * @namespace Coordinates
+ * @private
+ * @namespace Matchers
  */
 
 /**
  * A set of matchers related to validating coordinates and coordinate properties.
  *
  * @see https://datatracker.ietf.org/doc/html/rfc7946#section-5
- * @namespace BoundingBoxes
+ * @namespace Matchers.BoundingBoxes
+ */
+
+/**
+ * A set of matchers related to validating coordinates and coordinate properties.
+ *
+ * @see https://datatracker.ietf.org/doc/html/rfc7946#section-4
+ * @namespace Matchers.Coordinates
+ */
+
+/**
+ * A set of matchers related to validating coordinates and coordinate properties.
+ *
+ * @see https://datatracker.ietf.org/doc/html/rfc7946#section-3.1
+ * @namespace Matchers.Geometries
  */
 
 /**
@@ -34,17 +48,24 @@
  */
 
 /**
- * Coordinate functions used within Core.
+ * Coordinate validation functions used within Core.
  *
  * @private
  * @namespace Core.Coordinates
  */
 
 /**
- * Coordinate functions used within Core.
+ * Bounding Box validation functions used within Core.
  *
  * @private
  * @namespace Core.BoundingBoxes
+ */
+
+/**
+ * Geometry object validation functions used within Core.
+ *
+ * @private
+ * @namespace Core.Geometries
  */
 
 /**

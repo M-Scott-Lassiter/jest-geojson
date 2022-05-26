@@ -11,3 +11,7 @@ exports.coordinates = {
     valid3DCoordinate: require('./core/coordinates/valid3DCoordinate'),
     validCoordinate: require('./core/coordinates/validCoordinate')
 }
+
+exports.geometries = {
+    pointGeometry: require('./core/geometries/pointGeometry')
+}

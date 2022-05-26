@@ -29,7 +29,8 @@
         "./core": "./src/core.js",
         "./setup/all": "./src/setup/all.js",
         "./setup/boundingboxes": "./src/setup/boundingBoxes.js",
-        "./setup/coordinates": "./src/setup/coordinates.js"
+        "./setup/coordinates": "./src/setup/coordinates.js",
+        "./setup/geometries": "./src/setup/geometries.js"
     },
     "repository": {
         "type": "git",
@@ -45,6 +46,7 @@
         "test:dev": "jest --watch --coverage --verbose",
         "test-coordinates": "jest tests/coordinates --coverage --verbose",
         "test-boundingboxes": "jest tests/boundingBoxes --coverage --verbose",
+        "test-geometries": "jest tests/geometries --coverage --verbose",
         "lint": "eslint . --ext .js --fix",
         "prepare": "husky install"
     },

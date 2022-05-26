@@ -28,7 +28,7 @@ function valid2DBoundingBox(bboxArray) {
         // eslint-disable-next-line no-self-compare
         bboxArray[0] !== bboxArray[0] // Accounts for NaN
     ) {
-        throw new Error('Eastern value must be a number between -180 and 180.')
+        throw new Error('Bounding box eastern value must be a number between -180 and 180.')
     }
 
     if (
@@ -38,7 +38,7 @@ function valid2DBoundingBox(bboxArray) {
         // eslint-disable-next-line no-self-compare
         bboxArray[2] !== bboxArray[2] // Accounts for NaN
     ) {
-        throw new Error('Western value must be a number between -180 and 180.')
+        throw new Error('Bounding box western value must be a number between -180 and 180.')
     }
 
     if (
@@ -48,7 +48,7 @@ function valid2DBoundingBox(bboxArray) {
         // eslint-disable-next-line no-self-compare
         bboxArray[1] !== bboxArray[1] // Accounts for NaN
     ) {
-        throw new Error('Southern value must be a number between -90 and 90.')
+        throw new Error('Bounding box southern value must be a number between -90 and 90.')
     }
 
     if (
@@ -58,11 +58,11 @@ function valid2DBoundingBox(bboxArray) {
         // eslint-disable-next-line no-self-compare
         bboxArray[3] !== bboxArray[3] // Accounts for NaN
     ) {
-        throw new Error('Northern value must be a number between -90 and 90.')
+        throw new Error('Bounding box northern value must be a number between -90 and 90.')
     }
 
     if (bboxArray[3] < bboxArray[1]) {
-        throw new Error('Northern value must be greater than southern.')
+        throw new Error('Bounding box northern value must be greater than southern.')
     }
 
     return true

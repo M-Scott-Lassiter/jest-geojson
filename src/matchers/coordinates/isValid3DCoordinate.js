@@ -4,7 +4,7 @@ const { valid3DCoordinate } = require('../../core/coordinates/valid3DCoordinate'
 /**
  * Verifies a three element coordinate meets WGS-84 and GeoJSON validity requirements.
  *
- * @memberof Coordinates
+ * @memberof Matchers.Coordinates
  * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/2
  * @param {number[]} coordinateArray A three element array of numbers in format [longitude, latitude, altitude].
  * Longitude must be between -180 to 180.
