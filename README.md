@@ -108,7 +108,7 @@ or add a key to your `package.json`:
 You can also import the matcher functions without automatically loading them.
 
 ```javascript
-const matchers = require(jest - geojson)
+const matchers = require('jest-geojson')
 ```
 
 The matchers object contains each matcher grouped by category.
@@ -120,7 +120,7 @@ The matchers object contains each matcher grouped by category.
 You can import the functions that drive the test matchers.
 
 ```javascript
-const core = require(jest - geojson / core)
+const core = require('jest-geojson/core')
 ```
 
 The core object contains the functions grouped by category. You can then use these functions elsewhere in your code, or even port `jest-geojson` into another testing framework.
