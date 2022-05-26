@@ -1,3 +1,10 @@
+## [1.0.0-beta.6](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.0.0-beta.5...v1.0.0-beta.6) (2022-05-26)
+
+
+### :gift: Feature Changes
+
+* **toBePointGeometry:** add new matcher ([9973afa](https://github.com/M-Scott-Lassiter/jest-geojson/commit/9973afa52ec4ae81dde8976277bc9d0b95aef26b)), closes [#9](https://github.com/M-Scott-Lassiter/jest-geojson/issues/9)
+
 ## [1.0.0-beta.5](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2022-05-25)
 
 
