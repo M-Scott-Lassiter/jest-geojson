@@ -39,13 +39,13 @@
     -   [Configure Jest](#configure-jest)
 -   [Import the Core Engine](#import-the-core-engine)
 -   [Matchers](#matchers)
-    -   [Coordiante Matchers](#coordiante-matchers)
-    -   [Bounding Box Matchers](#bounding-box-matchers)
-    -   [Geometry Matchers](#geometry-matchers)
-    -   [Geometry Collection Matchers](#geometry-collection-matchers)
-    -   [Feature Matchers](#feature-matchers)
-    -   [Feature Collection Matchers](#feature-collection-matchers)
-    -   [Functional Matchers](#functional-matchers)
+    -   [Coordiantes](#coordiantes)
+    -   [Bounding Boxes](#bounding-boxes)
+    -   [Geometry](#geometry)
+    -   [Geometry Collections](#geometry-collections)
+    -   [Features](#features)
+    -   [Feature Collections](#feature-collections)
+    -   [Functional](#functional)
 -   [License and Development](#license-and-development)
 -   [Contact](#contact)
 
@@ -64,6 +64,7 @@ test('Object is valid GeoJSON', () => {
     expect(myGeoJSONObject).toBeValidGeoJSON()
 })
 ```
+
 This library **does not** create or manipulate GeoJSON.
 
 Other projects have done that (and better), such as the venerable [Turf.js](https://github.com/Turfjs/turf). This library complements, not competes with, those tools.
@@ -103,12 +104,15 @@ or add a key to your `package.json`:
 ```
 
 <!-- Eventually, add a tutorial for doing custom matcher loading -->
+
 You can also import the matcher functions without automatically loading them.
 
 ```javascript
-const matchers = require(jest-geojson)
+const matchers = require(jest - geojson)
 ```
+
 The matchers object contains each matcher grouped by category.
+
 <!-- add link to documentation when online -->
 
 # Import the Core Engine
@@ -116,9 +120,11 @@ The matchers object contains each matcher grouped by category.
 You can import the functions that drive the test matchers.
 
 ```javascript
-const core = require(jest-geojson/core)
+const core = require(jest - geojson / core)
 ```
+
 The core object contains the functions grouped by category. You can then use these functions elsewhere in your code, or even port `jest-geojson` into another testing framework.
+
 <!-- add link to documentation when online -->
 
 # Matchers
@@ -129,7 +135,7 @@ Functional matchers assess more generic attributes and qualities and accept mult
 
 [Release version 1.0.0](https://github.com/M-Scott-Lassiter/jest-geojson/milestone/1) will contain the minimum matchers (listed in priority development order) needed to validate GeoJSON elements.
 
-## Coordiante Matchers
+## Coordiantes
 
 _1.0.0_
 
@@ -137,7 +143,7 @@ _1.0.0_
 -   [x] isValid3DCoordinate
 -   [x] isValidCoordinate
 
-## Bounding Box Matchers
+## Bounding Boxes
 
 _1.0.0_
 
@@ -145,7 +151,7 @@ _1.0.0_
 -   [x] isValid3DBoundingBox
 -   [x] isValidBoundingBox
 
-## Geometry Matchers
+## Geometry
 
 _1.0.0_
 
@@ -163,7 +169,7 @@ _Future_
 
 -   [ ] isMultiPolygonWithHole
 
-## Geometry Collection Matchers
+## Geometry Collections
 
 _1.0.0_
 
@@ -178,7 +184,7 @@ _Future_
 -   [ ] toHaveGeometeyCount (equal/min, max)
 -   [ ] toContainGeometryTypes (array of Geometry type strings, optional min count, optional max count)
 
-## Feature Matchers
+## Features
 
 _1.0.0_
 
@@ -204,7 +210,7 @@ _Future_
 -   [ ] toHaveProperties
 -   [ ] toHaveForeignMembers
 
-## Feature Collection Matchers
+## Feature Collections
 
 _1.0.0_
 
@@ -222,7 +228,7 @@ _Future_
 -   [ ] toContainAnyIDs
 -   [ ] toContainOnlyIDs ([unordered array of IDs])
 
-## Functional Matchers
+## Functional
 
 _1.0.0_
 
