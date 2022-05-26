@@ -22,7 +22,9 @@ exports.coordinates = {
 
 // Geometries
 exports.geometries = {
-    toBePointGeometry: require('./matchers/geometries/toBePointGeometry').toBePointGeometry
+    toBePointGeometry: require('./matchers/geometries/toBePointGeometry').toBePointGeometry,
+    toBeMultiPointGeometry: require('./matchers/geometries/toBeMultiPointGeometry')
+        .toBeMultiPointGeometry
 }
 
 // Properties

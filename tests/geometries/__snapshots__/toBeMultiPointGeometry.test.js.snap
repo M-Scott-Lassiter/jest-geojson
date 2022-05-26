@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error Snapshot Testing. Throws error: expect({type: 'MultiPoint', coordinates: [[0, 0]]}).not.toBeMultiPointGeometry 1`] = `
+"[2mexpect([22m[31mGeometryObject[39m[2m).not.toBeMultiPointGeometry()[22m
+
+Expected input to not be a valid GeoJSON MultiPoint geometry.
+
+Received:  [31m{\\"coordinates\\": [[0, 0]], \\"type\\": \\"MultiPoint\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: expect(false).toBeMultiPointGeometry() 1`] = `
+"[2mexpect([22m[31mGeometryObject[39m[2m).toBeMultiPointGeometry()[22m
+
+Argument must be a GeoJSON MultiPoint Geometry object.
+
+Received:  [31mfalse[39m"
+`;

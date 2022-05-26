@@ -2,6 +2,20 @@
 
 const matchers = require('../src/matchers')
 
+describe('Bounding Box Matchers Exported', () => {
+    test('isValid2DBoundingBox', () => {
+        expect('isValid2DBoundingBox' in matchers.boundingBoxes).toBeTruthy()
+    })
+
+    test('isValid3DBoundingBox', () => {
+        expect('isValid2DBoundingBox' in matchers.boundingBoxes).toBeTruthy()
+    })
+
+    test('isValidBoundingBox', () => {
+        expect('isValidBoundingBox' in matchers.boundingBoxes).toBeTruthy()
+    })
+})
+
 describe('Coordinate Matchers Exported', () => {
     test('isValid2DCoordinate', () => {
         expect('isValid2DCoordinate' in matchers.coordinates).toBeTruthy()
@@ -16,16 +30,12 @@ describe('Coordinate Matchers Exported', () => {
     })
 })
 
-describe('Bounding Box Matchers Exported', () => {
-    test('isValid2DBoundingBox', () => {
-        expect('isValid2DBoundingBox' in matchers.boundingBoxes).toBeTruthy()
+describe('Geometry Matchers Exported', () => {
+    test('toBeMultiPointGeometry', () => {
+        expect('toBeMultiPointGeometry' in matchers.geometries).toBeTruthy()
     })
 
-    test('isValid3DBoundingBox', () => {
-        expect('isValid2DBoundingBox' in matchers.boundingBoxes).toBeTruthy()
-    })
-
-    test('isValidBoundingBox', () => {
-        expect('isValidBoundingBox' in matchers.boundingBoxes).toBeTruthy()
+    test('toBePointGeometry', () => {
+        expect('toBePointGeometry' in matchers.geometries).toBeTruthy()
     })
 })

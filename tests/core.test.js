@@ -2,6 +2,20 @@
 
 const core = require('../src/core')
 
+describe('Bounding Box Functions Exported', () => {
+    test('valid2DBoundingBox', () => {
+        expect('valid2DBoundingBox' in core.boundingBoxes).toBeTruthy()
+    })
+
+    test('valid3DBoundingBox', () => {
+        expect('valid3DBoundingBox' in core.boundingBoxes).toBeTruthy()
+    })
+
+    test('validBoundingBox', () => {
+        expect('validBoundingBox' in core.boundingBoxes).toBeTruthy()
+    })
+})
+
 describe('Coordinate Functions Exported', () => {
     test('valid2DCoordinate', () => {
         expect('valid2DCoordinate' in core.coordinates).toBeTruthy()
@@ -16,16 +30,12 @@ describe('Coordinate Functions Exported', () => {
     })
 })
 
-describe('Bounding Box Functions Exported', () => {
+describe('Geometry Functions Exported', () => {
     test('valid2DBoundingBox', () => {
-        expect('valid2DBoundingBox' in core.boundingBoxes).toBeTruthy()
+        expect('multiPointGeometry' in core.geometries).toBeTruthy()
     })
 
     test('valid3DBoundingBox', () => {
-        expect('valid3DBoundingBox' in core.boundingBoxes).toBeTruthy()
-    })
-
-    test('validBoundingBox', () => {
-        expect('validBoundingBox' in core.boundingBoxes).toBeTruthy()
+        expect('pointGeometry' in core.geometries).toBeTruthy()
     })
 })

@@ -156,7 +156,7 @@ _1.0.0_
 _1.0.0_
 
 -   [x] toBePointGeometry
--   [ ] toBeMultiPointGeometry
+-   [x] toBeMultiPointGeometry
 -   [ ] toBeLineStringGeometry
 -   [ ] toBeMultiLineStringGeometry
 -   [ ] toBePolygonGeometry
