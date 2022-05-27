@@ -31,11 +31,15 @@ describe('Coordinate Functions Exported', () => {
 })
 
 describe('Geometry Functions Exported', () => {
-    test('valid2DBoundingBox', () => {
+    test('lineStringGeometry', () => {
+        expect('lineStringGeometry' in core.geometries).toBeTruthy()
+    })
+
+    test('multiPointGeometry', () => {
         expect('multiPointGeometry' in core.geometries).toBeTruthy()
     })
 
-    test('valid3DBoundingBox', () => {
+    test('pointGeometry', () => {
         expect('pointGeometry' in core.geometries).toBeTruthy()
     })
 })

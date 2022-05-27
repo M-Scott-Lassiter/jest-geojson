@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error Snapshot Testing. Throws error: expect({type: 'LineString', coordinates: [[0, 0]]}).not.toBeLineStringGeometry 1`] = `
+"[2mexpect([22m[31mGeometryObject[39m[2m).not.toBeLineStringGeometry()[22m
+
+Expected input to not be a valid GeoJSON LineString geometry.
+
+Received:  [31m{\\"coordinates\\": [[0, 0]], \\"type\\": \\"LineString\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: expect(false).toBeLineStringGeometry() 1`] = `
+"[2mexpect([22m[31mGeometryObject[39m[2m).toBeLineStringGeometry()[22m
+
+Argument must be a GeoJSON LineString Geometry object.
+
+Received:  [31mfalse[39m"
+`;

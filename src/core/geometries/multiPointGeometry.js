@@ -66,9 +66,6 @@ function multiPointGeometry(geometryObject) {
 
     // Geometry objects are allowed to have empty arrays as coordinates, however validCoordinate may not.
     // If coordinates is an empty array, we're done. Otherwise, check for coordinate validity.
-    // if (Array.isArray(geometryObject.coordinates) && geometryObject.coordinates.length === 0) {
-    //     return true
-    // }
     if (!Array.isArray(geometryObject.coordinates) && geometryObject.coordinates.length !== 1) {
         throw new Error('Coordinates property must be an array of valid GeoJSON coordinates')
     }

@@ -88,16 +88,15 @@ To submit a pull request,
     -   [ ] Create a core function under `src/core/<category>`
     -   [ ] Document the function using JSDoc. Refer to the issue.
     -   [ ] Register the core function in `src/core.js`
+    -   [ ] Add a verification test to `tests/core.test.js`
 -   <u>Create Matcher Function</u>
     -   [ ] Create a matcher function under `src/matchers/<category>`
     -   [ ] Document the matcher using JSDoc. Refer to the issue.
     -   [ ] Register the matcher in `src/matchers.js`
+    -   [ ] Add a verification test to `matchers.test.js`
     -   [ ] Add the matcher to the `.cz-config.js` list (alphabetical order under the `coordinateMatchers` variable)
--   <u>Add Testing</u>
-    -   [ ] Create a test for the matcher under `tests/<category>`
-    -   [ ] Add a test to `tests/core.test.js`
-    -   [ ] Add a test to `matchers.test.js`
-    -   [ ] Verify all tests pass and have 100% coverage
+-   [ ] Create a test for the matcher under `tests/<category>`
+-   [ ] Verify all tests pass and have 100% coverage
 -   [ ] Add the matcher to the README.md list (alphabetical order within category)
 -   [ ] Run the `build` script locally
 -   [ ] Push to Github then open pull request
