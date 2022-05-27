@@ -86,15 +86,15 @@ To submit a pull request,
 -   [ ] Open an issue with detailed description of the purpose and required behavior
 -   <u>Create Core Function</u>
     -   [ ] Create a core function under `src/core/<category>`
-    -   [ ] Document the function using JSDoc. Refer to the issue.
     -   [ ] Register the core function in `src/core.js`
     -   [ ] Add a verification test to `tests/core.test.js`
+    -   [ ] Document the function using JSDoc. Refer to the issue.
 -   <u>Create Matcher Function</u>
     -   [ ] Create a matcher function under `src/matchers/<category>`
-    -   [ ] Document the matcher using JSDoc. Refer to the issue.
     -   [ ] Register the matcher in `src/matchers.js`
     -   [ ] Add a verification test to `matchers.test.js`
     -   [ ] Add the matcher to the `.cz-config.js` list (alphabetical order under the `coordinateMatchers` variable)
+    -   [ ] Document the matcher using JSDoc. Refer to the issue.
 -   [ ] Create a test for the matcher under `tests/<category>`
 -   [ ] Verify all tests pass and have 100% coverage
 -   [ ] Add the matcher to the README.md list (alphabetical order within category)
@@ -119,65 +119,52 @@ cd jest-geojson
 npm install
 ```
 
+After installing, you should [run the build script](#building) to verify everything works without runtime errors before you start modifying.
+
 ### Project Structure
 
 All distribution files are contained in the `src` folder. The `tests` folder contains the scripts used to verify the matchers work as designed (using the matchers themselves!).
 
 `core` contains the functions that `matchers` use.
 
+`setup` contains the scripts that install the matchers into the Jest runtime. `package.json` references these in entry points.
+
 ```
 ├── src
 │   ├── core
-│   │   ├── boundingBoxes
-│   │   ├── coordinates
-│   │   ├── features
-│   │   ├── featureCollections
-│   │   ├── functional
-│   │   ├── geometries
-│   │   └── geometryCollections
 │   ├── matchers
-│   │   ├── boundingBoxes
-│   │   ├── coordinates
-│   │   ├── features
-│   │   ├── featureCollections
-│   │   ├── functional
-│   │   ├── geometries
-│   │   └── geometryCollections
 │   ├── setup
-│   │   ├── all.js
-│   │   ├── boundingBoxes.js
-│   │   └── coordinates.js
-|   ├── index.js
-|   └── JestSetup.js
+|   ├── core.js
+|   ├── matchers.js
+|   └── typedefinitions.js
 ├── tests
-│   │   ├── boundingBox
-│   │   ├── coordinate
-│   │   ├── feature
-│   │   ├── featureCollection
-│   │   ├── functional
-│   │   ├── geometry
-│   │   └── geometryCollection
+│   ├── core.test.js
+|   └── matchers.test.js
 ```
 
-The `index.js` serves two functions:
+The `core`, `matchers`, `setup`, and `tests` folder each have the same subfolder structure:
 
--   Document the project's JSDoc type definitions
--   Export each matcher function individually
+```
+├── boundingBoxes
+├── coordinates
+├── features
+├── featureCollections
+├── functional
+├── geometries
+└── geometryCollections
+```
 
-When adding a new matcher, refer to the comments at the top of `index.js` for instructions.
+The `core.js` and `matchers.js` consolidate and export their respective elements grouped by folder structure category. When adding a new matcher, refer to the instructions in the comments at the top of these files.
+
+`typedefinitions.js` document the project's JSDoc type definitions and contains no actual code.
 
 ### Building
 
-After installing, run
 Before submitting changes, run the build script locally, then commit:
 
 ```bash
-npm run build
+npm run build # lint, test, document, and format everything automatically
 ```
-
-This will lint, test, document, and format everything automatically.
-
-You should run this script after installing to verify you do not encounter run time errors before you get started.
 
 ### Linting and Formatting
 
@@ -195,8 +182,8 @@ This project provides high working confidence to developers by uses Jest itself 
 
 ```bash
 npm run test # Runs all tests and generates coverage report
-
 npm run test:dev # Runs tests in watch mode
+npm run test-<type> #runs the tests only in that category
 ```
 
 ### Documentation
