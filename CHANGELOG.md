@@ -1,3 +1,15 @@
+## [1.0.0-beta.8](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.0.0-beta.7...v1.0.0-beta.8) (2022-05-27)
+
+
+### :gift: Feature Changes
+
+* **toBeLineStringGeometry:** add new matcher ([54416a5](https://github.com/M-Scott-Lassiter/jest-geojson/commit/54416a5749b81120a618b8b472e1862e720f4108)), closes [#11](https://github.com/M-Scott-Lassiter/jest-geojson/issues/11)
+
+
+### :compass: API Documentation Changes
+
+* change JSDoc param types to avoid using GeoJSON unknown types ([06ac03a](https://github.com/M-Scott-Lassiter/jest-geojson/commit/06ac03a6d8c7c274a17e80c22ebf5d623bf48f06))
+
 ## [1.0.0-beta.7](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.0.0-beta.6...v1.0.0-beta.7) (2022-05-26)
 
 
