@@ -3,7 +3,7 @@
  *
  * @memberof Core.BoundingBoxes
  * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/6
- * @param {GeoJSON-bbox} bboxArray A WGS-84 array of in format [west, south, east, north].
+ * @param {number[]} bboxArray A WGS-84 array of in format [west, south, east, north].
  * @returns {boolean} True if a valid 2D GeoJSON coordinate. If invalid, it will throw an error.
  * @throws {Error} Input must be an array of only four elements of type number
  * @throws {RangeError} Longitude must be a number between -180 and 180

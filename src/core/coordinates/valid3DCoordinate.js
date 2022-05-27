@@ -5,7 +5,7 @@ const { valid2DCoordinate } = require('./valid2DCoordinate')
  *
  * @memberof Core.Coordinates
  * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/2
- * @param {GeoJSON-Coordinate} coordinate A WGS-84 array of [longitude, latitude, alititude]
+ * @param {number[]} coordinate A WGS-84 array of [longitude, latitude, alititude]
  * @returns {boolean} True if a valid 3D GeoJSON coordinate. If invalid, it will throw an error.
  * @throws {Error} Input must be an array of only three elments
  * @throws {Error} Altitude value must be numeric

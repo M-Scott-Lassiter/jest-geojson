@@ -4,7 +4,7 @@ const { valid2DBoundingBox } = require('./valid2DBoundingBox')
  *
  * @memberof Core.BoundingBoxes
  * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/7
- * @param {GeoJSON-bbox} bboxArray A six element WGS-84 array of numbers in format [west, south, depth, east, north, altitude].
+ * @param {number[]} bboxArray A six element WGS-84 array of numbers in format [west, south, depth, east, north, altitude].
  * @returns {boolean} True if a valid 3D GeoJSON coordinate. If invalid, it will throw an error.
  * @throws {Error} Input must be an array of only four elements of type number
  * @throws {Error} Depth and altitude must be numeric.

@@ -10,7 +10,7 @@ const { pointGeometry } = require('../../core/geometries/pointGeometry')
  *
  * @memberof Matchers.Geometries
  * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/9
- * @param {GeoJSON-PointGeometry} geometryObject a GeoJSON Point Geometry object
+ * @param {object} geometryObject a GeoJSON Point Geometry object
  * @example
  * const testPoint = {
         type: 'Point',

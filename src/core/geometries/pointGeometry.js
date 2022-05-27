@@ -9,7 +9,7 @@ const { validCoordinate } = require('../coordinates/validCoordinate')
  *
  * @memberof Core.Geometries
  * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/9
- * @param {GeoJSON-PointGeometry} geometryObject a GeoJSON Point Geometry object
+ * @param {object} geometryObject a GeoJSON Point Geometry object
  * @returns {boolean} True if a valid GeoJSON Point Geometry. If invalid, it will throw an error.
  * @throws {Error} Argument not an object
  * @throws {Error} Must have a type property with value 'Point'

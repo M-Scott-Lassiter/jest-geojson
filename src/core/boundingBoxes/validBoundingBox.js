@@ -6,7 +6,7 @@ const { valid3DBoundingBox } = require('./valid3DBoundingBox')
  *
  * @memberof Core.BoundingBoxes
  * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/8
- * @param {GeoJSON2DBBox|GeoJSON3DBBox} bboxArray A WGS-84 array of [west, south, east, north] or [west, south, depth, east, north, altitude].
+ * @param {number[]} bboxArray A WGS-84 array of [west, south, east, north] or [west, south, depth, east, north, altitude].
  *
  * Longitude must be between -180 to 180.
  * Latitude must be between -90 to 90.
