@@ -2,13 +2,13 @@
 
 # jest-geojson
 
-[![Powered by Jest](https://img.shields.io/badge/Powered%20by-Jest-99424f?logo=jest&labelColor=white&logoColor=99424f)](https://github.com/facebook/jest)
-[![Completed and deployed matchers](https://img.shields.io/github/issues-search/m-scott-lassiter/jest-geojson?color=brightgreen&label=matchers&query=is%3Aissue%20is%3Aclosed%20label%3A%22matchers%2Fboundingbox%22%2C%22matchers%2Fcoordinates%22%2C%22matchers%2Fgeometries%22%2C%22matchers%2Fgeometrycollections%22%2C%22matchers%2Ffeatures%22%2C%22matchers%2Ffeaturecollections%22%2C%22matchers%2Ffunctional%22)](#matchers)
-[![Proposed new matchers](https://img.shields.io/github/issues-search/m-scott-lassiter/jest-geojson?color=important&label=proposed&query=is%3Aissue%20is%3Aopen%20label%3A%22new%20matcher%20proposal%22)](https://github.com/M-Scott-Lassiter/jest-geojson/issues?q=is%3Aissue+is%3Aopen+label%3A%22new+matcher+proposal%22)
-
 [![NPM Version](https://img.shields.io/npm/v/jest-geojson/beta)](https://www.npmjs.com/package/jest-geojson/v/beta)
 [![NPM Package Size](https://shields.shivering-isles.com:/bundlephobia/min/jest-geojson?label=size)](https://www.npmjs.com/package/jest-geojson/v/beta)
 [![License](https://img.shields.io/github/license/M-Scott-Lassiter/jest-geojson?color=blue)](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/LICENSE)
+
+[![Powered by Jest](https://img.shields.io/badge/Powered%20by-Jest-99424f?logo=jest&labelColor=white&logoColor=99424f)](https://github.com/facebook/jest)
+[![Completed and deployed matchers](https://img.shields.io/github/issues-search/m-scott-lassiter/jest-geojson?color=brightgreen&label=matchers&query=is%3Aissue%20is%3Aclosed%20label%3A%22matchers%2Fboundingbox%22%2C%22matchers%2Fcoordinates%22%2C%22matchers%2Fgeometries%22%2C%22matchers%2Fgeometrycollections%22%2C%22matchers%2Ffeatures%22%2C%22matchers%2Ffeaturecollections%22%2C%22matchers%2Ffunctional%22)](#matchers)
+[![Proposed new matchers](https://img.shields.io/github/issues-search/m-scott-lassiter/jest-geojson?color=important&label=proposed&query=is%3Aissue%20is%3Aopen%20label%3A%22new%20matcher%20proposal%22)](https://github.com/M-Scott-Lassiter/jest-geojson/issues?q=is%3Aissue+is%3Aopen+label%3A%22new+matcher+proposal%22)
 
 [![This project is still in beta](https://img.shields.io/github/milestones/progress-percent/m-scott-lassiter/jest-geojson/1)](https://github.com/M-Scott-Lassiter/jest-geojson/milestone/1)
 
@@ -16,7 +16,7 @@
 
 [![Tests](https://github.com/M-Scott-Lassiter/jest-geojson/actions/workflows/test.yml/badge.svg)](https://github.com/M-Scott-Lassiter/jest-geojson/actions/workflows/test.yml)
 [![Build](https://github.com/M-Scott-Lassiter/jest-geojson/actions/workflows/publish.yml/badge.svg)](https://github.com/M-Scott-Lassiter/jest-geojson/actions/workflows/publish.yml)
-[![codecov](https://codecov.io/gh/M-Scott-Lassiter/jest-geojson/branch/main/graph/badge.svg?token=vdb7uefciA)](https://codecov.io/gh/M-Scott-Lassiter/jest-geojson)
+[![codecov](https://codecov.io/gh/M-Scott-Lassiter/jest-geojson/branch/beta/graph/badge.svg?token=vdb7uefciA)](https://codecov.io/gh/M-Scott-Lassiter/jest-geojson)
 [![Dependency status](https://img.shields.io/librariesio/release/npm/jest-geojson)](https://www.npmjs.com/package/jest-geojson/v/beta?activeTab=dependencies)
 ![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/jest-geojson)
 [![Open Issues](https://img.shields.io/github/issues/m-scott-lassiter/jest-geojson/bug)](https://github.com/M-Scott-Lassiter/jest-geojson/labels/bug)
@@ -108,7 +108,7 @@ or add a key to your `package.json`:
 You can also import the matcher functions without automatically loading them.
 
 ```javascript
-const matchers = require(jest - geojson)
+const matchers = require('jest-geojson')
 ```
 
 The matchers object contains each matcher grouped by category.
@@ -120,7 +120,7 @@ The matchers object contains each matcher grouped by category.
 You can import the functions that drive the test matchers.
 
 ```javascript
-const core = require(jest - geojson / core)
+const core = require('jest-geojson/core')
 ```
 
 The core object contains the functions grouped by category. You can then use these functions elsewhere in your code, or even port `jest-geojson` into another testing framework.
@@ -156,8 +156,8 @@ _1.0.0_
 _1.0.0_
 
 -   [x] toBePointGeometry
--   [ ] toBeMultiPointGeometry
--   [ ] toBeLineStringGeometry
+-   [x] toBeMultiPointGeometry
+-   [x] toBeLineStringGeometry
 -   [ ] toBeMultiLineStringGeometry
 -   [ ] toBePolygonGeometry
 -   [ ] toBeMultiPolygonGeometry
