@@ -154,6 +154,17 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiPoint).toBeLineStringGeometry()
         })
+
+        test('Stress test with many points', () => {
+            const testMultiPoint = {
+                type: 'LineString',
+                coordinates: []
+            }
+            for (let i = 0; i < 30; i++) {
+                testMultiPoint.coordinates.push([i, i])
+            }
+            expect(testMultiPoint).toBeLineStringGeometry()
+        })
     })
 
     describe('Foreign Properties Allowed:', () => {
