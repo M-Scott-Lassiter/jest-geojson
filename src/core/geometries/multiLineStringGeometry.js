@@ -16,6 +16,7 @@ const { validCoordinate } = require('../coordinates/validCoordinate')
  * @returns {boolean} True if a valid GeoJSON MultiLineString Geometry. If invalid, it will throw an error.
  * @throws {Error} Argument not an object
  * @throws {Error} Must have a type property with value 'MultiLineString'
+ * @throws {Error} Coordinates array must contain two or more valid GeoJSON coordinates
  * @throws {Error} forbidden from having a property 'geometry', 'properties', or 'features'
  * @example
  * const multiLineString = {
