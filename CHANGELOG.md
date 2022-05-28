@@ -1,3 +1,20 @@
+## [1.0.0-beta.9](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.0.0-beta.8...v1.0.0-beta.9) (2022-05-28)
+
+
+### :dart: Test Changes
+
+* **toBeLineStringGeometry:** add a stress test with many points ([22df5c7](https://github.com/M-Scott-Lassiter/jest-geojson/commit/22df5c7fafe6f6a7db34c46dbbfdb56c505edbb7))
+
+
+### :lady_beetle: Bug Fixes
+
+* **toBeLineStringGeometry:** prohibit single coordinate in "coordinates" member ([ee5de52](https://github.com/M-Scott-Lassiter/jest-geojson/commit/ee5de52c9e3e6fecd6c5aa99b9fc8ded0604884b)), closes [/datatracker.ietf.org/doc/html/rfc7946#section-3](https://github.com/M-Scott-Lassiter//datatracker.ietf.org/doc/html/rfc7946/issues/section-3) [#11](https://github.com/M-Scott-Lassiter/jest-geojson/issues/11)
+
+
+### :gift: Feature Changes
+
+* **toBeMultiLineStringGeometry:** add new matcher ([3d3a15e](https://github.com/M-Scott-Lassiter/jest-geojson/commit/3d3a15e30b776bbcb44b906b7a0bac900d9367a6)), closes [#12](https://github.com/M-Scott-Lassiter/jest-geojson/issues/12)
+
 ## [1.0.0-beta.8](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.0.0-beta.7...v1.0.0-beta.8) (2022-05-27)
 
 
