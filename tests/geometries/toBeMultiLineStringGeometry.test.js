@@ -225,7 +225,7 @@ describe('Inalid Use Cases', () => {
     })
 
     describe('Expect to fail with out of range or bad coordinate:', () => {
-        test.each([[...coordinatesOutOfRange], ...invalidInputValues])(
+        test.each([...coordinatesOutOfRange, ...invalidInputValues])(
             'coordinates: %p',
             (coordinate) => {
                 const testMultiLineString = {
