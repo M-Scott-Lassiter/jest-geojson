@@ -4,7 +4,7 @@ const { lineStringGeometry } = require('../../core/geometries/lineStringGeometry
 /**
  * Verifies an object is a valid GeoJSON LineString Geometry. This geometry requires a
  * 'type' property that must equal "LineString", and a 'coordinates' property that contains
- * an array of valid WGS-84 GeoJSON coordinate(s). The coordinates may be an empty array,
+ * an array of two or more valid WGS-84 GeoJSON coordinate(s). The coordinates may be an empty array,
  * but may not be an array of empty arrays.
  *
  * Foreign members are allowed with the exception of 'geometry', 'properties', or 'features'.

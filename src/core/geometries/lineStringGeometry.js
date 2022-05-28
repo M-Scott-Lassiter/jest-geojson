@@ -3,7 +3,7 @@ const { validCoordinate } = require('../coordinates/validCoordinate')
 /**
  * Verifies an object is a valid GeoJSON LineString Geometry. This geometry requires a
  * 'type' property that must equal "LineString", and a 'coordinates' property that contains
- * an array of valid WGS-84 GeoJSON coordinate(s). The coordinates may be an empty array,
+ * an array of two or more valid WGS-84 GeoJSON coordinate(s). The coordinates may be an empty array,
  * but may not be an array of empty arrays.
  *
  * Foreign members are allowed with the exceptions thrown below.
@@ -72,6 +72,9 @@ function lineStringGeometry(geometryObject) {
     // If coordinates is an empty array, we're done. Otherwise, check for coordinate validity.
     if (!Array.isArray(geometryObject.coordinates) && geometryObject.coordinates.length !== 1) {
         throw new Error('Coordinates property must be an array of valid GeoJSON coordinates')
+    }
+    if (geometryObject.coordinates.length === 1) {
+        throw new Error('Coordinates array must contain two or more valid GeoJSON coordinates')
     }
     for (let i = 0; i < geometryObject.coordinates.length; i++) {
         validCoordinate(geometryObject.coordinates[i])

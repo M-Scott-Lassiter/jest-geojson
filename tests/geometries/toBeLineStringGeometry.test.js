@@ -188,7 +188,10 @@ describe('Valid Use Cases', () => {
             type: 'LineString',
             someRandomProp: true,
             geometries: testLineString2,
-            coordinates: [[180, 10.2, -125]]
+            coordinates: [
+                [180, 10.2, -125],
+                [-180, -90]
+            ]
         }
 
         test.each(['Test 1', 1])('ID: %p', (input) => {
@@ -241,6 +244,16 @@ describe('Inalid Use Cases', () => {
             const testLineString = {
                 type: 'LineString',
                 coordinates: [[0, 0], coordinate]
+            }
+            expect(testLineString).not.toBeLineStringGeometry()
+        })
+    })
+
+    describe('Expect to fail with only a single coordinate:', () => {
+        test('coordinates: [[0, 0]]', () => {
+            const testLineString = {
+                type: 'LineString',
+                coordinates: [[0, 0]]
             }
             expect(testLineString).not.toBeLineStringGeometry()
         })
@@ -345,9 +358,15 @@ describe('Inalid Use Cases', () => {
 })
 
 describe('Error Snapshot Testing. Throws error:', () => {
-    test(`expect({type: 'LineString', coordinates: [[0, 0]]}).not.toBeLineStringGeometry`, () => {
+    test(`expect({type: 'LineString', coordinates: [[0, 0], [1, 1]]}).not.toBeLineStringGeometry`, () => {
         expect(() =>
-            expect({ type: 'LineString', coordinates: [[0, 0]] }).not.toBeLineStringGeometry()
+            expect({
+                type: 'LineString',
+                coordinates: [
+                    [0, 0],
+                    [1, 1]
+                ]
+            }).not.toBeLineStringGeometry()
         ).toThrowErrorMatchingSnapshot()
     })
     test('expect(false).toBeLineStringGeometry()', () => {
