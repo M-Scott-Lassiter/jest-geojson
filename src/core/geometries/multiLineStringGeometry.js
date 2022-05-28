@@ -86,9 +86,10 @@ function multiLineStringGeometry(geometryObject) {
 
     // // // Geometry objects are allowed to have empty arrays as coordinates, however validCoordinate may not.
     // // If coordinates is an empty array, we're done. Otherwise, check for coordinate validity.
-    // if (!Array.isArray(geometryObject.coordinates) && geometryObject.coordinates.length !== 1) {
-    //     throw new Error('Coordinates property must be an array of valid GeoJSON coordinates')
-    // }
+    if (!Array.isArray(geometryObject.coordinates) && geometryObject.coordinates.length !== 1) {
+        console.log(typeof geometryObject.coordinates)
+        throw new Error('Coordinates property must be an array of valid GeoJSON coordinates')
+    }
 
     for (let i = 0; i < geometryObject.coordinates.length; i++) {
         if (geometryObject.coordinates[i].length === 1) {

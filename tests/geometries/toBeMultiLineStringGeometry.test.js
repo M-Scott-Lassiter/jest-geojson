@@ -9,14 +9,12 @@ const invalidInputValues = [
     -Infinity,
     NaN,
     [
-        {
-            coordinates: [
-                [
-                    [0, 0],
-                    [1, 1]
-                ]
+        [
+            [
+                [0, 0],
+                [1, 1]
             ]
-        }
+        ]
     ],
     '',
     'Random Geometry',
@@ -231,7 +229,7 @@ describe('Inalid Use Cases', () => {
             'coordinates: %p',
             (coordinate) => {
                 const testMultiLineString = {
-                    type: 'LineString',
+                    type: 'MultiLineString',
                     coordinates: coordinate
                 }
                 expect(testMultiLineString).not.toBeMultiLineStringGeometry()
