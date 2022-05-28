@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error Snapshot Testing. Throws error: expect({type: 'MultiLineString', coordinates: [[[0, 0], [1, 1]]]}).not.toBeMultiLineStringGeometry 1`] = `
+"[2mexpect([22m[31mGeometryObject[39m[2m).not.toBeMultiLineStringGeometry()[22m
+
+Expected input to not be a valid GeoJSON MultiLineString geometry.
+
+Received:  [31m{\\"coordinates\\": [[[0, 0], [1, 1]]], \\"type\\": \\"MultiLineString\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: expect(false).toBeMultiLineStringGeometry() 1`] = `
+"[2mexpect([22m[31mGeometryObject[39m[2m).toBeMultiLineStringGeometry()[22m
+
+Argument must be a GeoJSON MultiLineString Geometry object.
+
+Received:  [31mfalse[39m"
+`;

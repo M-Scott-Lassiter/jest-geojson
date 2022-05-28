@@ -8,6 +8,7 @@ const coordinateMatchers = [
     { name: 'isValidBoundingBox' },
     { name: 'isValidCoordinate' },
     { name: 'toBeLineStringGeometry' },
+    { name: 'toBeMultiLineStringGeometry' },
     { name: 'toBeMultiPointGeometry' },
     { name: 'toBePointGeometry' }
 ]

@@ -35,6 +35,10 @@ describe('Geometry Functions Exported', () => {
         expect('lineStringGeometry' in core.geometries).toBeTruthy()
     })
 
+    test('multiLineStringGeometry', () => {
+        expect('multiLineStringGeometry' in core.geometries).toBeTruthy()
+    })
+
     test('multiPointGeometry', () => {
         expect('multiPointGeometry' in core.geometries).toBeTruthy()
     })

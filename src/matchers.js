@@ -24,6 +24,8 @@ exports.coordinates = {
 exports.geometries = {
     toBeLineStringGeometry: require('./matchers/geometries/toBeLineStringGeometry')
         .toBeLineStringGeometry,
+    toBeMultiLineStringGeometry: require('./matchers/geometries/toBeMultiLineStringGeometry')
+        .toBeMultiLineStringGeometry,
     toBeMultiPointGeometry: require('./matchers/geometries/toBeMultiPointGeometry')
         .toBeMultiPointGeometry,
     toBePointGeometry: require('./matchers/geometries/toBePointGeometry').toBePointGeometry

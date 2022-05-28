@@ -3,14 +3,15 @@ const { validCoordinate } = require('../coordinates/validCoordinate')
 /**
  * Verifies an object is a valid GeoJSON MultiPoint Geometry. This geometry requires a
  * 'type' property that must equal "MultiPoint", and a 'coordinates' property that contains
- * an array of valid WGS-84 GeoJSON coordinate(s). The coordinates may be an empty array.
+ * a single coordinate or an array of valid WGS-84 GeoJSON coordinates.
+ * The coordinates may be an empty array.
  *
  * Foreign members are allowed with the exceptions thrown below.
  *
  * @memberof Core.Geometries
  * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/10
- * @param {object} geometryObject a GeoJSON Multi Point Geometry object
- * @returns {boolean} True if a valid GeoJSON Multi Point Geometry. If invalid, it will throw an error.
+ * @param {object} geometryObject a GeoJSON MultiPoint Geometry object
+ * @returns {boolean} True if a valid GeoJSON MultiPoint Geometry. If invalid, it will throw an error.
  * @throws {Error} Argument not an object
  * @throws {Error} Must have a type property with value 'MultiPoint'
  * @throws {Error} forbidden from having a property 'geometry', 'properties', or 'features'

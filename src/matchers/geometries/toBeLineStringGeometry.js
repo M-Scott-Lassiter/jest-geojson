@@ -11,7 +11,7 @@ const { lineStringGeometry } = require('../../core/geometries/lineStringGeometry
  *
  * @memberof Matchers.Geometries
  * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/11
- * @param {object} geometryObject a GeoJSON MultiPoint Geometry object
+ * @param {object} geometryObject a GeoJSON LineString Geometry object
  * @example
     const linestring = {
         "type": "LineString",

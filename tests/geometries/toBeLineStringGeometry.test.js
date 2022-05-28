@@ -21,7 +21,7 @@ const invalidInputValues = [
     '[0, 0]',
     '[[0, 0], [0, 0]]',
     JSON.stringify({
-        type: 'Point',
+        type: 'LineString',
         coordinates: [
             [25, 90],
             [2, 2]

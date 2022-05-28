@@ -35,6 +35,10 @@ describe('Geometry Matchers Exported', () => {
         expect('toBeLineStringGeometry' in matchers.geometries).toBeTruthy()
     })
 
+    test('toBeMultiLineStringGeometry', () => {
+        expect('toBeMultiLineStringGeometry' in matchers.geometries).toBeTruthy()
+    })
+
     test('toBeMultiPointGeometry', () => {
         expect('toBeMultiPointGeometry' in matchers.geometries).toBeTruthy()
     })
