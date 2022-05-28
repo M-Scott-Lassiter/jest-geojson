@@ -33,102 +33,86 @@ const invalidInputValues = [
 const coordinatesInRange = [
     [
         [
-            [
-                [0, 1],
-                [0, 2]
-            ],
-            [
-                [1, 0],
-                [2, 0],
-                [3, 0]
-            ]
+            [0, 1],
+            [0, 2]
+        ],
+        [
+            [1, 0],
+            [2, 0],
+            [3, 0]
         ]
     ],
     [
         [
-            [
-                [2, 20, 0],
-                [4, 10, 0]
-            ],
-            [
-                [3, 0.0, 0],
-                [6, -10, 0],
-                [9, -20, 0]
-            ]
+            [2, 20, 0],
+            [4, 10, 0]
+        ],
+        [
+            [3, 0.0, 0],
+            [6, -10, 0],
+            [9, -20, 0]
         ]
     ],
     [
         [
-            [
-                [100.0, 0.0],
-                [90, 0.0, 0]
-            ],
-            [
-                [100.0, 0.0, 0],
-                [110, 5],
-                [100.0, 11.33, 259]
-            ]
+            [100.0, 0.0],
+            [90, 0.0, 0]
+        ],
+        [
+            [100.0, 0.0, 0],
+            [110, 5],
+            [100.0, 11.33, 259]
         ]
     ],
     [
         [
-            [
-                [180.0, 40.0],
-                [180.0, 50.0],
-                [170.0, 50.0],
-                [170.0, 40.0],
-                [180.0, 40.0]
-            ]
+            [180.0, 40.0],
+            [180.0, 50.0],
+            [170.0, 50.0],
+            [170.0, 40.0],
+            [180.0, 40.0]
         ]
     ],
     [
         [
-            [
-                [175, 0],
-                [-175, 0]
-            ],
-            [
-                [-175, 0],
-                [175, 0]
-            ]
+            [175, 0],
+            [-175, 0]
+        ],
+        [
+            [-175, 0],
+            [175, 0]
         ]
     ],
     [
         [
-            [
-                [0, 0],
-                [0, 0],
-                [0, 0]
-            ]
+            [0, 0],
+            [0, 0],
+            [0, 0]
         ]
     ]
 ]
 const coordinatesOutOfRange = [
     [
         [
-            [
-                [0, 0],
-                [181, 91]
-            ],
-            [
-                [0, 0],
-                [181, -91]
-            ]
+            [0, 0],
+            [181, 91]
+        ],
+        [
+            [0, 0],
+            [181, -91]
         ]
     ],
     [
         [
-            [
-                [0, 0],
-                [-181, 91, 0]
-            ],
-            [
-                [0, 0],
-                [-181, -91, 200]
-            ]
+            [0, 0],
+            [-181, 91, 0]
+        ],
+        [
+            [0, 0],
+            [-181, -91, 200]
         ]
     ],
-    [[[[0, 0, 0, 0]]]]
+    [[[0, 0, 0, 0]]]
 ]
 const emptyArrays = [[[[[]]]], [[[[], []]]], [[[[], [], []]]]]
 const incorrectTypeValues = [
@@ -148,7 +132,7 @@ describe('Valid Use Cases', () => {
         test.each([...coordinatesInRange])('Good in range coordinates: %p', (coordinateArray) => {
             const testMultiPoint = {
                 type: 'MultiLineString',
-                coordinates: coordinateArray
+                coordinates: [coordinateArray]
             }
             expect(testMultiPoint).toBeMultiLineStringGeometry()
         })
@@ -243,7 +227,7 @@ describe('Inalid Use Cases', () => {
     })
 
     describe('Expect to fail with out of range or bad coordinate:', () => {
-        test.each([...coordinatesOutOfRange, ...invalidInputValues])(
+        test.each([[...coordinatesOutOfRange], ...invalidInputValues])(
             'coordinates: %p',
             (coordinate) => {
                 const testMultiLineString = {
