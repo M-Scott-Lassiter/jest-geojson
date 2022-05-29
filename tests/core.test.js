@@ -46,4 +46,8 @@ describe('Geometry Functions Exported', () => {
     test('pointGeometry', () => {
         expect('pointGeometry' in core.geometries).toBeTruthy()
     })
+
+    test('polygonGeometry', () => {
+        expect('polygonGeometry' in core.geometries).toBeTruthy()
+    })
 })

@@ -10,7 +10,8 @@ const coordinateMatchers = [
     { name: 'toBeLineStringGeometry' },
     { name: 'toBeMultiLineStringGeometry' },
     { name: 'toBeMultiPointGeometry' },
-    { name: 'toBePointGeometry' }
+    { name: 'toBePointGeometry' },
+    { name: 'toBePolygonGeometry' }
 ]
 
 const boundingBoxMatchers = []

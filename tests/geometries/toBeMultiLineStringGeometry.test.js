@@ -146,7 +146,7 @@ describe('Valid Use Cases', () => {
         test('Stress test with many points in many linestrings', () => {
             const testMultiPoint = {
                 type: 'MultiLineString',
-                coordinates: [[]]
+                coordinates: []
             }
             for (let i = 0; i < 30; i++) {
                 testMultiPoint.coordinates.push([])

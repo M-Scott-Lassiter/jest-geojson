@@ -16,5 +16,6 @@ exports.geometries = {
     lineStringGeometry: require('./core/geometries/lineStringGeometry'),
     multiLineStringGeometry: require('./core/geometries/multiLineStringGeometry'),
     multiPointGeometry: require('./core/geometries/multiPointGeometry'),
-    pointGeometry: require('./core/geometries/pointGeometry')
+    pointGeometry: require('./core/geometries/pointGeometry'),
+    polygonGeometry: require('./core/geometries/polygonGeometry')
 }
