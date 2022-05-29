@@ -1,3 +1,21 @@
+## [1.0.0-beta.10](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.0.0-beta.9...v1.0.0-beta.10) (2022-05-29)
+
+
+### :compass: API Documentation Changes
+
+* **toBeMultiLineStringGeometry:** add the min point count error to the JSDoc API ([01f6c4b](https://github.com/M-Scott-Lassiter/jest-geojson/commit/01f6c4b59f5a15a4edc8fddecc74bcdf845c367e))
+
+
+### :dart: Test Changes
+
+* **toBeMultiLineStringGeometry:** fix coordinate out of range test that ([d6fe2ac](https://github.com/M-Scott-Lassiter/jest-geojson/commit/d6fe2ac0bf70b1c2d2bf22b7cf227ecfabb85a34))
+* **toBeMultiPointGeometry:** fix typo in test and core function that was omitting coverage ([bc10f4e](https://github.com/M-Scott-Lassiter/jest-geojson/commit/bc10f4e64fc6ac443dc9f0b7ac615843408a21ff))
+
+
+### :gift: Feature Changes
+
+* **toBePolygonGeometry:** add new matcher ([3b9d18d](https://github.com/M-Scott-Lassiter/jest-geojson/commit/3b9d18d33342bfc933c232cc28d83dbf4e541d32)), closes [#13](https://github.com/M-Scott-Lassiter/jest-geojson/issues/13)
+
 ## [1.0.0-beta.9](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.0.0-beta.8...v1.0.0-beta.9) (2022-05-28)
 
 
