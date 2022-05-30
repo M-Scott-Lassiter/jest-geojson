@@ -150,6 +150,7 @@ _1.0.0_
 -   [x] toBeMultiLineStringGeometry
 -   [x] toBePolygonGeometry
 -   [x] toBeMultiPolygonGeometry
+-   [ ] toBeGeometryCollection
 -   [x] toBeAnyGeometry
 
 ---
@@ -157,17 +158,6 @@ _1.0.0_
 _Future_
 
 -   [ ] isMultiPolygonWithHole
-
-## Geometry Collections
-
-_1.0.0_
-
--   [ ] toBeGeometryCollection
-
----
-
-_Future_
-
 -   [ ] toHaveMinGeometryCount
 -   [ ] toHaveMaxGeometeyCount
 -   [ ] toHaveGeometeyCount (equal/min, max)

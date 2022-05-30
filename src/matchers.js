@@ -20,6 +20,8 @@ exports.coordinates = {
 
 // Features
 
+// Feature Collections
+
 // Geometries
 exports.geometries = {
     toBeAnyGeometry: require('./matchers/geometries/toBeAnyGeometry').toBeAnyGeometry,
@@ -35,6 +37,4 @@ exports.geometries = {
     toBePolygonGeometry: require('./matchers/geometries/toBePolygonGeometry').toBePolygonGeometry
 }
 
-// Properties
-
-// Winding
+// Functional
