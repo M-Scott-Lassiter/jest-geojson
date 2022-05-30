@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error Snapshot Testing. Throws error: expect([0, 0, 0]).toBeAnyGeometry 1`] = `
+"[2mexpect([22m[31mGeometryObject[39m[2m).toBeAnyGeometry()[22m
+
+Object must be either a valid Point, MultiPoint, LineString, MultiLineString, Polygon, or MultiPolygon
+
+Received:  [31mfalse[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: expect({type: 'Point', coordinates: [0, 0]}).not.toBeAnyGeometry 1`] = `
+"[2mexpect([22m[31mGeometryObject[39m[2m).not.toBeAnyGeometry()[22m
+
+Expected input to not be a valid GeoJSON geometry object.
+
+Received:  [31m{\\"coordinates\\": [0, 0], \\"type\\": \\"Point\\"}[39m"
+`;

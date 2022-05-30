@@ -31,6 +31,10 @@ describe('Coordinate Functions Exported', () => {
 })
 
 describe('Geometry Functions Exported', () => {
+    test('anyGeometry', () => {
+        expect('anyGeometry' in core.geometries).toBeTruthy()
+    })
+
     test('lineStringGeometry', () => {
         expect('lineStringGeometry' in core.geometries).toBeTruthy()
     })

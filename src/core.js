@@ -13,6 +13,7 @@ exports.coordinates = {
 }
 
 exports.geometries = {
+    anyGeometry: require('./core/geometries/anyGeometry'),
     lineStringGeometry: require('./core/geometries/lineStringGeometry'),
     multiLineStringGeometry: require('./core/geometries/multiLineStringGeometry'),
     multiPointGeometry: require('./core/geometries/multiPointGeometry'),

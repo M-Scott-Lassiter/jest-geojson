@@ -119,6 +119,7 @@ describe('Valid Use Cases', () => {
                 coordinates: coordinateArray
             }
             expect(testMultiPoint).toBeMultiPointGeometry()
+            expect(testMultiPoint).toBeAnyGeometry()
         })
 
         test('Empty coordinate', () => {
@@ -127,6 +128,7 @@ describe('Valid Use Cases', () => {
                 coordinates: []
             }
             expect(testMultiPoint).toBeMultiPointGeometry()
+            expect(testMultiPoint).toBeAnyGeometry()
         })
     })
 
@@ -164,12 +166,14 @@ describe('Valid Use Cases', () => {
                 ]
             }
             expect(testMultiPoint).toBeMultiPointGeometry()
+            expect(testMultiPoint).toBeAnyGeometry()
         })
 
         test.each([testMultiPoint1, testMultiPoint2, testMultiPoint3])(
             'Non-alphanumeric ID',
-            (testPoint) => {
-                expect(testPoint).toBeMultiPointGeometry()
+            (testMultiPoint) => {
+                expect(testMultiPoint).toBeMultiPointGeometry()
+                expect(testMultiPoint).toBeAnyGeometry()
             }
         )
     })
@@ -181,6 +185,7 @@ describe('Inalid Use Cases', () => {
             'expect(%p).not.toBeMultiPointGeometry()',
             (badInput) => {
                 expect(badInput).not.toBeMultiPointGeometry()
+                expect(badInput).not.toBeAnyGeometry()
             }
         )
     })
@@ -189,25 +194,27 @@ describe('Inalid Use Cases', () => {
         test.each([...coordinatesOutOfRange, ...invalidInputValues])(
             'coordinates: %p',
             (coordinate) => {
-                const testPoint = {
+                const testMultiPoint = {
                     type: 'MultiPoint',
                     coordinates: coordinate
                 }
-                expect(testPoint).not.toBeMultiPointGeometry()
+                expect(testMultiPoint).not.toBeMultiPointGeometry()
+                expect(testMultiPoint).not.toBeAnyGeometry()
             }
         )
     })
 
     describe('Expect to fail with bad type value:', () => {
         test.each([...incorrectTypeValues, ...invalidInputValues])('type: %p', (input) => {
-            const testPoint = {
+            const testMultiPoint = {
                 type: input,
                 coordinates: [
                     [0, 0],
                     [1, 1, 0]
                 ]
             }
-            expect(testPoint).not.toBeMultiPointGeometry()
+            expect(testMultiPoint).not.toBeMultiPointGeometry()
+            // No anyGeometry here because some of these match the same formats
         })
     })
 
@@ -226,6 +233,7 @@ describe('Inalid Use Cases', () => {
             }
 
             expect(testMultiPoint).not.toBeMultiPointGeometry()
+            expect(testMultiPoint).not.toBeAnyGeometry()
         })
 
         test(`Contains: 'properties'`, () => {
@@ -241,6 +249,7 @@ describe('Inalid Use Cases', () => {
             }
 
             expect(testMultiPoint).not.toBeMultiPointGeometry()
+            expect(testMultiPoint).not.toBeAnyGeometry()
         })
 
         test(`Contains: 'features'`, () => {
@@ -264,24 +273,27 @@ describe('Inalid Use Cases', () => {
                 ]
             }
             expect(testMultiPoint).not.toBeMultiPointGeometry()
+            expect(testMultiPoint).not.toBeAnyGeometry()
         })
     })
 
     describe('Expect to fail when missing required properties:', () => {
         test(`Missing: 'type'`, () => {
-            const testPoint = {
+            const testMultiPoint = {
                 coordinates: [
                     [0, 0],
                     [1, 1, 0]
                 ]
             }
-            expect(testPoint).not.toBeMultiPointGeometry()
+            expect(testMultiPoint).not.toBeMultiPointGeometry()
+            expect(testMultiPoint).not.toBeAnyGeometry()
         })
         test(`Missing: 'coordinates'`, () => {
-            const testPoint = {
+            const testMultiPoint = {
                 type: 'MultiPoint'
             }
-            expect(testPoint).not.toBeMultiPointGeometry()
+            expect(testMultiPoint).not.toBeMultiPointGeometry()
+            expect(testMultiPoint).not.toBeAnyGeometry()
         })
     })
 })

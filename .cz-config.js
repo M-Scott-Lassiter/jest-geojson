@@ -7,6 +7,7 @@ const coordinateMatchers = [
     { name: 'isValid3DCoordinate' },
     { name: 'isValidBoundingBox' },
     { name: 'isValidCoordinate' },
+    { name: 'toBeAnyGeometry' },
     { name: 'toBeLineStringGeometry' },
     { name: 'toBeMultiLineStringGeometry' },
     { name: 'toBeMultiPointGeometry' },

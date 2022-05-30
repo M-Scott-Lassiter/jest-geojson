@@ -140,30 +140,33 @@ const incorrectTypeValues = [
 describe('Valid Use Cases', () => {
     describe('Basic Formatting, Values in Range:', () => {
         test.each([...coordinatesInRange])('Good in range coordinates: %p', (coordinateArray) => {
-            const testMultiPoint = {
+            const testLineString = {
                 type: 'LineString',
                 coordinates: coordinateArray
             }
-            expect(testMultiPoint).toBeLineStringGeometry()
+            expect(testLineString).toBeLineStringGeometry()
+            expect(testLineString).toBeAnyGeometry()
         })
 
         test('Empty coordinate', () => {
-            const testMultiPoint = {
+            const testLineString = {
                 type: 'LineString',
                 coordinates: []
             }
-            expect(testMultiPoint).toBeLineStringGeometry()
+            expect(testLineString).toBeLineStringGeometry()
+            expect(testLineString).toBeAnyGeometry()
         })
 
         test('Stress test with many points', () => {
-            const testMultiPoint = {
+            const testLineString = {
                 type: 'LineString',
                 coordinates: []
             }
             for (let i = 0; i < 30; i++) {
-                testMultiPoint.coordinates.push([i, i])
+                testLineString.coordinates.push([i, i])
             }
-            expect(testMultiPoint).toBeLineStringGeometry()
+            expect(testLineString).toBeLineStringGeometry()
+            expect(testLineString).toBeAnyGeometry()
         })
     })
 
@@ -204,12 +207,14 @@ describe('Valid Use Cases', () => {
                 ]
             }
             expect(testLineString).toBeLineStringGeometry()
+            expect(testLineString).toBeAnyGeometry()
         })
 
         test.each([testLineString1, testLineString2, testLineString3])(
             'Non-alphanumeric ID',
             (testLineString) => {
                 expect(testLineString).toBeLineStringGeometry()
+                expect(testLineString).toBeAnyGeometry()
             }
         )
     })
@@ -221,6 +226,7 @@ describe('Inalid Use Cases', () => {
             'expect(%p).not.toBeLineStringGeometry()',
             (badInput) => {
                 expect(badInput).not.toBeLineStringGeometry()
+                expect(badInput).not.toBeAnyGeometry()
             }
         )
     })
@@ -234,6 +240,7 @@ describe('Inalid Use Cases', () => {
                     coordinates: coordinate
                 }
                 expect(testLineString).not.toBeLineStringGeometry()
+                expect(testLineString).not.toBeAnyGeometry()
             }
         )
     })
@@ -246,6 +253,7 @@ describe('Inalid Use Cases', () => {
                 coordinates: [[0, 0], coordinate]
             }
             expect(testLineString).not.toBeLineStringGeometry()
+            expect(testLineString).not.toBeAnyGeometry()
         })
     })
 
@@ -256,6 +264,7 @@ describe('Inalid Use Cases', () => {
                 coordinates: [[0, 0]]
             }
             expect(testLineString).not.toBeLineStringGeometry()
+            expect(testLineString).not.toBeAnyGeometry()
         })
     })
 
@@ -266,6 +275,7 @@ describe('Inalid Use Cases', () => {
                 coordinates: coordinate
             }
             expect(testLineString).not.toBeLineStringGeometry()
+            expect(testLineString).not.toBeAnyGeometry()
         })
     })
 
@@ -279,6 +289,7 @@ describe('Inalid Use Cases', () => {
                 ]
             }
             expect(testLineString).not.toBeLineStringGeometry()
+            // No anyGeometry here because some of these match the same formats
         })
     })
 
@@ -297,6 +308,7 @@ describe('Inalid Use Cases', () => {
             }
 
             expect(testLineString).not.toBeLineStringGeometry()
+            expect(testLineString).not.toBeAnyGeometry()
         })
 
         test(`Contains: 'properties'`, () => {
@@ -312,6 +324,7 @@ describe('Inalid Use Cases', () => {
             }
 
             expect(testLineString).not.toBeLineStringGeometry()
+            expect(testLineString).not.toBeAnyGeometry()
         })
 
         test(`Contains: 'features'`, () => {
@@ -335,6 +348,7 @@ describe('Inalid Use Cases', () => {
                 ]
             }
             expect(testLineString).not.toBeLineStringGeometry()
+            expect(testLineString).not.toBeAnyGeometry()
         })
     })
 
@@ -347,12 +361,14 @@ describe('Inalid Use Cases', () => {
                 ]
             }
             expect(testLineString).not.toBeLineStringGeometry()
+            expect(testLineString).not.toBeAnyGeometry()
         })
         test(`Missing: 'coordinates'`, () => {
             const testLineString = {
                 type: 'LineString'
             }
             expect(testLineString).not.toBeLineStringGeometry()
+            expect(testLineString).not.toBeAnyGeometry()
         })
     })
 })

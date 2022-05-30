@@ -39,6 +39,7 @@ describe('Valid Use Cases', () => {
                 coordinates: [25, 10.2]
             }
             expect(testPoint).toBePointGeometry()
+            expect(testPoint).toBeAnyGeometry()
         })
 
         test('Good 3D coordinate', () => {
@@ -47,6 +48,7 @@ describe('Valid Use Cases', () => {
                 coordinates: [-100.0, -15.0, 2000]
             }
             expect(testPoint).toBePointGeometry()
+            expect(testPoint).toBeAnyGeometry()
         })
 
         test('Empty coordinate', () => {
@@ -55,6 +57,7 @@ describe('Valid Use Cases', () => {
                 coordinates: []
             }
             expect(testPoint).toBePointGeometry()
+            expect(testPoint).toBeAnyGeometry()
         })
     })
 
@@ -83,10 +86,12 @@ describe('Valid Use Cases', () => {
                 coordinates: [25, 90]
             }
             expect(testPoint).toBePointGeometry()
+            expect(testPoint).toBeAnyGeometry()
         })
 
         test.each([testPoint1, testPoint2, testPoint3])('Non-alphanumeric ID', (testPoint) => {
             expect(testPoint).toBePointGeometry()
+            expect(testPoint).toBeAnyGeometry()
         })
     })
 })
@@ -95,6 +100,7 @@ describe('Inalid Use Cases', () => {
     describe('Expect to fail with bad inputs:', () => {
         test.each([...invalidInputValues])('expect(%p).not.toBePointGeometry()', (badInput) => {
             expect(badInput).not.toBePointGeometry()
+            expect(badInput).not.toBeAnyGeometry()
         })
     })
 
@@ -107,6 +113,7 @@ describe('Inalid Use Cases', () => {
                     coordinates: coordinate
                 }
                 expect(testPoint).not.toBePointGeometry()
+                expect(testPoint).not.toBeAnyGeometry()
             }
         )
     })
@@ -118,6 +125,7 @@ describe('Inalid Use Cases', () => {
                 coordinates: [0, 0]
             }
             expect(testPoint).not.toBePointGeometry()
+            // No anyGeometry here because some of these match the same formats
         })
     })
 
@@ -132,6 +140,7 @@ describe('Inalid Use Cases', () => {
                 }
             }
             expect(testPoint).not.toBePointGeometry()
+            expect(testPoint).not.toBeAnyGeometry()
         })
 
         test(`Contains: 'properties'`, () => {
@@ -143,6 +152,7 @@ describe('Inalid Use Cases', () => {
                 }
             }
             expect(testPoint).not.toBePointGeometry()
+            expect(testPoint).not.toBeAnyGeometry()
         })
 
         test(`Contains: 'features'`, () => {
@@ -163,6 +173,7 @@ describe('Inalid Use Cases', () => {
                 ]
             }
             expect(testPoint).not.toBePointGeometry()
+            expect(testPoint).not.toBeAnyGeometry()
         })
     })
 
@@ -172,6 +183,7 @@ describe('Inalid Use Cases', () => {
                 coordinates: [0, 0]
             }
             expect(testPoint).not.toBePointGeometry()
+            expect(testPoint).not.toBeAnyGeometry()
         })
 
         test(`Missing: 'coordinates'`, () => {
@@ -179,6 +191,7 @@ describe('Inalid Use Cases', () => {
                 type: 'Point'
             }
             expect(testPoint).not.toBePointGeometry()
+            expect(testPoint).not.toBeAnyGeometry()
         })
     })
 })

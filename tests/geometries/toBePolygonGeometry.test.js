@@ -113,6 +113,7 @@ describe('Valid Use Cases', () => {
                 coordinates: [counterClockwiseBox]
             }
             expect(testPolygon).toBePolygonGeometry()
+            expect(testPolygon).toBeAnyGeometry()
         })
 
         test('Good in range clockwise coordinates: %p', () => {
@@ -121,6 +122,7 @@ describe('Valid Use Cases', () => {
                 coordinates: [clockwiseBox]
             }
             expect(testPolygon).toBePolygonGeometry()
+            expect(testPolygon).toBeAnyGeometry()
         })
 
         test('Good in range counterclockwise exterior with clockwise hole: %p', () => {
@@ -129,6 +131,7 @@ describe('Valid Use Cases', () => {
                 coordinates: [[...counterClockwiseBox], [...clockwiseHole]]
             }
             expect(testPolygon).toBePolygonGeometry()
+            expect(testPolygon).toBeAnyGeometry()
         })
 
         test('Good in range counterclockwise exterior with counterclockwise hole: %p', () => {
@@ -137,6 +140,7 @@ describe('Valid Use Cases', () => {
                 coordinates: [[...counterClockwiseBox], [...counterClockwiseHole]]
             }
             expect(testPolygon).toBePolygonGeometry()
+            expect(testPolygon).toBeAnyGeometry()
         })
 
         test('Good in range clockwise exterior with clockwise hole: %p', () => {
@@ -145,6 +149,7 @@ describe('Valid Use Cases', () => {
                 coordinates: [[...clockwiseBox], [...clockwiseHole]]
             }
             expect(testPolygon).toBePolygonGeometry()
+            expect(testPolygon).toBeAnyGeometry()
         })
 
         test('Good in range clockwise exterior with counterclockwise hole: %p', () => {
@@ -153,6 +158,7 @@ describe('Valid Use Cases', () => {
                 coordinates: [[...clockwiseBox], [...counterClockwiseHole]]
             }
             expect(testPolygon).toBePolygonGeometry()
+            expect(testPolygon).toBeAnyGeometry()
         })
 
         test('Empty coordinate', () => {
@@ -161,6 +167,7 @@ describe('Valid Use Cases', () => {
                 coordinates: []
             }
             expect(testPolygon).toBePolygonGeometry()
+            expect(testPolygon).toBeAnyGeometry()
         })
 
         test('Spanning the antimeridian', () => {
@@ -179,6 +186,7 @@ describe('Valid Use Cases', () => {
                 coordinates: [points]
             }
             expect(testPolygon).toBePolygonGeometry()
+            expect(testPolygon).toBeAnyGeometry()
         })
 
         test('Stress test with many points in many holes', () => {
@@ -194,6 +202,7 @@ describe('Valid Use Cases', () => {
                 testPolygon.coordinates[i].push([0, 0])
             }
             expect(testPolygon).toBePolygonGeometry()
+            expect(testPolygon).toBeAnyGeometry()
         })
     })
 
@@ -222,12 +231,14 @@ describe('Valid Use Cases', () => {
                 coordinates: [counterClockwiseBox]
             }
             expect(testPolygon).toBePolygonGeometry()
+            expect(testPolygon).toBeAnyGeometry()
         })
 
         test.each([testPolygon1, testPolygon2, testPolygon3])(
             'Non-alphanumeric ID',
             (testPolygon) => {
                 expect(testPolygon).toBePolygonGeometry()
+                expect(testPolygon).toBeAnyGeometry()
             }
         )
     })
@@ -261,6 +272,7 @@ describe('Valid Use Cases', () => {
                 coordinates: [points]
             }
             expect(testPolygon).toBePolygonGeometry()
+            expect(testPolygon).toBeAnyGeometry()
         })
 
         test('Redundant Interior ring all the same point', () => {
@@ -269,6 +281,7 @@ describe('Valid Use Cases', () => {
                 coordinates: [counterClockwiseBox, samePoint1]
             }
             expect(testPolygon).toBePolygonGeometry()
+            expect(testPolygon).toBeAnyGeometry()
         })
 
         test('Interior rings outside exterior rings', () => {
@@ -277,6 +290,7 @@ describe('Valid Use Cases', () => {
                 coordinates: [counterClockwiseBox, samePoint2]
             }
             expect(testPolygon).toBePolygonGeometry()
+            expect(testPolygon).toBeAnyGeometry()
         })
     })
 })
@@ -285,6 +299,7 @@ describe('Inalid Use Cases', () => {
     describe('Expect to fail with bad inputs:', () => {
         test.each([...invalidInputValues])('expect(%p).not.toBePolygonGeometry()', (badInput) => {
             expect(badInput).not.toBePolygonGeometry()
+            expect(badInput).not.toBeAnyGeometry()
         })
     })
 
@@ -297,6 +312,7 @@ describe('Inalid Use Cases', () => {
                     coordinates: coordinate
                 }
                 expect(testPolygon).not.toBePolygonGeometry()
+                expect(testPolygon).not.toBeAnyGeometry()
             }
         )
     })
@@ -311,6 +327,7 @@ describe('Inalid Use Cases', () => {
                     coordinates: [[[0, 0], [0, 1], [1, 1], coordinate, [0, 0]]]
                 }
                 expect(testPolygon).not.toBePolygonGeometry()
+                expect(testPolygon).not.toBeAnyGeometry()
             }
         )
     })
@@ -322,6 +339,7 @@ describe('Inalid Use Cases', () => {
                 coordinates: [[[0, 0]]]
             }
             expect(testPolygon).not.toBePolygonGeometry()
+            expect(testPolygon).not.toBeAnyGeometry()
         })
 
         test('coordinates: [[[0, 0], [1, 1]]]', () => {
@@ -335,6 +353,7 @@ describe('Inalid Use Cases', () => {
                 ]
             }
             expect(testPolygon).not.toBePolygonGeometry()
+            expect(testPolygon).not.toBeAnyGeometry()
         })
 
         test('coordinates: [[[0, 0], [1, 1]], [[1, 0]]]', () => {
@@ -349,6 +368,7 @@ describe('Inalid Use Cases', () => {
                 ]
             }
             expect(testPolygon).not.toBePolygonGeometry()
+            expect(testPolygon).not.toBeAnyGeometry()
         })
     })
 
@@ -366,6 +386,7 @@ describe('Inalid Use Cases', () => {
                 coordinates: [[...incompletePolygon]]
             }
             expect(testPolygon).not.toBePolygonGeometry()
+            expect(testPolygon).not.toBeAnyGeometry()
         })
 
         test('Good exterior, bad hole', () => {
@@ -374,6 +395,7 @@ describe('Inalid Use Cases', () => {
                 coordinates: [[...counterClockwiseBox], [...incompletePolygon]]
             }
             expect(testPolygon).not.toBePolygonGeometry()
+            expect(testPolygon).not.toBeAnyGeometry()
         })
 
         test('Good exterior, two bad holes', () => {
@@ -386,6 +408,7 @@ describe('Inalid Use Cases', () => {
                 ]
             }
             expect(testPolygon).not.toBePolygonGeometry()
+            expect(testPolygon).not.toBeAnyGeometry()
         })
 
         test('Bad exterior, good hole', () => {
@@ -394,6 +417,7 @@ describe('Inalid Use Cases', () => {
                 coordinates: [[...incompletePolygon], [...counterClockwiseHole]]
             }
             expect(testPolygon).not.toBePolygonGeometry()
+            expect(testPolygon).not.toBeAnyGeometry()
         })
 
         test('Bad exterior, two good holes', () => {
@@ -402,6 +426,7 @@ describe('Inalid Use Cases', () => {
                 coordinates: [[...incompletePolygon], [...counterClockwiseHole], [...clockwiseHole]]
             }
             expect(testPolygon).not.toBePolygonGeometry()
+            expect(testPolygon).not.toBeAnyGeometry()
         })
     })
 
@@ -412,6 +437,7 @@ describe('Inalid Use Cases', () => {
                 coordinates: [coordinate]
             }
             expect(testPolygon).not.toBePolygonGeometry()
+            expect(testPolygon).not.toBeAnyGeometry()
         })
     })
 
@@ -422,6 +448,7 @@ describe('Inalid Use Cases', () => {
                 coordinates: counterClockwiseBox
             }
             expect(testPolygon).not.toBePolygonGeometry()
+            // No anyGeometry here because some of these match the same formats
         })
     })
 
@@ -436,6 +463,7 @@ describe('Inalid Use Cases', () => {
                 }
             }
             expect(testPolygon).not.toBePolygonGeometry()
+            expect(testPolygon).not.toBeAnyGeometry()
         })
 
         test(`Contains: 'properties'`, () => {
@@ -447,6 +475,7 @@ describe('Inalid Use Cases', () => {
                 }
             }
             expect(testPolygon).not.toBePolygonGeometry()
+            expect(testPolygon).not.toBeAnyGeometry()
         })
 
         test(`Contains: 'features'`, () => {
@@ -467,6 +496,7 @@ describe('Inalid Use Cases', () => {
                 ]
             }
             expect(testPolygon).not.toBePolygonGeometry()
+            expect(testPolygon).not.toBeAnyGeometry()
         })
     })
 
@@ -476,6 +506,7 @@ describe('Inalid Use Cases', () => {
                 coordinates: counterClockwiseBox
             }
             expect(testPolygon).not.toBePolygonGeometry()
+            expect(testPolygon).not.toBeAnyGeometry()
         })
 
         test(`Missing: 'coordinates'`, () => {
@@ -483,6 +514,7 @@ describe('Inalid Use Cases', () => {
                 type: 'Polygon'
             }
             expect(testPolygon).not.toBePolygonGeometry()
+            expect(testPolygon).not.toBeAnyGeometry()
         })
     })
 })
