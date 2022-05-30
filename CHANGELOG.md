@@ -1,3 +1,10 @@
+## [1.0.0-beta.11](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.0.0-beta.10...v1.0.0-beta.11) (2022-05-30)
+
+
+### :gift: Feature Changes
+
+* **toBeMultiPolygonGeometry:** add new matcher ([41fef3a](https://github.com/M-Scott-Lassiter/jest-geojson/commit/41fef3a452c2045d976b6603bfe989fd65c346a0)), closes [#14](https://github.com/M-Scott-Lassiter/jest-geojson/issues/14)
+
 ## [1.0.0-beta.10](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.0.0-beta.9...v1.0.0-beta.10) (2022-05-29)
 
 
