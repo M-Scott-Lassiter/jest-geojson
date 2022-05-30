@@ -28,6 +28,8 @@ exports.geometries = {
         .toBeMultiLineStringGeometry,
     toBeMultiPointGeometry: require('./matchers/geometries/toBeMultiPointGeometry')
         .toBeMultiPointGeometry,
+    toBeMultiPolygonGeometry: require('./matchers/geometries/toBeMultiPolygonGeometry')
+        .toBeMultiPolygonGeometry,
     toBePointGeometry: require('./matchers/geometries/toBePointGeometry').toBePointGeometry,
     toBePolygonGeometry: require('./matchers/geometries/toBePolygonGeometry').toBePolygonGeometry
 }

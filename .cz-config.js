@@ -10,6 +10,7 @@ const coordinateMatchers = [
     { name: 'toBeLineStringGeometry' },
     { name: 'toBeMultiLineStringGeometry' },
     { name: 'toBeMultiPointGeometry' },
+    { name: 'toBeMultiPolygonGeometry' },
     { name: 'toBePointGeometry' },
     { name: 'toBePolygonGeometry' }
 ]

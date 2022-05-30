@@ -160,7 +160,7 @@ _1.0.0_
 -   [x] toBeLineStringGeometry
 -   [x] toBeMultiLineStringGeometry
 -   [x] toBePolygonGeometry
--   [ ] toBeMultiPolygonGeometry
+-   [x] toBeMultiPolygonGeometry
 -   [ ] toBeAnyGeometry
 
 ---

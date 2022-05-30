@@ -43,6 +43,10 @@ describe('Geometry Functions Exported', () => {
         expect('multiPointGeometry' in core.geometries).toBeTruthy()
     })
 
+    test('multiPolygonGeometry', () => {
+        expect('multiPolygonGeometry' in core.geometries).toBeTruthy()
+    })
+
     test('pointGeometry', () => {
         expect('pointGeometry' in core.geometries).toBeTruthy()
     })

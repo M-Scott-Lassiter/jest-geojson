@@ -43,6 +43,10 @@ describe('Geometry Matchers Exported', () => {
         expect('toBeMultiPointGeometry' in matchers.geometries).toBeTruthy()
     })
 
+    test('toBeMultiPolygonGeometry', () => {
+        expect('toBeMultiPolygonGeometry' in matchers.geometries).toBeTruthy()
+    })
+
     test('toBePointGeometry', () => {
         expect('toBePointGeometry' in matchers.geometries).toBeTruthy()
     })
