@@ -93,31 +93,30 @@ function polygonGeometry(geometryObject) {
         throw new Error('Coordinates property must be an array of valid GeoJSON coordinates.')
     }
 
-    for (let i = 0; i < geometryObject.coordinates.length; i++) {
-        if (
-            // Each element within the coordinates array must also be an array, and it must have at least 4 elements
-            !Array.isArray(geometryObject.coordinates[i]) ||
-            geometryObject.coordinates[i].length < 4
-        ) {
+    geometryObject.coordinates.forEach((linearRing) => {
+        if (!Array.isArray(linearRing)) {
+            throw new Error('Polygon linear ring must be an array of valid GeoJSON coordinates.')
+        }
+        if (linearRing.length < 4) {
             throw new Error(
                 'Coordinates array must contain four or more valid GeoJSON coordinates.'
             )
-        }
-        for (let j = 0; j < geometryObject.coordinates[i].length; j++) {
-            validCoordinate(geometryObject.coordinates[i][j])
         }
 
         // Can't directly compare the arrays, so turn them to strings. The orders in GeoJSON applications
         // will always be known, therefore this is an acceptable way to test equality.
         // See https://stackoverflow.com/questions/30820611/why-doesnt-equality-check-work-with-arrays
-        const finalIndex = geometryObject.coordinates[i].length - 1
-        const firstCoord = JSON.stringify(geometryObject.coordinates[i][0])
-        const finalCoord = JSON.stringify(geometryObject.coordinates[i][finalIndex])
-
+        const finalIndex = linearRing.length - 1
+        const firstCoord = JSON.stringify(linearRing[0])
+        const finalCoord = JSON.stringify(linearRing[finalIndex])
         if (firstCoord !== finalCoord) {
             throw new Error('Final coordinate must match first coordinate.')
         }
-    }
+
+        linearRing.forEach((coordinate) => {
+            validCoordinate(coordinate)
+        })
+    })
 
     return true
 }
