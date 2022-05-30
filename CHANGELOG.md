@@ -1,3 +1,15 @@
+## [1.0.0-beta.12](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.0.0-beta.11...v1.0.0-beta.12) (2022-05-30)
+
+
+### :gift: Feature Changes
+
+* **toBeAnyGeometry:** add new matcher ([ed7c3eb](https://github.com/M-Scott-Lassiter/jest-geojson/commit/ed7c3ebf567f033998d88a4b963f16abaecfc1db)), closes [#15](https://github.com/M-Scott-Lassiter/jest-geojson/issues/15)
+
+
+### :compass: API Documentation Changes
+
+* **all:** cleanup JSDoc formatting and standardize API examples ([300a96d](https://github.com/M-Scott-Lassiter/jest-geojson/commit/300a96d7798e4cd3918dbd2248619da5b541f0a6))
+
 ## [1.0.0-beta.11](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.0.0-beta.10...v1.0.0-beta.11) (2022-05-30)
 
 
