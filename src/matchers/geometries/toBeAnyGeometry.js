@@ -3,7 +3,7 @@ const { anyGeometry } = require('../../core/geometries/anyGeometry')
 // eslint-disable-next-line jsdoc/require-returns
 /**
  * Verifies an object meets validity requirements for one of the six basic GeoJSON geometry types:
- * Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon
+ * Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon, GeometryCollection
  *
  * @memberof Matchers.Geometries
  * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/15

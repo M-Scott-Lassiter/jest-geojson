@@ -109,8 +109,8 @@ function multiPolygonGeometry(geometryObject) {
         )
     }
 
-    // // Geometry objects are allowed to have empty arrays as coordinates, however validCoordinate may not.
-    // // If coordinates is an empty array, we're done. Otherwise, check for coordinate validity.
+    // Geometry objects are allowed to have empty arrays as coordinates, however validCoordinate may not.
+    // If coordinates is an empty array, we're done. Otherwise, check for coordinate validity.
     if (!Array.isArray(geometryObject.coordinates)) {
         throw new Error(
             'Coordinates property must be an array of valid GeoJSON polygon coordinate arrays.'

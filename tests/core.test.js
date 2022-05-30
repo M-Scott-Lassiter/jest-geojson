@@ -35,6 +35,10 @@ describe('Geometry Functions Exported', () => {
         expect('anyGeometry' in core.geometries).toBeTruthy()
     })
 
+    test('geometryCollection', () => {
+        expect('geometryCollection' in core.geometries).toBeTruthy()
+    })
+
     test('lineStringGeometry', () => {
         expect('lineStringGeometry' in core.geometries).toBeTruthy()
     })

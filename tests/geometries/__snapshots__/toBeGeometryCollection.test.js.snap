@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error Snapshot Testing. Throws error: expect({type: 'GeometryCollection', geometries: []}).not.toBeGeometryCollection 1`] = `
+"[2mexpect([22m[31mGeometryObject[39m[2m).not.toBeGeometryCollection()[22m
+
+Expected input to not be a valid GeoJSON GeometryCollection object.
+
+Received:  [31m{\\"geometries\\": [], \\"type\\": \\"GeometryCollection\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: expect(false).toBeGeometryCollection() 1`] = `
+"[2mexpect([22m[31mGeometryObject[39m[2m).toBeGeometryCollection()[22m
+
+Argument must be a GeoJSON GeometryCollection object.
+
+Received:  [31mfalse[39m"
+`;

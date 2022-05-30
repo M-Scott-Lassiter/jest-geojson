@@ -35,6 +35,10 @@ describe('Geometry Matchers Exported', () => {
         expect('toBeAnyGeometry' in matchers.geometries).toBeTruthy()
     })
 
+    test('toBeGeometryCollection', () => {
+        expect('toBeGeometryCollection' in matchers.geometries).toBeTruthy()
+    })
+
     test('toBeLineStringGeometry', () => {
         expect('toBeLineStringGeometry' in matchers.geometries).toBeTruthy()
     })

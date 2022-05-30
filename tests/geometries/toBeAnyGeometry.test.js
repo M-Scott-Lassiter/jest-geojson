@@ -1,10 +1,10 @@
 // This matcher works on all the same geometry cases.
 // Accordingly, those specific tests check that this function also work.
-// This test suite also checks it fails with types GeometryCollection, Feature, and FeatureCollection.
+// This test suite also checks it fails with types Feature or FeatureCollection.
 // Finally, it tests the unique snapshots.
 
-describe('Invalid Use Cases', () => {
-    test('Expect to fail with GeometryCollection', () => {
+describe('Valid Use Cases', () => {
+    test('Expect to pass with GeometryCollection', () => {
         const geometryCollection = {
             type: 'GeometryCollection',
             geometries: [
@@ -21,9 +21,11 @@ describe('Invalid Use Cases', () => {
                 }
             ]
         }
-        expect(geometryCollection).not.toBeAnyGeometry()
+        expect(geometryCollection).toBeAnyGeometry()
     })
+})
 
+describe('Invalid Use Cases', () => {
     test('Expect to fail with Feature', () => {
         const feature = {
             type: 'Feature',
@@ -98,7 +100,7 @@ describe('Error Snapshot Testing. Throws error:', () => {
             expect({ type: 'Point', coordinates: [0, 0] }).not.toBeAnyGeometry()
         ).toThrowErrorMatchingSnapshot()
     })
-    test('expect([0, 0, 0]).toBeAnyGeometry', () => {
+    test('expect(false).toBeAnyGeometry', () => {
         expect(() => expect(false).toBeAnyGeometry()).toThrowErrorMatchingSnapshot()
     })
 })

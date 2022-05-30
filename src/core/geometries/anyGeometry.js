@@ -4,16 +4,17 @@ const { lineStringGeometry } = require('./lineStringGeometry')
 const { multiLineStringGeometry } = require('./multiLineStringGeometry')
 const { polygonGeometry } = require('./polygonGeometry')
 const { multiPolygonGeometry } = require('./multiPolygonGeometry')
+// const { geometryCollection } = require('./geometryCollection')
 
 /**
  * Verifies an object meets validity requirements for one of the six basic GeoJSON geometry types:
- * Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon
+ * Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon, GeometryCollection
  *
  * @memberof Core.Geometries
  * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/15
  * @param {object} geometryObject A WGS-84 array of [longitude, latitude] or [longitude, latitude, alititude]
  * @returns {boolean} True if a valid GeoJSON geometry object. If invalid, it will throw an error.
- * @throws {Error} Input must be either a valid Point, MultiPoint, LineString, MultiLineString, Polygon, or MultiPolygon
+ * @throws {Error} Input must be either a valid Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon, or GeometryCollection
  * @example
  * point = {
  *     type: 'Point',
@@ -58,13 +59,22 @@ const { multiPolygonGeometry } = require('./multiPolygonGeometry')
  * const badExample = anyGeometry(feature)) // throws error
  */
 function anyGeometry(geometryObject) {
-    // if (
-    //     typeof geometryObject !== 'object' ||
-    //     Array.isArray(geometryObject) ||
-    //     geometryObject === null
-    // ) {
-    //     throw new Error('Argument must be a GeoJSON Geometry object.')
-    // }
+    // The three prohibited properties below account for nested GeometryCollection objects. All other geometry
+    // core functions include these within them, including geometryCollection.js.
+    // Note: This might be a good set of checks to abstract away in a utility function later...
+    if ('geometry' in geometryObject) {
+        throw new Error(`GeoJSON Geometry objects are forbidden from having a property 'geometry'.`)
+    }
+
+    if ('properties' in geometryObject) {
+        throw new Error(
+            `GeoJSON Geometry objects are forbidden from having a property 'properties'.`
+        )
+    }
+
+    if ('features' in geometryObject) {
+        throw new Error(`GeoJSON Geometry objects are forbidden from having a property 'features'.`)
+    }
 
     if (geometryObject?.type === 'Point') {
         pointGeometry(geometryObject)
@@ -93,6 +103,13 @@ function anyGeometry(geometryObject) {
 
     if (geometryObject?.type === 'MultiPolygon') {
         multiPolygonGeometry(geometryObject)
+        return true
+    }
+
+    if (geometryObject?.type === 'GeometryCollection') {
+        geometryObject.geometries.forEach((geometry) => {
+            anyGeometry(geometry)
+        })
         return true
     }
 

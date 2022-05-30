@@ -41,7 +41,6 @@
     -   [Coordiantes](#coordiantes)
     -   [Bounding Boxes](#bounding-boxes)
     -   [Geometries](#geometries)
-    -   [Geometry Collections](#geometry-collections)
     -   [Features](#features)
     -   [Feature Collections](#feature-collections)
     -   [Functional](#functional)
@@ -150,7 +149,7 @@ _1.0.0_
 -   [x] toBeMultiLineStringGeometry
 -   [x] toBePolygonGeometry
 -   [x] toBeMultiPolygonGeometry
--   [ ] toBeGeometryCollection
+-   [x] toBeGeometryCollection
 -   [x] toBeAnyGeometry
 
 ---
