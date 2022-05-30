@@ -14,6 +14,12 @@ const { valid3DBoundingBox } = require('./valid3DBoundingBox')
  * The standard does not specify units altitude represents (i.e. meters, feet, etc.).
  * @returns {boolean} True if a valid 2D or 3D GeoJSON bounding box. If invalid, it will throw an error.
  * @throws {Error} Input must be an array of only four or six elments
+ * @example
+ * const good2DBBox = validBoundingBox([-10, -20, 20, -10]) // true
+ * const good3DBBox = validBoundingBox([-10, -20, -100, 20, 10, 0]) // true
+ *
+ * const badExample1 = validBoundingBox([-10, -91, 10, 20]) // throws error for south being out of range
+ * const badExample2 = validBoundingBox([-10, -10, "0", 10, 20, 0]) // throws error for non-numeric value
  */
 function validBoundingBox(bboxArray) {
     if (!Array.isArray(bboxArray)) {

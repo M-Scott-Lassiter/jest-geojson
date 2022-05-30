@@ -21,57 +21,58 @@ const { validCoordinate } = require('../coordinates/validCoordinate')
  * @throws {Error} forbidden from having a property 'geometry', 'properties', or 'features'
  * @example
  * const multiPolygon = {
-        "type": "MultiPolygon",
-        "coordinates": [
-            [
-                [
-                    [102.0, 2.0],
-                    [103.0, 2.0],
-                    [103.0, 3.0],
-                    [102.0, 3.0],
-                    [102.0, 2.0]
-                ]
-            ],
-            [
-                [
-                    [100.0, 0.0],
-                    [101.0, 0.0],
-                    [101.0, 1.0],
-                    [100.0, 1.0],
-                    [100.0, 0.0]
-                ],
-                [
-                    [100.2, 0.2],
-                    [100.2, 0.8],
-                    [100.8, 0.8],
-                    [100.8, 0.2],
-                    [100.2, 0.2]
-                ]
-            ]
-        ]
-    }
-    const multiPolygonWithSingleElement = {
-        "type": "MultiPolygon",
-        "coordinates": [
-            [
-                [
-                    [102.0, 2.0],
-                    [103.0, 2.0],
-                    [103.0, 3.0],
-                    [102.0, 3.0],
-                    [102.0, 2.0]
-                ]
-            ]
-        ]
-    }
-    const point = {
-        type: "Point",
-        coordinates: [100.0, 0.0]
-    }
- 
-    console.log(multiPolygonGeometry(multiPolygon)) // true
-    console.log(multiPolygonGeometry(multiPolygonWithSingleElement)) // true
-    console.log(multiPolygonGeometry(point)) // throws error
+ *     type: 'MultiPolygon',
+ *     coordinates: [
+ *         [
+ *             [
+ *                 [102.0, 2.0],
+ *                 [103.0, 2.0],
+ *                 [103.0, 3.0],
+ *                 [102.0, 3.0],
+ *                 [102.0, 2.0]
+ *             ]
+ *         ],
+ *         [
+ *             [
+ *                 [100.0, 0.0],
+ *                 [101.0, 0.0],
+ *                 [101.0, 1.0],
+ *                 [100.0, 1.0],
+ *                 [100.0, 0.0]
+ *             ],
+ *             [
+ *                 [100.2, 0.2],
+ *                 [100.2, 0.8],
+ *                 [100.8, 0.8],
+ *                 [100.8, 0.2],
+ *                 [100.2, 0.2]
+ *             ]
+ *         ]
+ *     ]
+ * }
+ * const multiPolygonWithSingleElement = {
+ *     type: 'MultiPolygon',
+ *     coordinates: [
+ *         [
+ *             [
+ *                 [102.0, 2.0],
+ *                 [103.0, 2.0],
+ *                 [103.0, 3.0],
+ *                 [102.0, 3.0],
+ *                 [102.0, 2.0]
+ *             ]
+ *         ]
+ *     ]
+ * }
+ * const point = {
+ *     type: 'Point',
+ *     coordinates: [100.0, 0.0]
+ * }
+ *
+ * const goodExample1 = multiPolygonGeometry(multiPolygon) // true
+ * const goodExample2 = multiPolygonGeometry(multiPolygonWithSingleElement) // true
+ *
+ * const badExample = multiPolygonGeometry(point) // throws error
  */
 function multiPolygonGeometry(geometryObject) {
     if (

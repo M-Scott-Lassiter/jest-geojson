@@ -12,9 +12,9 @@
  * @example
  * const goodBBox = valid2DBoundingBox([-10, -20, 20, -10]) // true
  * const crossesAntimeridian = valid2DBoundingBox([170, -20, -170, 20]) // true
- * @example
- * const badExample1 valid2DBoundingBox([-10, -200, 20, -10]) // throws error for south being out of range
- * const badExample2 valid2DBoundingBox([-10, -20, '20', -10]) // throws error for non-numeric value
+ *
+ * const badExample1 = valid2DBoundingBox([-10, -200, 20, -10]) // throws error for south being out of range
+ * const badExample2 = valid2DBoundingBox([-10, -20, '20', -10]) // throws error for non-numeric value
  */
 function valid2DBoundingBox(bboxArray) {
     if (!Array.isArray(bboxArray) || bboxArray.length !== 4) {

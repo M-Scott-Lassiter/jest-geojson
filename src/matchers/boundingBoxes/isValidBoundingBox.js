@@ -14,13 +14,22 @@ const { validBoundingBox } = require('../../core/boundingBoxes/validBoundingBox'
  * If present, depth and altitude must be a number between -Infinity to Infinity.
  * The standard does not specify units altitude represents (i.e. meters, feet, etc.).
  * @example
- * expect([-20, 10, -10, 20]).isValidBoundingBox()
- * expect([170, -20, -170, 20]).isValidBoundingBox()
- * expect([-10, -20, -100, 20, 10, 0]).isValidBoundingBox()
- * expect([170, -20, -22.5, 20, -170, 12345.678]).isValidBoundingBox()
+ * test('Object is valid GeoJSON', () => {
+ *      expect([220, 56]).not.isValidCoordinate() // Longitude out of range
+ *      expect([22, 45.733, '0']).not.isValidCoordinate()
+ *      // Nested Arrays
+ *      expect([[22, 45.733, 0]]).not.isValidCoordinate()
+ *      expect([[22, 45.733, 0], [180, 90, 0]]).not.isValidCoordinate()
+ *      expect([-20, 10, -10, 20]).isValidBoundingBox()
+ *      expect([170, -20, -170, 20]).isValidBoundingBox()
+ *      expect([-10, -20, -100, 20, 10, 0]).isValidBoundingBox()
+ *      expect([170, -20, -22.5, 20, -170, 12345.678]).isValidBoundingBox()
+ *  })
  * @example
- * expect([-180.01, -10, -160, 10]).not.isValidBoundingBox() // Longitude out of range
- * expect([-10, -10, "0", 10, 20, 0]).not.isValidBoundingBox() // Non-numeric value
+ * test('Object is NOT valid GeoJSON', () => {
+ *      expect([-180.01, -10, -160, 10]).not.isValidBoundingBox() // Longitude out of range
+ *      expect([-10, -10, "0", 10, 20, 0]).not.isValidBoundingBox() // Non-numeric value
+ *  })
  */
 function isValidBoundingBox(coordinateArray) {
     const { printReceived, matcherHint } = this.utils

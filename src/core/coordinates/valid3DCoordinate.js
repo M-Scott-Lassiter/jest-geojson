@@ -9,6 +9,12 @@ const { valid2DCoordinate } = require('./valid2DCoordinate')
  * @returns {boolean} True if a valid 3D GeoJSON coordinate. If invalid, it will throw an error.
  * @throws {Error} Input must be an array of only three elments
  * @throws {Error} Altitude value must be numeric
+ * @example
+ * const goodCoord = valid3DCoordinate([10, 20, 0]) // true
+ *
+ * const badExample1 = valid3DBoundingBox([10, -200, 0]) // throws error for latitude being out of range
+ * const badExample2 = valid3DBoundingBox([10, 20, '0']) // throws error for altitude being a string instead of number
+ * const badExample3 = valid3DBoundingBox([10, 0]) // throws error for 2D Coordinate
  */
 function valid3DCoordinate(coordinate) {
     if (!Array.isArray(coordinate) || coordinate.length !== 3) {

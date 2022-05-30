@@ -12,12 +12,16 @@ const { valid2DBoundingBox } = require('../../core/boundingBoxes/valid2DBounding
  * North must be greater than or equal to south.
  * Bounding boxes that cross the antimeridian will have an eastern value less than the western value.
  * @example
- * expect([-20, 10, -10, 20]).isValid2DBoundingBox()
- * expect([170, -20, -170, 20]).isValid2DBoundingBox() // Crosses antimeridian
+ * test('Object is valid GeoJSON', () => {
+ *      expect([-20, 10, -10, 20]).isValid2DBoundingBox()
+ *      expect([170, -20, -170, 20]).isValid2DBoundingBox() // Crosses antimeridian
+ *  })
  * @example
- * expect([-180.01, -10, -160, 10]).not.isValid2DBoundingBox() // Longitude out of range
- * expect([-20, 10, 0, -10, 20, 0]).not.isValid2DBoundingBox() //3D bounding box
- * expect([-20, 10, -10, false]).not.isValid2DBoundingBox() // Non-numeric value
+ * test('Object is NOT valid GeoJSON', () => {
+ *      expect([-180.01, -10, -160, 10]).not.isValid2DBoundingBox() // Longitude out of range
+ *      expect([-20, 10, 0, -10, 20, 0]).not.isValid2DBoundingBox() //3D bounding box
+ *      expect([-20, 10, -10, false]).not.isValid2DBoundingBox() // Non-numeric value
+ *  })
  */
 function isValid2DBoundingBox(bboxArray) {
     const { printReceived, matcherHint } = this.utils

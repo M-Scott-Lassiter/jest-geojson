@@ -6,7 +6,7 @@ const { multiPolygonGeometry } = require('../../core/geometries/multiPolygonGeom
  * 'type' property that must equal "MultiPolygon", and a 'coordinates' property that contains
  * an array of polygon coordinate arrays. Each coordinate array must contain at least four valid
  * WGS-84 GeoJSON coordinates, and the final coordinate must equal the first.
- * 
+ *
  * The coordinates may be an empty array, but may not be an array of empty arrays.
  *
  * Foreign members are allowed with the exception of 'geometry', 'properties', or 'features'.
@@ -15,59 +15,64 @@ const { multiPolygonGeometry } = require('../../core/geometries/multiPolygonGeom
  * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/14
  * @param {object} geometryObject a GeoJSON Polygon Geometry object
  * @example
-    const multiPolygon = {
-        "type": "MultiPolygon",
-        "coordinates": [
-            [
-                [
-                    [102.0, 2.0],
-                    [103.0, 2.0],
-                    [103.0, 3.0],
-                    [102.0, 3.0],
-                    [102.0, 2.0]
-                ]
-            ],
-            [
-                [
-                    [100.0, 0.0],
-                    [101.0, 0.0],
-                    [101.0, 1.0],
-                    [100.0, 1.0],
-                    [100.0, 0.0]
-                ],
-                [
-                    [100.2, 0.2],
-                    [100.2, 0.8],
-                    [100.8, 0.8],
-                    [100.8, 0.2],
-                    [100.2, 0.2]
-                ]
-            ]
-        ]
-    }
-    const multiPolygonWithSingleElement = {
-        "type": "MultiPolygon",
-        "coordinates": [
-            [
-                [
-                    [102.0, 2.0],
-                    [103.0, 2.0],
-                    [103.0, 3.0],
-                    [102.0, 3.0],
-                    [102.0, 2.0]
-                ]
-            ]
-        ]
-    }
-    const point = {
-        type: "Point",
-        coordinates: [100.0, 0.0]
-    }
- 
-    expect(multiPolygon).toBeMultiPolygonGeometry()
-    expect(multiPolygonWithSingleElement).toBeMultiPolygonGeometry()
- 
-    expect(point).not.toBeMultiPolygonGeometry()
+ * const multiPolygon = {
+ *     "type": "MultiPolygon",
+ *     "coordinates": [
+ *         [
+ *             [
+ *                 [102.0, 2.0],
+ *                 [103.0, 2.0],
+ *                 [103.0, 3.0],
+ *                 [102.0, 3.0],
+ *                 [102.0, 2.0]
+ *             ]
+ *         ],
+ *         [
+ *             [
+ *                 [100.0, 0.0],
+ *                 [101.0, 0.0],
+ *                 [101.0, 1.0],
+ *                 [100.0, 1.0],
+ *                 [100.0, 0.0]
+ *             ],
+ *             [
+ *                 [100.2, 0.2],
+ *                 [100.2, 0.8],
+ *                 [100.8, 0.8],
+ *                 [100.8, 0.2],
+ *                 [100.2, 0.2]
+ *             ]
+ *         ]
+ *     ]
+ * }
+ * const multiPolygonWithSingleElement = {
+ *     "type": "MultiPolygon",
+ *     "coordinates": [
+ *         [
+ *             [
+ *                 [102.0, 2.0],
+ *                 [103.0, 2.0],
+ *                 [103.0, 3.0],
+ *                 [102.0, 3.0],
+ *                 [102.0, 2.0]
+ *             ]
+ *         ]
+ *     ]
+ * }
+ *
+ * test('Object is valid GeoJSON MultiPolygon Geometry', () => {
+ *     expect(multiPolygon).toBeMultiPolygonGeometry()
+ *     expect(multiPolygonWithSingleElement).toBeMultiPolygonGeometry()
+ * })
+ * @example
+ * const point = {
+ *     type: "Point",
+ *     coordinates: [100.0, 0.0]
+ * }
+ *
+ * test('Object is NOT valid GeoJSON MultiPolygon Geometry', () => {
+ *     expect(point).not.toBeMultiPolygonGeometry()
+ * })
  */
 function toBeMultiPolygonGeometry(geometryObject) {
     const { printReceived, matcherHint } = this.utils

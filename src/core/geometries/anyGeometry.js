@@ -15,47 +15,47 @@ const { multiPolygonGeometry } = require('./multiPolygonGeometry')
  * @returns {boolean} True if a valid GeoJSON geometry object. If invalid, it will throw an error.
  * @throws {Error} Input must be either a valid Point, MultiPoint, LineString, MultiLineString, Polygon, or MultiPolygon
  * @example
-point = {
-    "type": "Point",
-    "coordinates": [100.0, 0.0]
-}
-lineString = {
-    "type": "LineString",
-    "coordinates": [
-        [
-            [180.0, 40.0],
-            [180.0, 50.0],
-            [170.0, 50.0],
-            [170.0, 40.0],
-            [180.0, 40.0]
-        ]
-    ]
-}
-polygon = {
-    "type": "Polygon",
-    "coordinates": [
-        [
-            [100.0, 0.0],
-            [101.0, 0.0],
-            [101.0, 1.0],
-            [100.0, 1.0],
-            [100.0, 0.0]
-        ]
-    ]
-}
-feature = {
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": [102.0, 0.5]
-    }
-}
- 
-console.log(anyGeometry(point)) // true
-console.log(anyGeometry(lineString)) // true
-console.log(anyGeometry(polygon)) // true
- 
-console.log(anyGeometry(feature)) // throws error
+ * point = {
+ *     type: 'Point',
+ *     coordinates: [100.0, 0.0]
+ * }
+ * lineString = {
+ *     type: 'LineString',
+ *     coordinates: [
+ *         [
+ *             [180.0, 40.0],
+ *             [180.0, 50.0],
+ *             [170.0, 50.0],
+ *             [170.0, 40.0],
+ *             [180.0, 40.0]
+ *         ]
+ *     ]
+ * }
+ * polygon = {
+ *     type: 'Polygon',
+ *     coordinates: [
+ *         [
+ *             [100.0, 0.0],
+ *             [101.0, 0.0],
+ *             [101.0, 1.0],
+ *             [100.0, 1.0],
+ *             [100.0, 0.0]
+ *         ]
+ *     ]
+ * }
+ * feature = {
+ *     type: 'Feature',
+ *     geometry: {
+ *         type: 'Point',
+ *         coordinates: [102.0, 0.5]
+ *     }
+ * }
+ *
+ * const goodExample1 = anyGeometry(point)) // true
+ * const goodExample2 = anyGeometry(lineString)) // true
+ * const goodExample3 = anyGeometry(polygon)) // true
+ *
+ * const badExample = anyGeometry(feature)) // throws error
  */
 function anyGeometry(geometryObject) {
     // if (

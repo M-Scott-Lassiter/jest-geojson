@@ -17,21 +17,22 @@ const { validCoordinate } = require('../coordinates/validCoordinate')
  * @throws {Error} forbidden from having a property 'geometry', 'properties', or 'features'
  * @example
  * const linestring = {
-        "type": "LineString",
-        "coordinates": [
-            [
-                [180.0, 40.0], [180.0, 50.0], [170.0, 50.0],
-                [170.0, 40.0], [180.0, 40.0]
-            ]
-        ]
-    }
-    const point = {
-        type: "Point",
-        coordinates: [100.0, 0.0]
-    }
- 
-    console.log(lineStringGeometry(linestring)) // true
-    console.log(lineStringGeometry(point)) // throws error
+ *     type: 'LineString',
+ *     coordinates: [
+ *         [
+ *             [180.0, 40.0], [180.0, 50.0], [170.0, 50.0],
+ *             [170.0, 40.0], [180.0, 40.0]
+ *         ]
+ *     ]
+ * }
+ * const point = {
+ *     type: 'Point',
+ *     coordinates: [100.0, 0.0]
+ * }
+ *
+ * const goodExample = lineStringGeometry(linestring) // true
+ *
+ * const badExample = lineStringGeometry(point)) / throws error
  */
 function lineStringGeometry(geometryObject) {
     if (

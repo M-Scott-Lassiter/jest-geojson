@@ -13,23 +13,28 @@ const { lineStringGeometry } = require('../../core/geometries/lineStringGeometry
  * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/11
  * @param {object} geometryObject a GeoJSON LineString Geometry object
  * @example
-    const linestring = {
-        "type": "LineString",
-        "coordinates": [
-            [
-                [180.0, 40.0], [180.0, 50.0], [170.0, 50.0],
-                [170.0, 40.0], [180.0, 40.0]
-            ]
-        ]
-    }
-    const point = {
-        type: "Point",
-        coordinates: [100.0, 0.0]
-    }
- 
-    expect(linestring).toBeLineStringGeometry()
- 
-    expect(point).not.toBeLineStringGeometry()
+ * const linestring = {
+ *     "type": "LineString",
+ *     "coordinates": [
+ *         [
+ *             [180.0, 40.0], [180.0, 50.0], [170.0, 50.0],
+ *             [170.0, 40.0], [180.0, 40.0]
+ *         ]
+ *     ]
+ * }
+ *
+ * test('Object is valid GeoJSON LineString Object', () => {
+ *     expect(linestring).toBeLineStringGeometry()
+ * })
+ * @example
+ * const point = {
+ *     type: "Point",
+ *     coordinates: [100.0, 0.0]
+ * }
+ *
+ * test('Object is NOT valid GeoJSON LineString Object', () => {
+ *     expect(point).not.toBeLineStringGeometry()
+ * })
  */
 function toBeLineStringGeometry(geometryObject) {
     const { printReceived, matcherHint } = this.utils

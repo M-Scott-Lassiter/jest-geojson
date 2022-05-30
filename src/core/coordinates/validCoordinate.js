@@ -9,6 +9,12 @@ const { valid3DCoordinate } = require('./valid3DCoordinate')
  * @param {number[]} coordinate A WGS-84 array of [longitude, latitude] or [longitude, latitude, alititude]
  * @returns {boolean} True if a valid 2D or 3D GeoJSON coordinate. If invalid, it will throw an error.
  * @throws {Error} Input must be an array of only two or three elments
+ * @example
+ * const goodCoord1 = validCoordinate([10, 20]) // true
+ * const goodCoord2 = validCoordinate([10, 20, 0]) // true
+ *
+ * const badExample1 = validCoordinate([10, -200]) // throws error for latitude being out of range
+ * const badExample2 = validCoordinate([10, 20, '0']) // throws error for altitude being a string instead of number
  */
 function validCoordinate(coordinate) {
     if (!Array.isArray(coordinate) || coordinate.length < 2 || coordinate.length > 3) {

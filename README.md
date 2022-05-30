@@ -37,7 +37,6 @@
 -   [Getting Started](#getting-started)
     -   [Install as a Dependency](#install-as-a-dependency)
     -   [Configure Jest](#configure-jest)
--   [Import the Core Engine](#import-the-core-engine)
 -   [Matchers](#matchers)
     -   [Coordiantes](#coordiantes)
     -   [Bounding Boxes](#bounding-boxes)
@@ -46,6 +45,8 @@
     -   [Features](#features)
     -   [Feature Collections](#feature-collections)
     -   [Functional](#functional)
+-   [Advanced Configuration](#advanced-configuration)
+    -   [Import the Core Engine](#import-the-core-engine)
 -   [License and Development](#license-and-development)
 -   [Contact](#contact)
 
@@ -112,18 +113,6 @@ const matchers = require('jest-geojson')
 ```
 
 The matchers object contains each matcher grouped by category.
-
-<!-- add link to documentation when online -->
-
-# Import the Core Engine
-
-You can import the functions that drive the test matchers.
-
-```javascript
-const core = require('jest-geojson/core')
-```
-
-The core object contains the functions grouped by category. You can then use these functions elsewhere in your code, or even port `jest-geojson` into another testing framework.
 
 <!-- add link to documentation when online -->
 
@@ -262,7 +251,19 @@ _Future_
 -   [ ] isInEasternernHemisphere
 -   [ ] isInWesternHemisphere
 
----
+# Advanced Configuration
+
+## Import the Core Engine
+
+You can import the functions that drive the test matchers.
+
+```javascript
+const core = require('jest-geojson/core')
+```
+
+The core object contains the functions grouped by category. You can then use these functions elsewhere in your code, or even port `jest-geojson` into another testing framework.
+
+<!-- add link to documentation when online -->
 
 # License and Development
 

@@ -15,9 +15,9 @@ const { valid2DBoundingBox } = require('./valid2DBoundingBox')
  * @example
  * const goodBBox = valid3DBoundingBox([-10, -20, -100, 20, 10, 0]) // true
  * const crossesAntimeridian = valid3DBoundingBox([170, -20, -22.5, 20, -170, 12345.678]) // true
- * @example
- * const badExample1 valid3DBoundingBox([-10, -91, 0, 10, 20, 0]) // throws error for south being out of range
- * const badExample2 valid3DBoundingBox([-10, -10, "0", 10, 20, 0]) // throws error for non-numeric value
+ *
+ * const badExample1 = valid3DBoundingBox([-10, -91, 0, 10, 20, 0]) // throws error for south being out of range
+ * const badExample2 = valid3DBoundingBox([-10, -10, "0", 10, 20, 0]) // throws error for non-numeric value
  */
 function valid3DBoundingBox(bboxArray) {
     if (!Array.isArray(bboxArray) || bboxArray.length !== 6) {

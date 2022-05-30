@@ -8,6 +8,11 @@
  * @throws {Error} Input must be an array of only two elments
  * @throws {RangeError} Longitude must be a number between -180 and 180
  * @throws {RangeError} Latitude must be a number between -90 and 90
+ * @example
+ * const goodCoord = valid2DCoordinate([10, 20]) // true
+ *
+ * const badExample1 = valid2DBoundingBox([10, -200]) // throws error for latitude being out of range
+ * const badExample2 = valid2DBoundingBox([10, 20, 0]) // throws error for 3D Coordinate
  */
 function valid2DCoordinate(coordinate) {
     if (!Array.isArray(coordinate) || coordinate.length !== 2) {

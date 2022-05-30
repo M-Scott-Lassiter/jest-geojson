@@ -20,37 +20,38 @@ const { validCoordinate } = require('../coordinates/validCoordinate')
  * @throws {Error} Final coordinate must match first coordinate
  * @throws {Error} forbidden from having a property 'geometry', 'properties', or 'features'
  * @example
- * const polygon = {
-        "type": "Polygon",
-        "coordinates": [
-            [
-                [100.0, 0.0],
-                [101.0, 0.0],
-                [101.0, 1.0],
-                [100.0, 1.0],
-                [100.0, 0.0]
-            ]
-        ]
-    }
-    const polygonEndDoesNotEqualStart = {
-        "type": "Polygon",
-        "coordinates": [
-            [
-                [100.0, 0.0],
-                [101.0, 0.0],
-                [101.0, 1.0],
-                [100.0, 1.0]
-            ]
-        ]
-    }
-    const point = {
-        type: "Point",
-        coordinates: [100.0, 0.0]
-    }
- 
-    console.log(polygonGeometry(polygon)) // true
-    console.log(polygonGeometry(point)) // throws error
-    console.log(polygonGeometry(polygonEndDoesNotEqualStart)) // throws error
+ *  const polygon = {
+ *      type: 'Polygon',
+ *      coordinates: [
+ *          [
+ *              [100.0, 0.0],
+ *              [101.0, 0.0],
+ *              [101.0, 1.0],
+ *              [100.0, 1.0],
+ *              [100.0, 0.0]
+ *          ]
+ *      ]
+ *  }
+ *  const polygonEndDoesNotEqualStart = {
+ *      type: 'Polygon',
+ *      coordinates: [
+ *          [
+ *              [100.0, 0.0],
+ *              [101.0, 0.0],
+ *              [101.0, 1.0],
+ *              [100.0, 1.0]
+ *          ]
+ *      ]
+ *  }
+ *  const point = {
+ *      type: 'Point',
+ *      coordinates: [100.0, 0.0]
+ *  }
+ *
+ *  const goodExample = polygonGeometry(polygon) // true
+ *
+ *  const badExample1 = console.log(polygonGeometry(point) // throws error
+ *  const badExample2 = console.log(polygonGeometry(polygonEndDoesNotEqualStart) // throws error
  */
 function polygonGeometry(geometryObject) {
     if (

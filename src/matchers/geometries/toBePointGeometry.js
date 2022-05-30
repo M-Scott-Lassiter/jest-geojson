@@ -13,21 +13,25 @@ const { pointGeometry } = require('../../core/geometries/pointGeometry')
  * @param {object} geometryObject a GeoJSON Point Geometry object
  * @example
  * const testPoint = {
-        type: 'Point',
-        coordinates: [25, 10.2]
-    }
-    expect(testPoint).toBePointGeometry()
-    @example
-    const testPoint1 = {
-        coordinates: [25, 10.2]
-    }
-    const testPoint2 = {
-        type: 'MultiPoint',
-        coordinates: [[25, 10.2], [120, 45]}
-    }
- 
-    expect(testPoint1).not.toBePointGeometry()
-    expect(testPoint2).not.toBePointGeometry()
+ *     type: 'Point',
+ *     coordinates: [25, 10.2]
+ * }
+ *
+ * test('Object is valid GeoJSON Point Geometry', () => {
+ *     expect(testPoint).toBePointGeometry()
+ * })
+ * @example
+ * const multiPoint = {
+ *     type: 'MultiPoint',
+ *     coordinates: [
+ *         [25, 10.2],
+ *         [120, 45]
+ *     ]
+ * }
+ *
+ * test('Object is NOT valid GeoJSON Point Geometry', () => {
+ *     expect(multiPoint).not.toBePointGeometry()
+ * })
  */
 function toBePointGeometry(geometryObject) {
     const { printReceived, matcherHint } = this.utils

@@ -4,8 +4,8 @@ const { validCoordinate } = require('../coordinates/validCoordinate')
  * Verifies an object is a valid GeoJSON MultiLineString Geometry. This geometry requires a
  * 'type' property that must equal "MultiLineString", and a 'coordinates' property that contains
  * an array of linestring arrays (i.e. each linestring array containing at least two or more valid
- * WGS-84 GeoJSON coordinates). 
- * 
+ * WGS-84 GeoJSON coordinates).
+ *
  * The coordinates may be an empty array, but may not be an array of empty arrays.
  *
  * Foreign members are allowed with the exceptions thrown below.
@@ -20,34 +20,35 @@ const { validCoordinate } = require('../coordinates/validCoordinate')
  * @throws {Error} forbidden from having a property 'geometry', 'properties', or 'features'
  * @example
  * const multiLineString = {
-        "type": "MultiLineString",
-        "coordinates": [
-            [
-                [100.0, 0.0],
-                [101.0, 1.0]
-            ],
-            [
-                [102.0, 2.0],
-                [103.0, 3.0]
-            ]
-        ]
-    }
-    const multiLineStringOneCoordinate = {
-        "type": "MultiLineString",
-        "coordinates": [
-            [
-                [100.0, 0.0]
-            ]
-        ]
-    }
-    const point = {
-        type: "Point",
-        coordinates: [100.0, 0.0]
-    }
- 
-    console.log(multiLineStringGeometry(multiLineString)) // true
-    console.log(multiLineStringGeometry(point)) // throws error
-    console.log(multiLineStringGeometry(multiLineStringOneCoordinate)) // throws error
+ *     type: 'MultiLineString',
+ *     coordinates: [
+ *         [
+ *             [100.0, 0.0],
+ *             [101.0, 1.0]
+ *         ],
+ *         [
+ *             [102.0, 2.0],
+ *             [103.0, 3.0]
+ *         ]
+ *     ]
+ * }
+ * const multiLineStringOneCoordinate = {
+ *     type: 'MultiLineString',
+ *     coordinates: [
+ *         [
+ *             [100.0, 0.0]
+ *         ]
+ *     ]
+ * }
+ * const point = {
+ *     type: 'Point',
+ *     coordinates: [100.0, 0.0]
+ * }
+ *
+ * const goodExample = multiLineStringGeometry(multiLineString) // true
+ *
+ * const badExample1 = multiLineStringGeometry(point) // throws error
+ * const badExample2 = multiLineStringGeometry(multiLineStringOneCoordinate) // throws error
  */
 function multiLineStringGeometry(geometryObject) {
     if (

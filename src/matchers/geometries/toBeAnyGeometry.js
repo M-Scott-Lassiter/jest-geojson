@@ -9,49 +9,54 @@ const { anyGeometry } = require('../../core/geometries/anyGeometry')
  * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/15
  * @param {object} geometryObject any GeoJSON Geometry object
  * @example
-point = {
-    "type": "Point",
-    "coordinates": [100.0, 0.0]
-}
-lineString = {
-    "type": "LineString",
-    "coordinates": [
-        [
-            [180.0, 40.0],
-            [180.0, 50.0],
-            [170.0, 50.0],
-            [170.0, 40.0],
-            [180.0, 40.0]
-        ]
-    ]
-}
-polygon = {
-    "type": "Polygon",
-    "coordinates": [
-        [
-            [100.0, 0.0],
-            [101.0, 0.0],
-            [101.0, 1.0],
-            [100.0, 1.0],
-            [100.0, 0.0]
-        ]
-    ]
-}
-feature = {
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": [102.0, 0.5]
-    }
-}
- 
-expect(point).toBeAnyGeometry()
-expect(lineString).toBeAnyGeometry()
-expect(polygon).toBeAnyGeometry()
- 
-expect(feature).not.toBeAnyGeometry()
-expect([322, -34.549, 0]).not.toBeAnyGeometry()
-expect({coordinates: [22, -34.549, 22]}).not.toBeAnyGeometry()
+ * point = {
+ *     "type": "Point",
+ *     "coordinates": [100.0, 0.0]
+ * }
+ * lineString = {
+ *     "type": "LineString",
+ *     "coordinates": [
+ *         [
+ *             [180.0, 40.0],
+ *             [180.0, 50.0],
+ *             [170.0, 50.0],
+ *             [170.0, 40.0],
+ *             [180.0, 40.0]
+ *         ]
+ *     ]
+ * }
+ * polygon = {
+ *     "type": "Polygon",
+ *     "coordinates": [
+ *         [
+ *             [100.0, 0.0],
+ *             [101.0, 0.0],
+ *             [101.0, 1.0],
+ *             [100.0, 1.0],
+ *             [100.0, 0.0]
+ *         ]
+ *     ]
+ * }
+ *
+ *  test('Object is valid GeoJSON Geometry Object', () => {
+ *     expect(point).toBeAnyGeometry()
+ *     expect(lineString).toBeAnyGeometry()
+ *     expect(polygon).toBeAnyGeometry()
+ * })
+ * @example
+ * feature = {
+ *     "type": "Feature",
+ *     "geometry": {
+ *         "type": "Point",
+ *         "coordinates": [102.0, 0.5]
+ *     }
+ * }
+ *
+ * test('Object is NOT valid GeoJSON Geometry Object', () => {
+ *     expect(feature).not.toBeAnyGeometry()
+ *     expect([322, -34.549, 0]).not.toBeAnyGeometry()
+ *     expect({coordinates: [22, -34.549, 22]}).not.toBeAnyGeometry()
+ * })
  */
 function toBeAnyGeometry(geometryObject) {
     const { printReceived, matcherHint } = this.utils

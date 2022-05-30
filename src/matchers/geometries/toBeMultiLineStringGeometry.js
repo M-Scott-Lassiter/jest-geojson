@@ -5,8 +5,8 @@ const { multiLineStringGeometry } = require('../../core/geometries/multiLineStri
  * Verifies an object is a valid GeoJSON MultiLineString Geometry. This geometry requires a
  * 'type' property that must equal "MultiLineString", and a 'coordinates' property that contains
  * an array of linestring arrays (i.e. each linestring array containing at least two or more valid
- * WGS-84 GeoJSON coordinates). 
- * 
+ * WGS-84 GeoJSON coordinates).
+ *
  * The coordinates may be an empty array, but may not be an array of empty arrays.
  *
  * Foreign members are allowed with the exception of 'geometry', 'properties', or 'features'.
@@ -15,36 +15,41 @@ const { multiLineStringGeometry } = require('../../core/geometries/multiLineStri
  * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/12
  * @param {object} geometryObject a GeoJSON MultiLineString Geometry object
  * @example
-    const multiLineString = {
-        "type": "MultiLineString",
-        "coordinates": [
-            [
-                [100.0, 0.0],
-                [101.0, 1.0]
-            ],
-            [
-                [102.0, 2.0],
-                [103.0, 3.0]
-            ]
-        ]
-    }
-    const multiLineStringOneCoordinate = {
-        "type": "MultiLineString",
-        "coordinates": [
-            [
-                [100.0, 0.0]
-            ]
-        ]
-    }
-    const point = {
-        type: "Point",
-        coordinates: [100.0, 0.0]
-    }
- 
-    expect(multiLineString).toBeMultiLineStringGeometry()
- 
-    expect(point).not.toBeMultiLineStringGeometry()
-    expect(multiLineStringOneCoordinate).not.toBeMultiLineStringGeometry()
+ * const multiLineString = {
+ *     "type": "MultiLineString",
+ *     "coordinates": [
+ *         [
+ *             [100.0, 0.0],
+ *             [101.0, 1.0]
+ *         ],
+ *         [
+ *             [102.0, 2.0],
+ *             [103.0, 3.0]
+ *         ]
+ *     ]
+ * }
+ *
+ * test('Object is valid GeoJSON MultiLineString Object', () => {
+ *     expect(multiLineString).toBeMultiLineStringGeometry()
+ * })
+ * @example
+ * const point = {
+ *     type: "Point",
+ *     coordinates: [100.0, 0.0]
+ * }
+ * const multiLineStringOneCoordinate = {
+ *     "type": "MultiLineString",
+ *     "coordinates": [
+ *         [
+ *             [100.0, 0.0]
+ *         ]
+ *     ]
+ * }
+ *
+ * test('Object is NOT valid GeoJSON MultiLineString Object', () => {
+ *     expect(point).not.toBeMultiLineStringGeometry()
+ *     expect(multiLineStringOneCoordinate).not.toBeMultiLineStringGeometry()
+ * })
  */
 function toBeMultiLineStringGeometry(geometryObject) {
     const { printReceived, matcherHint } = this.utils

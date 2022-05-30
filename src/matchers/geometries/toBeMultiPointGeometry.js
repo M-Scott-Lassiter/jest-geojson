@@ -12,28 +12,35 @@ const { multiPointGeometry } = require('../../core/geometries/multiPointGeometry
  * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/10
  * @param {object} geometryObject a GeoJSON MultiPoint Geometry object
  * @example
- *  const point1 = {
-    type: "Point",
-    coordinates: [100.0, 0.0]
-    }
-    const point2 = {
-        type: "Point",
-        coordinates: [100.0, 0.0, 2000]
-    }
-    const point3 = {
-        type: "LineString",
-        coordinates: [
-            [101.0, 0.0],
-            [102.0, 1.0]
-        ]
-    }
- 
-    expect(point1).toBePointGeometry()
-    expect(point2).toBePointGeometry()
- 
-    expect(point3).not.toBePointGeometry()
-    expect([22, -34.549, 22]).not.toBePointGeometry()
-    expect({coordinates: [100.0, 0.0]}).not.toBePointGeometry()
+ * const multiPoint1 = {
+ *     type: "MultiPoint",
+ *     coordinates: [
+ *         [25, 90],
+ *         [-180, 0]
+ *     ]
+ * }
+ * const multiPoint2 = {
+ *     type: "MultiPoint",
+ *     coordinates: [[100.0, 0.0, 2000]]
+ * }
+ *
+ * test('Object is valid GeoJSON MultiPoint Geometry', () => {
+ *     expect(multiPoint1).toBeMultiPointGeometry()
+ *     expect(multiPoint2).toBeMultiPointGeometry()
+ * })
+ * @example
+ * const lineString = {
+ *     type: "LineString",
+ *     coordinates: [
+ *         [101.0, 0.0],
+ *         [102.0, 1.0]
+ *     ]
+ * }
+ * test('Object is NOT valid GeoJSON MultiPoint Geometry', () => {
+ *     expect(lineString).not.toBeMultiPointGeometry()
+ *     expect([[22, -34.549, 22]]).not.toBeMultiPointGeometry()
+ *     expect({coordinates: [[100.0, 0.0]]}).not.toBeMultiPointGeometry()
+ * })
  */
 function toBeMultiPointGeometry(geometryObject) {
     const { printReceived, matcherHint } = this.utils

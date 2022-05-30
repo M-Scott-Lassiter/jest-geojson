@@ -13,12 +13,16 @@ const { valid3DBoundingBox } = require('../../core/boundingBoxes/valid3DBounding
  * Altitude must be greater than or equal to depth.
  * Bounding boxes that cross the antimeridian will have an eastern value less than the western value.
  * @example
- * expect([-10, -20, -100, 20, 10, 0]).isValid3DBoundingBox()
- * expect([170, -20, -22.5, 20, -170, 12345.678]).isValid3DBoundingBox() // Crosses antimeridian
+ * test('Object is valid GeoJSON', () => {
+ *      expect([-10, -20, -100, 20, 10, 0]).isValid3DBoundingBox()
+ *      expect([170, -20, -22.5, 20, -170, 12345.678]).isValid3DBoundingBox() // Crosses antimeridian
+ *  })
  * @example
- * expect([-10, -91, 0, 10, 20, 0]).not.isValid3DBoundingBox() // south out of range
- * expect([-20, 10, -10, 20]).not.isValid3DBoundingBox() //2D bounding box
- * expect([-10, -10, "0", 10, 20, 0]).not.isValid2DBoundingBox() // Non-numeric value
+ * test('Object is NOT valid GeoJSON', () => {
+ *      expect([-10, -91, 0, 10, 20, 0]).not.isValid3DBoundingBox() // south out of range
+ *      expect([-20, 10, -10, 20]).not.isValid3DBoundingBox() //2D bounding box
+ *      expect([-10, -10, "0", 10, 20, 0]).not.isValid2DBoundingBox() // Non-numeric value
+ *  })
  */
 function isValid3DBoundingBox(bboxArray) {
     const { printReceived, matcherHint } = this.utils

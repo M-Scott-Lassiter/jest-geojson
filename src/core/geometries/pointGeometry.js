@@ -16,21 +16,21 @@ const { validCoordinate } = require('../coordinates/validCoordinate')
  * @throws {Error} forbidden from having a property 'geometry', 'properties', or 'features'
  * @example
  * const testPoint = {
-        type: 'Point',
-        coordinates: [25, 10.2]
-    }
-    console.log(pointGeometry(testPoint)) // true
-    @example
-    const testPoint1 = {
-        coordinates: [25, 10.2]
-    }
-    const testPoint2 = {
-        type: 'MultiPoint',
-        coordinates: [[25, 10.2], [120, 45]}
-    }
- 
-    console.log(pointGeometry(testPoint1)) // throws error for missing type
-    console.log(pointGeometry(testPoint2)) // throws error for being MultiPoint
+ *     type: 'Point',
+ *     coordinates: [25, 10.2]
+ * }
+ * const testPoint1 = {
+ *     coordinates: [25, 10.2]
+ * }
+ * const testPoint2 = {
+ *     type: 'MultiPoint',
+ *     coordinates: [[25, 10.2], [120, 45]}
+ * }
+ *
+ * const goodExample = pointGeometry(testPoint) // true
+ *
+ * const badExample1 = pointGeometry(testPoint1) // throws error for missing type
+ * const badExample2 = pointGeometry(testPoint2) // throws error for being MultiPoint
  */
 function pointGeometry(geometryObject) {
     if (

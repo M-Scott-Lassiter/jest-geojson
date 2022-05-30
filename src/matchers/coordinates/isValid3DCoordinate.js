@@ -12,15 +12,19 @@ const { valid3DCoordinate } = require('../../core/coordinates/valid3DCoordinate'
  * Altitude must be a number between -Infinity to Infinity.
  * The standard does not specify units altitude represents (i.e. meters, feet, etc.).
  * @example
- * expect([22, 45.733, 20]).isValid3DCoordinate()
- * expect([180, 90, -10000]).isValid3DCoordinate()
+ * test('Object is valid GeoJSON', () => {
+ *      expect([22, 45.733, 20]).isValid3DCoordinate()
+ *      expect([180, 90, -10000]).isValid3DCoordinate()
+ *  })
  * @example
- * expect([22, 100.56, 0]).not.isValid3DCoordinate() // Latitude out of range
- * expect([22, 45.733]).isValid3DCoordinate() // 2D coordinate
- * expect([22, 45.733, '0']).not.isValid3DCoordinate() // Non-numeric altitude
- * // Nested Arrays
- * expect([[22, 45.733, 0]]).not.isValid3DCoordinate()
- * expect([[22, 45.733, 0], [180, 90, 0]]).not.isValid3DCoordinate()
+ * test('Object is NOT valid GeoJSON', () => {
+ *      expect([22, 100.56, 0]).not.isValid3DCoordinate() // Latitude out of range
+ *      expect([22, 45.733]).isValid3DCoordinate() // 2D coordinate
+ *      expect([22, 45.733, '0']).not.isValid3DCoordinate() // Non-numeric altitude
+ *      // Nested Arrays
+ *      expect([[22, 45.733, 0]]).not.isValid3DCoordinate()
+ *      expect([[22, 45.733, 0], [180, 90, 0]]).not.isValid3DCoordinate()
+ *  })
  */
 function isValid3DCoordinate(coordinateArray) {
     const { printReceived, matcherHint } = this.utils
