@@ -20,7 +20,7 @@ function validBoundingBox(bboxArray) {
         throw new Error('Bounding box must be an array.')
     }
 
-    if (bboxArray.length < 4 || bboxArray.length > 6 || bboxArray.length === 5) {
+    if (!(bboxArray.length === 4 || bboxArray.length === 6)) {
         throw new Error('Bounding box must be an array of either four or six elments.')
     }
 
