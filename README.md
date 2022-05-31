@@ -156,24 +156,17 @@ _1.0.0_
 
 _Future_
 
+-   [ ] isPolygonWithHole
 -   [ ] isMultiPolygonWithHole
 -   [ ] toHaveMinGeometryCount
 -   [ ] toHaveMaxGeometeyCount
 -   [ ] toHaveGeometeyCount (equal/min, max)
--   [ ] toContainGeometryTypes (array of Geometry type strings, optional min count, optional max count)
 
 ## Features
 
 _1.0.0_
 
--   [ ] toBePointFeature
--   [ ] toBeMultiPointFeature
--   [ ] toBeLineStringFeature
--   [ ] toBeMultiLineStringFeature
--   [ ] toBePolygonFeature
--   [ ] toBeMultiPolygonFeature
--   [ ] toBeGeometryCollectionFeature
--   [ ] toBeAnyFeature
+-   [ ] toBeFeature
 
 ---
 
@@ -182,11 +175,7 @@ _Future_
 -   [ ] toHaveID
 -   [ ] toHaveStringID
 -   [ ] toHaveNumericID
--   [ ] toHave2DBoundingBox
--   [ ] toHave3DBoundingBox
--   [ ] toHaveBoundingBox
--   [ ] toHaveProperties
--   [ ] toHaveForeignMembers
+-   [ ] toHaveProperties (array of [property, optional values])
 
 ## Feature Collections
 
@@ -216,29 +205,30 @@ _1.0.0_
 
 _Future_
 
--   [ ] toHaveMinPointCountOf
--   [ ] toHaveMaxPointCountOf
+-   [ ] toHave2DBoundingBox
+-   [ ] toHave3DBoundingBox
+-   [ ] toHaveBoundingBox
+-   [ ] toCrossAntimeridian
+-   [ ] toIncludePole (Optional 'North' or 'South')
+-   [ ] isInHemisphere('North', 'South', 'East', 'West')
+-   [ ] toHaveMinPointCount
+-   [ ] toHaveMaxPointCount
 -   [ ] toHavePointCount (equal/min, optional max)
 -   [ ] toHaveMaxPrecision (num decimal places)
 -   [ ] toHaveMinPrecision (num decimal places)
 -   [ ] toHavePrecision (equal to/min decimal places, optional max decimal places)
--   [ ] toCrossAntimeridian
--   [ ] toIncludeNorthPole
--   [ ] toIncludeSouthPole
--   [ ] toIncludeEitherPole
--   [ ] toContainGeometryTypes
--   [ ] toContainAnyCoordinates ([unordered array of points])
--   [ ] toContainAllCoordinates ([unordered array of points])
--   [ ] toContainOnlyCoordinates
--   [ ] toContainOrderedCoordinates ([array of ordered points])
+-   [ ] toIncludeGeometryTypes (optional array of [Geometry type strings, optional min count, optional max count])
+-   [ ] toIncludeForeignMembers (optional array of [members, optional values])
+-   [ ] toIncludeAnyCoordinates ([unordered array of points])
+-   [ ] toIncludeAllCoordinates ([unordered array of points])
+-   [ ] toIncludeOnlyCoordinates
+-   [ ] toIncludeOrderedCoordinates (array of [ordered points])
+-   [ ] toContain (array of geometry: [single or multi point/line/polygon whose boundaries are all within argument polygon/multipolygon])
 -   [ ] isCounterClockwiseWound
 -   [ ] isClockwiseWound
 -   [ ] isKinked
 -   [ ] toBeContainedWithinBBox
--   [ ] isInNorthernHemisphere
--   [ ] isInSouthernHemisphere
--   [ ] isInEasternernHemisphere
--   [ ] isInWesternHemisphere
+-   [ ] toBeContainedWithinPolygon
 
 # Advanced Configuration
 
