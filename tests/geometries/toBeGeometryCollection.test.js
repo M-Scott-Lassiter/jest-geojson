@@ -401,6 +401,68 @@ describe('Valid Use Cases', () => {
         expect(testGeometryCollection).toBeGeometryCollection()
         expect(testGeometryCollection).toBeAnyGeometry()
     })
+
+    describe('Bounding Boxes Allowed, Must be Valid:', () => {
+        test('2D Bounding Box', () => {
+            const testGeometryCollection = {
+                type: 'GeometryCollection',
+                geometries: [
+                    {
+                        type: 'Point',
+                        coordinates: [0, 0]
+                    }
+                ],
+                bbox: [-10.0, -10.0, 10.0, 10.0]
+            }
+            expect(testGeometryCollection).toBeGeometryCollection()
+            expect(testGeometryCollection).toBeAnyGeometry()
+        })
+
+        test('3D Bounding Box', () => {
+            const testGeometryCollection = {
+                type: 'GeometryCollection',
+                geometries: [
+                    {
+                        type: 'Point',
+                        coordinates: [0, 0]
+                    }
+                ],
+                bbox: [-10.0, -10.0, 10.0, 10.0]
+            }
+            expect(testGeometryCollection).toBeGeometryCollection()
+            expect(testGeometryCollection).toBeAnyGeometry()
+        })
+
+        test('Illogical Bounding Box', () => {
+            const testGeometryCollection = {
+                type: 'GeometryCollection',
+                geometries: [
+                    {
+                        type: 'Point',
+                        coordinates: [0, 0]
+                    }
+                ],
+                bbox: [-30.0, -30.0, -20.0, -20.0]
+            }
+            expect(testGeometryCollection).toBeGeometryCollection()
+            expect(testGeometryCollection).toBeAnyGeometry()
+        })
+
+        test('Redundant Bounding Box', () => {
+            const testGeometryCollection = {
+                type: 'GeometryCollection',
+                geometries: [
+                    {
+                        type: 'Point',
+                        coordinates: [0, 0]
+                    }
+                ],
+                bbox: [0, 0, 0, 0]
+            }
+            expect(testGeometryCollection).toBeGeometryCollection()
+            expect(testGeometryCollection).toBeAnyGeometry()
+        })
+    })
 })
 
 describe('Inalid Use Cases', () => {
@@ -605,6 +667,32 @@ describe('Inalid Use Cases', () => {
         test(`Missing: 'geometries'`, () => {
             const testGeometryCollection = {
                 type: 'GeometryCollection'
+            }
+            expect(testGeometryCollection).not.toBeGeometryCollection()
+            expect(testGeometryCollection).not.toBeAnyGeometry()
+        })
+    })
+
+    describe('Invalid Bounding Boxes Not Allowed:', () => {
+        const invalidBBoxes = [
+            [null],
+            [undefined],
+            [[]],
+            [[-10.0, -10.0, 10.0]],
+            [[-10.0, -10.0, 190.0, 10.0]],
+            [[-10.0, 10.0, 10.0, -10]],
+            [[-10.0, -10.0, 0, 10, 10.0, '200']]
+        ]
+        test.each(invalidBBoxes)('bbox: %p', (input) => {
+            const testGeometryCollection = {
+                type: 'GeometryCollection',
+                geometries: [
+                    {
+                        type: 'Point',
+                        coordinates: [180, -90, 2000]
+                    }
+                ],
+                bbox: input
             }
             expect(testGeometryCollection).not.toBeGeometryCollection()
             expect(testGeometryCollection).not.toBeAnyGeometry()

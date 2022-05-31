@@ -1,4 +1,5 @@
 const { anyGeometry } = require('./anyGeometry')
+const { validBoundingBox } = require('../boundingBoxes/validBoundingBox')
 
 /**
  * Verifies an object is a valid GeoJSON GeometryCollection. This object requires a
@@ -8,6 +9,7 @@ const { anyGeometry } = require('./anyGeometry')
  * The geometries may be an empty array, but may not be an array of empty arrays or objects.
  *
  * Foreign members are allowed with the exceptions thrown below.
+ * If present, bounding boxes must be valid.
  *
  * @memberof Core.Geometries
  * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/16
@@ -85,6 +87,10 @@ function geometryCollection(geometryObject) {
         throw new Error(
             `GeoJSON GeometryCollection objects are forbidden from having a property 'features'.`
         )
+    }
+
+    if ('bbox' in geometryObject) {
+        validBoundingBox(geometryObject.bbox)
     }
 
     if (!Array.isArray(geometryObject.geometries)) {

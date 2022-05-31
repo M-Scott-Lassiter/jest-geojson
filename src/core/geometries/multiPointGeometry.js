@@ -1,4 +1,5 @@
 const { validCoordinate } = require('../coordinates/validCoordinate')
+const { validBoundingBox } = require('../boundingBoxes/validBoundingBox')
 
 /**
  * Verifies an object is a valid GeoJSON MultiPoint Geometry. This geometry requires a
@@ -7,6 +8,7 @@ const { validCoordinate } = require('../coordinates/validCoordinate')
  * The coordinates may be an empty array.
  *
  * Foreign members are allowed with the exceptions thrown below.
+ * If present, bounding boxes must be valid.
  *
  * @memberof Core.Geometries
  * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/10
@@ -14,7 +16,7 @@ const { validCoordinate } = require('../coordinates/validCoordinate')
  * @returns {boolean} True if a valid GeoJSON MultiPoint Geometry. If invalid, it will throw an error.
  * @throws {Error} Argument not an object
  * @throws {Error} Must have a type property with value 'MultiPoint'
- * @throws {Error} forbidden from having a property 'geometry', 'properties', or 'features'
+ * @throws {Error} Forbidden from having a property 'geometry', 'properties', or 'features'
  * @example
  * const testMultiPoint1 = {
  *     type: 'MultiPoint',
@@ -64,6 +66,10 @@ function multiPointGeometry(geometryObject) {
         throw new Error(
             `GeoJSON MultiPoint Geometry objects are forbidden from having a property 'features'.`
         )
+    }
+
+    if ('bbox' in geometryObject) {
+        validBoundingBox(geometryObject.bbox)
     }
 
     // Geometry objects are allowed to have empty arrays as coordinates, however validCoordinate may not.

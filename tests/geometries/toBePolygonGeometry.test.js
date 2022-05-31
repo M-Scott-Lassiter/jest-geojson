@@ -293,6 +293,80 @@ describe('Valid Use Cases', () => {
             expect(testPolygon).toBeAnyGeometry()
         })
     })
+
+    describe('Bounding Boxes Allowed, Must be Valid:', () => {
+        test('2D Bounding Box', () => {
+            const testPolygon = {
+                type: 'Polygon',
+                coordinates: [
+                    [
+                        [0, 0],
+                        [0, 1],
+                        [1, 1],
+                        [1, 0],
+                        [0, 0]
+                    ]
+                ],
+                bbox: [-10.0, -10.0, 10.0, 10.0]
+            }
+            expect(testPolygon).toBePolygonGeometry()
+            expect(testPolygon).toBeAnyGeometry()
+        })
+
+        test('3D Bounding Box', () => {
+            const testPolygon = {
+                type: 'Polygon',
+                coordinates: [
+                    [
+                        [0, 0],
+                        [0, 1],
+                        [1, 1],
+                        [1, 0],
+                        [0, 0]
+                    ]
+                ],
+                bbox: [-10.0, -10.0, 0, 10.0, 10.0, 200]
+            }
+            expect(testPolygon).toBePolygonGeometry()
+            expect(testPolygon).toBeAnyGeometry()
+        })
+
+        test('Illogical Bounding Box', () => {
+            const testPolygon = {
+                type: 'Polygon',
+                coordinates: [
+                    [
+                        [0, 0],
+                        [0, 1],
+                        [1, 1],
+                        [1, 0],
+                        [0, 0]
+                    ]
+                ],
+                bbox: [-30.0, -30.0, -20.0, -20.0]
+            }
+            expect(testPolygon).toBePolygonGeometry()
+            expect(testPolygon).toBeAnyGeometry()
+        })
+
+        test('Redundant Bounding Box', () => {
+            const testPolygon = {
+                type: 'Polygon',
+                coordinates: [
+                    [
+                        [0, 0],
+                        [0, 0],
+                        [0, 0],
+                        [0, 0],
+                        [0, 0]
+                    ]
+                ],
+                bbox: [0, 0, 0, 0]
+            }
+            expect(testPolygon).toBePolygonGeometry()
+            expect(testPolygon).toBeAnyGeometry()
+        })
+    })
 })
 
 describe('Inalid Use Cases', () => {
@@ -512,6 +586,35 @@ describe('Inalid Use Cases', () => {
         test(`Missing: 'coordinates'`, () => {
             const testPolygon = {
                 type: 'Polygon'
+            }
+            expect(testPolygon).not.toBePolygonGeometry()
+            expect(testPolygon).not.toBeAnyGeometry()
+        })
+    })
+
+    describe('Invalid Bounding Boxes Not Allowed:', () => {
+        const invalidBBoxes = [
+            [null],
+            [undefined],
+            [[]],
+            [[-10.0, -10.0, 10.0]],
+            [[-10.0, -10.0, 190.0, 10.0]],
+            [[-10.0, 10.0, 10.0, -10]],
+            [[-10.0, -10.0, 0, 10, 10.0, '200']]
+        ]
+        test.each(invalidBBoxes)('bbox: %p', (input) => {
+            const testPolygon = {
+                type: 'Polygon',
+                coordinates: [
+                    [
+                        [0, 0],
+                        [0, 1],
+                        [1, 1],
+                        [1, 0],
+                        [0, 0]
+                    ]
+                ],
+                bbox: input
             }
             expect(testPolygon).not.toBePolygonGeometry()
             expect(testPolygon).not.toBeAnyGeometry()

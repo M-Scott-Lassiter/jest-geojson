@@ -372,6 +372,88 @@ describe('Valid Use Cases', () => {
             expect(testMultiPolygon).toBeAnyGeometry()
         })
     })
+
+    describe('Bounding Boxes Allowed, Must be Valid:', () => {
+        test('2D Bounding Box', () => {
+            const testMultiPolygon = {
+                type: 'MultiPolygon',
+                coordinates: [
+                    [
+                        [
+                            [0, 0],
+                            [0, 1],
+                            [1, 1],
+                            [1, 0],
+                            [0, 0]
+                        ]
+                    ]
+                ],
+                bbox: [-10.0, -10.0, 10.0, 10.0]
+            }
+            expect(testMultiPolygon).toBeMultiPolygonGeometry()
+            expect(testMultiPolygon).toBeAnyGeometry()
+        })
+
+        test('3D Bounding Box', () => {
+            const testMultiPolygon = {
+                type: 'MultiPolygon',
+                coordinates: [
+                    [
+                        [
+                            [0, 0],
+                            [0, 1],
+                            [1, 1],
+                            [1, 0],
+                            [0, 0]
+                        ]
+                    ]
+                ],
+                bbox: [-10.0, -10.0, 0, 10.0, 10.0, 200]
+            }
+            expect(testMultiPolygon).toBeMultiPolygonGeometry()
+            expect(testMultiPolygon).toBeAnyGeometry()
+        })
+
+        test('Illogical Bounding Box', () => {
+            const testMultiPolygon = {
+                type: 'MultiPolygon',
+                coordinates: [
+                    [
+                        [
+                            [0, 0],
+                            [0, 1],
+                            [1, 1],
+                            [1, 0],
+                            [0, 0]
+                        ]
+                    ]
+                ],
+                bbox: [-30.0, -30.0, -20.0, -20.0]
+            }
+            expect(testMultiPolygon).toBeMultiPolygonGeometry()
+            expect(testMultiPolygon).toBeAnyGeometry()
+        })
+
+        test('Redundant Bounding Box', () => {
+            const testMultiPolygon = {
+                type: 'MultiPolygon',
+                coordinates: [
+                    [
+                        [
+                            [0, 0],
+                            [0, 0],
+                            [0, 0],
+                            [0, 0],
+                            [0, 0]
+                        ]
+                    ]
+                ],
+                bbox: [0, 0, 0, 0]
+            }
+            expect(testMultiPolygon).toBeMultiPolygonGeometry()
+            expect(testMultiPolygon).toBeAnyGeometry()
+        })
+    })
 })
 
 describe('Inalid Use Cases', () => {
@@ -637,6 +719,37 @@ describe('Inalid Use Cases', () => {
         test(`Missing: 'coordinates'`, () => {
             const testMultiPolygon = {
                 type: 'MultiPolygon'
+            }
+            expect(testMultiPolygon).not.toBeMultiPolygonGeometry()
+            expect(testMultiPolygon).not.toBeAnyGeometry()
+        })
+    })
+
+    describe('Invalid Bounding Boxes Not Allowed:', () => {
+        const invalidBBoxes = [
+            [null],
+            [undefined],
+            [[]],
+            [[-10.0, -10.0, 10.0]],
+            [[-10.0, -10.0, 190.0, 10.0]],
+            [[-10.0, 10.0, 10.0, -10]],
+            [[-10.0, -10.0, 0, 10, 10.0, '200']]
+        ]
+        test.each(invalidBBoxes)('bbox: %p', (input) => {
+            const testMultiPolygon = {
+                type: 'MultiPolygon',
+                coordinates: [
+                    [
+                        [
+                            [0, 0],
+                            [0, 1],
+                            [1, 1],
+                            [1, 0],
+                            [0, 0]
+                        ]
+                    ]
+                ],
+                bbox: input
             }
             expect(testMultiPolygon).not.toBeMultiPolygonGeometry()
             expect(testMultiPolygon).not.toBeAnyGeometry()

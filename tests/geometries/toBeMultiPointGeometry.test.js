@@ -177,6 +177,48 @@ describe('Valid Use Cases', () => {
             }
         )
     })
+
+    describe('Bounding Boxes Allowed, Must be Valid:', () => {
+        test('2D Bounding Box', () => {
+            const testMultiPoint = {
+                type: 'MultiPoint',
+                coordinates: [[0, 0, 0]],
+                bbox: [-10.0, -10.0, 10.0, 10.0]
+            }
+            expect(testMultiPoint).toBeMultiPointGeometry()
+            expect(testMultiPoint).toBeAnyGeometry()
+        })
+
+        test('3D Bounding Box', () => {
+            const testMultiPoint = {
+                type: 'MultiPoint',
+                bbox: [-10.0, -10.0, 0, 10.0, 10.0, 200],
+                coordinates: [[0, 0, 0]]
+            }
+            expect(testMultiPoint).toBeMultiPointGeometry()
+            expect(testMultiPoint).toBeAnyGeometry()
+        })
+
+        test('Illogical Bounding Box', () => {
+            const testMultiPoint = {
+                type: 'MultiPoint',
+                bbox: [-30.0, -30.0, -20.0, -20.0],
+                coordinates: [[0, 0, 0]]
+            }
+            expect(testMultiPoint).toBeMultiPointGeometry()
+            expect(testMultiPoint).toBeAnyGeometry()
+        })
+
+        test('Redundant Bounding Box', () => {
+            const testMultiPoint = {
+                type: 'MultiPoint',
+                bbox: [0, 0, 0, 0],
+                coordinates: [[0, 0]]
+            }
+            expect(testMultiPoint).toBeMultiPointGeometry()
+            expect(testMultiPoint).toBeAnyGeometry()
+        })
+    })
 })
 
 describe('Inalid Use Cases', () => {
@@ -291,6 +333,27 @@ describe('Inalid Use Cases', () => {
         test(`Missing: 'coordinates'`, () => {
             const testMultiPoint = {
                 type: 'MultiPoint'
+            }
+            expect(testMultiPoint).not.toBeMultiPointGeometry()
+            expect(testMultiPoint).not.toBeAnyGeometry()
+        })
+    })
+
+    describe('Invalid Bounding Boxes Not Allowed:', () => {
+        const invalidBBoxes = [
+            [null],
+            [undefined],
+            [[]],
+            [[-10.0, -10.0, 10.0]],
+            [[-10.0, -10.0, 190.0, 10.0]],
+            [[-10.0, 10.0, 10.0, -10]],
+            [[-10.0, -10.0, 0, 10, 10.0, '200']]
+        ]
+        test.each(invalidBBoxes)('bbox: %p', (input) => {
+            const testMultiPoint = {
+                type: 'MultiPoint',
+                coordinates: [[0, 0]],
+                bbox: input
             }
             expect(testMultiPoint).not.toBeMultiPointGeometry()
             expect(testMultiPoint).not.toBeAnyGeometry()

@@ -1,4 +1,5 @@
 const { validCoordinate } = require('../coordinates/validCoordinate')
+const { validBoundingBox } = require('../boundingBoxes/validBoundingBox')
 
 /**
  * Verifies an object is a valid GeoJSON MultiLineString Geometry. This geometry requires a
@@ -9,6 +10,7 @@ const { validCoordinate } = require('../coordinates/validCoordinate')
  * The coordinates may be an empty array, but may not be an array of empty arrays.
  *
  * Foreign members are allowed with the exceptions thrown below.
+ * If present, bounding boxes must be valid.
  *
  * @memberof Core.Geometries
  * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/12
@@ -17,7 +19,7 @@ const { validCoordinate } = require('../coordinates/validCoordinate')
  * @throws {Error} Argument not an object
  * @throws {Error} Must have a type property with value 'MultiLineString'
  * @throws {Error} Coordinates array must contain two or more valid GeoJSON coordinates
- * @throws {Error} forbidden from having a property 'geometry', 'properties', or 'features'
+ * @throws {Error} Forbidden from having a property 'geometry', 'properties', or 'features'
  * @example
  * const multiLineString = {
  *     type: 'MultiLineString',
@@ -83,6 +85,10 @@ function multiLineStringGeometry(geometryObject) {
         throw new Error(
             `GeoJSON MultiLineString Geometry objects are forbidden from having a property 'features'.`
         )
+    }
+
+    if ('bbox' in geometryObject) {
+        validBoundingBox(geometryObject.bbox)
     }
 
     // Geometry objects are allowed to have empty arrays as coordinates, however validCoordinate may not.

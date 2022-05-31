@@ -94,6 +94,48 @@ describe('Valid Use Cases', () => {
             expect(testPoint).toBeAnyGeometry()
         })
     })
+
+    describe('Bounding Boxes Allowed, Must be Valid:', () => {
+        test('2D Bounding Box', () => {
+            const testPoint = {
+                type: 'Point',
+                coordinates: [0, 0],
+                bbox: [-10.0, -10.0, 10.0, 10.0]
+            }
+            expect(testPoint).toBePointGeometry()
+            expect(testPoint).toBeAnyGeometry()
+        })
+
+        test('3D Bounding Box', () => {
+            const testPoint = {
+                type: 'Point',
+                coordinates: [0, 0],
+                bbox: [-10.0, -10.0, 0, 10.0, 10.0, 200]
+            }
+            expect(testPoint).toBePointGeometry()
+            expect(testPoint).toBeAnyGeometry()
+        })
+
+        test('Illogical Bounding Box', () => {
+            const testPoint = {
+                type: 'Point',
+                bbox: [-30.0, -30.0, -20.0, -20.0],
+                coordinates: [0, 0]
+            }
+            expect(testPoint).toBePointGeometry()
+            expect(testPoint).toBeAnyGeometry()
+        })
+
+        test('Redundant Bounding Box', () => {
+            const testPoint = {
+                type: 'Point',
+                bbox: [0, 0, 0, 0],
+                coordinates: [0, 0]
+            }
+            expect(testPoint).toBePointGeometry()
+            expect(testPoint).toBeAnyGeometry()
+        })
+    })
 })
 
 describe('Inalid Use Cases', () => {
@@ -189,6 +231,27 @@ describe('Inalid Use Cases', () => {
         test(`Missing: 'coordinates'`, () => {
             const testPoint = {
                 type: 'Point'
+            }
+            expect(testPoint).not.toBePointGeometry()
+            expect(testPoint).not.toBeAnyGeometry()
+        })
+    })
+
+    describe('Invalid Bounding Boxes Not Allowed:', () => {
+        const invalidBBoxes = [
+            [null],
+            [undefined],
+            [[]],
+            [[-10.0, -10.0, 10.0]],
+            [[-10.0, -10.0, 190.0, 10.0]],
+            [[-10.0, 10.0, 10.0, -10]],
+            [[-10.0, -10.0, 0, 10, 10.0, '200']]
+        ]
+        test.each(invalidBBoxes)('bbox: %p', (input) => {
+            const testPoint = {
+                type: 'Point',
+                coordinates: [0, 0],
+                bbox: input
             }
             expect(testPoint).not.toBePointGeometry()
             expect(testPoint).not.toBeAnyGeometry()

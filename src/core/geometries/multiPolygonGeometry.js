@@ -1,4 +1,5 @@
 const { validCoordinate } = require('../coordinates/validCoordinate')
+const { validBoundingBox } = require('../boundingBoxes/validBoundingBox')
 
 /**
  * Verifies an object is a valid GeoJSON MultiPolygon Geometry. This geometry requires a
@@ -9,6 +10,7 @@ const { validCoordinate } = require('../coordinates/validCoordinate')
  * The coordinates may be an empty array, but may not be an array of empty arrays.
  *
  * Foreign members are allowed with the exceptions thrown below.
+ * If present, bounding boxes must be valid.
  *
  * @memberof Core.Geometries
  * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/14
@@ -18,7 +20,7 @@ const { validCoordinate } = require('../coordinates/validCoordinate')
  * @throws {Error} Must have a type property with value 'MultiPolygon'
  * @throws {Error} Coordinates array must contain four or more valid GeoJSON coordinates
  * @throws {Error} Final coordinate must match first coordinate
- * @throws {Error} forbidden from having a property 'geometry', 'properties', or 'features'
+ * @throws {Error} Forbidden from having a property 'geometry', 'properties', or 'features'
  * @example
  * const multiPolygon = {
  *     type: 'MultiPolygon',
@@ -107,6 +109,10 @@ function multiPolygonGeometry(geometryObject) {
         throw new Error(
             `GeoJSON MultiPolygon Geometry objects are forbidden from having a property 'features'.`
         )
+    }
+
+    if ('bbox' in geometryObject) {
+        validBoundingBox(geometryObject.bbox)
     }
 
     // Geometry objects are allowed to have empty arrays as coordinates, however validCoordinate may not.

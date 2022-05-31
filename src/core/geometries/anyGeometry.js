@@ -4,7 +4,7 @@ const { lineStringGeometry } = require('./lineStringGeometry')
 const { multiLineStringGeometry } = require('./multiLineStringGeometry')
 const { polygonGeometry } = require('./polygonGeometry')
 const { multiPolygonGeometry } = require('./multiPolygonGeometry')
-// const { geometryCollection } = require('./geometryCollection')
+const { validBoundingBox } = require('../boundingBoxes/validBoundingBox')
 
 /**
  * Verifies an object meets validity requirements for one of the six basic GeoJSON geometry types:
@@ -59,7 +59,7 @@ const { multiPolygonGeometry } = require('./multiPolygonGeometry')
  * const badExample = anyGeometry(feature)) // throws error
  */
 function anyGeometry(geometryObject) {
-    // The three prohibited properties below account for nested GeometryCollection objects. All other geometry
+    // The bbox and three prohibited properties below account for nested GeometryCollection objects. All other geometry
     // core functions include these within them, including geometryCollection.js.
     // Note: This might be a good set of checks to abstract away in a utility function later...
     if ('geometry' in geometryObject) {
@@ -74,6 +74,10 @@ function anyGeometry(geometryObject) {
 
     if ('features' in geometryObject) {
         throw new Error(`GeoJSON Geometry objects are forbidden from having a property 'features'.`)
+    }
+
+    if ('bbox' in geometryObject) {
+        validBoundingBox(geometryObject.bbox)
     }
 
     if (geometryObject?.type === 'Point') {
