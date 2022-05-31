@@ -37,15 +37,15 @@
 -   [Getting Started](#getting-started)
     -   [Install as a Dependency](#install-as-a-dependency)
     -   [Configure Jest](#configure-jest)
--   [Import the Core Engine](#import-the-core-engine)
 -   [Matchers](#matchers)
     -   [Coordiantes](#coordiantes)
     -   [Bounding Boxes](#bounding-boxes)
     -   [Geometries](#geometries)
-    -   [Geometry Collections](#geometry-collections)
     -   [Features](#features)
     -   [Feature Collections](#feature-collections)
     -   [Functional](#functional)
+-   [Advanced Configuration](#advanced-configuration)
+    -   [Import the Core Engine](#import-the-core-engine)
 -   [License and Development](#license-and-development)
 -   [Contact](#contact)
 
@@ -115,18 +115,6 @@ The matchers object contains each matcher grouped by category.
 
 <!-- add link to documentation when online -->
 
-# Import the Core Engine
-
-You can import the functions that drive the test matchers.
-
-```javascript
-const core = require('jest-geojson/core')
-```
-
-The core object contains the functions grouped by category. You can then use these functions elsewhere in your code, or even port `jest-geojson` into another testing framework.
-
-<!-- add link to documentation when online -->
-
 # Matchers
 
 `jest-geojson` organizes matchers by categories that correspond to the input type passed to `expect()`.
@@ -158,44 +146,27 @@ _1.0.0_
 -   [x] toBePointGeometry
 -   [x] toBeMultiPointGeometry
 -   [x] toBeLineStringGeometry
--   [ ] toBeMultiLineStringGeometry
--   [ ] toBePolygonGeometry
--   [ ] toBeMultiPolygonGeometry
--   [ ] toBeAnyGeometry
+-   [x] toBeMultiLineStringGeometry
+-   [x] toBePolygonGeometry
+-   [x] toBeMultiPolygonGeometry
+-   [x] toBeGeometryCollection
+-   [x] toBeAnyGeometry
 
 ---
 
 _Future_
 
+-   [ ] isPolygonWithHole
 -   [ ] isMultiPolygonWithHole
-
-## Geometry Collections
-
-_1.0.0_
-
--   [ ] toBeGeometryCollection
-
----
-
-_Future_
-
 -   [ ] toHaveMinGeometryCount
 -   [ ] toHaveMaxGeometeyCount
 -   [ ] toHaveGeometeyCount (equal/min, max)
--   [ ] toContainGeometryTypes (array of Geometry type strings, optional min count, optional max count)
 
 ## Features
 
 _1.0.0_
 
--   [ ] toBePointFeature
--   [ ] toBeMultiPointFeature
--   [ ] toBeLineStringFeature
--   [ ] toBeMultiLineStringFeature
--   [ ] toBePolygonFeature
--   [ ] toBeMultiPolygonFeature
--   [ ] toBeGeometryCollectionFeature
--   [ ] toBeAnyFeature
+-   [ ] toBeFeature
 
 ---
 
@@ -204,11 +175,7 @@ _Future_
 -   [ ] toHaveID
 -   [ ] toHaveStringID
 -   [ ] toHaveNumericID
--   [ ] toHave2DBoundingBox
--   [ ] toHave3DBoundingBox
--   [ ] toHaveBoundingBox
--   [ ] toHaveProperties
--   [ ] toHaveForeignMembers
+-   [ ] toHaveProperties (array of [property, optional values])
 
 ## Feature Collections
 
@@ -238,31 +205,44 @@ _1.0.0_
 
 _Future_
 
--   [ ] toHaveMinPointCountOf
--   [ ] toHaveMaxPointCountOf
+-   [ ] toHave2DBoundingBox
+-   [ ] toHave3DBoundingBox
+-   [ ] toHaveBoundingBox
+-   [ ] toCrossAntimeridian
+-   [ ] toIncludePole (Optional 'North' or 'South')
+-   [ ] isInHemisphere('North', 'South', 'East', 'West')
+-   [ ] toHaveMinPointCount
+-   [ ] toHaveMaxPointCount
 -   [ ] toHavePointCount (equal/min, optional max)
 -   [ ] toHaveMaxPrecision (num decimal places)
 -   [ ] toHaveMinPrecision (num decimal places)
 -   [ ] toHavePrecision (equal to/min decimal places, optional max decimal places)
--   [ ] toCrossAntimeridian
--   [ ] toIncludeNorthPole
--   [ ] toIncludeSouthPole
--   [ ] toIncludeEitherPole
--   [ ] toContainGeometryTypes
--   [ ] toContainAnyCoordinates ([unordered array of points])
--   [ ] toContainAllCoordinates ([unordered array of points])
--   [ ] toContainOnlyCoordinates
--   [ ] toContainOrderedCoordinates ([array of ordered points])
+-   [ ] toIncludeGeometryTypes (optional array of [Geometry type strings, optional min count, optional max count])
+-   [ ] toIncludeForeignMembers (optional array of [members, optional values])
+-   [ ] toIncludeAnyCoordinates ([unordered array of points])
+-   [ ] toIncludeAllCoordinates ([unordered array of points])
+-   [ ] toIncludeOnlyCoordinates
+-   [ ] toIncludeOrderedCoordinates (array of [ordered points])
+-   [ ] toContain (array of geometry: [single or multi point/line/polygon whose boundaries are all within argument polygon/multipolygon])
 -   [ ] isCounterClockwiseWound
 -   [ ] isClockwiseWound
 -   [ ] isKinked
 -   [ ] toBeContainedWithinBBox
--   [ ] isInNorthernHemisphere
--   [ ] isInSouthernHemisphere
--   [ ] isInEasternernHemisphere
--   [ ] isInWesternHemisphere
+-   [ ] toBeContainedWithinPolygon
 
----
+# Advanced Configuration
+
+## Import the Core Engine
+
+You can import the functions that drive the test matchers.
+
+```javascript
+const core = require('jest-geojson/core')
+```
+
+The core object contains the functions grouped by category. You can then use these functions elsewhere in your code, or even port `jest-geojson` into another testing framework.
+
+<!-- add link to documentation when online -->
 
 # License and Development
 
