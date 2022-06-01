@@ -453,7 +453,7 @@ describe('Inalid Use Cases', () => {
             [[-10.0, -10.0, 0, 10, 10.0, '200']]
         ]
         test.each(invalidBBoxes)('bbox: %p', (input) => {
-            const testPoint = {
+            const testMultiLineString = {
                 type: 'MultiLineString',
                 coordinates: [
                     [
@@ -463,14 +463,14 @@ describe('Inalid Use Cases', () => {
                 ],
                 bbox: input
             }
-            expect(testPoint).not.toBePointGeometry()
-            expect(testPoint).not.toBeAnyGeometry()
+            expect(testMultiLineString).not.toBePointGeometry()
+            expect(testMultiLineString).not.toBeAnyGeometry()
         })
     })
 })
 
 describe('Error Snapshot Testing. Throws error:', () => {
-    test(`expect({type: 'MultiLineString', coordinates: [[[0, 0], [1, 1]]]}).not.toBeMultiLineStringGeometry`, () => {
+    test('Valid use case passes', () => {
         expect(() =>
             expect({
                 type: 'MultiLineString',
@@ -484,7 +484,90 @@ describe('Error Snapshot Testing. Throws error:', () => {
         ).toThrowErrorMatchingSnapshot()
     })
 
-    test('expect(false).toBeMultiLineStringGeometry()', () => {
+    test('Invalid input to matcher', () => {
         expect(() => expect(false).toBeMultiLineStringGeometry()).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Has forbidden property: geometry', () => {
+        const testMultiLineString = {
+            type: 'MultiLineString',
+            coordinates: [
+                [
+                    [0, 0],
+                    [1, 1]
+                ]
+            ],
+            geometry: null
+        }
+        expect(() =>
+            expect(testMultiLineString).toBeMultiLineStringGeometry()
+        ).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Has forbidden property: properties', () => {
+        const testMultiLineString = {
+            type: 'MultiLineString',
+            coordinates: [
+                [
+                    [0, 0],
+                    [1, 1]
+                ]
+            ],
+            properties: null
+        }
+        expect(() =>
+            expect(testMultiLineString).toBeMultiLineStringGeometry()
+        ).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Has forbidden property: features', () => {
+        const testMultiLineString = {
+            type: 'MultiLineString',
+            coordinates: [
+                [
+                    [0, 0],
+                    [1, 1]
+                ]
+            ],
+            features: null
+        }
+        expect(() =>
+            expect(testMultiLineString).toBeMultiLineStringGeometry()
+        ).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Bounding box must be valid', () => {
+        const testMultiLineString = {
+            type: 'MultiLineString',
+            coordinates: [
+                [
+                    [0, 0],
+                    [1, 1]
+                ]
+            ],
+            bbox: [0]
+        }
+        expect(() =>
+            expect(testMultiLineString).toBeMultiLineStringGeometry()
+        ).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Missing coordinates property', () => {
+        const testMultiLineString = {
+            type: 'MultiLineString'
+        }
+        expect(() =>
+            expect(testMultiLineString).toBeMultiLineStringGeometry()
+        ).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Coordinates not an array', () => {
+        const testMultiLineString = {
+            type: 'MultiLineString',
+            coordinates: false
+        }
+        expect(() =>
+            expect(testMultiLineString).toBeMultiLineStringGeometry()
+        ).toThrowErrorMatchingSnapshot()
     })
 })
