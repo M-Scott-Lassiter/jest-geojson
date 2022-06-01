@@ -280,6 +280,23 @@ describe('Valid Use Cases', () => {
             expect(testGeometryCollection).toBeAnyGeometry()
         })
     })
+
+    describe('Coordinates Treated as Foreign Member:', () => {
+        test.each([[0, 0], false, {}, 2, 'Coordinate String'])('coordinates: %p', (input) => {
+            const testGeometryCollection = {
+                type: 'GeometryCollection',
+                geometries: [
+                    {
+                        type: 'Point',
+                        coordinates: [0, 0]
+                    }
+                ],
+                coordinates: input
+            }
+            expect(testGeometryCollection).toBeGeometryCollection()
+            expect(testGeometryCollection).toBeAnyGeometry()
+        })
+    })
 })
 
 describe('Invalid Use Cases', () => {
@@ -391,7 +408,7 @@ describe('Invalid Use Cases', () => {
         })
     })
 
-    describe('Expect to fail with coordinates array of empty arrays:', () => {
+    describe('Expect to fail with geometries array of empty arrays:', () => {
         test.each([...emptyArrays])('coordinates: [%p]', (input) => {
             const testGeometryCollection = {
                 type: 'GeometryCollection',
@@ -522,13 +539,76 @@ describe('Invalid Use Cases', () => {
 })
 
 describe('Error Snapshot Testing. Throws error:', () => {
-    test(`expect({type: 'GeometryCollection', geometries: []}).not.toBeGeometryCollection`, () => {
+    test('Valid use case passes', () => {
         expect(() =>
             expect({ type: 'GeometryCollection', geometries: [] }).not.toBeGeometryCollection()
         ).toThrowErrorMatchingSnapshot()
     })
 
-    test('expect(false).toBeGeometryCollection()', () => {
+    test('Invalid input to matcher', () => {
         expect(() => expect(false).toBeGeometryCollection()).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Has forbidden property: geometry', () => {
+        const testGeometryCollection = {
+            type: 'GeometryCollection',
+            geometries: [],
+            geometry: null
+        }
+        expect(() =>
+            expect(testGeometryCollection).toBeGeometryCollection()
+        ).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Has forbidden property: properties', () => {
+        const testGeometryCollection = {
+            type: 'GeometryCollection',
+            geometries: [],
+            properties: null
+        }
+        expect(() =>
+            expect(testGeometryCollection).toBeGeometryCollection()
+        ).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Has forbidden property: features', () => {
+        const testGeometryCollection = {
+            type: 'GeometryCollection',
+            geometries: [],
+            features: null
+        }
+        expect(() =>
+            expect(testGeometryCollection).toBeGeometryCollection()
+        ).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Bounding box must be valid', () => {
+        const testGeometryCollection = {
+            type: 'GeometryCollection',
+            geometries: [],
+            bbox: [0]
+        }
+        expect(() =>
+            expect(testGeometryCollection).toBeGeometryCollection()
+        ).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Missing geometries property', () => {
+        const testGeometryCollection = {
+            type: 'GeometryCollection'
+        }
+        expect(() =>
+            expect(testGeometryCollection).toBeGeometryCollection()
+        ).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Geometries not an array', () => {
+        const testGeometryCollection = {
+            type: 'GeometryCollection',
+            geometries: false
+        }
+        expect(() =>
+            expect(testGeometryCollection).toBeGeometryCollection()
+        ).toThrowErrorMatchingSnapshot()
     })
 })
