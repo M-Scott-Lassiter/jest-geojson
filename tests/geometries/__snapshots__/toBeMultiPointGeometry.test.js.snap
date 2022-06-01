@@ -1,17 +1,65 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Error Snapshot Testing. Throws error: expect({type: 'MultiPoint', coordinates: [[0, 0]]}).not.toBeMultiPointGeometry 1`] = `
-"[2mexpect([22m[31mGeometryObject[39m[2m).not.toBeMultiPointGeometry()[22m
+exports[`Error Snapshot Testing. Throws error: Bounding box must be valid 1`] = `
+"[2mexpect([22m[31mGeometryObject[39m[2m).toBeMultiPointGeometry()[22m
 
-Expected input to not be a valid GeoJSON MultiPoint geometry.
+Bounding box must be an array of either four or six elments.
 
-Received:  [31m{\\"coordinates\\": [[0, 0]], \\"type\\": \\"MultiPoint\\"}[39m"
+Received:  [31m{\\"bbox\\": [0], \\"coordinates\\": [[0, 0]], \\"type\\": \\"MultiPoint\\"}[39m"
 `;
 
-exports[`Error Snapshot Testing. Throws error: expect(false).toBeMultiPointGeometry() 1`] = `
+exports[`Error Snapshot Testing. Throws error: Coordinates not an array 1`] = `
+"[2mexpect([22m[31mGeometryObject[39m[2m).toBeMultiPointGeometry()[22m
+
+Coordinates property must be an array (appropriately structured by geometry type) with valid GeoJSON coordinates.
+
+Received:  [31m{\\"coordinates\\": false, \\"type\\": \\"MultiPoint\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Has forbidden property: features 1`] = `
+"[2mexpect([22m[31mGeometryObject[39m[2m).toBeMultiPointGeometry()[22m
+
+GeoJSON Geometry objects are forbidden from having a property 'features'.
+
+Received:  [31m{\\"coordinates\\": [[0, 0]], \\"features\\": null, \\"type\\": \\"MultiPoint\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Has forbidden property: geometry 1`] = `
+"[2mexpect([22m[31mGeometryObject[39m[2m).toBeMultiPointGeometry()[22m
+
+GeoJSON Geometry objects are forbidden from having a property 'geometry'.
+
+Received:  [31m{\\"coordinates\\": [[0, 0]], \\"geometry\\": null, \\"type\\": \\"MultiPoint\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Has forbidden property: properties 1`] = `
+"[2mexpect([22m[31mGeometryObject[39m[2m).toBeMultiPointGeometry()[22m
+
+GeoJSON Geometry objects are forbidden from having a property 'properties'.
+
+Received:  [31m{\\"coordinates\\": [[0, 0]], \\"properties\\": null, \\"type\\": \\"MultiPoint\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Invalid input to matcher 1`] = `
 "[2mexpect([22m[31mGeometryObject[39m[2m).toBeMultiPointGeometry()[22m
 
 Must have a type property with value 'MultiPoint'
 
 Received:  [31mfalse[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Missing coordinates property 1`] = `
+"[2mexpect([22m[31mGeometryObject[39m[2m).toBeMultiPointGeometry()[22m
+
+GeoJSON Geometry objects (except GeometryCollection) must contain a 'coordinates' property.
+
+Received:  [31m{\\"type\\": \\"MultiPoint\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Valid use case passes 1`] = `
+"[2mexpect([22m[31mGeometryObject[39m[2m).not.toBeMultiPointGeometry()[22m
+
+Expected input to not be a valid GeoJSON MultiPoint geometry.
+
+Received:  [31m{\\"coordinates\\": [[0, 0]], \\"type\\": \\"MultiPoint\\"}[39m"
 `;
