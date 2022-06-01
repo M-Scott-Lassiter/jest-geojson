@@ -145,11 +145,19 @@ describe('Invalid Use Cases', () => {
 })
 
 describe('Error Snapshot Testing. Throws error:', () => {
-    test('expect([0, 0, 0]).not.isValid3DCoordinate', () => {
+    test('Valid use case passes', () => {
         expect(() => expect([0, 0, 0]).not.isValid3DCoordinate()).toThrowErrorMatchingSnapshot()
     })
 
-    test('expect([0, 0]).isValid3DCoordinate', () => {
+    test('Invalid input to matcher', () => {
         expect(() => expect([0, 0]).isValid3DCoordinate()).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Coordinate must be an array of only three elments', () => {
+        expect(() => expect([0, 0]).isValid3DCoordinate()).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Coordinate altitude value must be numeric', () => {
+        expect(() => expect([0, 0, true]).isValid3DCoordinate()).toThrowErrorMatchingSnapshot()
     })
 })
