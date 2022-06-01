@@ -122,11 +122,23 @@ describe('Inalid Use Cases', () => {
 })
 
 describe('Error Snapshot Testing. Throws error:', () => {
-    test('expect([0, 0]).not.isValid3DCoordinate', () => {
+    test('Valid use case passes', () => {
         expect(() => expect([0, 0]).not.isValid2DCoordinate()).toThrowErrorMatchingSnapshot()
     })
 
-    test('expect(false).isValid2DCoordinate()', () => {
+    test('Invalid input to matcher', () => {
         expect(() => expect(false).isValid2DCoordinate()).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Coordinate must be an array of only two elments', () => {
+        expect(() => expect([0, 0, 733]).isValid2DCoordinate()).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Coordinate longitude must be a number between -180 and 180', () => {
+        expect(() => expect([-256, 0]).isValid2DCoordinate()).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Coordinate latitude must be a number between -90 and 90', () => {
+        expect(() => expect([0, 100]).isValid2DCoordinate()).toThrowErrorMatchingSnapshot()
     })
 })
