@@ -623,7 +623,7 @@ describe('Inalid Use Cases', () => {
 })
 
 describe('Error Snapshot Testing. Throws error:', () => {
-    test(`expect({type: 'Polygon', coordinates: ${counterClockwiseBox}}).not.toBePolygonGeometry`, () => {
+    test('Valid use case passes', () => {
         expect(() =>
             expect({
                 type: 'Polygon',
@@ -632,7 +632,58 @@ describe('Error Snapshot Testing. Throws error:', () => {
         ).toThrowErrorMatchingSnapshot()
     })
 
-    test('expect(false).toBePolygonGeometry()', () => {
+    test('Invalid input to matcher', () => {
         expect(() => expect(false).toBePolygonGeometry()).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Has forbidden property: geometry', () => {
+        const testPolygon = {
+            type: 'Polygon',
+            coordinates: [counterClockwiseBox],
+            geometry: null
+        }
+        expect(() => expect(testPolygon).toBePolygonGeometry()).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Has forbidden property: properties', () => {
+        const testPolygon = {
+            type: 'Polygon',
+            coordinates: [counterClockwiseBox],
+            properties: null
+        }
+        expect(() => expect(testPolygon).toBePolygonGeometry()).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Has forbidden property: features', () => {
+        const testPolygon = {
+            type: 'Polygon',
+            coordinates: [counterClockwiseBox],
+            features: null
+        }
+        expect(() => expect(testPolygon).toBePolygonGeometry()).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Bounding box must be valid', () => {
+        const testPolygon = {
+            type: 'Polygon',
+            coordinates: [counterClockwiseBox],
+            bbox: [0]
+        }
+        expect(() => expect(testPolygon).toBePolygonGeometry()).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Missing coordinates property', () => {
+        const testPolygon = {
+            type: 'Polygon'
+        }
+        expect(() => expect(testPolygon).toBePolygonGeometry()).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Coordinates not an array', () => {
+        const testPolygon = {
+            type: 'Polygon',
+            coordinates: false
+        }
+        expect(() => expect(testPolygon).toBePolygonGeometry()).toThrowErrorMatchingSnapshot()
     })
 })
