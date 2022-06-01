@@ -11,7 +11,7 @@ Received:  [31m{\\"coordinates\\": [[[0, 0], [1, 0, 0], [1, 1, 0], [0, 1], [0, 
 exports[`Error Snapshot Testing. Throws error: expect(false).toBePolygonGeometry() 1`] = `
 "[2mexpect([22m[31mGeometryObject[39m[2m).toBePolygonGeometry()[22m
 
-Argument must be a GeoJSON Polygon Geometry object.
+Must have a type property with value 'Polygon'.
 
 Received:  [31mfalse[39m"
 `;

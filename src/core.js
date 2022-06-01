@@ -22,3 +22,7 @@ exports.geometries = {
     pointGeometry: require('./core/geometries/pointGeometry'),
     polygonGeometry: require('./core/geometries/polygonGeometry')
 }
+
+exports.utilities = {
+    commonGeometryValidation: require('./core/utilities').commonGeometryValidation
+}

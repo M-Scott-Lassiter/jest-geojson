@@ -4,7 +4,7 @@ const { lineStringGeometry } = require('./lineStringGeometry')
 const { multiLineStringGeometry } = require('./multiLineStringGeometry')
 const { polygonGeometry } = require('./polygonGeometry')
 const { multiPolygonGeometry } = require('./multiPolygonGeometry')
-const { validBoundingBox } = require('../boundingBoxes/validBoundingBox')
+const { commonGeometryValidation } = require('../utilities')
 
 /**
  * Verifies an object meets validity requirements for one of the six basic GeoJSON geometry types:
@@ -59,67 +59,45 @@ const { validBoundingBox } = require('../boundingBoxes/validBoundingBox')
  * const badExample = anyGeometry(feature)) // throws error
  */
 function anyGeometry(geometryObject) {
-    // The bbox and three prohibited properties below account for nested GeometryCollection objects. All other geometry
-    // core functions include these within them, including geometryCollection.js.
-    // Note: This might be a good set of checks to abstract away in a utility function later...
-    if ('geometry' in geometryObject) {
-        throw new Error(`GeoJSON Geometry objects are forbidden from having a property 'geometry'.`)
-    }
+    commonGeometryValidation(geometryObject)
 
-    if ('properties' in geometryObject) {
-        throw new Error(
-            `GeoJSON Geometry objects are forbidden from having a property 'properties'.`
-        )
-    }
-
-    if ('features' in geometryObject) {
-        throw new Error(`GeoJSON Geometry objects are forbidden from having a property 'features'.`)
-    }
-
-    if ('bbox' in geometryObject) {
-        validBoundingBox(geometryObject.bbox)
-    }
-
-    if (geometryObject?.type === 'Point') {
+    if (geometryObject.type === 'Point') {
         pointGeometry(geometryObject)
         return true
     }
 
-    if (geometryObject?.type === 'MultiPoint') {
+    if (geometryObject.type === 'MultiPoint') {
         multiPointGeometry(geometryObject)
         return true
     }
 
-    if (geometryObject?.type === 'LineString') {
+    if (geometryObject.type === 'LineString') {
         lineStringGeometry(geometryObject)
         return true
     }
 
-    if (geometryObject?.type === 'MultiLineString') {
+    if (geometryObject.type === 'MultiLineString') {
         multiLineStringGeometry(geometryObject)
         return true
     }
 
-    if (geometryObject?.type === 'Polygon') {
+    if (geometryObject.type === 'Polygon') {
         polygonGeometry(geometryObject)
         return true
     }
 
-    if (geometryObject?.type === 'MultiPolygon') {
+    if (geometryObject.type === 'MultiPolygon') {
         multiPolygonGeometry(geometryObject)
         return true
     }
 
-    if (geometryObject?.type === 'GeometryCollection') {
-        geometryObject.geometries.forEach((geometry) => {
-            anyGeometry(geometry)
-        })
-        return true
-    }
+    // By this point, it can only be a GeometryCollection
+    geometryObject.geometries.forEach((geometry) => {
+        commonGeometryValidation(geometryObject) // Repeated here for useful error messages
+        anyGeometry(geometry)
+    })
 
-    throw new Error(
-        'Object must be either a valid Point, MultiPoint, LineString, MultiLineString, Polygon, or MultiPolygon'
-    )
+    return true
 }
 
 exports.anyGeometry = anyGeometry

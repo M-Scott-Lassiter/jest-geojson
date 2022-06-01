@@ -11,7 +11,7 @@ Received:  [31m{\\"coordinates\\": [[0, 0], [1, 1]], \\"type\\": \\"LineString\
 exports[`Error Snapshot Testing. Throws error: expect(false).toBeLineStringGeometry() 1`] = `
 "[2mexpect([22m[31mGeometryObject[39m[2m).toBeLineStringGeometry()[22m
 
-Argument must be a GeoJSON LineString Geometry object.
+Must have a type property with value 'LineString'
 
 Received:  [31mfalse[39m"
 `;

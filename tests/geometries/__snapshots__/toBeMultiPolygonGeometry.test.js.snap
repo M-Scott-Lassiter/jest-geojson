@@ -11,7 +11,7 @@ Received:  [31m{\\"coordinates\\": [[[[0, 0], [1, 0, 0], [1, 1, 0], [0, 1], [0,
 exports[`Error Snapshot Testing. Throws error: expect(false).toBeMultiPolygonGeometry() 1`] = `
 "[2mexpect([22m[31mGeometryObject[39m[2m).toBeMultiPolygonGeometry()[22m
 
-Argument must be a GeoJSON MultiPolygon Geometry object.
+Must have a type property with value 'MultiPolygon'.
 
 Received:  [31mfalse[39m"
 `;

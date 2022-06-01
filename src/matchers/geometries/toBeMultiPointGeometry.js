@@ -7,6 +7,7 @@ const { multiPointGeometry } = require('../../core/geometries/multiPointGeometry
  * an array of valid WGS-84 GeoJSON coordinate(s). The coordinates may be an empty array.
  *
  * Foreign members are allowed with the exception of 'geometry', 'properties', or 'features'.
+ * If present, bounding boxes must be valid.
  *
  * @memberof Matchers.Geometries
  * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/10

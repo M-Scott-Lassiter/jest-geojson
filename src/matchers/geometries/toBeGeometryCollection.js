@@ -8,6 +8,9 @@ const { geometryCollection } = require('../../core/geometries/geometryCollection
  *
  * The geometries may be an empty array, but may not be an array of empty arrays or objects.
  *
+ * Foreign members are allowed with the exception of 'geometry', 'properties', or 'features'.
+ * If present, bounding boxes must be valid.
+ *
  * @memberof Matchers.Geometries
  * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/16
  * @param {object} geometryObject any GeoJSON Geometry object

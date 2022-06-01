@@ -1,5 +1,5 @@
 const { validCoordinate } = require('../coordinates/validCoordinate')
-const { validBoundingBox } = require('../boundingBoxes/validBoundingBox')
+const { commonGeometryValidation } = require('../utilities')
 
 /**
  * Verifies an object is a valid GeoJSON MultiLineString Geometry. This geometry requires a
@@ -53,49 +53,11 @@ const { validBoundingBox } = require('../boundingBoxes/validBoundingBox')
  * const badExample2 = multiLineStringGeometry(multiLineStringOneCoordinate) // throws error
  */
 function multiLineStringGeometry(geometryObject) {
-    if (
-        typeof geometryObject !== 'object' ||
-        Array.isArray(geometryObject) ||
-        geometryObject === null
-    ) {
-        throw new Error('Argument must be a GeoJSON MultiLineString Geometry object.')
-    }
-
-    if (!('coordinates' in geometryObject)) {
-        throw new Error(`GeoJSON MultiLineString Geometry must contain a 'coordinates' property.`)
-    }
-
     if (geometryObject.type !== 'MultiLineString') {
         throw new Error(`Must have a type property with value 'MultiLineString'`)
     }
 
-    if ('geometry' in geometryObject) {
-        throw new Error(
-            `GeoJSON MultiLineString Geometry objects are forbidden from having a property 'geometry'.`
-        )
-    }
-
-    if ('properties' in geometryObject) {
-        throw new Error(
-            `GeoJSON MultiLineString Geometry objects are forbidden from having a property 'properties'.`
-        )
-    }
-
-    if ('features' in geometryObject) {
-        throw new Error(
-            `GeoJSON MultiLineString Geometry objects are forbidden from having a property 'features'.`
-        )
-    }
-
-    if ('bbox' in geometryObject) {
-        validBoundingBox(geometryObject.bbox)
-    }
-
-    // Geometry objects are allowed to have empty arrays as coordinates, however validCoordinate may not.
-    // If coordinates is an empty array, we're done. Otherwise, check for coordinate validity.
-    if (!Array.isArray(geometryObject.coordinates) && geometryObject.coordinates.length !== 1) {
-        throw new Error('Coordinates property must be an array of valid GeoJSON coordinates')
-    }
+    commonGeometryValidation(geometryObject)
 
     for (let i = 0; i < geometryObject.coordinates.length; i++) {
         if (geometryObject.coordinates[i].length === 1) {

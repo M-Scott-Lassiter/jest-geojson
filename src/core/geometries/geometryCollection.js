@@ -1,5 +1,5 @@
 const { anyGeometry } = require('./anyGeometry')
-const { validBoundingBox } = require('../boundingBoxes/validBoundingBox')
+const { commonGeometryValidation } = require('../utilities')
 
 /**
  * Verifies an object is a valid GeoJSON GeometryCollection. This object requires a
@@ -53,47 +53,19 @@ const { validBoundingBox } = require('../boundingBoxes/validBoundingBox')
  * const badExample2 = geometryCollection(collection.geometries[1]) // throws error
  */
 function geometryCollection(geometryObject) {
-    if (
-        typeof geometryObject !== 'object' ||
-        Array.isArray(geometryObject) ||
-        geometryObject === null
-    ) {
-        throw new Error('Argument must be a GeoJSON GeometryCollection object.')
+    if (geometryObject.type !== 'GeometryCollection') {
+        throw new Error(`Must have a type property with value 'GeometryCollection'.`)
     }
 
-    if (!('geometries' in geometryObject)) {
+    commonGeometryValidation(geometryObject)
+
+    if (typeof geometryObject === 'object' && !('geometries' in geometryObject)) {
         throw new Error(
             `GeoJSON GeometryCollection must contain a 'geometries' with an array of GeoJSON geometries.`
         )
     }
 
-    if (geometryObject.type !== 'GeometryCollection') {
-        throw new Error(`Must have a type property with value 'GeometryCollection'.`)
-    }
-
-    if ('geometry' in geometryObject) {
-        throw new Error(
-            `GeoJSON GeometryCollection objects are forbidden from having a property 'geometry'.`
-        )
-    }
-
-    if ('properties' in geometryObject) {
-        throw new Error(
-            `GeoJSON GeometryCollection objects are forbidden from having a property 'properties'.`
-        )
-    }
-
-    if ('features' in geometryObject) {
-        throw new Error(
-            `GeoJSON GeometryCollection objects are forbidden from having a property 'features'.`
-        )
-    }
-
-    if ('bbox' in geometryObject) {
-        validBoundingBox(geometryObject.bbox)
-    }
-
-    if (!Array.isArray(geometryObject.geometries)) {
+    if (geometryObject.type === 'GeometryCollection' && !Array.isArray(geometryObject.geometries)) {
         throw new Error('Geometries property must be an array of valid GeoJSON geometry objects.')
     }
 

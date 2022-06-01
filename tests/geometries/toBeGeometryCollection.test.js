@@ -580,12 +580,7 @@ describe('Inalid Use Cases', () => {
         test.each([...incorrectTypeValues, ...invalidInputValues])('type: %p', (input) => {
             const testGeometryCollection = {
                 type: input,
-                geometries: [
-                    {
-                        type: 'Point',
-                        coordinates: [-180, 90, 2000]
-                    }
-                ]
+                geometries: [good.point]
             }
             expect(testGeometryCollection).not.toBeGeometryCollection()
             expect(testGeometryCollection).not.toBeAnyGeometry()

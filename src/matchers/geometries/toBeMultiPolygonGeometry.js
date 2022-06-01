@@ -10,6 +10,7 @@ const { multiPolygonGeometry } = require('../../core/geometries/multiPolygonGeom
  * The coordinates may be an empty array, but may not be an array of empty arrays.
  *
  * Foreign members are allowed with the exception of 'geometry', 'properties', or 'features'.
+ * If present, bounding boxes must be valid.
  *
  * @memberof Matchers.Geometries
  * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/14

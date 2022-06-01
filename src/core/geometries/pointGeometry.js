@@ -1,5 +1,5 @@
 const { validCoordinate } = require('../coordinates/validCoordinate')
-const { validBoundingBox } = require('../boundingBoxes/validBoundingBox')
+const { commonGeometryValidation } = require('../utilities')
 
 /**
  * Verifies an object is a valid GeoJSON Point Geometry. This geometry requires a
@@ -35,43 +35,15 @@ const { validBoundingBox } = require('../boundingBoxes/validBoundingBox')
  * const badExample2 = pointGeometry(testPoint2) // throws error for being MultiPoint
  */
 function pointGeometry(geometryObject) {
-    if (
-        typeof geometryObject !== 'object' ||
-        Array.isArray(geometryObject) ||
-        geometryObject === null
-    ) {
-        throw new Error('Argument must be a GeoJSON Point Geometry object.')
-    }
-
     if (geometryObject.type !== 'Point') {
         throw new Error(`Must have a type property with value 'Point'`)
     }
 
-    if ('geometry' in geometryObject) {
-        throw new Error(
-            `GeoJSON Point Geometry objects are forbidden from having a property 'geometry'.`
-        )
-    }
-
-    if ('properties' in geometryObject) {
-        throw new Error(
-            `GeoJSON Point Geometry objects are forbidden from having a property 'properties'.`
-        )
-    }
-
-    if ('features' in geometryObject) {
-        throw new Error(
-            `GeoJSON Point Geometry objects are forbidden from having a property 'features'.`
-        )
-    }
-
-    if ('bbox' in geometryObject) {
-        validBoundingBox(geometryObject.bbox)
-    }
+    commonGeometryValidation(geometryObject)
 
     // Geometry objects are allowed to have empty arrays as coordinates, however validCoordinate may not.
     // If coordinates is an empty array, we're done. Otherwise, check for coordinate validity.
-    if (Array.isArray(geometryObject.coordinates) && geometryObject.coordinates.length === 0) {
+    if (geometryObject.coordinates.length === 0) {
         return true
     }
     validCoordinate(geometryObject.coordinates)

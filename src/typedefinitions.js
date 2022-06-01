@@ -69,6 +69,13 @@
  */
 
 /**
+ * Various helper functions used within Core.
+ *
+ * @private
+ * @namespace Core.Utilities
+ */
+
+/**
  * This is the object that Jest matchers return to the <code>expect()</code> function.
  * All custom matchers should return this type of object.
  *

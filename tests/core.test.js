@@ -63,3 +63,9 @@ describe('Geometry Functions Exported', () => {
         expect('polygonGeometry' in core.geometries).toBeTruthy()
     })
 })
+
+describe('Utility Functions Exported', () => {
+    test('commonGeometryValidation', () => {
+        expect('commonGeometryValidation' in core.utilities).toBeTruthy()
+    })
+})
