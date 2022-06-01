@@ -15,19 +15,15 @@ describe('Invalid Use Cases', () => {
 })
 
 describe('Error Snapshot Testing. Throws error:', () => {
-    test('expect([0, 0]).not.isValidCoordinate', () => {
+    test('Valid use case passes', () => {
         expect(() => expect([0, 0]).not.isValidCoordinate()).toThrowErrorMatchingSnapshot()
     })
 
-    test('expect([0, 0, 0]).not.isValidCoordinate', () => {
-        expect(() => expect([0, 0, 0]).not.isValidCoordinate()).toThrowErrorMatchingSnapshot()
+    test('Invalid input to matcher', () => {
+        expect(() => expect(false).isValidCoordinate()).toThrowErrorMatchingSnapshot()
     })
 
-    test('expect([0, 0]).isValidCoordinate', () => {
-        expect(() => expect([0, 95]).isValidCoordinate()).toThrowErrorMatchingSnapshot()
-    })
-
-    test('expect([0, 0, 0]).isValidCoordinate', () => {
-        expect(() => expect([0, 95, 0]).isValidCoordinate()).toThrowErrorMatchingSnapshot()
+    test('Array does not have either two or three elements', () => {
+        expect(() => expect([0, 0, 0, 0]).isValidCoordinate()).toThrowErrorMatchingSnapshot()
     })
 })
