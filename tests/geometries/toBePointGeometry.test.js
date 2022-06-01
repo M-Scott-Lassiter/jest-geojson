@@ -260,13 +260,64 @@ describe('Inalid Use Cases', () => {
 })
 
 describe('Error Snapshot Testing. Throws error:', () => {
-    test(`expect({type: 'Point', coordinates: [0, 0]}).not.toBePointGeometry`, () => {
+    test(`Valid use case passes`, () => {
         expect(() =>
             expect({ type: 'Point', coordinates: [0, 0] }).not.toBePointGeometry()
         ).toThrowErrorMatchingSnapshot()
     })
 
-    test('expect(false).toBePointGeometry()', () => {
+    test('Invalid input to matcher', () => {
         expect(() => expect(false).toBePointGeometry()).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Has forbidden property: geometry', () => {
+        const testPoint = {
+            type: 'Point',
+            coordinates: [0, 0],
+            geometry: null
+        }
+        expect(() => expect(testPoint).toBePointGeometry()).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Has forbidden property: properties', () => {
+        const testPoint = {
+            type: 'Point',
+            coordinates: [0, 0],
+            properties: null
+        }
+        expect(() => expect(testPoint).toBePointGeometry()).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Has forbidden property: features', () => {
+        const testPoint = {
+            type: 'Point',
+            coordinates: [0, 0],
+            features: null
+        }
+        expect(() => expect(testPoint).toBePointGeometry()).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Bounding box must be valid', () => {
+        const testPoint = {
+            type: 'Point',
+            coordinates: [0, 0],
+            bbox: [0]
+        }
+        expect(() => expect(testPoint).toBePointGeometry()).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Missing coordinates property', () => {
+        const testPoint = {
+            type: 'Point'
+        }
+        expect(() => expect(testPoint).toBePointGeometry()).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Coordinates not an array', () => {
+        const testPoint = {
+            type: 'Point',
+            coordinates: false
+        }
+        expect(() => expect(testPoint).toBePointGeometry()).toThrowErrorMatchingSnapshot()
     })
 })
