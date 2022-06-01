@@ -3,6 +3,66 @@
 // This test suite also checks it fails with types Feature or FeatureCollection.
 // Finally, it tests the unique snapshots.
 
+const feature = {
+    type: 'Feature',
+    geometry: {
+        type: 'Point',
+        coordinates: [102.0, 0.5]
+    }
+}
+const featureCollection = {
+    type: 'FeatureCollection',
+    features: [
+        {
+            type: 'Feature',
+            geometry: {
+                type: 'Point',
+                coordinates: [102.0, 0.5]
+            },
+            properties: {
+                prop0: 'value0'
+            }
+        },
+        {
+            type: 'Feature',
+            geometry: {
+                type: 'LineString',
+                coordinates: [
+                    [102.0, 0.0],
+                    [103.0, 1.0],
+                    [104.0, 0.0],
+                    [105.0, 1.0]
+                ]
+            },
+            properties: {
+                prop0: 'value0',
+                prop1: 0.0
+            }
+        },
+        {
+            type: 'Feature',
+            geometry: {
+                type: 'Polygon',
+                coordinates: [
+                    [
+                        [100.0, 0.0],
+                        [101.0, 0.0],
+                        [101.0, 1.0],
+                        [100.0, 1.0],
+                        [100.0, 0.0]
+                    ]
+                ]
+            },
+            properties: {
+                prop0: 'value0',
+                prop1: {
+                    this: 'that'
+                }
+            }
+        }
+    ]
+}
+
 describe('Valid Use Cases', () => {
     test('Expect to pass with GeometryCollection', () => {
         const geometryCollection = {
@@ -27,80 +87,27 @@ describe('Valid Use Cases', () => {
 
 describe('Invalid Use Cases', () => {
     test('Expect to fail with Feature', () => {
-        const feature = {
-            type: 'Feature',
-            geometry: {
-                type: 'Point',
-                coordinates: [102.0, 0.5]
-            }
-        }
         expect(feature).not.toBeAnyGeometry()
     })
 
     test('Expect to fail with FeatureCollection', () => {
-        const featureCollection = {
-            type: 'FeatureCollection',
-            features: [
-                {
-                    type: 'Feature',
-                    geometry: {
-                        type: 'Point',
-                        coordinates: [102.0, 0.5]
-                    },
-                    properties: {
-                        prop0: 'value0'
-                    }
-                },
-                {
-                    type: 'Feature',
-                    geometry: {
-                        type: 'LineString',
-                        coordinates: [
-                            [102.0, 0.0],
-                            [103.0, 1.0],
-                            [104.0, 0.0],
-                            [105.0, 1.0]
-                        ]
-                    },
-                    properties: {
-                        prop0: 'value0',
-                        prop1: 0.0
-                    }
-                },
-                {
-                    type: 'Feature',
-                    geometry: {
-                        type: 'Polygon',
-                        coordinates: [
-                            [
-                                [100.0, 0.0],
-                                [101.0, 0.0],
-                                [101.0, 1.0],
-                                [100.0, 1.0],
-                                [100.0, 0.0]
-                            ]
-                        ]
-                    },
-                    properties: {
-                        prop0: 'value0',
-                        prop1: {
-                            this: 'that'
-                        }
-                    }
-                }
-            ]
-        }
         expect(featureCollection).not.toBeAnyGeometry()
     })
 })
 
 describe('Error Snapshot Testing. Throws error:', () => {
-    test(`expect({type: 'Point', coordinates: [0, 0]}).not.toBeAnyGeometry`, () => {
+    test('Valid use case passes', () => {
         expect(() =>
             expect({ type: 'Point', coordinates: [0, 0] }).not.toBeAnyGeometry()
         ).toThrowErrorMatchingSnapshot()
     })
-    test('expect(false).toBeAnyGeometry', () => {
+
+    test('Invalid input to matcher', () => {
         expect(() => expect(false).toBeAnyGeometry()).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Rejects Feature objects', () => {
+        expect(() => expect(feature).toBeAnyGeometry()).toThrowErrorMatchingSnapshot()
+        expect(() => expect(featureCollection).toBeAnyGeometry()).toThrowErrorMatchingSnapshot()
     })
 })

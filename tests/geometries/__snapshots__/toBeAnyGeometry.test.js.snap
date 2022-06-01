@@ -1,17 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Error Snapshot Testing. Throws error: expect({type: 'Point', coordinates: [0, 0]}).not.toBeAnyGeometry 1`] = `
-"[2mexpect([22m[31mGeometryObject[39m[2m).not.toBeAnyGeometry()[22m
-
-Expected input to not be a valid GeoJSON geometry object.
-
-Received:  [31m{\\"coordinates\\": [0, 0], \\"type\\": \\"Point\\"}[39m"
-`;
-
-exports[`Error Snapshot Testing. Throws error: expect(false).toBeAnyGeometry 1`] = `
+exports[`Error Snapshot Testing. Throws error: Invalid input to matcher 1`] = `
 "[2mexpect([22m[31mGeometryObject[39m[2m).toBeAnyGeometry()[22m
 
 Argument must be a GeoJSON Geometry object.
 
 Received:  [31mfalse[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Rejects Feature objects 1`] = `
+"[2mexpect([22m[31mGeometryObject[39m[2m).toBeAnyGeometry()[22m
+
+Must have a type property with value 'Point', 'MultiPoint', 'LineString', 'MultiLineString', 'Polygon', 'MultiPolygon', or 'GeometryCollection'.
+
+Received:  [31m{\\"geometry\\": {\\"coordinates\\": [102, 0.5], \\"type\\": \\"Point\\"}, \\"type\\": \\"Feature\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Rejects Feature objects 2`] = `
+"[2mexpect([22m[31mGeometryObject[39m[2m).toBeAnyGeometry()[22m
+
+Must have a type property with value 'Point', 'MultiPoint', 'LineString', 'MultiLineString', 'Polygon', 'MultiPolygon', or 'GeometryCollection'.
+
+Received:  [31m{\\"features\\": [{\\"geometry\\": {\\"coordinates\\": [102, 0.5], \\"type\\": \\"Point\\"}, \\"properties\\": {\\"prop0\\": \\"value0\\"}, \\"type\\": \\"Feature\\"}, {\\"geometry\\": {\\"coordinates\\": [[102, 0], [103, 1], [104, 0], [105, 1]], \\"type\\": \\"LineString\\"}, \\"properties\\": {\\"prop0\\": \\"value0\\", \\"prop1\\": 0}, \\"type\\": \\"Feature\\"}, {\\"geometry\\": {\\"coordinates\\": [[[100, 0], [101, 0], [101, 1], [100, 1], [100, 0]]], \\"type\\": \\"Polygon\\"}, \\"properties\\": {\\"prop0\\": \\"value0\\", \\"prop1\\": {\\"this\\": \\"that\\"}}, \\"type\\": \\"Feature\\"}], \\"type\\": \\"FeatureCollection\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Valid use case passes 1`] = `
+"[2mexpect([22m[31mGeometryObject[39m[2m).not.toBeAnyGeometry()[22m
+
+Expected input to not be a valid GeoJSON geometry object.
+
+Received:  [31m{\\"coordinates\\": [0, 0], \\"type\\": \\"Point\\"}[39m"
 `;
