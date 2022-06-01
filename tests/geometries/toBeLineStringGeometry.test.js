@@ -437,7 +437,7 @@ describe('Inalid Use Cases', () => {
             [[-10.0, -10.0, 0, 10, 10.0, '200']]
         ]
         test.each(invalidBBoxes)('bbox: %p', (input) => {
-            const testPoint = {
+            const testLineString = {
                 type: 'LineString',
                 coordinates: [
                     [0, 0],
@@ -445,14 +445,14 @@ describe('Inalid Use Cases', () => {
                 ],
                 bbox: input
             }
-            expect(testPoint).not.toBeLineStringGeometry()
-            expect(testPoint).not.toBeAnyGeometry()
+            expect(testLineString).not.toBeLineStringGeometry()
+            expect(testLineString).not.toBeAnyGeometry()
         })
     })
 })
 
 describe('Error Snapshot Testing. Throws error:', () => {
-    test(`expect({type: 'LineString', coordinates: [[0, 0], [1, 1]]}).not.toBeLineStringGeometry`, () => {
+    test('Valid use case passes', () => {
         expect(() =>
             expect({
                 type: 'LineString',
@@ -463,7 +463,71 @@ describe('Error Snapshot Testing. Throws error:', () => {
             }).not.toBeLineStringGeometry()
         ).toThrowErrorMatchingSnapshot()
     })
-    test('expect(false).toBeLineStringGeometry()', () => {
+
+    test('Invalid input to matcher', () => {
         expect(() => expect(false).toBeLineStringGeometry()).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Has forbidden property: geometry', () => {
+        const testLineString = {
+            type: 'LineString',
+            coordinates: [
+                [0, 0],
+                [1, 1]
+            ],
+            geometry: null
+        }
+        expect(() => expect(testLineString).toBeLineStringGeometry()).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Has forbidden property: properties', () => {
+        const testLineString = {
+            type: 'LineString',
+            coordinates: [
+                [0, 0],
+                [1, 1]
+            ],
+            properties: null
+        }
+        expect(() => expect(testLineString).toBeLineStringGeometry()).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Has forbidden property: features', () => {
+        const testLineString = {
+            type: 'LineString',
+            coordinates: [
+                [0, 0],
+                [1, 1]
+            ],
+            features: null
+        }
+        expect(() => expect(testLineString).toBeLineStringGeometry()).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Bounding box must be valid', () => {
+        const testLineString = {
+            type: 'LineString',
+            coordinates: [
+                [0, 0],
+                [1, 1]
+            ],
+            bbox: [0]
+        }
+        expect(() => expect(testLineString).toBeLineStringGeometry()).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Missing coordinates property', () => {
+        const testLineString = {
+            type: 'LineString'
+        }
+        expect(() => expect(testLineString).toBeLineStringGeometry()).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Coordinates not an array', () => {
+        const testLineString = {
+            type: 'LineString',
+            coordinates: false
+        }
+        expect(() => expect(testLineString).toBeLineStringGeometry()).toThrowErrorMatchingSnapshot()
     })
 })
