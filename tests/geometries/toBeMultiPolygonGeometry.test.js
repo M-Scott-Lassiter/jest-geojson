@@ -758,7 +758,7 @@ describe('Inalid Use Cases', () => {
 })
 
 describe('Error Snapshot Testing. Throws error:', () => {
-    test(`expect({type: 'MultiPolygon', coordinates: [${counterClockwiseBox}]}).not.toBeMultiPolygonGeometry`, () => {
+    test('Valid use case passes', () => {
         expect(() =>
             expect({
                 type: 'MultiPolygon',
@@ -767,7 +767,70 @@ describe('Error Snapshot Testing. Throws error:', () => {
         ).toThrowErrorMatchingSnapshot()
     })
 
-    test('expect(false).toBeMultiPolygonGeometry()', () => {
+    test('Invalid input to matcher', () => {
         expect(() => expect(false).toBeMultiPolygonGeometry()).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Has forbidden property: geometry', () => {
+        const testMultiPolygon = {
+            type: 'MultiPolygon',
+            coordinates: [[counterClockwiseBox]],
+            geometry: null
+        }
+        expect(() =>
+            expect(testMultiPolygon).toBeMultiPolygonGeometry()
+        ).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Has forbidden property: properties', () => {
+        const testMultiPolygon = {
+            type: 'MultiPolygon',
+            coordinates: [[counterClockwiseBox]],
+            properties: null
+        }
+        expect(() =>
+            expect(testMultiPolygon).toBeMultiPolygonGeometry()
+        ).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Has forbidden property: features', () => {
+        const testMultiPolygon = {
+            type: 'MultiPolygon',
+            coordinates: [[counterClockwiseBox]],
+            features: null
+        }
+        expect(() =>
+            expect(testMultiPolygon).toBeMultiPolygonGeometry()
+        ).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Bounding box must be valid', () => {
+        const testMultiPolygon = {
+            type: 'MultiPolygon',
+            coordinates: [[counterClockwiseBox]],
+            bbox: [0]
+        }
+        expect(() =>
+            expect(testMultiPolygon).toBeMultiPolygonGeometry()
+        ).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Missing coordinates property', () => {
+        const testMultiPolygon = {
+            type: 'MultiPolygon'
+        }
+        expect(() =>
+            expect(testMultiPolygon).toBeMultiPolygonGeometry()
+        ).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Coordinates not an array', () => {
+        const testMultiPolygon = {
+            type: 'MultiPolygon',
+            coordinates: false
+        }
+        expect(() =>
+            expect(testMultiPolygon).toBeMultiPolygonGeometry()
+        ).toThrowErrorMatchingSnapshot()
     })
 })
