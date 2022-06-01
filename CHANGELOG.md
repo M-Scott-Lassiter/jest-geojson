@@ -3,7 +3,7 @@
 
 ### :lady_beetle: Bug Fixes
 
-* add bounding box validity checking to geometry core functions and matchers ([ac6a9a1](https://github.com/M-Scott-Lassiter/jest-geojson/commit/ac6a9a10615cf8e66aed01e63032d03ba5e4aa95)), closes [/datatracker.ietf.org/doc/html/rfc7946#section-5](https://github.com/M-Scott-Lassiter//datatracker.ietf.org/doc/html/rfc7946/issues/section-5) [#9](https://github.com/M-Scott-Lassiter/jest-geojson/issues/9) [#10](https://github.com/M-Scott-Lassiter/jest-geojson/issues/10) [#11](https://github.com/M-Scott-Lassiter/jest-geojson/issues/11) [#12](https://github.com/M-Scott-Lassiter/jest-geojson/issues/12) [#13](https://github.com/M-Scott-Lassiter/jest-geojson/issues/13) [#14](https://github.com/M-Scott-Lassiter/jest-geojson/issues/14) [#16](https://github.com/M-Scott-Lassiter/jest-geojson/issues/16) [#29](https://github.com/M-Scott-Lassiter/jest-geojson/issues/29)
+* add bounding box validity checking to geometry core functions and matchers ([ac6a9a1](https://github.com/M-Scott-Lassiter/jest-geojson/commit/ac6a9a10615cf8e66aed01e63032d03ba5e4aa95)), closes [#9](https://github.com/M-Scott-Lassiter/jest-geojson/issues/9) [#10](https://github.com/M-Scott-Lassiter/jest-geojson/issues/10) [#11](https://github.com/M-Scott-Lassiter/jest-geojson/issues/11) [#12](https://github.com/M-Scott-Lassiter/jest-geojson/issues/12) [#13](https://github.com/M-Scott-Lassiter/jest-geojson/issues/13) [#14](https://github.com/M-Scott-Lassiter/jest-geojson/issues/14) [#16](https://github.com/M-Scott-Lassiter/jest-geojson/issues/16) [#29](https://github.com/M-Scott-Lassiter/jest-geojson/issues/29)
 
 ## [1.0.0-beta.13](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.0.0-beta.12...v1.0.0-beta.13) (2022-05-30)
 
