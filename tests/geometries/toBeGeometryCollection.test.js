@@ -1,3 +1,5 @@
+const { goodGeometry, badGeometry, nestedGeometryCollection } = require('./data')
+
 const goodGeometryCollection = {
     type: 'GeometryCollection',
     geometries: [
@@ -29,191 +31,6 @@ const goodGeometryCollection = {
             coordinates: [150.0, 73.0]
         }
     ]
-}
-
-const nestedGeometryCollection = {
-    type: 'GeometryCollection',
-    geometries: [
-        {
-            type: 'GeometryCollection',
-            geometries: [
-                {
-                    type: 'GeometryCollection',
-                    geometries: [
-                        {
-                            type: 'Point',
-                            coordinates: [5, 15]
-                        }
-                    ]
-                },
-                {
-                    type: 'Point',
-                    coordinates: [10, 20]
-                }
-            ]
-        },
-        {
-            type: 'Point',
-            coordinates: [20, 25]
-        }
-    ]
-}
-
-const good = {
-    point: {
-        type: 'Point',
-        coordinates: [100.0, 0.0]
-    },
-    multiPoint: {
-        type: 'MultiPoint',
-        coordinates: [
-            [101.0, 0.0],
-            [102.0, 1.0]
-        ]
-    },
-    lineString: {
-        type: 'LineString',
-        coordinates: [
-            [101.0, 0.0],
-            [102.0, 1.0]
-        ]
-    },
-    multiLineString: {
-        type: 'MultiLineString',
-        coordinates: [
-            [
-                [100.0, 0.0, 0],
-                [101.0, 1.0, 0]
-            ],
-            [
-                [102.0, 2.0, 0],
-                [103.0, 3.0, 0]
-            ]
-        ]
-    },
-    polygon: {
-        type: 'Polygon',
-        coordinates: [
-            [
-                [100.0, 0.0],
-                [101.0, 0.0],
-                [101.0, 1.0],
-                [100.0, 1.0],
-                [100.0, 0.0]
-            ]
-        ]
-    },
-    multiPolygon: {
-        type: 'MultiPolygon',
-        coordinates: [
-            [
-                [
-                    [102.0, 2.0],
-                    [103.0, 2.0],
-                    [103.0, 3.0],
-                    [102.0, 3.0],
-                    [102.0, 2.0]
-                ]
-            ],
-            [
-                [
-                    [100.0, 0.0],
-                    [101.0, 0.0],
-                    [101.0, 1.0],
-                    [100.0, 1.0],
-                    [100.0, 0.0]
-                ],
-                [
-                    [100.2, 0.2],
-                    [100.2, 0.8],
-                    [100.8, 0.8],
-                    [100.8, 0.2],
-                    [100.2, 0.2]
-                ]
-            ]
-        ]
-    }
-}
-
-const bad = {
-    point: {
-        type: 'Point',
-        coordinates: [100.0, 0.0, 1, 1] // Too many values in coordinates
-    },
-    multiPoint: {
-        type: 'MultiPoint',
-        coordinates: [
-            [101.0, 91], // Out of range latitude
-            [102.0, 1.0]
-        ]
-    },
-    lineString: {
-        type: 'LineString',
-        coordinates: [
-            [101.0, '0.0'], // Non-numeric latitude
-            [102.0, 1.0]
-        ]
-    },
-    multiLineString: {
-        type: 'MultiLineString',
-        coordinates: [
-            // Nested too deeply
-            [
-                [
-                    [100.0, 0.0, 0],
-                    [101.0, 1.0, 0]
-                ],
-                [
-                    [102.0, 2.0, 0],
-                    [103.0, 3.0, 0]
-                ]
-            ]
-        ]
-    },
-    polygon: {
-        type: 'Polygon',
-        coordinates: [
-            [
-                [100.0, 0.0],
-                [101.0, 0.0],
-                [101.0, 1.0],
-                [100.0, 1.0] // Last point doesn't match first
-            ]
-        ]
-    },
-    multiPolygon: {
-        type: 'MultiPolygon',
-        coordinates: [
-            [
-                [
-                    [102.0, 2.0],
-                    [103.0, 2.0],
-                    [103.0, 3.0],
-                    [102.0, 3.0],
-                    [102.0, 2.0]
-                ]
-            ],
-            [
-                [
-                    [100.0, 0.0],
-                    [101.0, 0.0],
-                    [101.0, 1.0],
-                    [100.0, 1.0],
-                    [100.0, 0.0]
-                ],
-                [
-                    [100.2, 0.2],
-                    [100.2, 0.8],
-                    [100.8, 0.8],
-                    [100.8, 0.2] // Last point doesn't match first
-                ]
-            ]
-        ]
-    },
-    unrecognized: {
-        type: 'UnrecognizedPoint', // Not a valid GeoJSON type
-        coordinates: [100.0, 0.0]
-    }
 }
 
 const invalidInputValues = [
@@ -272,7 +89,7 @@ describe('Valid Use Cases', () => {
         test('Point', () => {
             const testGeometryCollection = {
                 type: 'GeometryCollection',
-                geometries: [good.point]
+                geometries: [goodGeometry.point]
             }
             expect(testGeometryCollection).toBeGeometryCollection()
             expect(testGeometryCollection).toBeAnyGeometry()
@@ -281,7 +98,7 @@ describe('Valid Use Cases', () => {
         test('MultiPoint', () => {
             const testGeometryCollection = {
                 type: 'GeometryCollection',
-                geometries: [good.multiPoint]
+                geometries: [goodGeometry.multiPoint]
             }
             expect(testGeometryCollection).toBeGeometryCollection()
             expect(testGeometryCollection).toBeAnyGeometry()
@@ -290,7 +107,7 @@ describe('Valid Use Cases', () => {
         test('LineString', () => {
             const testGeometryCollection = {
                 type: 'GeometryCollection',
-                geometries: [good.lineString]
+                geometries: [goodGeometry.lineString]
             }
             expect(testGeometryCollection).toBeGeometryCollection()
             expect(testGeometryCollection).toBeAnyGeometry()
@@ -299,7 +116,7 @@ describe('Valid Use Cases', () => {
         test('MultiLineString', () => {
             const testGeometryCollection = {
                 type: 'GeometryCollection',
-                geometries: [good.multiLineString]
+                geometries: [goodGeometry.multiLineString]
             }
             expect(testGeometryCollection).toBeGeometryCollection()
             expect(testGeometryCollection).toBeAnyGeometry()
@@ -308,7 +125,7 @@ describe('Valid Use Cases', () => {
         test('Polygon', () => {
             const testGeometryCollection = {
                 type: 'GeometryCollection',
-                geometries: [good.polygon]
+                geometries: [goodGeometry.polygon]
             }
             expect(testGeometryCollection).toBeGeometryCollection()
             expect(testGeometryCollection).toBeAnyGeometry()
@@ -317,7 +134,7 @@ describe('Valid Use Cases', () => {
         test('MultiPolygon', () => {
             const testGeometryCollection = {
                 type: 'GeometryCollection',
-                geometries: [good.multiPolygon]
+                geometries: [goodGeometry.multiPolygon]
             }
             expect(testGeometryCollection).toBeGeometryCollection()
             expect(testGeometryCollection).toBeAnyGeometry()
@@ -327,12 +144,12 @@ describe('Valid Use Cases', () => {
             const testGeometryCollection = {
                 type: 'GeometryCollection',
                 geometries: [
-                    good.point,
-                    good.multiPoint,
-                    good.lineString,
-                    good.multiLineString,
-                    good.polygon,
-                    good.multiPolygon
+                    goodGeometry.point,
+                    goodGeometry.multiPoint,
+                    goodGeometry.lineString,
+                    goodGeometry.multiLineString,
+                    goodGeometry.polygon,
+                    goodGeometry.multiPolygon
                 ]
             }
             expect(testGeometryCollection).toBeGeometryCollection()
@@ -347,16 +164,16 @@ describe('Valid Use Cases', () => {
         test('Stress Test', () => {
             const testGeometryCollection = {
                 type: 'GeometryCollection',
-                geometries: [good.multiPolygon]
+                geometries: [goodGeometry.multiPolygon]
             }
             for (let i = 0; i < 10; i++) {
                 testGeometryCollection.geometries.push(
-                    good.point,
-                    good.multiPoint,
-                    good.lineString,
-                    good.multiLineString,
-                    good.polygon,
-                    good.multiPolygon,
+                    goodGeometry.point,
+                    goodGeometry.multiPoint,
+                    goodGeometry.lineString,
+                    goodGeometry.multiLineString,
+                    goodGeometry.polygon,
+                    goodGeometry.multiPolygon,
                     nestedGeometryCollection
                 )
             }
@@ -370,7 +187,7 @@ describe('Valid Use Cases', () => {
             const testGeometryCollection = {
                 type: 'GeometryCollection',
                 id: input,
-                geometries: [good.point]
+                geometries: [goodGeometry.point]
             }
             expect(testGeometryCollection).toBeGeometryCollection()
             expect(testGeometryCollection).toBeAnyGeometry()
@@ -465,7 +282,7 @@ describe('Valid Use Cases', () => {
     })
 })
 
-describe('Inalid Use Cases', () => {
+describe('Invalid Use Cases', () => {
     describe('Expect to fail with bad inputs:', () => {
         test.each([...invalidInputValues])(
             'expect(%p).not.toBeGeometryCollection()',
@@ -480,7 +297,7 @@ describe('Inalid Use Cases', () => {
         test('Point', () => {
             const testGeometryCollection = {
                 type: 'GeometryCollection',
-                geometries: [bad.point]
+                geometries: [badGeometry.point]
             }
             expect(testGeometryCollection).not.toBeGeometryCollection()
             expect(testGeometryCollection).not.toBeAnyGeometry()
@@ -489,7 +306,7 @@ describe('Inalid Use Cases', () => {
         test('MultiPoint', () => {
             const testGeometryCollection = {
                 type: 'GeometryCollection',
-                geometries: [bad.multiPoint]
+                geometries: [badGeometry.multiPoint]
             }
             expect(testGeometryCollection).not.toBeGeometryCollection()
             expect(testGeometryCollection).not.toBeAnyGeometry()
@@ -498,7 +315,7 @@ describe('Inalid Use Cases', () => {
         test('LineString', () => {
             const testGeometryCollection = {
                 type: 'GeometryCollection',
-                geometries: [bad.lineString]
+                geometries: [badGeometry.lineString]
             }
             expect(testGeometryCollection).not.toBeGeometryCollection()
             expect(testGeometryCollection).not.toBeAnyGeometry()
@@ -507,7 +324,7 @@ describe('Inalid Use Cases', () => {
         test('MultiLineString', () => {
             const testGeometryCollection = {
                 type: 'GeometryCollection',
-                geometries: [bad.multiLineString]
+                geometries: [badGeometry.multiLineString]
             }
             expect(testGeometryCollection).not.toBeGeometryCollection()
             expect(testGeometryCollection).not.toBeAnyGeometry()
@@ -516,7 +333,7 @@ describe('Inalid Use Cases', () => {
         test('Polygon', () => {
             const testGeometryCollection = {
                 type: 'GeometryCollection',
-                geometries: [bad.polygon]
+                geometries: [badGeometry.polygon]
             }
             expect(testGeometryCollection).not.toBeGeometryCollection()
             expect(testGeometryCollection).not.toBeAnyGeometry()
@@ -525,7 +342,7 @@ describe('Inalid Use Cases', () => {
         test('MultiPolygon', () => {
             const testGeometryCollection = {
                 type: 'GeometryCollection',
-                geometries: [bad.multiPolygon]
+                geometries: [badGeometry.multiPolygon]
             }
             expect(testGeometryCollection).not.toBeGeometryCollection()
             expect(testGeometryCollection).not.toBeAnyGeometry()
@@ -534,7 +351,7 @@ describe('Inalid Use Cases', () => {
         test('Unrecognized', () => {
             const testGeometryCollection = {
                 type: 'GeometryCollection',
-                geometries: [bad.unrecognized]
+                geometries: [badGeometry.unrecognized]
             }
             expect(testGeometryCollection).not.toBeGeometryCollection()
             expect(testGeometryCollection).not.toBeAnyGeometry()
@@ -544,12 +361,12 @@ describe('Inalid Use Cases', () => {
             const testGeometryCollection = {
                 type: 'GeometryCollection',
                 geometries: [
-                    bad.point,
-                    bad.multiPoint,
-                    bad.lineString,
-                    bad.multiLineString,
-                    bad.polygon,
-                    bad.multiPolygon
+                    badGeometry.point,
+                    badGeometry.multiPoint,
+                    badGeometry.lineString,
+                    badGeometry.multiLineString,
+                    badGeometry.polygon,
+                    badGeometry.multiPolygon
                 ]
             }
             expect(testGeometryCollection).not.toBeGeometryCollection()
@@ -560,13 +377,13 @@ describe('Inalid Use Cases', () => {
             const testGeometryCollection = {
                 type: 'GeometryCollection',
                 geometries: [
-                    good.point,
-                    good.multiPoint,
-                    good.lineString,
-                    good.multiLineString,
-                    good.polygon,
-                    good.multiPolygon,
-                    bad.point
+                    goodGeometry.point,
+                    goodGeometry.multiPoint,
+                    goodGeometry.lineString,
+                    goodGeometry.multiLineString,
+                    goodGeometry.polygon,
+                    goodGeometry.multiPolygon,
+                    badGeometry.point
                 ]
             }
             expect(testGeometryCollection).not.toBeGeometryCollection()
@@ -589,7 +406,7 @@ describe('Inalid Use Cases', () => {
         test.each([...incorrectTypeValues, ...invalidInputValues])('type: %p', (input) => {
             const testGeometryCollection = {
                 type: input,
-                geometries: [good.point]
+                geometries: [goodGeometry.point]
             }
             expect(testGeometryCollection).not.toBeGeometryCollection()
             expect(testGeometryCollection).not.toBeAnyGeometry()
@@ -662,7 +479,7 @@ describe('Inalid Use Cases', () => {
     describe('Expect to fail when missing required properties:', () => {
         test(`Missing: 'type'`, () => {
             const testGeometryCollection = {
-                geometries: [good.point]
+                geometries: [goodGeometry.point]
             }
             expect(testGeometryCollection).not.toBeGeometryCollection()
             expect(testGeometryCollection).not.toBeAnyGeometry()

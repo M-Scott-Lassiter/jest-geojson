@@ -12,6 +12,10 @@ exports.coordinates = {
     validCoordinate: require('./core/coordinates/validCoordinate')
 }
 
+exports.features = {
+    feature: require('./core/features/feature')
+}
+
 exports.geometries = {
     anyGeometry: require('./core/geometries/anyGeometry'),
     geometryCollection: require('./core/geometries/geometryCollection'),

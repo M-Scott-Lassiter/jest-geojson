@@ -43,12 +43,13 @@
         "format": "npx prettier . --write",
         "tableofcontents": "markdown-toc -i ./README.md && markdown-toc -i ./CONTRIBUTING.md",
         "test": "jest --coverage --verbose",
-        "test:dev": "jest --watch --coverage --verbose",
-        "test-coordinates": "jest tests/coordinates --coverage --verbose",
-        "test-boundingboxes": "jest tests/boundingBoxes --coverage --verbose",
-        "test-geometries": "jest tests/geometries --coverage --verbose",
+        "test:coordinates": "jest tests/coordinates --coverage --verbose",
+        "test:boundingboxes": "jest tests/boundingBoxes --coverage --verbose",
+        "test:features": "jest tests/features --coverage --verbose",
+        "test:geometries": "jest tests/geometries --coverage --verbose",
         "lint": "eslint . --ext .js --fix",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "watch": "jest --watch --coverage --verbose"
     },
     "sideEffects": false,
     "config": {

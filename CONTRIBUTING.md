@@ -182,8 +182,8 @@ This project provides high working confidence to developers by uses Jest itself 
 
 ```bash
 npm run test # Runs all tests and generates coverage report
-npm run test:dev # Runs tests in watch mode
-npm run test-<type> #runs the tests only in that category
+npm run test:<type> #runs the tests only in that category
+npm run watch # Runs tests in watch mode
 ```
 
 ### Documentation
@@ -242,12 +242,15 @@ describe('Error Snapshot Testing', () => {
 })
 ```
 
+To ensure code refactoring doesn't result in [vague error messages](https://github.com/M-Scott-Lassiter/jest-geojson/issues/32), ensure there is at least one snapshot covering each expected error message.
+
 ### Updating Error Snapshots
 
-If you change the error messages, the snapshots will also change. Once you manually verify it still works as intended, update the snapshot:
+If you change the error messages, the snapshots will also change. Once you manually verify it still works as intended, update the snapshot using one of the following:
 
 ```bash
 npm run test -- -u
+npm run test:<type> -- -u
 ```
 
 ### Export Both Core and Matcher Functions

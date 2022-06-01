@@ -166,7 +166,7 @@ _Future_
 
 _1.0.0_
 
--   [ ] toBeFeature
+-   [x] toBeFeature
 
 ---
 

@@ -14,13 +14,21 @@
 
 /**
  * GeoJSON tailored matchers used to extend the Jest testing framework.
+ * All matchers should return an object like the examples below.
  *
  * @private
  * @namespace Matchers
+ * @see https://jestjs.io/docs/expect#expectextendmatchers
+ * @example
+ * // Passing
+ * { pass: true, message: () => 'This test passed' }
+ * @example
+ * // Failing
+ * { pass: false, message: () => 'This test failed' }
  */
 
 /**
- * A set of matchers related to validating coordinates and coordinate properties.
+ * A set of matchers related to validating bounding boxes.
  *
  * @see https://datatracker.ietf.org/doc/html/rfc7946#section-5
  * @namespace Matchers.BoundingBoxes
@@ -34,7 +42,14 @@
  */
 
 /**
- * A set of matchers related to validating coordinates and coordinate properties.
+ * A set of matchers related to validating feature objects.
+ *
+ * @see https://datatracker.ietf.org/doc/html/rfc7946#section-3.2
+ * @namespace Matchers.Features
+ */
+
+/**
+ * A set of matchers related to validating the seven geometry objects.
  *
  * @see https://datatracker.ietf.org/doc/html/rfc7946#section-3.1
  * @namespace Matchers.Geometries
@@ -62,6 +77,13 @@
  */
 
 /**
+ * Feature object validation functions used within Core.
+ *
+ * @private
+ * @namespace Core.Features
+ */
+
+/**
  * Geometry object validation functions used within Core.
  *
  * @private
@@ -73,19 +95,4 @@
  *
  * @private
  * @namespace Core.Utilities
- */
-
-/**
- * This is the object that Jest matchers return to the <code>expect()</code> function.
- * All custom matchers should return this type of object.
- *
- * @typedef JestMatchingObject
- * @type {object}
- * @property {boolean} pass Whether the test passed or not
- * @property {Function} message An arrow function that returns the message from the test
- * @see https://jestjs.io/docs/expect#expectextendmatchers
- * @example
- * { pass: false, message: () => 'This test failed' }
- * @example
- * { pass: true, message: () => 'This test passed' }
  */

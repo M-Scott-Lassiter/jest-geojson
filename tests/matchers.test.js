@@ -30,6 +30,12 @@ describe('Coordinate Matchers Exported', () => {
     })
 })
 
+describe('Feature Matchers Exported', () => {
+    test('toBeFeature', () => {
+        expect('toBeFeature' in matchers.features).toBeTruthy()
+    })
+})
+
 describe('Geometry Matchers Exported', () => {
     test('toBeAnyGeometry', () => {
         expect('toBeAnyGeometry' in matchers.geometries).toBeTruthy()

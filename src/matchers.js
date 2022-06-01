@@ -3,7 +3,6 @@
 
 /* eslint-disable global-require */
 
-// Bounding Boxes
 exports.boundingBoxes = {
     isValid2DBoundingBox: require('./matchers/boundingBoxes/isValid2DBoundingBox')
         .isValid2DBoundingBox,
@@ -11,18 +10,17 @@ exports.boundingBoxes = {
         .isValid3DBoundingBox,
     isValidBoundingBox: require('./matchers/boundingBoxes/isValidBoundingBox').isValidBoundingBox
 }
-// Coordinates
+
 exports.coordinates = {
     isValid2DCoordinate: require('./matchers/coordinates/isValid2DCoordinate').isValid2DCoordinate,
     isValid3DCoordinate: require('./matchers/coordinates/isValid3DCoordinate').isValid3DCoordinate,
     isValidCoordinate: require('./matchers/coordinates/isValidCoordinate').isValidCoordinate
 }
 
-// Features
+exports.features = {
+    toBeFeature: require('./matchers/features/toBeFeature').toBeFeature
+}
 
-// Feature Collections
-
-// Geometries
 exports.geometries = {
     toBeAnyGeometry: require('./matchers/geometries/toBeAnyGeometry').toBeAnyGeometry,
     toBeGeometryCollection: require('./matchers/geometries/toBeGeometryCollection')
@@ -38,5 +36,3 @@ exports.geometries = {
     toBePointGeometry: require('./matchers/geometries/toBePointGeometry').toBePointGeometry,
     toBePolygonGeometry: require('./matchers/geometries/toBePolygonGeometry').toBePolygonGeometry
 }
-
-// Functional
