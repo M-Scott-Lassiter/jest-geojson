@@ -531,6 +531,15 @@ describe('Inalid Use Cases', () => {
             expect(testGeometryCollection).not.toBeAnyGeometry()
         })
 
+        test('Unrecognized', () => {
+            const testGeometryCollection = {
+                type: 'GeometryCollection',
+                geometries: [bad.unrecognized]
+            }
+            expect(testGeometryCollection).not.toBeGeometryCollection()
+            expect(testGeometryCollection).not.toBeAnyGeometry()
+        })
+
         test('All Bad', () => {
             const testGeometryCollection = {
                 type: 'GeometryCollection',
