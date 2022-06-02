@@ -2,7 +2,7 @@
 
 # jest-geojson
 
-[![NPM Version](https://img.shields.io/npm/v/jest-geojson/beta)](https://www.npmjs.com/package/jest-geojson/v/beta)
+[![NPM Version](https://img.shields.io/npm/v/jest-geojson)](https://www.npmjs.com/package/jest-geojson)
 [![NPM Package Size](https://shields.shivering-isles.com:/bundlephobia/min/jest-geojson?label=size)](https://www.npmjs.com/package/jest-geojson/v/beta)
 [![License](https://img.shields.io/github/license/M-Scott-Lassiter/jest-geojson?color=blue)](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/LICENSE)
 
@@ -10,13 +10,13 @@
 [![Completed and deployed matchers](https://img.shields.io/github/issues-search/m-scott-lassiter/jest-geojson?color=brightgreen&label=matchers&query=is%3Aissue%20is%3Aclosed%20label%3A%22matchers%2Fboundingbox%22%2C%22matchers%2Fcoordinates%22%2C%22matchers%2Fgeometries%22%2C%22matchers%2Fgeometrycollections%22%2C%22matchers%2Ffeatures%22%2C%22matchers%2Ffeaturecollections%22%2C%22matchers%2Ffunctional%22)](#matchers)
 [![Proposed new matchers](https://img.shields.io/github/issues-search/m-scott-lassiter/jest-geojson?color=important&label=proposed&query=is%3Aissue%20is%3Aopen%20label%3A%22new%20matcher%20proposal%22)](https://github.com/M-Scott-Lassiter/jest-geojson/issues?q=is%3Aissue+is%3Aopen+label%3A%22new+matcher+proposal%22)
 
-[![This project is still in beta](https://img.shields.io/github/milestones/progress-percent/m-scott-lassiter/jest-geojson/1)](https://github.com/M-Scott-Lassiter/jest-geojson/milestone/1)
+[![This project has reached initial release!](https://img.shields.io/github/milestones/progress-percent/m-scott-lassiter/jest-geojson/1)](https://github.com/M-Scott-Lassiter/jest-geojson/milestone/1)
 
 ---
 
 [![Tests](https://github.com/M-Scott-Lassiter/jest-geojson/actions/workflows/test.yml/badge.svg)](https://github.com/M-Scott-Lassiter/jest-geojson/actions/workflows/test.yml)
 [![Build](https://github.com/M-Scott-Lassiter/jest-geojson/actions/workflows/publish.yml/badge.svg)](https://github.com/M-Scott-Lassiter/jest-geojson/actions/workflows/publish.yml)
-[![codecov](https://codecov.io/gh/M-Scott-Lassiter/jest-geojson/branch/beta/graph/badge.svg?token=vdb7uefciA)](https://codecov.io/gh/M-Scott-Lassiter/jest-geojson)
+[![codecov](https://codecov.io/gh/M-Scott-Lassiter/jest-geojson/branch/main/graph/badge.svg?token=vdb7uefciA)](https://codecov.io/gh/M-Scott-Lassiter/jest-geojson)
 [![Dependency status](https://img.shields.io/librariesio/release/npm/jest-geojson)](https://www.npmjs.com/package/jest-geojson/v/beta?activeTab=dependencies)
 ![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/jest-geojson)
 [![Open Issues](https://img.shields.io/github/issues/m-scott-lassiter/jest-geojson/bug)](https://github.com/M-Scott-Lassiter/jest-geojson/labels/bug)
