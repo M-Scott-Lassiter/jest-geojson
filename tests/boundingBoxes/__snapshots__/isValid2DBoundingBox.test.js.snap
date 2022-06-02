@@ -1,18 +1,66 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Error Snapshot Testing. Throws error: expect([10, 10, 20, 20]).not.isValid2DBoundingBox 1`] = `
+exports[`Error Snapshot Testing. Throws error: Bounding box eastern value must be a number between -180 and 180 1`] = `
+"[2mexpect([22m[31m[east, south, west, north][39m[2m).isValid2DBoundingBox()[22m
+
+Bounding box western value must be a number between -180 and 180.
+
+Received:  [31m[10, 10, 200, 20][39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Bounding box must be an array of only four elments 1`] = `
+"[2mexpect([22m[31m[east, south, west, north][39m[2m).isValid2DBoundingBox()[22m
+
+Bounding box must be an array of only four elments.
+
+Received:  [31m[10, 10, 20, 20, 30][39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Bounding box northern value must be a number between -90 and 90 1`] = `
+"[2mexpect([22m[31m[east, south, west, north][39m[2m).isValid2DBoundingBox()[22m
+
+Bounding box northern value must be a number between -90 and 90.
+
+Received:  [31m[10, 10, 20, 200][39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Bounding box northern value must be greater than southern 1`] = `
+"[2mexpect([22m[31m[east, south, west, north][39m[2m).isValid2DBoundingBox()[22m
+
+Bounding box northern value must be greater than southern.
+
+Received:  [31m[10, 20, 20, 0][39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Bounding box southern value must be a number between -90 and 90 1`] = `
+"[2mexpect([22m[31m[east, south, west, north][39m[2m).isValid2DBoundingBox()[22m
+
+Bounding box southern value must be a number between -90 and 90.
+
+Received:  [31m[10, -200, 20, 20][39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Bounding box western value must be a number between -180 and 180 1`] = `
+"[2mexpect([22m[31m[east, south, west, north][39m[2m).isValid2DBoundingBox()[22m
+
+Bounding box eastern value must be a number between -180 and 180.
+
+Received:  [31m[200, 10, 20, 20][39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Invalid input to matcher 1`] = `
+"[2mexpect([22m[31m[east, south, west, north][39m[2m).isValid2DBoundingBox()[22m
+
+Bounding box must be an array of only four elments.
+
+Received:  [31mfalse[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Valid use case passes 1`] = `
 "[2mexpect([22m[31m[east, south, west, north][39m[2m).not.isValid2DBoundingBox()[22m
 
 Expected input to not be a four element array of numbers with longitude between (-90 to 90),
         latitude between (-180 to 180), and northern boundary greater than southern boundary.
 
 Received:  [31m[10, 10, 20, 20][39m"
-`;
-
-exports[`Error Snapshot Testing. Throws error: expect(false).isValid2DBoundingBox() 1`] = `
-"[2mexpect([22m[31m[east, south, west, north][39m[2m).isValid2DBoundingBox()[22m
-
-Bounding box must be an array of only four elments.
-
-Received:  [31mfalse[39m"
 `;

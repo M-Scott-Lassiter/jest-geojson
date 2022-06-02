@@ -154,13 +154,47 @@ describe('Inalid Use Cases', () => {
 })
 
 describe('Error Snapshot Testing. Throws error:', () => {
-    test('expect([10, 10, 20, 20]).not.isValid2DBoundingBox', () => {
+    test('Valid use case passes', () => {
         expect(() =>
             expect([10, 10, 20, 20]).not.isValid2DBoundingBox()
         ).toThrowErrorMatchingSnapshot()
     })
 
-    test('expect(false).isValid2DBoundingBox()', () => {
+    test('Invalid input to matcher', () => {
         expect(() => expect(false).isValid2DBoundingBox()).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Bounding box must be an array of only four elments', () => {
+        expect(() =>
+            expect([10, 10, 20, 20, 30]).isValid2DBoundingBox()
+        ).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Bounding box eastern value must be a number between -180 and 180', () => {
+        expect(() =>
+            expect([10, 10, 200, 20]).isValid2DBoundingBox()
+        ).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Bounding box western value must be a number between -180 and 180', () => {
+        expect(() =>
+            expect([200, 10, 20, 20]).isValid2DBoundingBox()
+        ).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Bounding box southern value must be a number between -90 and 90', () => {
+        expect(() =>
+            expect([10, -200, 20, 20]).isValid2DBoundingBox()
+        ).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Bounding box northern value must be a number between -90 and 90', () => {
+        expect(() =>
+            expect([10, 10, 20, 200]).isValid2DBoundingBox()
+        ).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Bounding box northern value must be greater than southern', () => {
+        expect(() => expect([10, 20, 20, 0]).isValid2DBoundingBox()).toThrowErrorMatchingSnapshot()
     })
 })
