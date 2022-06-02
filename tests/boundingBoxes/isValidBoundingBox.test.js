@@ -20,25 +20,17 @@ describe('Invalid Use Cases', () => {
 })
 
 describe('Error Snapshot Testing. Throws error:', () => {
-    test('expect([0, 0, 0, 0]).not.isValidBoundingBox', () => {
+    test('Valid use case passes', () => {
         expect(() =>
             expect([-20, 10, -10, 20]).not.isValidBoundingBox()
         ).toThrowErrorMatchingSnapshot()
     })
 
-    test('expect([0, 0, 0, 0, 0, 0]).not.isValidBoundingBox', () => {
-        expect(() =>
-            expect([0, 0, 0, 0, 0, 0]).not.isValidBoundingBox()
-        ).toThrowErrorMatchingSnapshot()
+    test('Invalid input to matcher', () => {
+        expect(() => expect(false).isValidBoundingBox()).toThrowErrorMatchingSnapshot()
     })
 
-    test('expect([0, 0, 95, 0]).isValidBoundingBox', () => {
-        expect(() => expect([0, 0, 0, 95]).isValidBoundingBox()).toThrowErrorMatchingSnapshot()
-    })
-
-    test('expect([0, -95, 0, 0, 0, 0]).isValidBoundingBox', () => {
-        expect(() =>
-            expect([0, -95, 0, 0, 0, 0]).isValidBoundingBox()
-        ).toThrowErrorMatchingSnapshot()
+    test('Bounding box must be an array of either four or six elments', () => {
+        expect(() => expect([0, 1, 2, 3, 4]).isValidBoundingBox()).toThrowErrorMatchingSnapshot()
     })
 })
