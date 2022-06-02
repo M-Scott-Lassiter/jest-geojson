@@ -86,7 +86,7 @@
         "jest": ">=24.0.0"
     },
     "engines": {
-        "node": ">=10"
+        "node": ">=14"
     },
     "release": {
         "extends": "@m-scott-lassiter/semantic-release-github-npm-config"

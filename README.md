@@ -274,6 +274,19 @@ expect.extend(matchers.geometries) // Loads all matchers in the geometries categ
 
 For another example, see the [setup script](https://github.com/M-Scott-Lassiter/jest-geojson/blob/beta/src/setup/all.js).
 
+# Node and Operating System Support Policy
+
+The test suite has successfully run on all combinations of:
+
+-   [![Node Versions Supported](https://img.shields.io/node/v/jest-geojson)](https://github.com/nodejs/Release)
+-   ![Windows Supported](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge=flat&logo=windows&logoColor=white)
+    ![Mac Supported](https://img.shields.io/badge/Mac-000000?style=for-the-badge=flat&logo=apple&logoColor=white)
+    ![Linux Supported](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge=flat&logo=linux&logoColor=black)
+
+This project supports [Long-Term Support, Current, and Maintenance](https://github.com/nodejs/Release) versions of node. Once a version reaches end of life, the CI scripts will no longer support them. Odd Node versions will only receive support while in a current status.
+
+Other Node versions and operating systems might support the library, but the tests have not verified other combinations.
+
 # License and Development
 
 `jest-geojson` and all other files in this repository are distributed as free and open-source software under the [MIT License](/../../blob/main/LICENSE), © 2022.
