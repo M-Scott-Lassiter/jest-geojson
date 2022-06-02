@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error Snapshot Testing. Throws error: Geometry not a valid GeoJSON object 1`] = `
+"[2mexpect([22m[31mFeatureObject[39m[2m).toBeFeature([22m[32mGeometryType[39m[2m)[22m
+
+GeoJSON Feature 'geometry' must be a valid GeoJSON geometry object.
+
+Received:  [31m{\\"geometry\\": false, \\"properties\\": null, \\"type\\": \\"Feature\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Has forbidden property: coordinates 1`] = `
+"[2mexpect([22m[31mFeatureObject[39m[2m).toBeFeature([22m[32mGeometryType[39m[2m)[22m
+
+GeoJSON Feature objects are forbidden from having a property 'coordinates'.
+
+Received:  [31m{\\"coordinates\\": [], \\"geometry\\": null, \\"properties\\": null, \\"type\\": \\"Feature\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Has forbidden property: features 1`] = `
+"[2mexpect([22m[31mFeatureObject[39m[2m).toBeFeature([22m[32mGeometryType[39m[2m)[22m
+
+GeoJSON Feature objects are forbidden from having a property 'features'.
+
+Received:  [31m{\\"features\\": [], \\"geometry\\": null, \\"properties\\": null, \\"type\\": \\"Feature\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Has forbidden property: geometries 1`] = `
+"[2mexpect([22m[31mFeatureObject[39m[2m).toBeFeature([22m[32mGeometryType[39m[2m)[22m
+
+GeoJSON Feature objects are forbidden from having a property 'geometries'.
+
+Received:  [31m{\\"geometries\\": [], \\"geometry\\": null, \\"properties\\": null, \\"type\\": \\"Feature\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: ID not alphanumeric 1`] = `
+"[2mexpect([22m[31mFeatureObject[39m[2m).toBeFeature([22m[32mGeometryType[39m[2m)[22m
+
+If present, ID must be either a number or string.
+
+Received:  [31m{\\"geometry\\": null, \\"id\\": [0], \\"properties\\": null, \\"type\\": \\"Feature\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Invalid Bounding Box 1`] = `
+"[2mexpect([22m[31mFeatureObject[39m[2m).toBeFeature([22m[32mGeometryType[39m[2m)[22m
+
+Bounding box must be an array of either four or six elments.
+
+Received:  [31m{\\"bbox\\": [0], \\"geometry\\": null, \\"properties\\": null, \\"type\\": \\"Feature\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Invalid input to matcher 1`] = `
+"[2mexpect([22m[31mFeatureObject[39m[2m).toBeFeature([22m[32mGeometryType[39m[2m)[22m
+
+Must have a type property with value 'Feature'
+
+Received:  [31mfalse[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Missing geometry 1`] = `
+"[2mexpect([22m[31mFeatureObject[39m[2m).toBeFeature([22m[32mGeometryType[39m[2m)[22m
+
+GeoJSON Feature objects must have a property 'geometry'.
+
+Received:  [31m{\\"properties\\": null, \\"type\\": \\"Feature\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Properties not an object 1`] = `
+"[2mexpect([22m[31mFeatureObject[39m[2m).toBeFeature([22m[32mGeometryType[39m[2m)[22m
+
+GeoJSON Feature properties must be either null or an object.
+
+Received:  [31m{\\"geometry\\": null, \\"properties\\": true, \\"type\\": \\"Feature\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Valid use case passes 1`] = `
+"[2mexpect([22m[31mFeatureObject[39m[2m).not.toBeFeature([22m[32mGeometryType[39m[2m)[22m
+
+Expected input to not be a valid GeoJSON feature object.
+
+Received:  [31m{\\"geometry\\": null, \\"properties\\": null, \\"type\\": \\"Feature\\"}[39m"
+`;

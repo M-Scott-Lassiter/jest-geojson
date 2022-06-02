@@ -6,7 +6,7 @@
 [![Linting: ESLint](https://img.shields.io/badge/eslint-4B32C3?logo=eslint&logoColor=white)](https://github.com/eslint/eslint)
 [![Code format: Prettier](https://img.shields.io/badge/prettier-F7B93E.svg?style=flat-square&logo=prettier&logoColor=black)](https://github.com/prettier/prettier)
 [![Style Guide: Airbnb](https://img.shields.io/badge/code_style-airbnb-FF5A5F?logo=airbnb&logoColor=FF5A5F)](https://github.com/airbnb/javascript)
-[![Testing: Jest](https://img.shields.io/badge/jest-C21325?logo=jest&logoColor=white)](https://github.com/facebook/jest)
+[![jest](https://jestjs.io/img/jest-badge.svg)](https://github.com/facebook/jest)
 [![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 
 </div>
@@ -25,22 +25,23 @@ Before contributing, please take a moment to read through this document. This gu
 -   [Code of Conduct](#code-of-conduct)
 -   [How can I Contribute?](#how-can-i-contribute)
     -   [Submit Issues](#submit-issues)
-    -   [Recommend New Matchers](#recommend-new-matchers)
+    -   [Propose New Matchers](#propose-new-matchers)
     -   [Submit a Pull Request](#submit-a-pull-request)
+-   [New Matcher Submission Checklist](#new-matcher-submission-checklist)
+-   [Commits](#commits)
 -   [Development](#development)
     -   [Local Installation](#local-installation)
     -   [Project Structure](#project-structure)
     -   [Building](#building)
     -   [Linting and Formatting](#linting-and-formatting)
     -   [Running Tests](#running-tests)
-    -   [Adding New Tests](#adding-new-tests)
     -   [Documentation](#documentation)
--   [Commits](#commits)
-    -   [Example Commit Message](#example-commit-message)
-    -   [Commit Header Format](#commit-header-format)
-    -   [Commit Body Format](#commit-body-format)
-    -   [Commit Footer Format](#commit-footer-format)
--   [Continuous Integration and Deployment](#continuous-integration-and-deployment)
+-   [Adding New Matchers](#adding-new-matchers)
+    -   [Creating Core Functions](#creating-core-functions)
+    -   [Creating New Tests](#creating-new-tests)
+    -   [Error Snapshot Testing](#error-snapshot-testing)
+    -   [Updating Error Snapshots](#updating-error-snapshots)
+    -   [Export Both Core and Matcher Functions](#export-both-core-and-matcher-functions)
 
 <!-- tocstop -->
 
@@ -60,12 +61,12 @@ _For security related issues, see the [security policy](https://github.com/M-Sco
 
 **Documentation Requests**: Is something unclear in the documentation or the API? Submit a [documentation change request](https://github.com/M-Scott-Lassiter/jest-geojson/issues/new/choose)! Be as detailed as possible. If you have the question, chances are someone else will also who isn't as willing to speak up as you are. If you want to do it yourself, see the [documentation guidelines](#documentation) for instructions.
 
-### Recommend New Matchers
+### Propose New Matchers
 
 These are welcome! Before submitting:
 
 -   Take a moment to make sure your matcher idea fits within the scope and aims of this project. Remember, `jest-geojson` exports ONLY matchers for Jest to aide test driven developers, not generic GeoJSON functions. For that, refer to [Turf.js](https://github.com/Turfjs/turf).
--   Search the issues for [new matchers](https://github.com/M-Scott-Lassiter/jest-geojson/labels/new%20matcher) to make sure this isn't already in the works.
+-   Search the issues for [new matchers](https://github.com/M-Scott-Lassiter/jest-geojson/issues?q=label%3A%22new+matcher%22+) to make sure this isn't already in the works.
 -   Be as detailed as possible, and fill out a [new matcher request](https://github.com/M-Scott-Lassiter/jest-geojson/issues/new/choose). It is up to you to make your case of why the matcher should get included.
 
 **Please ask** before embarking on any significant undertaking (e.g. implementing a new matcher, major code refactoring), otherwise you risk wasting time on something that might not fit well with the project. Do this by opening an issue for the proposal.
@@ -80,6 +81,34 @@ To submit a pull request,
 1. Create a branch for your edits
 1. Make sure your work follows the [commits](#commits) guidance
 
+## New Matcher Submission Checklist
+
+-   [ ] Open an issue with detailed description of the purpose and required behavior
+-   <u>Create Core Function</u>
+    -   [ ] Create a core function under `src/core/<category>`
+    -   [ ] Register the core function in `src/core.js`
+    -   [ ] Add a verification test to `tests/core.test.js`
+    -   [ ] Document the function using JSDoc. Refer to the issue. Include good and bad examples.
+-   <u>Create Matcher Function</u>
+    -   [ ] Create a matcher function under `src/matchers/<category>`
+    -   [ ] Register the matcher in `src/matchers.js`
+    -   [ ] Add a verification test to `matchers.test.js`
+    -   [ ] Add the matcher to the `.cz-config.js` list (alphabetical order under the `coordinateMatchers` variable)
+    -   [ ] Document the matcher using JSDoc. Refer to the issue. Include good and bad examples.
+-   [ ] Create a test for the matcher under `tests/<category>`
+-   [ ] Verify all tests pass and have 100% coverage
+-   [ ] Add the matcher to the README.md list (alphabetical order within category)
+-   [ ] Run the `build` script locally
+-   [ ] Push to Github then open pull request
+
+## Commits
+
+All commits must follow the common commit guidance in [@m-scott-lassiter/semantic-release-github-npm-config](https://github.com/M-Scott-Lassiter/semantic-release-github-npm-config#commits).
+
+This project uses [Commitizen](http://commitizen.github.io/cz-cli/) and [Husky](https://github.com/typicode/husky) hooks to help enforce good commit practices. Work on matcher functions must use that matcher function name as the scope.
+
+When adding a new matcher, you must update this project's [Commitizen configuration](.cz-config.js) so the matcher shows up in the scope list.
+
 ## Development
 
 ### Local Installation
@@ -90,49 +119,52 @@ cd jest-geojson
 npm install
 ```
 
+After installing, you should [run the build script](#building) to verify everything works without runtime errors before you start modifying.
+
 ### Project Structure
 
-All distribution files are contained in the `src` folder. The `tests` folder contains the scripts used to verify the matchers work as designed (using the matchers themselves!)
+All distribution files are contained in the `src` folder. The `tests` folder contains the scripts used to verify the matchers work as designed (using the matchers themselves!).
+
+`core` contains the functions that `matchers` use.
+
+`setup` contains the scripts that install the matchers into the Jest runtime. `package.json` references these in entry points.
 
 ```
 ├── src
+│   ├── core
 │   ├── matchers
-│   │   ├── boundingBoxes
-│   │   ├── coordinates
-│   │   ├── features
-│   │   ├── geometries
-│   │   ├── properties
-│   │   └── winding
-|   ├── index.js
-|   └── JestSetup.js
+│   ├── setup
+|   ├── core.js
+|   ├── matchers.js
+|   └── typedefinitions.js
 ├── tests
-│   │   ├── boundingBoxes
-│   │   ├── coordinates
-│   │   ├── features
-│   │   ├── geometries
-│   │   ├── properties
-│   │   └── winding
+│   ├── core.test.js
+|   └── matchers.test.js
 ```
 
-The `index.js` serves two functions:
+The `core`, `matchers`, `setup`, and `tests` folder each have the same subfolder structure:
 
--   Document the project's JSDoc type definitions
--   Export each matcher function individually
+```
+├── boundingBoxes
+├── coordinates
+├── features
+├── featureCollections
+├── functional
+├── geometries
+└── geometryCollections
+```
 
-When adding a new matcher, refer to the comments at the top of this file for instructions.
+The `core.js` and `matchers.js` consolidate and export their respective elements grouped by folder structure category. When adding a new matcher, refer to the instructions in the comments at the top of these files.
+
+`typedefinitions.js` document the project's JSDoc type definitions and contains no actual code.
 
 ### Building
 
-After installing, run
 Before submitting changes, run the build script locally, then commit:
 
 ```bash
-npm run build
+npm run build # lint, test, document, and format everything automatically
 ```
-
-This will lint, test, document, and format everything automatically.
-
-You should run this script after installing to verify you do not encounter run time errors before you get started.
 
 ### Linting and Formatting
 
@@ -150,17 +182,51 @@ This project provides high working confidence to developers by uses Jest itself 
 
 ```bash
 npm run test # Runs all tests and generates coverage report
-
-npm run test:dev # Runs tests in watch mode
+npm run test:<type> #runs the tests only in that category
+npm run watch # Runs tests in watch mode
 ```
 
-### Adding New Tests
+This requires at least Jest v24.0.0 (specified as a peer dependency) due to the use of `setupFilesAfterEnv`.
+
+### Documentation
+
+API Documentation is automatically generated from [JSDoc comments](https://jsdoc.app/) within the scripts. To generate, run:
+
+```bash
+npm run docs
+```
+
+The table of contents in this guide and the main README are automatically generated using the [`markdown-toc`](https://github.com/jonschlinkert/markdown-toc) package. To generate, run:
+
+```bash
+npm run tableofcontents
+```
+
+## Adding New Matchers
+
+### Creating Core Functions
+
+All matcher functionality should have a core function that goes along with it. This goes under the `src/core/<category>` folder.
+
+The corresponding matcher goes under `src/matchers/<category>`.
+
+### Creating New Tests
 
 Tests [reside separately](https://github.com/M-Scott-Lassiter/jest-geojson/tree/main/src) from the source code.
 
-The [Jest configuration file](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/jest.config.js) calls [`JestSetup.js`](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/src/JestSetup.js) before the test suite runs. This extends Jest's built in matchers with all of the `jest-geojson` matchers and is consistent with how it will get used by other developers in their own projects.
+Provide 100% test coverage when creating new matchers. Use the opened issue to fully describe and document the logic on how this matcher works. This provides a persistent reference point for the logic that drives the tests.
 
-When creating new matchers, make sure you provide 100% test coverage. Use the opened issue to fully describe and document the logic on how this matcher works. This provides a reference point for the logic that drives the tests.
+The [Jest configuration file](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/jest.config.js) calls [a setup script](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/src/setup/all.js) before the test suite runs that extends Jest's built in matchers with all of the `jest-geojson` matchers. This is consistent with how it will get used by other developers in their own projects.
+
+For consistency, organize your tests under the following three `describe` blocks:
+
+-   Valid Use Cases
+-   Invalid Use Cases
+-   Error Snapshot Testing
+
+Refer to any of the [test files](https://github.com/M-Scott-Lassiter/jest-geojson/tree/main/tests) for an example.
+
+### Error Snapshot Testing
 
 Because matchers return the message as an arrow function, Jest doesn't actually execute these when running which prevents getting code coverage to 100% by normal methods.
 
@@ -178,146 +244,19 @@ describe('Error Snapshot Testing', () => {
 })
 ```
 
-If you change the error messages, the snapshots will also change. Once you manually verify it still works as intended, update the snapshot:
+To ensure code refactoring doesn't result in [vague error messages](https://github.com/M-Scott-Lassiter/jest-geojson/issues/32), ensure there is at least one snapshot covering each expected error message.
+
+### Updating Error Snapshots
+
+If you change the error messages, the snapshots will also change. Once you manually verify it still works as intended, update the snapshot using one of the following:
 
 ```bash
 npm run test -- -u
+npm run test:<type> -- -u
 ```
 
-For consistency, organize your tests under the following three `describe` blocks:
+### Export Both Core and Matcher Functions
 
--   Valid Use Cases
--   Invalid Use Cases
--   Error Snapshot Testing
+The files `src/core.js` and `src/matchers.js` each export their respective functions within an object for each category. Add any new matcher or function in alphabetical order under the appropriate category.
 
-Refer to any of the [test files](https://github.com/M-Scott-Lassiter/jest-geojson/tree/main/tests) for an example.
-
-### Documentation
-
-API Documentation is automatically generated from [JSDoc comments](https://jsdoc.app/) within the scripts. To generate, run:
-
-```bash
-npm run docs
-```
-
-The table of contents in this guide and the main README are automatically generated using the [`markdown-toc`](https://github.com/jonschlinkert/markdown-toc) package. To generate, run:
-
-```bash
-npm run tableofcontents
-```
-
-## Commits
-
-_This specification is inspired by and supersedes the [Angular Commit Message](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit)._
-
-If possible, make [atomic commits](https://en.wikipedia.org/wiki/Atomic_commit), which means:
-
--   a commit should contain exactly one self-contained functional change
--   a functional change should be contained in exactly one commit
--   a commit should not create an inconsistent state (such as test errors, linting errors, partial fix, feature with documentation etc...)
-
-A complex feature can be broken down into multiple commits as long as each one maintains a consistent state and consists of a self-contained change.
-
-This project uses very precise rules over how Git commit messages must be formatted. This leads to **easier to read commit history**.
-
-Each commit message consists of a **header**, a **body**, and a **footer**.
-
-```bash
-<header>
-<BLANK LINE>
-<body>
-<BLANK LINE>
-<footer>
-```
-
-The `header` is mandatory and must conform to the [Commit Message Header](#commit-header-format) format.
-
-The `body` is mandatory for all commits except for those of type "docs".
-When the body is present it must be at least 20 characters long and must conform to the [Commit Message Body](#commit-body-format) format.
-
-The `footer` is optional unless resolving issues. The [Commit Message Footer](#commit-footer-format) format describes what the footer is used for and the structure it must have.
-
-### Example Commit Message
-
-```
-feat(isValid2DCoordinate): add new matcher function
-
-This matcher verifies that a 2D GeoJSON coordinate is appropriately formatted and in range.
-
-Resolves: #1
-```
-
-### Commit Header Format
-
-The header contains succinct description of the change:
-
--   use the imperative, present tense: "change" not "changed" nor "changes"
--   don't capitalize first letter
--   no dot (.) at the end
--   if the commit is of type `revert`, include `reverts commit <hash>`, where the hash is the SHA of the commit being reverted
-
-```
-<type>(<scope>): <short summary>
-│ │ │
-│ │ └─⫸ Summary in present tense. Not capitalized. No period at the end.
-│ │
-│ └─⫸ Commit Scope: <matcher>|api|contributing|license|readme|security
-│
-└─⫸ Commit Type: build|ci|docs|feat|fix|perf|refactor|revert|test
-```
-
-**Types**
-
-Required. Must be one of the following:
-
--   `build`: Changes that affect the build system configuration, package scripts, or dev dependencies (i.e. adds/remove/modify/update)
--   `ci`: Changes to CI configuration files and scripts (e.g. release configs, YAML scripts)
--   `docs`: Documentation only changes
--   `feat`: Adds or enhances a new matcher
--   `fix`: Fixes a bug in an existing feature. Also used for non-dev dependency updates.
--   `perf`: A code change that improves performance
--   `refactor`: A code change that neither fixes a bug nor adds a feature
--   `revert`: Revert to a commit
--   `test`: Add missing tests or correct existing tests
-
-**Scopes**
-
-Optional. If used, must be one of the following supported scopes:
-
--   `<matcher>`: If adding or updating matchers, use the matcher's function name as the scope.
-    -   If using Commitizen (`npm run cz`), choose 'custom'
--   `api`: Any documentation that helps developers or end users understand how to better employ a tool or feature
--   `contributing`: Contributions to this guidance or the [Code of Conduct](CODE_OF_CONDUCT.md)
--   `license`: Changes to terms or copyright status within the [license](LICENSE).
-    -   _Any change in license type MUST include a BREAKING CHANGE_
--   `readme`: Contributions to the main [README.md](https://github.com/M-Scott-Lassiter/jest-geojson#README)
--   `security`: Changes that address code related security issues or security policies
-
-### Commit Body Format
-
-Provide a plain text description of _why_ you made this change. This is the place for you to explain your thought process, developer to developer. If helpful, include a comparison of the previous behavior with the new behavior to illustrate the change's impact.
-
-If there are breaking changes, start the body with `BREAKING CHANGE: <breaking change summary>.`
-
-### Commit Footer Format
-
-The footer identifies which issues this commit fixes. If none, leave it blank. Otherwise, use the format `Resolves #<issue number>`. If more than one issue is resolved, separate them with a comma.
-
-## Continuous Integration and Deployment
-
-`jest-geojson` uses [Semantic Versioning](https://semver.org/) and updates automatically based on specific versioning triggers.
-
-Pushes to the main branch causes `semantic-release` to check all commits since the last version for any triggers that would cause a new version. This project extends the defaults:
-
--   Patch
-    -   `fix`
-    -   `perf`
-    -   `(api)`
--   Version
-    -   `feat`
--   Major
-    -   `BREAKING CHANGE`
-
-Extensions from the [semantic-release default](https://github.com/semantic-release/semantic-release#commit-message-format):
-
--   `api` scope (regardless of commit type) triggers a patch. This keeps API documentation for the end user as a first-class citizen without patching for any and all changes to the README or other supporting docs.
+Ensure `tests/core.test.js` and `tests/matchers.test.js` each have a test that verifies the function and matcher successfully export.

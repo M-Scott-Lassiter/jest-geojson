@@ -1,0 +1,36 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: CD Build
+
+on:
+  push:
+    branches: [main, beta]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+      - name: Clean Install
+        run: npm ci
+        # The FORCE_COLOR is required because tests were failing in Github due to the snapshots.
+        # See: https://stackoverflow.com/questions/72311493/jest-snapshots-causing-github-action-tests-to-fail
+      - name: Build
+        run: npm run build
+        env:
+          FORCE_COLOR: true
+      - name: Release new version to NPM
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release
+      - name: Upload Coverage to Codecov
+        uses: codecov/codecov-action@v2
+        with:
+          files: ./coverage/coverage-final.json
+          token: ${{ secrets.CODECOV_TOKEN }}

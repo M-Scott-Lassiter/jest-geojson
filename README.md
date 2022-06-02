@@ -2,7 +2,7 @@
 
 # jest-geojson
 
-[![NPM Version](https://img.shields.io/npm/v/jest-geojson/beta)](https://www.npmjs.com/package/jest-geojson/v/beta)
+[![NPM Version](https://img.shields.io/npm/v/jest-geojson)](https://www.npmjs.com/package/jest-geojson)
 [![NPM Package Size](https://shields.shivering-isles.com:/bundlephobia/min/jest-geojson?label=size)](https://www.npmjs.com/package/jest-geojson/v/beta)
 [![License](https://img.shields.io/github/license/M-Scott-Lassiter/jest-geojson?color=blue)](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/LICENSE)
 
@@ -10,13 +10,13 @@
 [![Completed and deployed matchers](https://img.shields.io/github/issues-search/m-scott-lassiter/jest-geojson?color=brightgreen&label=matchers&query=is%3Aissue%20is%3Aclosed%20label%3A%22matchers%2Fboundingbox%22%2C%22matchers%2Fcoordinates%22%2C%22matchers%2Fgeometries%22%2C%22matchers%2Fgeometrycollections%22%2C%22matchers%2Ffeatures%22%2C%22matchers%2Ffeaturecollections%22%2C%22matchers%2Ffunctional%22)](#matchers)
 [![Proposed new matchers](https://img.shields.io/github/issues-search/m-scott-lassiter/jest-geojson?color=important&label=proposed&query=is%3Aissue%20is%3Aopen%20label%3A%22new%20matcher%20proposal%22)](https://github.com/M-Scott-Lassiter/jest-geojson/issues?q=is%3Aissue+is%3Aopen+label%3A%22new+matcher+proposal%22)
 
-[![This project is still in beta](https://img.shields.io/github/milestones/progress-percent/m-scott-lassiter/jest-geojson/1)](https://github.com/M-Scott-Lassiter/jest-geojson/milestone/1)
+[![This project has reached initial release!](https://img.shields.io/github/milestones/progress-percent/m-scott-lassiter/jest-geojson/1)](https://github.com/M-Scott-Lassiter/jest-geojson/milestone/1)
 
 ---
 
 [![Tests](https://github.com/M-Scott-Lassiter/jest-geojson/actions/workflows/test.yml/badge.svg)](https://github.com/M-Scott-Lassiter/jest-geojson/actions/workflows/test.yml)
 [![Build](https://github.com/M-Scott-Lassiter/jest-geojson/actions/workflows/publish.yml/badge.svg)](https://github.com/M-Scott-Lassiter/jest-geojson/actions/workflows/publish.yml)
-[![codecov](https://codecov.io/gh/M-Scott-Lassiter/jest-geojson/branch/beta/graph/badge.svg?token=vdb7uefciA)](https://codecov.io/gh/M-Scott-Lassiter/jest-geojson)
+[![codecov](https://codecov.io/gh/M-Scott-Lassiter/jest-geojson/branch/main/graph/badge.svg?token=vdb7uefciA)](https://codecov.io/gh/M-Scott-Lassiter/jest-geojson)
 [![Dependency status](https://img.shields.io/librariesio/release/npm/jest-geojson)](https://www.npmjs.com/package/jest-geojson/v/beta?activeTab=dependencies)
 ![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/jest-geojson)
 [![Open Issues](https://img.shields.io/github/issues/m-scott-lassiter/jest-geojson/bug)](https://github.com/M-Scott-Lassiter/jest-geojson/labels/bug)
@@ -45,7 +45,11 @@
     -   [Feature Collections](#feature-collections)
     -   [Functional](#functional)
 -   [Advanced Configuration](#advanced-configuration)
+    -   [Minimum Supported Jest Version](#minimum-supported-jest-version)
     -   [Import the Core Engine](#import-the-core-engine)
+    -   [Load Matchers by Category](#load-matchers-by-category)
+    -   [Load Specific Matchers](#load-specific-matchers)
+-   [Node and Operating System Support Policy](#node-and-operating-system-support-policy)
 -   [License and Development](#license-and-development)
 -   [Contact](#contact)
 
@@ -60,28 +64,35 @@
 `jest-geojson` extends the [Jest](https://github.com/facebook/jest) unit testing framework with a comprehensive set of matchers tailored to checking [GeoJSON object](https://geojson.org/) validity and other geodesy attributes. For example:
 
 ```javascript
-test('Object is valid GeoJSON', () => {
-    expect(myGeoJSONObject).toBeValidGeoJSON()
+const testPoint = {
+    type: 'Point',
+    coordinates: [25, 10.2]
+}
+
+test('Object is valid GeoJSON Point Geometry', () => {
+    expect(testPoint).toBePointGeometry()
 })
 ```
 
-This library **does not** create or manipulate GeoJSON.
+This library **DOES NOT** create or manipulate GeoJSON. Other tools have done that (and better), such as the venerable [Turf.js](https://github.com/Turfjs/turf).
 
-Other projects have done that (and better), such as the venerable [Turf.js](https://github.com/Turfjs/turf). This library complements, not competes with, those tools.
+This project complements, not competes with, those tools.
 
 # Getting Started
 
 ## Install as a Dependency
 
-```javascript
-npm install --save-dev jest jest-geojson
-```
+After installing Jest, run:
 
-<!-- Future expansion: Add instructions for yarn -->
+```bash
+npm install --save-dev jest-geojson
+# or
+yard add --D jest-geojson
+```
 
 ## Configure Jest
 
-Jest [allows you to run scripts](https://jestjs.io/docs/configuration#setupfilesafterenv-array) after its environment loads. You can take advantage of that to load all `jest-geojson` matchers automatically.
+Jest [will run custom scripts](https://jestjs.io/docs/configuration#setupfilesafterenv-array) after its environment loads. You can take advantage of that to load all `jest-geojson` matchers automatically.
 
 To do so, either create a `jest.config.js` file:
 
@@ -103,54 +114,34 @@ or add a key to your `package.json`:
 }
 ```
 
-<!-- Eventually, add a tutorial for doing custom matcher loading -->
-
-You can also import the matcher functions without automatically loading them.
-
-```javascript
-const matchers = require('jest-geojson')
-```
-
-The matchers object contains each matcher grouped by category.
-
-<!-- add link to documentation when online -->
-
 # Matchers
 
-`jest-geojson` organizes matchers by categories that correspond to the input type passed to `expect()`.
+`jest-geojson` organizes matchers by categories. Most correspond to the expected input type passed to `expect()`. For example, the Coordinates matchers expect a coordinate array, and geometry matchers expect a GeoJSON geometry object.
 
-Functional matchers assess more generic attributes and qualities and accept multiple input types.
-
-[Release version 1.0.0](https://github.com/M-Scott-Lassiter/jest-geojson/milestone/1) will contain the minimum matchers (listed in priority development order) needed to validate GeoJSON elements.
+Functional matchers assess more generic attributes and qualities and many accept multiple input types.
 
 ## Coordiantes
 
-_1.0.0_
-
--   [x] isValid2DCoordinate
--   [x] isValid3DCoordinate
--   [x] isValidCoordinate
+-   [isValid2DCoordinate](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Coordinates.html#.isValid2DCoordinate)
+-   [isValid3DCoordinate](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Coordinates.html#.isValid3DCoordinate)
+-   [isValidCoordinate](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Coordinates.html#.isValidCoordinate)
 
 ## Bounding Boxes
 
-_1.0.0_
-
--   [x] isValid2DBoundingBox
--   [x] isValid3DBoundingBox
--   [x] isValidBoundingBox
+-   [isValid2DBoundingBox](https://m-scott-lassiter.github.io/jest-geojson/Matchers.BoundingBoxes.html#.isValid2DBoundingBox)
+-   [isValid3DBoundingBox](https://m-scott-lassiter.github.io/jest-geojson/Matchers.BoundingBoxes.html#.isValid3DBoundingBox)
+-   [isValidBoundingBox](https://m-scott-lassiter.github.io/jest-geojson/Matchers.BoundingBoxes.html#.isValidBoundingBox)
 
 ## Geometries
 
-_1.0.0_
-
--   [x] toBePointGeometry
--   [x] toBeMultiPointGeometry
--   [x] toBeLineStringGeometry
--   [x] toBeMultiLineStringGeometry
--   [x] toBePolygonGeometry
--   [x] toBeMultiPolygonGeometry
--   [x] toBeGeometryCollection
--   [x] toBeAnyGeometry
+-   [toBePointGeometry](https://m-scott-lassiter.github.io/jest-geojson/Core.Geometries.html#.pointGeometry)
+-   [toBeMultiPointGeometry](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toBeMultiPointGeometry)
+-   [toBeLineStringGeometry](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toBeLineStringGeometry)
+-   [toBeMultiLineStringGeometry](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toBeMultiLineStringGeometry)
+-   [toBePolygonGeometry](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toBePolygonGeometry)
+-   [toBeMultiPolygonGeometry](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toBeMultiPolygonGeometry)
+-   [toBeGeometryCollection](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toBeGeometryCollection)
+-   [toBeAnyGeometry](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toBeAnyGeometry)
 
 ---
 
@@ -164,9 +155,7 @@ _Future_
 
 ## Features
 
-_1.0.0_
-
--   [ ] toBeFeature
+-   [toBeFeature](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Features.html#.toBeFeature)
 
 ---
 
@@ -179,9 +168,7 @@ _Future_
 
 ## Feature Collections
 
-_1.0.0_
-
--   [ ] toBeFeatureCollection
+-   [toBeFeatureCollection](https://m-scott-lassiter.github.io/jest-geojson/Matchers.FeatureCollections.html#.toBeFeatureCollection)
 
 ---
 
@@ -197,14 +184,11 @@ _Future_
 
 ## Functional
 
-_1.0.0_
-
--   [ ] toBeValidGeoJSON
-
 ---
 
 _Future_
 
+-   [ ] toBeValidGeoJSON
 -   [ ] toHave2DBoundingBox
 -   [ ] toHave3DBoundingBox
 -   [ ] toHaveBoundingBox
@@ -232,17 +216,77 @@ _Future_
 
 # Advanced Configuration
 
+## Minimum Supported Jest Version
+
+This project requires Jest v24.0.0 or newer.
+
 ## Import the Core Engine
 
-You can import the functions that drive the test matchers.
+The [core object](https://m-scott-lassiter.github.io/jest-geojson/Core.html) contains the functions grouped by category. You can then use these functions elsewhere in your code, or even port `jest-geojson` into another testing framework. To import the functions that drive the test matchers:
 
 ```javascript
 const core = require('jest-geojson/core')
 ```
 
-The core object contains the functions grouped by category. You can then use these functions elsewhere in your code, or even port `jest-geojson` into another testing framework.
+## Load Matchers by Category
 
-<!-- add link to documentation when online -->
+You can load matcher subsets if you only need a limited set. Available scipts are:
+
+-   `jest-geojson/setup/all`
+-   `jest-geojson/setup/boundingBoxes`
+-   `jest-geojson/setup/coordinates`
+-   `jest-geojson/setup/featureCollections`
+-   `jest-geojson/setup/features`
+-   `jest-geojson/setup/geometries`
+
+For example:
+
+```javascript
+module.exports = {
+    setupFilesAfterEnv: ['jest-geojson/setup/coordinates']
+}
+```
+
+To load more than one matcher set, pass a comma separated list to the `setupFilesAfterEnv` array:
+
+```javascript
+module.exports = {
+    setupFilesAfterEnv: [
+        'jest-geojson/setup/featureCollections',
+        'jest-geojson/setup/geometries',
+        'jest-geojson/setup/features'
+    ]
+}
+```
+
+## Load Specific Matchers
+
+To load only specific matchers, create a new script and import them either one by one or by group. The [matcher object](https://m-scott-lassiter.github.io/jest-geojson/Matchers.html) contains each matcher grouped by category.
+
+```javascript
+// ./my-custom-load-script.js
+
+const matchers = require('jest-geojson')
+
+expect.extend({ matchers.coordinates.isValidCoordinate }) // Loads single matcher
+expect.extend({ matchers.boundingBoxes.isValidBoundingBox }) // Loads single matcher
+expect.extend(matchers.geometries) // Loads all matchers in the geometries category
+```
+
+For another example, see the [setup script](https://github.com/M-Scott-Lassiter/jest-geojson/blob/beta/src/setup/all.js).
+
+# Node and Operating System Support Policy
+
+The test suite has successfully run on all combinations of:
+
+-   [![Node Versions Supported](https://img.shields.io/node/v/jest-geojson)](https://github.com/nodejs/Release)
+-   ![Windows Supported](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge=flat&logo=windows&logoColor=white)
+    ![Mac Supported](https://img.shields.io/badge/Mac-000000?style=for-the-badge=flat&logo=apple&logoColor=white)
+    ![Linux Supported](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge=flat&logo=linux&logoColor=black)
+
+This project supports [Long-Term Support, Current, and Maintenance](https://github.com/nodejs/Release) versions of node. Once a version reaches end of life, the CI scripts will no longer support them. Odd Node versions will only receive support while in a current status.
+
+Other Node versions and operating systems might support the library, but the tests have not verified other combinations.
 
 # License and Development
 

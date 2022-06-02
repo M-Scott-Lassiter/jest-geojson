@@ -1,17 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Error Snapshot Testing. Throws error: expect([0, 0, 0]).not.isValid3DCoordinate 1`] = `
-"[2mexpect([22m[31m[longitude, latitude][39m[2m).not.isValid3DCoordinate()[22m
+exports[`Error Snapshot Testing. Throws error: Coordinate altitude value must be numeric 1`] = `
+"[2mexpect([22m[31m[longitude, latitude, altitude][39m[2m).isValid3DCoordinate()[22m
 
-Expected input to not be a three element array with longitude between (-90 to 90) and latitude between (-180 to 180) and numeric altitude.
+Coordinate altitude value must be numeric.
 
-Received:  [31m[0, 0, 0][39m"
+Received:  [31m[0, 0, true][39m"
 `;
 
-exports[`Error Snapshot Testing. Throws error: expect([0, 0]).isValid3DCoordinate 1`] = `
-"[2mexpect([22m[31m[longitude, latitude][39m[2m).isValid3DCoordinate()[22m
+exports[`Error Snapshot Testing. Throws error: Coordinate must be an array of only three elments 1`] = `
+"[2mexpect([22m[31m[longitude, latitude, altitude][39m[2m).isValid3DCoordinate()[22m
 
-Expected a three element array with longitude between (-90 to 90) and latitude between (-180 to 180) and numeric altitude.
+Coordinate must be an array of only three elments.
 
 Received:  [31m[0, 0][39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Invalid input to matcher 1`] = `
+"[2mexpect([22m[31m[longitude, latitude, altitude][39m[2m).isValid3DCoordinate()[22m
+
+Coordinate must be an array of only three elments.
+
+Received:  [31m[0, 0][39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Valid use case passes 1`] = `
+"[2mexpect([22m[31m[longitude, latitude, altitude][39m[2m).not.isValid3DCoordinate()[22m
+
+Expected input to not be a three element array with longitude between (-90 to 90), 
+        latitude between (-180 to 180), and numeric altitude.
+
+Received:  [31m[0, 0, 0][39m"
 `;

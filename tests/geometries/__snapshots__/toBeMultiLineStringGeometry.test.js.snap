@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error Snapshot Testing. Throws error: Bounding box must be valid 1`] = `
+"[2mexpect([22m[31mGeometryObject[39m[2m).toBeMultiLineStringGeometry()[22m
+
+Bounding box must be an array of either four or six elments.
+
+Received:  [31m{\\"bbox\\": [0], \\"coordinates\\": [[[0, 0], [1, 1]]], \\"type\\": \\"MultiLineString\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Coordinates not an array 1`] = `
+"[2mexpect([22m[31mGeometryObject[39m[2m).toBeMultiLineStringGeometry()[22m
+
+Coordinates property must be an array (appropriately structured by geometry type) with valid GeoJSON coordinates.
+
+Received:  [31m{\\"coordinates\\": false, \\"type\\": \\"MultiLineString\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Has forbidden property: features 1`] = `
+"[2mexpect([22m[31mGeometryObject[39m[2m).toBeMultiLineStringGeometry()[22m
+
+GeoJSON Geometry objects are forbidden from having a property 'features'.
+
+Received:  [31m{\\"coordinates\\": [[[0, 0], [1, 1]]], \\"features\\": null, \\"type\\": \\"MultiLineString\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Has forbidden property: geometry 1`] = `
+"[2mexpect([22m[31mGeometryObject[39m[2m).toBeMultiLineStringGeometry()[22m
+
+GeoJSON Geometry objects are forbidden from having a property 'geometry'.
+
+Received:  [31m{\\"coordinates\\": [[[0, 0], [1, 1]]], \\"geometry\\": null, \\"type\\": \\"MultiLineString\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Has forbidden property: properties 1`] = `
+"[2mexpect([22m[31mGeometryObject[39m[2m).toBeMultiLineStringGeometry()[22m
+
+GeoJSON Geometry objects are forbidden from having a property 'properties'.
+
+Received:  [31m{\\"coordinates\\": [[[0, 0], [1, 1]]], \\"properties\\": null, \\"type\\": \\"MultiLineString\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Invalid input to matcher 1`] = `
+"[2mexpect([22m[31mGeometryObject[39m[2m).toBeMultiLineStringGeometry()[22m
+
+Must have a type property with value 'MultiLineString'
+
+Received:  [31mfalse[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Missing coordinates property 1`] = `
+"[2mexpect([22m[31mGeometryObject[39m[2m).toBeMultiLineStringGeometry()[22m
+
+GeoJSON Geometry objects (except GeometryCollection) must contain a 'coordinates' property.
+
+Received:  [31m{\\"type\\": \\"MultiLineString\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Valid use case passes 1`] = `
+"[2mexpect([22m[31mGeometryObject[39m[2m).not.toBeMultiLineStringGeometry()[22m
+
+Expected input to not be a valid GeoJSON MultiLineString geometry.
+
+Received:  [31m{\\"coordinates\\": [[[0, 0], [1, 1]]], \\"type\\": \\"MultiLineString\\"}[39m"
+`;

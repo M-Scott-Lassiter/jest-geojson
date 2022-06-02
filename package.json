@@ -1,19 +1,20 @@
 {
     "name": "jest-geojson",
-    "version": "0.2.0",
+    "version": "1.0.0-beta.16",
     "description": "Additional Jest matchers for GeoJSON",
     "keywords": [
         "jest",
         "jest-tests",
         "jest-geojson",
         "geojson",
+        "gis",
         "matchers",
         "jest-matchers",
         "test",
         "testing",
         "assertions"
     ],
-    "homepage": "https://github.com/M-Scott-Lassiter/jest-geojson#readme",
+    "homepage": "https://m-scott-lassiter.github.io/jest-geojson/",
     "bugs": "https://github.com/M-Scott-Lassiter/jest-geojson/issues",
     "license": "MIT",
     "author": "M. Scott Lassiter",
@@ -23,7 +24,16 @@
         "package.json",
         "package-lock.json"
     ],
-    "main": "./src/index.js",
+    "exports": {
+        ".": "./src/matchers.js",
+        "./core": "./src/core.js",
+        "./setup/all": "./src/setup/all.js",
+        "./setup/boundingBoxes": "./src/setup/boundingBoxes.js",
+        "./setup/coordinates": "./src/setup/coordinates.js",
+        "./setup/featureCollections": "./src/setup/featureCollections.js",
+        "./setup/features": "./src/setup/features.js",
+        "./setup/geometries": "./src/setup/geometries.js"
+    },
     "repository": {
         "type": "git",
         "url": "https://github.com/M-Scott-Lassiter/jest-geojson.git"
@@ -31,13 +41,18 @@
     "scripts": {
         "build": "npm run lint && npm run test && npm run docs && npm run tableofcontents && npm run format && echo \"Build process complete.\" && exit 0",
         "cz": "cz",
-        "docs": "jsdoc -c jsdoc.json",
+        "docs": "jsdoc -c jsdoc.json -d ./docs",
         "format": "npx prettier . --write",
         "tableofcontents": "markdown-toc -i ./README.md && markdown-toc -i ./CONTRIBUTING.md",
         "test": "jest --coverage --verbose",
-        "test:dev": "jest --watch --coverage --verbose",
+        "test:coordinates": "jest tests/coordinates --coverage --verbose",
+        "test:boundingboxes": "jest tests/boundingBoxes --coverage --verbose",
+        "test:featurecollections": "jest tests/featureCollections --coverage --verbose",
+        "test:features": "jest tests/features --coverage --verbose",
+        "test:geometries": "jest tests/geometries --coverage --verbose",
         "lint": "eslint . --ext .js --fix",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "watch": "jest --watch --coverage --verbose"
     },
     "sideEffects": false,
     "config": {
@@ -45,12 +60,11 @@
             "path": "node_modules/cz-customizable"
         }
     },
-    "dependencies": {},
     "devDependencies": {
-        "@semantic-release/changelog": "^6.0.1",
-        "@semantic-release/git": "^10.0.1",
+        "@m-scott-lassiter/semantic-release-github-npm-config": "^2.0.0",
         "@types/jest": "^27.5.0",
         "commitizen": "^4.2.4",
+        "conventional-changelog-conventionalcommits": "^4.6.3",
         "cz-customizable": "^6.3.0",
         "docdash": "^1.2.0",
         "eslint": "^8.12.0",
@@ -61,14 +75,20 @@
         "eslint-plugin-jsdoc": "^39.2.9",
         "eslint-plugin-prettier": "^4.0.0",
         "husky": "^7.0.4",
-        "jest": "^27.5.1",
+        "jest": "^28.1.0",
         "jsdoc": "^3.6.10",
         "lint-staged": "^12.4.1",
         "markdown-toc": "^1.2.0",
         "prettier": "^2.6.2",
         "semantic-release": "^19.0.2"
     },
+    "peerDependencies": {
+        "jest": ">=24.0.0"
+    },
     "engines": {
-        "node": ">=10"
+        "node": ">=16"
+    },
+    "release": {
+        "extends": "@m-scott-lassiter/semantic-release-github-npm-config"
     }
 }

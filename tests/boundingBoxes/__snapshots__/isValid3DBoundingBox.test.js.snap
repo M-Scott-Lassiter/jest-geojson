@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error Snapshot Testing. Throws error: Bounding box altitude value must be greater than depth 1`] = `
+"[2mexpect([22m[31m[west, south, depth, east, north, altitude][39m[2m).isValid2DBoundingBox()[22m
+
+Bounding box altitude value must be greater than depth.
+
+Received:  [31m[10, 10, 2000, 20, 20, 0][39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Bounding box depth and altitude must be numeric and cannot be NaN 1`] = `
+"[2mexpect([22m[31m[west, south, depth, east, north, altitude][39m[2m).isValid2DBoundingBox()[22m
+
+Bounding box depth and altitude must be numeric and cannot be NaN.
+
+Received:  [31m[10, 10, false, 20, 20, true][39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Invalid input to matcher 1`] = `
+"[2mexpect([22m[31m[west, south, depth, east, north, altitude][39m[2m).isValid2DBoundingBox()[22m
+
+Bounding box must be an array of only six elments.
+
+Received:  [31mfalse[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Valid use case passes 1`] = `
+"[2mexpect([22m[31m[west, south, depth, east, north, altitude][39m[2m).not.isValid2DBoundingBox()[22m
+
+Expected input to not be a six element array of numbers with longitude between (-90 to 90),
+        latitude between (-180 to 180), northern boundary greater than southern boundary,
+        and altitude greater than depth.
+
+Received:  [31m[10, 10, 0, 20, 20, 0][39m"
+`;

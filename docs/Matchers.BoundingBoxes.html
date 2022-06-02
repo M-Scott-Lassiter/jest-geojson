@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>BoundingBoxes - Documentation</title>
+
+        <script src="scripts/prettify/prettify.js"></script>
+        <script src="scripts/prettify/lang-css.js"></script>
+        <!--[if lt IE 9]>
+            <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <link type="text/css" rel="stylesheet" href="styles/prettify.css" />
+        <link type="text/css" rel="stylesheet" href="styles/jsdoc.css" />
+        <script src="scripts/nav.js" defer></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger" class="navicon-button x">
+            <div class="navicon"></div>
+        </label>
+
+        <label for="nav-trigger" class="overlay"></label>
+
+        <nav>
+            <input type="text" id="nav-search" placeholder="Search" />
+
+            <h2><a href="index.html">Home</a></h2>
+            <h2>
+                <a
+                    href="https://github.com/M-Scott-Lassiter/jest-geojson"
+                    target="_blank"
+                    class="menu-item"
+                    id="repository"
+                    >Github repo</a
+                >
+            </h2>
+            <h3>Namespaces</h3>
+            <ul>
+                <li><a href="Core.html">Core</a></li>
+                <li>
+                    <a href="Core.BoundingBoxes.html">Core.BoundingBoxes</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Core.BoundingBoxes.html#.valid2DBoundingBox"
+                                >valid2DBoundingBox</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.BoundingBoxes.html#.valid3DBoundingBox"
+                                >valid3DBoundingBox</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.BoundingBoxes.html#.validBoundingBox">validBoundingBox</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Core.Coordinates.html">Core.Coordinates</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Core.Coordinates.html#.valid2DCoordinate">valid2DCoordinate</a>
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.Coordinates.html#.valid3DCoordinate">valid3DCoordinate</a>
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.Coordinates.html#.validCoordinate">validCoordinate</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Core.FeatureCollections.html">Core.FeatureCollections</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Core.FeatureCollections.html#.featureCollection"
+                                >featureCollection</a
+                            >
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Core.Features.html">Core.Features</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Core.Features.html#.feature">feature</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Core.Geometries.html">Core.Geometries</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Core.Geometries.html#.anyGeometry">anyGeometry</a>
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.Geometries.html#.geometryCollection"
+                                >geometryCollection</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.Geometries.html#.lineStringGeometry"
+                                >lineStringGeometry</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.Geometries.html#.multiLineStringGeometry"
+                                >multiLineStringGeometry</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.Geometries.html#.multiPointGeometry"
+                                >multiPointGeometry</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.Geometries.html#.multiPolygonGeometry"
+                                >multiPolygonGeometry</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.Geometries.html#.pointGeometry">pointGeometry</a>
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.Geometries.html#.polygonGeometry">polygonGeometry</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Core.Utilities.html">Core.Utilities</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Core.Utilities.html#.commonGeometryValidation"
+                                >commonGeometryValidation</a
+                            >
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="Matchers.html">Matchers</a></li>
+                <li>
+                    <a href="Matchers.BoundingBoxes.html">Matchers.BoundingBoxes</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Matchers.BoundingBoxes.html#.isValid2DBoundingBox"
+                                >isValid2DBoundingBox</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.BoundingBoxes.html#.isValid3DBoundingBox"
+                                >isValid3DBoundingBox</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.BoundingBoxes.html#.isValidBoundingBox"
+                                >isValidBoundingBox</a
+                            >
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Matchers.Coordinates.html">Matchers.Coordinates</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Matchers.Coordinates.html#.isValid2DCoordinate"
+                                >isValid2DCoordinate</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.Coordinates.html#.isValid3DCoordinate"
+                                >isValid3DCoordinate</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.Coordinates.html#.isValidCoordinate"
+                                >isValidCoordinate</a
+                            >
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Matchers.FeatureCollections.html">Matchers.FeatureCollections</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Matchers.FeatureCollections.html#.toBeFeatureCollection"
+                                >toBeFeatureCollection</a
+                            >
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Matchers.Features.html">Matchers.Features</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Matchers.Features.html#.toBeFeature">toBeFeature</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Matchers.Geometries.html">Matchers.Geometries</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toBeAnyGeometry">toBeAnyGeometry</a>
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toBeGeometryCollection"
+                                >toBeGeometryCollection</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toBeLineStringGeometry"
+                                >toBeLineStringGeometry</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toBeMultiLineStringGeometry"
+                                >toBeMultiLineStringGeometry</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toBeMultiPointGeometry"
+                                >toBeMultiPointGeometry</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toBeMultiPolygonGeometry"
+                                >toBeMultiPolygonGeometry</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toBePointGeometry"
+                                >toBePointGeometry</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toBePolygonGeometry"
+                                >toBePolygonGeometry</a
+                            >
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="main">
+            <h1 class="page-title">BoundingBoxes</h1>
+
+            <section>
+                <header>
+                    <h2>
+                        <span class="ancestors"><a href="Matchers.html">Matchers</a>.</span>
+
+                        BoundingBoxes
+                    </h2>
+                </header>
+
+                <article>
+                    <div class="container-overview">
+                        <dl class="details">
+                            <dt class="tag-source">Source:</dt>
+                            <dd class="tag-source">
+                                <ul class="dummy">
+                                    <li>
+                                        <a href="typedefinitions.js.html">typedefinitions.js</a>,
+                                        <a href="typedefinitions.js.html#line30">line 30</a>
+                                    </li>
+                                </ul>
+                            </dd>
+
+                            <dt class="tag-see">See:</dt>
+                            <dd class="tag-see">
+                                <ul>
+                                    <li>
+                                        <a
+                                            href="https://datatracker.ietf.org/doc/html/rfc7946#section-5"
+                                            >https://datatracker.ietf.org/doc/html/rfc7946#section-5</a
+                                        >
+                                    </li>
+                                </ul>
+                            </dd>
+                        </dl>
+
+                        <div class="description usertext">
+                            A set of matchers related to validating bounding boxes.
+                        </div>
+                    </div>
+
+                    <h3 class="subsection-title">Methods</h3>
+
+                    <h4 class="name" id=".isValid2DBoundingBox">
+                        <span class="type-signature">(static) </span>isValid2DBoundingBox<span
+                            class="signature"
+                            >(bboxArray)</span
+                        ><span class="type-signature"></span>
+                    </h4>
+
+                    <dl class="details">
+                        <dt class="tag-source">Source:</dt>
+                        <dd class="tag-source">
+                            <ul class="dummy">
+                                <li>
+                                    <a href="matchers_boundingBoxes_isValid2DBoundingBox.js.html"
+                                        >matchers/boundingBoxes/isValid2DBoundingBox.js</a
+                                    >,
+                                    <a
+                                        href="matchers_boundingBoxes_isValid2DBoundingBox.js.html#line26"
+                                        >line 26</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+
+                        <dt class="tag-see">See:</dt>
+                        <dd class="tag-see">
+                            <ul>
+                                <li>
+                                    <a
+                                        href="https://github.com/M-Scott-Lassiter/jest-geojson/issues/6"
+                                        >https://github.com/M-Scott-Lassiter/jest-geojson/issues/6</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+                    </dl>
+
+                    <div class="description usertext">
+                        Verifies a two dimensional bounding box meets WGS-84 and GeoJSON validity
+                        requirements.
+                    </div>
+
+                    <h5>Examples</h5>
+
+                    <pre class="prettyprint"><code>test('Object is valid GeoJSON', () => {
+     expect([-20, 10, -10, 20]).isValid2DBoundingBox()
+     expect([170, -20, -170, 20]).isValid2DBoundingBox() // Crosses antimeridian
+ })</code></pre>
+
+                    <pre class="prettyprint"><code>test('Object is NOT valid GeoJSON', () => {
+     expect([-180.01, -10, -160, 10]).not.isValid2DBoundingBox() // Longitude out of range
+     expect([-20, 10, 0, -10, 20, 0]).not.isValid2DBoundingBox() //3D bounding box
+     expect([-20, 10, -10, false]).not.isValid2DBoundingBox() // Non-numeric value
+ })</code></pre>
+
+                    <h5>Parameters:</h5>
+
+                    <table class="params">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+
+                                <th>Type</th>
+
+                                <th class="last">Description</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="name"><code>bboxArray</code></td>
+
+                                <td class="type">
+                                    <span class="param-type">Array.&lt;number></span>
+                                </td>
+
+                                <td class="description last">
+                                    A four element array of numbers in format [west, south, east,
+                                    north]. Longitude must be between -180 to 180. Latitude must be
+                                    between -90 to 90. North must be greater than or equal to south.
+                                    Bounding boxes that cross the antimeridian will have an eastern
+                                    value less than the western value.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4 class="name" id=".isValid3DBoundingBox">
+                        <span class="type-signature">(static) </span>isValid3DBoundingBox<span
+                            class="signature"
+                            >(bboxArray)</span
+                        ><span class="type-signature"></span>
+                    </h4>
+
+                    <dl class="details">
+                        <dt class="tag-source">Source:</dt>
+                        <dd class="tag-source">
+                            <ul class="dummy">
+                                <li>
+                                    <a href="matchers_boundingBoxes_isValid3DBoundingBox.js.html"
+                                        >matchers/boundingBoxes/isValid3DBoundingBox.js</a
+                                    >,
+                                    <a
+                                        href="matchers_boundingBoxes_isValid3DBoundingBox.js.html#line27"
+                                        >line 27</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+
+                        <dt class="tag-see">See:</dt>
+                        <dd class="tag-see">
+                            <ul>
+                                <li>
+                                    <a
+                                        href="https://github.com/M-Scott-Lassiter/jest-geojson/issues/7"
+                                        >https://github.com/M-Scott-Lassiter/jest-geojson/issues/7</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+                    </dl>
+
+                    <div class="description usertext">
+                        Verifies a three dimensional bounding box meets WGS-84 and GeoJSON validity
+                        requirements.
+                    </div>
+
+                    <h5>Examples</h5>
+
+                    <pre class="prettyprint"><code>test('Object is valid GeoJSON', () => {
+     expect([-10, -20, -100, 20, 10, 0]).isValid3DBoundingBox()
+     expect([170, -20, -22.5, 20, -170, 12345.678]).isValid3DBoundingBox() // Crosses antimeridian
+ })</code></pre>
+
+                    <pre class="prettyprint"><code>test('Object is NOT valid GeoJSON', () => {
+     expect([-10, -91, 0, 10, 20, 0]).not.isValid3DBoundingBox() // south out of range
+     expect([-20, 10, -10, 20]).not.isValid3DBoundingBox() //2D bounding box
+     expect([-10, -10, "0", 10, 20, 0]).not.isValid2DBoundingBox() // Non-numeric value
+ })</code></pre>
+
+                    <h5>Parameters:</h5>
+
+                    <table class="params">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+
+                                <th>Type</th>
+
+                                <th class="last">Description</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="name"><code>bboxArray</code></td>
+
+                                <td class="type">
+                                    <span class="param-type">Array.&lt;number></span>
+                                </td>
+
+                                <td class="description last">
+                                    A six element WGS-84 array of numbers in format [west, south,
+                                    depth, east, north, altitude]. Longitude must be between -180 to
+                                    180. Latitude must be between -90 to 90. North must be greater
+                                    than or equal to south. Altitude must be greater than or equal
+                                    to depth. Bounding boxes that cross the antimeridian will have
+                                    an eastern value less than the western value.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4 class="name" id=".isValidBoundingBox">
+                        <span class="type-signature">(static) </span>isValidBoundingBox<span
+                            class="signature"
+                            >(coordinateArray)</span
+                        ><span class="type-signature"></span>
+                    </h4>
+
+                    <dl class="details">
+                        <dt class="tag-source">Source:</dt>
+                        <dd class="tag-source">
+                            <ul class="dummy">
+                                <li>
+                                    <a href="matchers_boundingBoxes_isValidBoundingBox.js.html"
+                                        >matchers/boundingBoxes/isValidBoundingBox.js</a
+                                    >,
+                                    <a
+                                        href="matchers_boundingBoxes_isValidBoundingBox.js.html#line34"
+                                        >line 34</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+
+                        <dt class="tag-see">See:</dt>
+                        <dd class="tag-see">
+                            <ul>
+                                <li>
+                                    <a
+                                        href="https://github.com/M-Scott-Lassiter/jest-geojson/issues/8"
+                                        >https://github.com/M-Scott-Lassiter/jest-geojson/issues/8</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+                    </dl>
+
+                    <div class="description usertext">
+                        Verifies a two or three dimensional bounding box meets WGS-84 and GeoJSON
+                        validity requirements.
+                    </div>
+
+                    <h5>Examples</h5>
+
+                    <pre class="prettyprint"><code>test('Object is valid GeoJSON', () => {
+     expect([220, 56]).not.isValidCoordinate() // Longitude out of range
+     expect([22, 45.733, '0']).not.isValidCoordinate()
+     // Nested Arrays
+     expect([[22, 45.733, 0]]).not.isValidCoordinate()
+     expect([[22, 45.733, 0], [180, 90, 0]]).not.isValidCoordinate()
+     expect([-20, 10, -10, 20]).isValidBoundingBox()
+     expect([170, -20, -170, 20]).isValidBoundingBox()
+     expect([-10, -20, -100, 20, 10, 0]).isValidBoundingBox()
+     expect([170, -20, -22.5, 20, -170, 12345.678]).isValidBoundingBox()
+ })</code></pre>
+
+                    <pre class="prettyprint"><code>test('Object is NOT valid GeoJSON', () => {
+     expect([-180.01, -10, -160, 10]).not.isValidBoundingBox() // Longitude out of range
+     expect([-10, -10, "0", 10, 20, 0]).not.isValidBoundingBox() // Non-numeric value
+ })</code></pre>
+
+                    <h5>Parameters:</h5>
+
+                    <table class="params">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+
+                                <th>Type</th>
+
+                                <th class="last">Description</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="name"><code>coordinateArray</code></td>
+
+                                <td class="type">
+                                    <span class="param-type">Array.&lt;number></span>
+                                </td>
+
+                                <td class="description last">
+                                    A WGS-84 array of [west, south, east, north] or [west, south,
+                                    depth, east, north, altitude]. Longitude must be between -180 to
+                                    180. Latitude must be between -90 to 90. If present, depth and
+                                    altitude must be a number between -Infinity to Infinity. The
+                                    standard does not specify units altitude represents (i.e.
+                                    meters, feet, etc.).
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </article>
+            </section>
+        </div>
+
+        <br class="clear" />
+
+        <footer>
+            Documentation generated by
+            <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> using the
+            <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+        </footer>
+
+        <script>
+            prettyPrint()
+        </script>
+        <script src="scripts/polyfill.js"></script>
+        <script src="scripts/linenumber.js"></script>
+
+        <script src="scripts/search.js" defer></script>
+    </body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>core/geometries/multiPolygonGeometry.js - Documentation</title>
+
+        <script src="scripts/prettify/prettify.js"></script>
+        <script src="scripts/prettify/lang-css.js"></script>
+        <!--[if lt IE 9]>
+            <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <link type="text/css" rel="stylesheet" href="styles/prettify.css" />
+        <link type="text/css" rel="stylesheet" href="styles/jsdoc.css" />
+        <script src="scripts/nav.js" defer></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger" class="navicon-button x">
+            <div class="navicon"></div>
+        </label>
+
+        <label for="nav-trigger" class="overlay"></label>
+
+        <nav>
+            <input type="text" id="nav-search" placeholder="Search" />
+
+            <h2><a href="index.html">Home</a></h2>
+            <h2>
+                <a
+                    href="https://github.com/M-Scott-Lassiter/jest-geojson"
+                    target="_blank"
+                    class="menu-item"
+                    id="repository"
+                    >Github repo</a
+                >
+            </h2>
+            <h3>Namespaces</h3>
+            <ul>
+                <li><a href="Core.html">Core</a></li>
+                <li>
+                    <a href="Core.BoundingBoxes.html">Core.BoundingBoxes</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Core.BoundingBoxes.html#.valid2DBoundingBox"
+                                >valid2DBoundingBox</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.BoundingBoxes.html#.valid3DBoundingBox"
+                                >valid3DBoundingBox</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.BoundingBoxes.html#.validBoundingBox">validBoundingBox</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Core.Coordinates.html">Core.Coordinates</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Core.Coordinates.html#.valid2DCoordinate">valid2DCoordinate</a>
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.Coordinates.html#.valid3DCoordinate">valid3DCoordinate</a>
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.Coordinates.html#.validCoordinate">validCoordinate</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Core.FeatureCollections.html">Core.FeatureCollections</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Core.FeatureCollections.html#.featureCollection"
+                                >featureCollection</a
+                            >
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Core.Features.html">Core.Features</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Core.Features.html#.feature">feature</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Core.Geometries.html">Core.Geometries</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Core.Geometries.html#.anyGeometry">anyGeometry</a>
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.Geometries.html#.geometryCollection"
+                                >geometryCollection</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.Geometries.html#.lineStringGeometry"
+                                >lineStringGeometry</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.Geometries.html#.multiLineStringGeometry"
+                                >multiLineStringGeometry</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.Geometries.html#.multiPointGeometry"
+                                >multiPointGeometry</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.Geometries.html#.multiPolygonGeometry"
+                                >multiPolygonGeometry</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.Geometries.html#.pointGeometry">pointGeometry</a>
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.Geometries.html#.polygonGeometry">polygonGeometry</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Core.Utilities.html">Core.Utilities</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Core.Utilities.html#.commonGeometryValidation"
+                                >commonGeometryValidation</a
+                            >
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="Matchers.html">Matchers</a></li>
+                <li>
+                    <a href="Matchers.BoundingBoxes.html">Matchers.BoundingBoxes</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Matchers.BoundingBoxes.html#.isValid2DBoundingBox"
+                                >isValid2DBoundingBox</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.BoundingBoxes.html#.isValid3DBoundingBox"
+                                >isValid3DBoundingBox</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.BoundingBoxes.html#.isValidBoundingBox"
+                                >isValidBoundingBox</a
+                            >
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Matchers.Coordinates.html">Matchers.Coordinates</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Matchers.Coordinates.html#.isValid2DCoordinate"
+                                >isValid2DCoordinate</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.Coordinates.html#.isValid3DCoordinate"
+                                >isValid3DCoordinate</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.Coordinates.html#.isValidCoordinate"
+                                >isValidCoordinate</a
+                            >
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Matchers.FeatureCollections.html">Matchers.FeatureCollections</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Matchers.FeatureCollections.html#.toBeFeatureCollection"
+                                >toBeFeatureCollection</a
+                            >
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Matchers.Features.html">Matchers.Features</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Matchers.Features.html#.toBeFeature">toBeFeature</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Matchers.Geometries.html">Matchers.Geometries</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toBeAnyGeometry">toBeAnyGeometry</a>
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toBeGeometryCollection"
+                                >toBeGeometryCollection</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toBeLineStringGeometry"
+                                >toBeLineStringGeometry</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toBeMultiLineStringGeometry"
+                                >toBeMultiLineStringGeometry</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toBeMultiPointGeometry"
+                                >toBeMultiPointGeometry</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toBeMultiPolygonGeometry"
+                                >toBeMultiPolygonGeometry</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toBePointGeometry"
+                                >toBePointGeometry</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toBePolygonGeometry"
+                                >toBePolygonGeometry</a
+                            >
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="main">
+            <h1 class="page-title">core/geometries/multiPolygonGeometry.js</h1>
+
+            <section>
+                <article>
+                    <pre
+                        class="prettyprint source linenums"
+                    ><code>const { validCoordinate } = require('../coordinates/validCoordinate')
+const { commonGeometryValidation } = require('../utilities')
+
+/**
+ * Verifies an object is a valid GeoJSON MultiPolygon Geometry. This geometry requires a
+ * 'type' property that must equal "MultiPolygon", and a 'coordinates' property that contains
+ * an array of polygon coordinate arrays. Each coordinate array must contain at least four valid
+ * WGS-84 GeoJSON coordinates, and the final coordinate must equal the first.
+ *
+ * The coordinates may be an empty array, but may not be an array of empty arrays.
+ *
+ * Foreign members are allowed with the exceptions thrown below.
+ * If present, bounding boxes must be valid.
+ *
+ * @memberof Core.Geometries
+ * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/14
+ * @param {object} geometryObject a GeoJSON Polygon Geometry object
+ * @returns {boolean} True if a valid GeoJSON MultiPolygon Geometry. If invalid, it will throw an error.
+ * @throws {Error} Argument not an object
+ * @throws {Error} Must have a type property with value 'MultiPolygon'
+ * @throws {Error} Coordinates array must contain four or more valid GeoJSON coordinates
+ * @throws {Error} Final coordinate must match first coordinate
+ * @throws {Error} Forbidden from having a property 'geometry', 'properties', or 'features'
+ * @example
+ * const multiPolygon = {
+ *     type: 'MultiPolygon',
+ *     coordinates: [
+ *         [
+ *             [
+ *                 [102.0, 2.0],
+ *                 [103.0, 2.0],
+ *                 [103.0, 3.0],
+ *                 [102.0, 3.0],
+ *                 [102.0, 2.0]
+ *             ]
+ *         ],
+ *         [
+ *             [
+ *                 [100.0, 0.0],
+ *                 [101.0, 0.0],
+ *                 [101.0, 1.0],
+ *                 [100.0, 1.0],
+ *                 [100.0, 0.0]
+ *             ],
+ *             [
+ *                 [100.2, 0.2],
+ *                 [100.2, 0.8],
+ *                 [100.8, 0.8],
+ *                 [100.8, 0.2],
+ *                 [100.2, 0.2]
+ *             ]
+ *         ]
+ *     ]
+ * }
+ * const multiPolygonWithSingleElement = {
+ *     type: 'MultiPolygon',
+ *     coordinates: [
+ *         [
+ *             [
+ *                 [102.0, 2.0],
+ *                 [103.0, 2.0],
+ *                 [103.0, 3.0],
+ *                 [102.0, 3.0],
+ *                 [102.0, 2.0]
+ *             ]
+ *         ]
+ *     ]
+ * }
+ * const point = {
+ *     type: 'Point',
+ *     coordinates: [100.0, 0.0]
+ * }
+ *
+ * const goodExample1 = multiPolygonGeometry(multiPolygon) // true
+ * const goodExample2 = multiPolygonGeometry(multiPolygonWithSingleElement) // true
+ *
+ * const badExample = multiPolygonGeometry(point) // throws error
+ */
+function multiPolygonGeometry(geometryObject) {
+    if (geometryObject.type !== 'MultiPolygon') {
+        throw new Error(`Must have a type property with value 'MultiPolygon'.`)
+    }
+
+    commonGeometryValidation(geometryObject)
+
+    geometryObject.coordinates.forEach((polygonCoordinateArray) => {
+        if (!Array.isArray(polygonCoordinateArray)) {
+            throw new Error(
+                'polygon coordinate array must be an array of valid GeoJSON linear rings.'
+            )
+        }
+        polygonCoordinateArray.forEach((linearRing) => {
+            if (!Array.isArray(linearRing)) {
+                throw new Error(
+                    'Polygon linear ring must be an array of valid GeoJSON coordinates.'
+                )
+            }
+            if (linearRing.length &lt; 4) {
+                throw new Error(
+                    'Coordinates array must contain four or more valid GeoJSON coordinates.'
+                )
+            }
+
+            // Can't directly compare the arrays, so turn them to strings. The orders in GeoJSON applications
+            // will always be known, therefore this is an acceptable way to test equality.
+            // See https://stackoverflow.com/questions/30820611/why-doesnt-equality-check-work-with-arrays
+            const finalIndex = linearRing.length - 1
+            const firstCoord = JSON.stringify(linearRing[0])
+            const finalCoord = JSON.stringify(linearRing[finalIndex])
+            if (firstCoord !== finalCoord) {
+                throw new Error(
+                    'The final coordinate in a polygon linear ring must match first coordinate.'
+                )
+            }
+
+            linearRing.forEach((coordinate) => {
+                validCoordinate(coordinate)
+            })
+        })
+    })
+
+    return true
+}
+
+exports.multiPolygonGeometry = multiPolygonGeometry
+</code></pre>
+                </article>
+            </section>
+        </div>
+
+        <br class="clear" />
+
+        <footer>
+            Documentation generated by
+            <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> using the
+            <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+        </footer>
+
+        <script>
+            prettyPrint()
+        </script>
+        <script src="scripts/polyfill.js"></script>
+        <script src="scripts/linenumber.js"></script>
+
+        <script src="scripts/search.js" defer></script>
+    </body>
+</html>

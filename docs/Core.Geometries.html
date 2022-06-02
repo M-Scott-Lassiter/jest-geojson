@@ -1,0 +1,1792 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Geometries - Documentation</title>
+
+        <script src="scripts/prettify/prettify.js"></script>
+        <script src="scripts/prettify/lang-css.js"></script>
+        <!--[if lt IE 9]>
+            <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <link type="text/css" rel="stylesheet" href="styles/prettify.css" />
+        <link type="text/css" rel="stylesheet" href="styles/jsdoc.css" />
+        <script src="scripts/nav.js" defer></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger" class="navicon-button x">
+            <div class="navicon"></div>
+        </label>
+
+        <label for="nav-trigger" class="overlay"></label>
+
+        <nav>
+            <input type="text" id="nav-search" placeholder="Search" />
+
+            <h2><a href="index.html">Home</a></h2>
+            <h2>
+                <a
+                    href="https://github.com/M-Scott-Lassiter/jest-geojson"
+                    target="_blank"
+                    class="menu-item"
+                    id="repository"
+                    >Github repo</a
+                >
+            </h2>
+            <h3>Namespaces</h3>
+            <ul>
+                <li><a href="Core.html">Core</a></li>
+                <li>
+                    <a href="Core.BoundingBoxes.html">Core.BoundingBoxes</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Core.BoundingBoxes.html#.valid2DBoundingBox"
+                                >valid2DBoundingBox</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.BoundingBoxes.html#.valid3DBoundingBox"
+                                >valid3DBoundingBox</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.BoundingBoxes.html#.validBoundingBox">validBoundingBox</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Core.Coordinates.html">Core.Coordinates</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Core.Coordinates.html#.valid2DCoordinate">valid2DCoordinate</a>
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.Coordinates.html#.valid3DCoordinate">valid3DCoordinate</a>
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.Coordinates.html#.validCoordinate">validCoordinate</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Core.FeatureCollections.html">Core.FeatureCollections</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Core.FeatureCollections.html#.featureCollection"
+                                >featureCollection</a
+                            >
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Core.Features.html">Core.Features</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Core.Features.html#.feature">feature</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Core.Geometries.html">Core.Geometries</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Core.Geometries.html#.anyGeometry">anyGeometry</a>
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.Geometries.html#.geometryCollection"
+                                >geometryCollection</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.Geometries.html#.lineStringGeometry"
+                                >lineStringGeometry</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.Geometries.html#.multiLineStringGeometry"
+                                >multiLineStringGeometry</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.Geometries.html#.multiPointGeometry"
+                                >multiPointGeometry</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.Geometries.html#.multiPolygonGeometry"
+                                >multiPolygonGeometry</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.Geometries.html#.pointGeometry">pointGeometry</a>
+                        </li>
+                        <li data-type="method">
+                            <a href="Core.Geometries.html#.polygonGeometry">polygonGeometry</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Core.Utilities.html">Core.Utilities</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Core.Utilities.html#.commonGeometryValidation"
+                                >commonGeometryValidation</a
+                            >
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="Matchers.html">Matchers</a></li>
+                <li>
+                    <a href="Matchers.BoundingBoxes.html">Matchers.BoundingBoxes</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Matchers.BoundingBoxes.html#.isValid2DBoundingBox"
+                                >isValid2DBoundingBox</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.BoundingBoxes.html#.isValid3DBoundingBox"
+                                >isValid3DBoundingBox</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.BoundingBoxes.html#.isValidBoundingBox"
+                                >isValidBoundingBox</a
+                            >
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Matchers.Coordinates.html">Matchers.Coordinates</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Matchers.Coordinates.html#.isValid2DCoordinate"
+                                >isValid2DCoordinate</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.Coordinates.html#.isValid3DCoordinate"
+                                >isValid3DCoordinate</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.Coordinates.html#.isValidCoordinate"
+                                >isValidCoordinate</a
+                            >
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Matchers.FeatureCollections.html">Matchers.FeatureCollections</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Matchers.FeatureCollections.html#.toBeFeatureCollection"
+                                >toBeFeatureCollection</a
+                            >
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Matchers.Features.html">Matchers.Features</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Matchers.Features.html#.toBeFeature">toBeFeature</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Matchers.Geometries.html">Matchers.Geometries</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toBeAnyGeometry">toBeAnyGeometry</a>
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toBeGeometryCollection"
+                                >toBeGeometryCollection</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toBeLineStringGeometry"
+                                >toBeLineStringGeometry</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toBeMultiLineStringGeometry"
+                                >toBeMultiLineStringGeometry</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toBeMultiPointGeometry"
+                                >toBeMultiPointGeometry</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toBeMultiPolygonGeometry"
+                                >toBeMultiPolygonGeometry</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toBePointGeometry"
+                                >toBePointGeometry</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toBePolygonGeometry"
+                                >toBePolygonGeometry</a
+                            >
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="main">
+            <h1 class="page-title">Geometries</h1>
+
+            <section>
+                <header>
+                    <h2>
+                        <span class="ancestors"><a href="Core.html">Core</a>.</span>
+
+                        Geometries
+                    </h2>
+                </header>
+
+                <article>
+                    <div class="container-overview">
+                        <dl class="details">
+                            <dt class="tag-source">Source:</dt>
+                            <dd class="tag-source">
+                                <ul class="dummy">
+                                    <li>
+                                        <a href="typedefinitions.js.html">typedefinitions.js</a>,
+                                        <a href="typedefinitions.js.html#line100">line 100</a>
+                                    </li>
+                                </ul>
+                            </dd>
+                        </dl>
+
+                        <div class="description usertext">
+                            Geometry object validation functions used within Core.
+                        </div>
+                    </div>
+
+                    <h3 class="subsection-title">Methods</h3>
+
+                    <h4 class="name" id=".anyGeometry">
+                        <span class="type-signature">(static) </span>anyGeometry<span
+                            class="signature"
+                            >(geometryObject)</span
+                        ><span class="type-signature"> &rarr; {boolean}</span>
+                    </h4>
+
+                    <dl class="details">
+                        <dt class="tag-source">Source:</dt>
+                        <dd class="tag-source">
+                            <ul class="dummy">
+                                <li>
+                                    <a href="core_geometries_anyGeometry.js.html"
+                                        >core/geometries/anyGeometry.js</a
+                                    >,
+                                    <a href="core_geometries_anyGeometry.js.html#line61">line 61</a>
+                                </li>
+                            </ul>
+                        </dd>
+
+                        <dt class="tag-see">See:</dt>
+                        <dd class="tag-see">
+                            <ul>
+                                <li>
+                                    <a
+                                        href="https://github.com/M-Scott-Lassiter/jest-geojson/issues/15"
+                                        >https://github.com/M-Scott-Lassiter/jest-geojson/issues/15</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+                    </dl>
+
+                    <div class="description usertext">
+                        Verifies an object meets validity requirements for one of the six basic
+                        GeoJSON geometry types: Point, MultiPoint, LineString, MultiLineString,
+                        Polygon, MultiPolygon, GeometryCollection
+                    </div>
+
+                    <h5>Example</h5>
+
+                    <pre class="prettyprint"><code>point = {
+    type: 'Point',
+    coordinates: [100.0, 0.0]
+}
+lineString = {
+    type: 'LineString',
+    coordinates: [
+        [
+            [180.0, 40.0],
+            [180.0, 50.0],
+            [170.0, 50.0],
+            [170.0, 40.0],
+            [180.0, 40.0]
+        ]
+    ]
+}
+polygon = {
+    type: 'Polygon',
+    coordinates: [
+        [
+            [100.0, 0.0],
+            [101.0, 0.0],
+            [101.0, 1.0],
+            [100.0, 1.0],
+            [100.0, 0.0]
+        ]
+    ]
+}
+feature = {
+    type: 'Feature',
+    geometry: {
+        type: 'Point',
+        coordinates: [102.0, 0.5]
+    }
+}
+
+const goodExample1 = anyGeometry(point)) // true
+const goodExample2 = anyGeometry(lineString)) // true
+const goodExample3 = anyGeometry(polygon)) // true
+
+const badExample = anyGeometry(feature)) // throws error</code></pre>
+
+                    <h5>Parameters:</h5>
+
+                    <table class="params">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+
+                                <th>Type</th>
+
+                                <th class="last">Description</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="name"><code>geometryObject</code></td>
+
+                                <td class="type">
+                                    <span class="param-type">object</span>
+                                </td>
+
+                                <td class="description last">
+                                    A WGS-84 array of [longitude, latitude] or [longitude, latitude,
+                                    alititude]
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h5>Throws:</h5>
+
+                    <dl>
+                        <dt>
+                            <div class="param-desc usertext">
+                                Input must be either a valid Point, MultiPoint, LineString,
+                                MultiLineString, Polygon, MultiPolygon, or GeometryCollection
+                            </div>
+                        </dt>
+                        <dd></dd>
+                        <dt>
+                            <dl class="param-type">
+                                <dt>Type</dt>
+                                <dd>
+                                    <span class="param-type">Error</span>
+                                </dd>
+                            </dl>
+                        </dt>
+                        <dd></dd>
+                    </dl>
+
+                    <h5>Returns:</h5>
+
+                    <div class="param-desc">
+                        True if a valid GeoJSON geometry object. If invalid, it will throw an error.
+                    </div>
+
+                    <dl class="param-type">
+                        <dt>Type</dt>
+                        <dd>
+                            <span class="param-type">boolean</span>
+                        </dd>
+                    </dl>
+
+                    <h4 class="name" id=".geometryCollection">
+                        <span class="type-signature">(static) </span>geometryCollection<span
+                            class="signature"
+                            >(geometryObject)</span
+                        ><span class="type-signature"> &rarr; {boolean}</span>
+                    </h4>
+
+                    <dl class="details">
+                        <dt class="tag-source">Source:</dt>
+                        <dd class="tag-source">
+                            <ul class="dummy">
+                                <li>
+                                    <a href="core_geometries_geometryCollection.js.html"
+                                        >core/geometries/geometryCollection.js</a
+                                    >,
+                                    <a href="core_geometries_geometryCollection.js.html#line55"
+                                        >line 55</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+
+                        <dt class="tag-see">See:</dt>
+                        <dd class="tag-see">
+                            <ul>
+                                <li>
+                                    <a
+                                        href="https://github.com/M-Scott-Lassiter/jest-geojson/issues/16"
+                                        >https://github.com/M-Scott-Lassiter/jest-geojson/issues/16</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+                    </dl>
+
+                    <div class="description usertext">
+                        Verifies an object is a valid GeoJSON GeometryCollection. This object
+                        requires a 'type' property that must equal "GeometryCollection", and a
+                        'geometries' property that contains an array of GeoJSON Geometry objects
+                        (Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon) The
+                        geometries may be an empty array, but may not be an array of empty arrays or
+                        objects. Foreign members are allowed with the exceptions thrown below. If
+                        present, bounding boxes must be valid.
+                    </div>
+
+                    <h5>Example</h5>
+
+                    <pre class="prettyprint"><code>const collection = {
+    type: 'GeometryCollection',
+    geometries: [{
+        "type": 'Point',
+        "coordinates": [100.0, 0.0]
+    }, {
+        type: 'LineString',
+        coordinates: [
+            [101.0, 0.0],
+            [102.0, 1.0]
+        ]
+    }, {
+        type: 'Polygon',
+        coordinates: [
+            [
+                [102.0, 2.0],
+                [103.0, 2.0],
+                [103.0, 3.0],
+                [102.0, 3.0],
+                [102.0, 2.0]
+            ]
+        ]
+    }, {
+        type: 'Point',
+        coordinates: [150.0, 73.0]
+    }]
+}
+
+const goodExample = geometryCollection(collection) // true
+
+const badExample1 = geometryCollection(collection.geometries) // throws error
+const badExample2 = geometryCollection(collection.geometries[1]) // throws error</code></pre>
+
+                    <h5>Parameters:</h5>
+
+                    <table class="params">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+
+                                <th>Type</th>
+
+                                <th class="last">Description</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="name"><code>geometryObject</code></td>
+
+                                <td class="type">
+                                    <span class="param-type">object</span>
+                                </td>
+
+                                <td class="description last">a GeoJSON Geometry object</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h5>Throws:</h5>
+                    <ul>
+                        <li>
+                            <dl>
+                                <dt>
+                                    <div class="param-desc usertext">Argument not an object</div>
+                                </dt>
+                                <dd></dd>
+                                <dt>
+                                    <dl class="param-type">
+                                        <dt>Type</dt>
+                                        <dd>
+                                            <span class="param-type">Error</span>
+                                        </dd>
+                                    </dl>
+                                </dt>
+                                <dd></dd>
+                            </dl>
+                        </li>
+
+                        <li>
+                            <dl>
+                                <dt>
+                                    <div class="param-desc usertext">
+                                        Must have a type property with value 'GeometryCollection'
+                                    </div>
+                                </dt>
+                                <dd></dd>
+                                <dt>
+                                    <dl class="param-type">
+                                        <dt>Type</dt>
+                                        <dd>
+                                            <span class="param-type">Error</span>
+                                        </dd>
+                                    </dl>
+                                </dt>
+                                <dd></dd>
+                            </dl>
+                        </li>
+
+                        <li>
+                            <dl>
+                                <dt>
+                                    <div class="param-desc usertext">
+                                        Forbidden from having a property 'geometry', 'properties',
+                                        or 'features'
+                                    </div>
+                                </dt>
+                                <dd></dd>
+                                <dt>
+                                    <dl class="param-type">
+                                        <dt>Type</dt>
+                                        <dd>
+                                            <span class="param-type">Error</span>
+                                        </dd>
+                                    </dl>
+                                </dt>
+                                <dd></dd>
+                            </dl>
+                        </li>
+                    </ul>
+
+                    <h5>Returns:</h5>
+
+                    <div class="param-desc">
+                        True if a valid GeoJSON GeometryCollection Geometry. If invalid, it will
+                        throw an error.
+                    </div>
+
+                    <dl class="param-type">
+                        <dt>Type</dt>
+                        <dd>
+                            <span class="param-type">boolean</span>
+                        </dd>
+                    </dl>
+
+                    <h4 class="name" id=".lineStringGeometry">
+                        <span class="type-signature">(static) </span>lineStringGeometry<span
+                            class="signature"
+                            >(geometryObject)</span
+                        ><span class="type-signature"> &rarr; {boolean}</span>
+                    </h4>
+
+                    <dl class="details">
+                        <dt class="tag-source">Source:</dt>
+                        <dd class="tag-source">
+                            <ul class="dummy">
+                                <li>
+                                    <a href="core_geometries_lineStringGeometry.js.html"
+                                        >core/geometries/lineStringGeometry.js</a
+                                    >,
+                                    <a href="core_geometries_lineStringGeometry.js.html#line39"
+                                        >line 39</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+
+                        <dt class="tag-see">See:</dt>
+                        <dd class="tag-see">
+                            <ul>
+                                <li>
+                                    <a
+                                        href="https://github.com/M-Scott-Lassiter/jest-geojson/issues/11"
+                                        >https://github.com/M-Scott-Lassiter/jest-geojson/issues/11</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+                    </dl>
+
+                    <div class="description usertext">
+                        Verifies an object is a valid GeoJSON LineString Geometry. This geometry
+                        requires a 'type' property that must equal "LineString", and a 'coordinates'
+                        property that contains an array of two or more valid WGS-84 GeoJSON
+                        coordinates. The coordinates may be an empty array, but may not be an array
+                        of empty arrays. Foreign members are allowed with the exceptions thrown
+                        below. If present, bounding boxes must be valid.
+                    </div>
+
+                    <h5>Example</h5>
+
+                    <pre class="prettyprint"><code>const linestring = {
+    type: 'LineString',
+    coordinates: [
+        [
+            [180.0, 40.0], [180.0, 50.0], [170.0, 50.0],
+            [170.0, 40.0], [180.0, 40.0]
+        ]
+    ]
+}
+const point = {
+    type: 'Point',
+    coordinates: [100.0, 0.0]
+}
+
+const goodExample = lineStringGeometry(linestring) // true
+
+const badExample = lineStringGeometry(point)) / throws error</code></pre>
+
+                    <h5>Parameters:</h5>
+
+                    <table class="params">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+
+                                <th>Type</th>
+
+                                <th class="last">Description</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="name"><code>geometryObject</code></td>
+
+                                <td class="type">
+                                    <span class="param-type">object</span>
+                                </td>
+
+                                <td class="description last">
+                                    a GeoJSON LineString Geometry object
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h5>Throws:</h5>
+                    <ul>
+                        <li>
+                            <dl>
+                                <dt>
+                                    <div class="param-desc usertext">Argument not an object</div>
+                                </dt>
+                                <dd></dd>
+                                <dt>
+                                    <dl class="param-type">
+                                        <dt>Type</dt>
+                                        <dd>
+                                            <span class="param-type">Error</span>
+                                        </dd>
+                                    </dl>
+                                </dt>
+                                <dd></dd>
+                            </dl>
+                        </li>
+
+                        <li>
+                            <dl>
+                                <dt>
+                                    <div class="param-desc usertext">
+                                        Must have a type property with value 'LineString'
+                                    </div>
+                                </dt>
+                                <dd></dd>
+                                <dt>
+                                    <dl class="param-type">
+                                        <dt>Type</dt>
+                                        <dd>
+                                            <span class="param-type">Error</span>
+                                        </dd>
+                                    </dl>
+                                </dt>
+                                <dd></dd>
+                            </dl>
+                        </li>
+
+                        <li>
+                            <dl>
+                                <dt>
+                                    <div class="param-desc usertext">
+                                        Forbidden from having a property 'geometry', 'properties',
+                                        or 'features'
+                                    </div>
+                                </dt>
+                                <dd></dd>
+                                <dt>
+                                    <dl class="param-type">
+                                        <dt>Type</dt>
+                                        <dd>
+                                            <span class="param-type">Error</span>
+                                        </dd>
+                                    </dl>
+                                </dt>
+                                <dd></dd>
+                            </dl>
+                        </li>
+                    </ul>
+
+                    <h5>Returns:</h5>
+
+                    <div class="param-desc">
+                        True if a valid GeoJSON LineString Geometry. If invalid, it will throw an
+                        error.
+                    </div>
+
+                    <dl class="param-type">
+                        <dt>Type</dt>
+                        <dd>
+                            <span class="param-type">boolean</span>
+                        </dd>
+                    </dl>
+
+                    <h4 class="name" id=".multiLineStringGeometry">
+                        <span class="type-signature">(static) </span>multiLineStringGeometry<span
+                            class="signature"
+                            >(geometryObject)</span
+                        ><span class="type-signature"> &rarr; {boolean}</span>
+                    </h4>
+
+                    <dl class="details">
+                        <dt class="tag-source">Source:</dt>
+                        <dd class="tag-source">
+                            <ul class="dummy">
+                                <li>
+                                    <a href="core_geometries_multiLineStringGeometry.js.html"
+                                        >core/geometries/multiLineStringGeometry.js</a
+                                    >,
+                                    <a href="core_geometries_multiLineStringGeometry.js.html#line55"
+                                        >line 55</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+
+                        <dt class="tag-see">See:</dt>
+                        <dd class="tag-see">
+                            <ul>
+                                <li>
+                                    <a
+                                        href="https://github.com/M-Scott-Lassiter/jest-geojson/issues/12"
+                                        >https://github.com/M-Scott-Lassiter/jest-geojson/issues/12</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+                    </dl>
+
+                    <div class="description usertext">
+                        Verifies an object is a valid GeoJSON MultiLineString Geometry. This
+                        geometry requires a 'type' property that must equal "MultiLineString", and a
+                        'coordinates' property that contains an array of linestring arrays (i.e.
+                        each linestring array containing at least two or more valid WGS-84 GeoJSON
+                        coordinates). The coordinates may be an empty array, but may not be an array
+                        of empty arrays. Foreign members are allowed with the exceptions thrown
+                        below. If present, bounding boxes must be valid.
+                    </div>
+
+                    <h5>Example</h5>
+
+                    <pre class="prettyprint"><code>const multiLineString = {
+    type: 'MultiLineString',
+    coordinates: [
+        [
+            [100.0, 0.0],
+            [101.0, 1.0]
+        ],
+        [
+            [102.0, 2.0],
+            [103.0, 3.0]
+        ]
+    ]
+}
+const multiLineStringOneCoordinate = {
+    type: 'MultiLineString',
+    coordinates: [
+        [
+            [100.0, 0.0]
+        ]
+    ]
+}
+const point = {
+    type: 'Point',
+    coordinates: [100.0, 0.0]
+}
+
+const goodExample = multiLineStringGeometry(multiLineString) // true
+
+const badExample1 = multiLineStringGeometry(point) // throws error
+const badExample2 = multiLineStringGeometry(multiLineStringOneCoordinate) // throws error</code></pre>
+
+                    <h5>Parameters:</h5>
+
+                    <table class="params">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+
+                                <th>Type</th>
+
+                                <th class="last">Description</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="name"><code>geometryObject</code></td>
+
+                                <td class="type">
+                                    <span class="param-type">object</span>
+                                </td>
+
+                                <td class="description last">
+                                    a GeoJSON MultiLineString Geometry object
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h5>Throws:</h5>
+                    <ul>
+                        <li>
+                            <dl>
+                                <dt>
+                                    <div class="param-desc usertext">Argument not an object</div>
+                                </dt>
+                                <dd></dd>
+                                <dt>
+                                    <dl class="param-type">
+                                        <dt>Type</dt>
+                                        <dd>
+                                            <span class="param-type">Error</span>
+                                        </dd>
+                                    </dl>
+                                </dt>
+                                <dd></dd>
+                            </dl>
+                        </li>
+
+                        <li>
+                            <dl>
+                                <dt>
+                                    <div class="param-desc usertext">
+                                        Must have a type property with value 'MultiLineString'
+                                    </div>
+                                </dt>
+                                <dd></dd>
+                                <dt>
+                                    <dl class="param-type">
+                                        <dt>Type</dt>
+                                        <dd>
+                                            <span class="param-type">Error</span>
+                                        </dd>
+                                    </dl>
+                                </dt>
+                                <dd></dd>
+                            </dl>
+                        </li>
+
+                        <li>
+                            <dl>
+                                <dt>
+                                    <div class="param-desc usertext">
+                                        Coordinates array must contain two or more valid GeoJSON
+                                        coordinates
+                                    </div>
+                                </dt>
+                                <dd></dd>
+                                <dt>
+                                    <dl class="param-type">
+                                        <dt>Type</dt>
+                                        <dd>
+                                            <span class="param-type">Error</span>
+                                        </dd>
+                                    </dl>
+                                </dt>
+                                <dd></dd>
+                            </dl>
+                        </li>
+
+                        <li>
+                            <dl>
+                                <dt>
+                                    <div class="param-desc usertext">
+                                        Forbidden from having a property 'geometry', 'properties',
+                                        or 'features'
+                                    </div>
+                                </dt>
+                                <dd></dd>
+                                <dt>
+                                    <dl class="param-type">
+                                        <dt>Type</dt>
+                                        <dd>
+                                            <span class="param-type">Error</span>
+                                        </dd>
+                                    </dl>
+                                </dt>
+                                <dd></dd>
+                            </dl>
+                        </li>
+                    </ul>
+
+                    <h5>Returns:</h5>
+
+                    <div class="param-desc">
+                        True if a valid GeoJSON MultiLineString Geometry. If invalid, it will throw
+                        an error.
+                    </div>
+
+                    <dl class="param-type">
+                        <dt>Type</dt>
+                        <dd>
+                            <span class="param-type">boolean</span>
+                        </dd>
+                    </dl>
+
+                    <h4 class="name" id=".multiPointGeometry">
+                        <span class="type-signature">(static) </span>multiPointGeometry<span
+                            class="signature"
+                            >(geometryObject)</span
+                        ><span class="type-signature"> &rarr; {boolean}</span>
+                    </h4>
+
+                    <dl class="details">
+                        <dt class="tag-source">Source:</dt>
+                        <dd class="tag-source">
+                            <ul class="dummy">
+                                <li>
+                                    <a href="core_geometries_multiPointGeometry.js.html"
+                                        >core/geometries/multiPointGeometry.js</a
+                                    >,
+                                    <a href="core_geometries_multiPointGeometry.js.html#line36"
+                                        >line 36</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+
+                        <dt class="tag-see">See:</dt>
+                        <dd class="tag-see">
+                            <ul>
+                                <li>
+                                    <a
+                                        href="https://github.com/M-Scott-Lassiter/jest-geojson/issues/10"
+                                        >https://github.com/M-Scott-Lassiter/jest-geojson/issues/10</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+                    </dl>
+
+                    <div class="description usertext">
+                        Verifies an object is a valid GeoJSON MultiPoint Geometry. This geometry
+                        requires a 'type' property that must equal "MultiPoint", and a 'coordinates'
+                        property that contains a single coordinate or an array of valid WGS-84
+                        GeoJSON coordinates. The coordinates may be an empty array. Foreign members
+                        are allowed with the exceptions thrown below. If present, bounding boxes
+                        must be valid.
+                    </div>
+
+                    <h5>Example</h5>
+
+                    <pre class="prettyprint"><code>const testMultiPoint1 = {
+    type: 'MultiPoint',
+    id: null,
+    coordinates: [[25, 90], [-180, 0]]
+}
+
+const testMultiPoint2 = {
+    type: 'Point',
+    coordinates: [25, 90]
+}
+
+const goodExample = console.log(multiPointGeometry(testMultiPoint1) // true
+
+const badExample = console.log(multiPointGeometry(testMultiPoint2) // throws error</code></pre>
+
+                    <h5>Parameters:</h5>
+
+                    <table class="params">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+
+                                <th>Type</th>
+
+                                <th class="last">Description</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="name"><code>geometryObject</code></td>
+
+                                <td class="type">
+                                    <span class="param-type">object</span>
+                                </td>
+
+                                <td class="description last">
+                                    a GeoJSON MultiPoint Geometry object
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h5>Throws:</h5>
+                    <ul>
+                        <li>
+                            <dl>
+                                <dt>
+                                    <div class="param-desc usertext">Argument not an object</div>
+                                </dt>
+                                <dd></dd>
+                                <dt>
+                                    <dl class="param-type">
+                                        <dt>Type</dt>
+                                        <dd>
+                                            <span class="param-type">Error</span>
+                                        </dd>
+                                    </dl>
+                                </dt>
+                                <dd></dd>
+                            </dl>
+                        </li>
+
+                        <li>
+                            <dl>
+                                <dt>
+                                    <div class="param-desc usertext">
+                                        Must have a type property with value 'MultiPoint'
+                                    </div>
+                                </dt>
+                                <dd></dd>
+                                <dt>
+                                    <dl class="param-type">
+                                        <dt>Type</dt>
+                                        <dd>
+                                            <span class="param-type">Error</span>
+                                        </dd>
+                                    </dl>
+                                </dt>
+                                <dd></dd>
+                            </dl>
+                        </li>
+
+                        <li>
+                            <dl>
+                                <dt>
+                                    <div class="param-desc usertext">
+                                        Forbidden from having a property 'geometry', 'properties',
+                                        or 'features'
+                                    </div>
+                                </dt>
+                                <dd></dd>
+                                <dt>
+                                    <dl class="param-type">
+                                        <dt>Type</dt>
+                                        <dd>
+                                            <span class="param-type">Error</span>
+                                        </dd>
+                                    </dl>
+                                </dt>
+                                <dd></dd>
+                            </dl>
+                        </li>
+                    </ul>
+
+                    <h5>Returns:</h5>
+
+                    <div class="param-desc">
+                        True if a valid GeoJSON MultiPoint Geometry. If invalid, it will throw an
+                        error.
+                    </div>
+
+                    <dl class="param-type">
+                        <dt>Type</dt>
+                        <dd>
+                            <span class="param-type">boolean</span>
+                        </dd>
+                    </dl>
+
+                    <h4 class="name" id=".multiPolygonGeometry">
+                        <span class="type-signature">(static) </span>multiPolygonGeometry<span
+                            class="signature"
+                            >(geometryObject)</span
+                        ><span class="type-signature"> &rarr; {boolean}</span>
+                    </h4>
+
+                    <dl class="details">
+                        <dt class="tag-source">Source:</dt>
+                        <dd class="tag-source">
+                            <ul class="dummy">
+                                <li>
+                                    <a href="core_geometries_multiPolygonGeometry.js.html"
+                                        >core/geometries/multiPolygonGeometry.js</a
+                                    >,
+                                    <a href="core_geometries_multiPolygonGeometry.js.html#line79"
+                                        >line 79</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+
+                        <dt class="tag-see">See:</dt>
+                        <dd class="tag-see">
+                            <ul>
+                                <li>
+                                    <a
+                                        href="https://github.com/M-Scott-Lassiter/jest-geojson/issues/14"
+                                        >https://github.com/M-Scott-Lassiter/jest-geojson/issues/14</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+                    </dl>
+
+                    <div class="description usertext">
+                        Verifies an object is a valid GeoJSON MultiPolygon Geometry. This geometry
+                        requires a 'type' property that must equal "MultiPolygon", and a
+                        'coordinates' property that contains an array of polygon coordinate arrays.
+                        Each coordinate array must contain at least four valid WGS-84 GeoJSON
+                        coordinates, and the final coordinate must equal the first. The coordinates
+                        may be an empty array, but may not be an array of empty arrays. Foreign
+                        members are allowed with the exceptions thrown below. If present, bounding
+                        boxes must be valid.
+                    </div>
+
+                    <h5>Example</h5>
+
+                    <pre class="prettyprint"><code>const multiPolygon = {
+    type: 'MultiPolygon',
+    coordinates: [
+        [
+            [
+                [102.0, 2.0],
+                [103.0, 2.0],
+                [103.0, 3.0],
+                [102.0, 3.0],
+                [102.0, 2.0]
+            ]
+        ],
+        [
+            [
+                [100.0, 0.0],
+                [101.0, 0.0],
+                [101.0, 1.0],
+                [100.0, 1.0],
+                [100.0, 0.0]
+            ],
+            [
+                [100.2, 0.2],
+                [100.2, 0.8],
+                [100.8, 0.8],
+                [100.8, 0.2],
+                [100.2, 0.2]
+            ]
+        ]
+    ]
+}
+const multiPolygonWithSingleElement = {
+    type: 'MultiPolygon',
+    coordinates: [
+        [
+            [
+                [102.0, 2.0],
+                [103.0, 2.0],
+                [103.0, 3.0],
+                [102.0, 3.0],
+                [102.0, 2.0]
+            ]
+        ]
+    ]
+}
+const point = {
+    type: 'Point',
+    coordinates: [100.0, 0.0]
+}
+
+const goodExample1 = multiPolygonGeometry(multiPolygon) // true
+const goodExample2 = multiPolygonGeometry(multiPolygonWithSingleElement) // true
+
+const badExample = multiPolygonGeometry(point) // throws error</code></pre>
+
+                    <h5>Parameters:</h5>
+
+                    <table class="params">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+
+                                <th>Type</th>
+
+                                <th class="last">Description</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="name"><code>geometryObject</code></td>
+
+                                <td class="type">
+                                    <span class="param-type">object</span>
+                                </td>
+
+                                <td class="description last">a GeoJSON Polygon Geometry object</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h5>Throws:</h5>
+                    <ul>
+                        <li>
+                            <dl>
+                                <dt>
+                                    <div class="param-desc usertext">Argument not an object</div>
+                                </dt>
+                                <dd></dd>
+                                <dt>
+                                    <dl class="param-type">
+                                        <dt>Type</dt>
+                                        <dd>
+                                            <span class="param-type">Error</span>
+                                        </dd>
+                                    </dl>
+                                </dt>
+                                <dd></dd>
+                            </dl>
+                        </li>
+
+                        <li>
+                            <dl>
+                                <dt>
+                                    <div class="param-desc usertext">
+                                        Must have a type property with value 'MultiPolygon'
+                                    </div>
+                                </dt>
+                                <dd></dd>
+                                <dt>
+                                    <dl class="param-type">
+                                        <dt>Type</dt>
+                                        <dd>
+                                            <span class="param-type">Error</span>
+                                        </dd>
+                                    </dl>
+                                </dt>
+                                <dd></dd>
+                            </dl>
+                        </li>
+
+                        <li>
+                            <dl>
+                                <dt>
+                                    <div class="param-desc usertext">
+                                        Coordinates array must contain four or more valid GeoJSON
+                                        coordinates
+                                    </div>
+                                </dt>
+                                <dd></dd>
+                                <dt>
+                                    <dl class="param-type">
+                                        <dt>Type</dt>
+                                        <dd>
+                                            <span class="param-type">Error</span>
+                                        </dd>
+                                    </dl>
+                                </dt>
+                                <dd></dd>
+                            </dl>
+                        </li>
+
+                        <li>
+                            <dl>
+                                <dt>
+                                    <div class="param-desc usertext">
+                                        Final coordinate must match first coordinate
+                                    </div>
+                                </dt>
+                                <dd></dd>
+                                <dt>
+                                    <dl class="param-type">
+                                        <dt>Type</dt>
+                                        <dd>
+                                            <span class="param-type">Error</span>
+                                        </dd>
+                                    </dl>
+                                </dt>
+                                <dd></dd>
+                            </dl>
+                        </li>
+
+                        <li>
+                            <dl>
+                                <dt>
+                                    <div class="param-desc usertext">
+                                        Forbidden from having a property 'geometry', 'properties',
+                                        or 'features'
+                                    </div>
+                                </dt>
+                                <dd></dd>
+                                <dt>
+                                    <dl class="param-type">
+                                        <dt>Type</dt>
+                                        <dd>
+                                            <span class="param-type">Error</span>
+                                        </dd>
+                                    </dl>
+                                </dt>
+                                <dd></dd>
+                            </dl>
+                        </li>
+                    </ul>
+
+                    <h5>Returns:</h5>
+
+                    <div class="param-desc">
+                        True if a valid GeoJSON MultiPolygon Geometry. If invalid, it will throw an
+                        error.
+                    </div>
+
+                    <dl class="param-type">
+                        <dt>Type</dt>
+                        <dd>
+                            <span class="param-type">boolean</span>
+                        </dd>
+                    </dl>
+
+                    <h4 class="name" id=".pointGeometry">
+                        <span class="type-signature">(static) </span>pointGeometry<span
+                            class="signature"
+                            >(geometryObject)</span
+                        ><span class="type-signature"> &rarr; {boolean}</span>
+                    </h4>
+
+                    <dl class="details">
+                        <dt class="tag-source">Source:</dt>
+                        <dd class="tag-source">
+                            <ul class="dummy">
+                                <li>
+                                    <a href="core_geometries_pointGeometry.js.html"
+                                        >core/geometries/pointGeometry.js</a
+                                    >,
+                                    <a href="core_geometries_pointGeometry.js.html#line37"
+                                        >line 37</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+
+                        <dt class="tag-see">See:</dt>
+                        <dd class="tag-see">
+                            <ul>
+                                <li>
+                                    <a
+                                        href="https://github.com/M-Scott-Lassiter/jest-geojson/issues/9"
+                                        >https://github.com/M-Scott-Lassiter/jest-geojson/issues/9</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+                    </dl>
+
+                    <div class="description usertext">
+                        Verifies an object is a valid GeoJSON Point Geometry. This geometry requires
+                        a 'type' property that must equal "Point", and a 'coordinates' property that
+                        contains a single valid WGS-84 GeoJSON coordinate. The coordinates may be an
+                        empty array. Foreign members are allowed with the exceptions thrown below.
+                        If present, bounding boxes must be valid.
+                    </div>
+
+                    <h5>Example</h5>
+
+                    <pre class="prettyprint"><code>const testPoint = {
+    type: 'Point',
+    coordinates: [25, 10.2]
+}
+const testPoint1 = {
+    coordinates: [25, 10.2]
+}
+const testPoint2 = {
+    type: 'MultiPoint',
+    coordinates: [[25, 10.2], [120, 45]}
+}
+
+const goodExample = pointGeometry(testPoint) // true
+
+const badExample1 = pointGeometry(testPoint1) // throws error for missing type
+const badExample2 = pointGeometry(testPoint2) // throws error for being MultiPoint</code></pre>
+
+                    <h5>Parameters:</h5>
+
+                    <table class="params">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+
+                                <th>Type</th>
+
+                                <th class="last">Description</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="name"><code>geometryObject</code></td>
+
+                                <td class="type">
+                                    <span class="param-type">object</span>
+                                </td>
+
+                                <td class="description last">a GeoJSON Point Geometry object</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h5>Throws:</h5>
+                    <ul>
+                        <li>
+                            <dl>
+                                <dt>
+                                    <div class="param-desc usertext">Argument not an object</div>
+                                </dt>
+                                <dd></dd>
+                                <dt>
+                                    <dl class="param-type">
+                                        <dt>Type</dt>
+                                        <dd>
+                                            <span class="param-type">Error</span>
+                                        </dd>
+                                    </dl>
+                                </dt>
+                                <dd></dd>
+                            </dl>
+                        </li>
+
+                        <li>
+                            <dl>
+                                <dt>
+                                    <div class="param-desc usertext">
+                                        Must have a type property with value 'Point'
+                                    </div>
+                                </dt>
+                                <dd></dd>
+                                <dt>
+                                    <dl class="param-type">
+                                        <dt>Type</dt>
+                                        <dd>
+                                            <span class="param-type">Error</span>
+                                        </dd>
+                                    </dl>
+                                </dt>
+                                <dd></dd>
+                            </dl>
+                        </li>
+
+                        <li>
+                            <dl>
+                                <dt>
+                                    <div class="param-desc usertext">
+                                        Forbidden from having a property 'geometry', 'properties',
+                                        or 'features'
+                                    </div>
+                                </dt>
+                                <dd></dd>
+                                <dt>
+                                    <dl class="param-type">
+                                        <dt>Type</dt>
+                                        <dd>
+                                            <span class="param-type">Error</span>
+                                        </dd>
+                                    </dl>
+                                </dt>
+                                <dd></dd>
+                            </dl>
+                        </li>
+                    </ul>
+
+                    <h5>Returns:</h5>
+
+                    <div class="param-desc">
+                        True if a valid GeoJSON Point Geometry. If invalid, it will throw an error.
+                    </div>
+
+                    <dl class="param-type">
+                        <dt>Type</dt>
+                        <dd>
+                            <span class="param-type">boolean</span>
+                        </dd>
+                    </dl>
+
+                    <h4 class="name" id=".polygonGeometry">
+                        <span class="type-signature">(static) </span>polygonGeometry<span
+                            class="signature"
+                            >(geometryObject)</span
+                        ><span class="type-signature"> &rarr; {boolean}</span>
+                    </h4>
+
+                    <dl class="details">
+                        <dt class="tag-source">Source:</dt>
+                        <dd class="tag-source">
+                            <ul class="dummy">
+                                <li>
+                                    <a href="core_geometries_polygonGeometry.js.html"
+                                        >core/geometries/polygonGeometry.js</a
+                                    >,
+                                    <a href="core_geometries_polygonGeometry.js.html#line58"
+                                        >line 58</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+
+                        <dt class="tag-see">See:</dt>
+                        <dd class="tag-see">
+                            <ul>
+                                <li>
+                                    <a
+                                        href="https://github.com/M-Scott-Lassiter/jest-geojson/issues/13"
+                                        >https://github.com/M-Scott-Lassiter/jest-geojson/issues/13</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+                    </dl>
+
+                    <div class="description usertext">
+                        Verifies an object is a valid GeoJSON Polygon Geometry. This geometry
+                        requires a 'type' property that must equal "Polygon", and a 'coordinates'
+                        property that contains an array of linestring arrays. Each point array must
+                        contain at least four valid WGS-84 GeoJSON coordinates, and the final
+                        coordinate must equal the first. The coordinates may be an empty array, but
+                        may not be an array of empty arrays. Foreign members are allowed with the
+                        exceptions thrown below. If present, bounding boxes must be valid.
+                    </div>
+
+                    <h5>Example</h5>
+
+                    <pre class="prettyprint"><code>const polygon = {
+     type: 'Polygon',
+     coordinates: [
+         [
+             [100.0, 0.0],
+             [101.0, 0.0],
+             [101.0, 1.0],
+             [100.0, 1.0],
+             [100.0, 0.0]
+         ]
+     ]
+ }
+ const polygonEndDoesNotEqualStart = {
+     type: 'Polygon',
+     coordinates: [
+         [
+             [100.0, 0.0],
+             [101.0, 0.0],
+             [101.0, 1.0],
+             [100.0, 1.0]
+         ]
+     ]
+ }
+ const point = {
+     type: 'Point',
+     coordinates: [100.0, 0.0]
+ }
+
+ const goodExample = polygonGeometry(polygon) // true
+
+ const badExample1 = console.log(polygonGeometry(point) // throws error
+ const badExample2 = console.log(polygonGeometry(polygonEndDoesNotEqualStart) // throws error</code></pre>
+
+                    <h5>Parameters:</h5>
+
+                    <table class="params">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+
+                                <th>Type</th>
+
+                                <th class="last">Description</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="name"><code>geometryObject</code></td>
+
+                                <td class="type">
+                                    <span class="param-type">object</span>
+                                </td>
+
+                                <td class="description last">a GeoJSON Polygon Geometry object</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h5>Throws:</h5>
+                    <ul>
+                        <li>
+                            <dl>
+                                <dt>
+                                    <div class="param-desc usertext">Argument not an object</div>
+                                </dt>
+                                <dd></dd>
+                                <dt>
+                                    <dl class="param-type">
+                                        <dt>Type</dt>
+                                        <dd>
+                                            <span class="param-type">Error</span>
+                                        </dd>
+                                    </dl>
+                                </dt>
+                                <dd></dd>
+                            </dl>
+                        </li>
+
+                        <li>
+                            <dl>
+                                <dt>
+                                    <div class="param-desc usertext">
+                                        Must have a type property with value 'Polygon'
+                                    </div>
+                                </dt>
+                                <dd></dd>
+                                <dt>
+                                    <dl class="param-type">
+                                        <dt>Type</dt>
+                                        <dd>
+                                            <span class="param-type">Error</span>
+                                        </dd>
+                                    </dl>
+                                </dt>
+                                <dd></dd>
+                            </dl>
+                        </li>
+
+                        <li>
+                            <dl>
+                                <dt>
+                                    <div class="param-desc usertext">
+                                        Coordinates array must contain four or more valid GeoJSON
+                                        coordinates
+                                    </div>
+                                </dt>
+                                <dd></dd>
+                                <dt>
+                                    <dl class="param-type">
+                                        <dt>Type</dt>
+                                        <dd>
+                                            <span class="param-type">Error</span>
+                                        </dd>
+                                    </dl>
+                                </dt>
+                                <dd></dd>
+                            </dl>
+                        </li>
+
+                        <li>
+                            <dl>
+                                <dt>
+                                    <div class="param-desc usertext">
+                                        Final coordinate must match first coordinate
+                                    </div>
+                                </dt>
+                                <dd></dd>
+                                <dt>
+                                    <dl class="param-type">
+                                        <dt>Type</dt>
+                                        <dd>
+                                            <span class="param-type">Error</span>
+                                        </dd>
+                                    </dl>
+                                </dt>
+                                <dd></dd>
+                            </dl>
+                        </li>
+
+                        <li>
+                            <dl>
+                                <dt>
+                                    <div class="param-desc usertext">
+                                        Forbidden from having a property 'geometry', 'properties',
+                                        or 'features'
+                                    </div>
+                                </dt>
+                                <dd></dd>
+                                <dt>
+                                    <dl class="param-type">
+                                        <dt>Type</dt>
+                                        <dd>
+                                            <span class="param-type">Error</span>
+                                        </dd>
+                                    </dl>
+                                </dt>
+                                <dd></dd>
+                            </dl>
+                        </li>
+                    </ul>
+
+                    <h5>Returns:</h5>
+
+                    <div class="param-desc">
+                        True if a valid GeoJSON Polygon Geometry. If invalid, it will throw an
+                        error.
+                    </div>
+
+                    <dl class="param-type">
+                        <dt>Type</dt>
+                        <dd>
+                            <span class="param-type">boolean</span>
+                        </dd>
+                    </dl>
+                </article>
+            </section>
+        </div>
+
+        <br class="clear" />
+
+        <footer>
+            Documentation generated by
+            <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> using the
+            <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+        </footer>
+
+        <script>
+            prettyPrint()
+        </script>
+        <script src="scripts/polyfill.js"></script>
+        <script src="scripts/linenumber.js"></script>
+
+        <script src="scripts/search.js" defer></script>
+    </body>
+</html>

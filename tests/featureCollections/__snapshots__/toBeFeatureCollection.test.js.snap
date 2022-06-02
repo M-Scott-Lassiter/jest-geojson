@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error Snapshot Testing. Throws error: GeoJSON FeatureCollection features must be either an array of valid Feature objects 1`] = `
+"[2mexpect([22m[31mFeatureObject[39m[2m).toBeFeatureCollection([22m[32mGeometryType[39m[2m)[22m
+
+GeoJSON FeatureCollection features must be either an array of valid Feature objects or an empty array.
+
+Received:  [31m{\\"features\\": false, \\"type\\": \\"FeatureCollection\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Has forbidden property: coordinates 1`] = `
+"[2mexpect([22m[31mFeatureObject[39m[2m).toBeFeatureCollection([22m[32mGeometryType[39m[2m)[22m
+
+GeoJSON FeatureCollection objects are forbidden from having a property 'coordinates'.
+
+Received:  [31m{\\"coordinates\\": [0, 0], \\"features\\": [], \\"type\\": \\"FeatureCollection\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Has forbidden property: geometries 1`] = `
+"[2mexpect([22m[31mFeatureObject[39m[2m).toBeFeatureCollection([22m[32mGeometryType[39m[2m)[22m
+
+GeoJSON FeatureCollection objects are forbidden from having a property 'geometries'.
+
+Received:  [31m{\\"features\\": [], \\"geometries\\": [], \\"type\\": \\"FeatureCollection\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Has forbidden property: geometry 1`] = `
+"[2mexpect([22m[31mFeatureObject[39m[2m).toBeFeatureCollection([22m[32mGeometryType[39m[2m)[22m
+
+GeoJSON FeatureCollection objects are forbidden from having a property 'geometry'.
+
+Received:  [31m{\\"features\\": [], \\"geometry\\": null, \\"type\\": \\"FeatureCollection\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Has forbidden property: properties 1`] = `
+"[2mexpect([22m[31mFeatureObject[39m[2m).toBeFeatureCollection([22m[32mGeometryType[39m[2m)[22m
+
+GeoJSON FeatureCollection objects are forbidden from having a property 'properties'.
+
+Received:  [31m{\\"features\\": [], \\"properties\\": null, \\"type\\": \\"FeatureCollection\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Invalid Bounding Box 1`] = `
+"[2mexpect([22m[31mFeatureObject[39m[2m).toBeFeatureCollection([22m[32mGeometryType[39m[2m)[22m
+
+Bounding box must be an array of either four or six elments.
+
+Received:  [31m{\\"bbox\\": [0], \\"features\\": [], \\"type\\": \\"FeatureCollection\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Invalid Type Value 1`] = `
+"[2mexpect([22m[31mFeatureObject[39m[2m).toBeFeatureCollection([22m[32mGeometryType[39m[2m)[22m
+
+Must have a type property with value 'FeatureCollection'.
+
+Received:  [31m{\\"features\\": [], \\"type\\": \\"FeatureCollections\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Invalid input to matcher 1`] = `
+"[2mexpect([22m[31mFeatureObject[39m[2m).toBeFeatureCollection([22m[32mGeometryType[39m[2m)[22m
+
+Argument must be a FeatureCollection object.
+
+Received:  [31mfalse[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Missing features 1`] = `
+"[2mexpect([22m[31mFeatureObject[39m[2m).toBeFeatureCollection([22m[32mGeometryType[39m[2m)[22m
+
+GeoJSON FeatureCollection objects must have a property 'features'.
+
+Received:  [31m{\\"type\\": \\"FeatureCollection\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Valid use case passes 1`] = `
+"[2mexpect([22m[31mFeatureCollectionObject[39m[2m).not.toBeFeatureCollection()[22m
+
+Expected input to not be a valid GeoJSON FeatureCollection object.
+
+Received:  [31m{\\"features\\": [], \\"type\\": \\"FeatureCollection\\"}[39m"
+`;
