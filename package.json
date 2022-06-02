@@ -28,7 +28,7 @@
         ".": "./src/matchers.js",
         "./core": "./src/core.js",
         "./setup/all": "./src/setup/all.js",
-        "./setup/boundingboxes": "./src/setup/boundingBoxes.js",
+        "./setup/boundingBoxes": "./src/setup/boundingBoxes.js",
         "./setup/coordinates": "./src/setup/coordinates.js",
         "./setup/featureCollections": "./src/setup/featureCollections.js",
         "./setup/features": "./src/setup/features.js",
