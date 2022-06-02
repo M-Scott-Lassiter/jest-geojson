@@ -49,6 +49,7 @@
     -   [Import the Core Engine](#import-the-core-engine)
     -   [Load Matchers by Category](#load-matchers-by-category)
     -   [Load Specific Matchers](#load-specific-matchers)
+-   [Node and Operating System Support Policy](#node-and-operating-system-support-policy)
 -   [License and Development](#license-and-development)
 -   [Contact](#contact)
 
