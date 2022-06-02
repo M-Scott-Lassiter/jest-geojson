@@ -1,3 +1,10 @@
+## [1.0.0-beta.16](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.0.0-beta.15...v1.0.0-beta.16) (2022-06-02)
+
+
+### :gift: Feature Changes
+
+* **toBeFeatureCollection:** add new matcher ([21fe044](https://github.com/M-Scott-Lassiter/jest-geojson/commit/21fe044425d4d747ff22434c96898cd3173446fe)), closes [#25](https://github.com/M-Scott-Lassiter/jest-geojson/issues/25)
+
 ## [1.0.0-beta.15](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.0.0-beta.14...v1.0.0-beta.15) (2022-06-02)
 
 
