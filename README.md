@@ -45,6 +45,7 @@
     -   [Feature Collections](#feature-collections)
     -   [Functional](#functional)
 -   [Advanced Configuration](#advanced-configuration)
+    -   [Minimum Supported Jest Version](#minimum-supported-jest-version)
     -   [Import the Core Engine](#import-the-core-engine)
     -   [Load Matchers by Category](#load-matchers-by-category)
     -   [Load Specific Matchers](#load-specific-matchers)
