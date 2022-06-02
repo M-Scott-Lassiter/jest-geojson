@@ -70,7 +70,6 @@ const testPoint = {
 test('Object is valid GeoJSON Point Geometry', () => {
     expect(testPoint).toBePointGeometry()
 })
-
 ```
 
 This library **DOES NOT** create or manipulate GeoJSON. Other tools have done that (and better), such as the venerable [Turf.js](https://github.com/Turfjs/turf).
@@ -80,6 +79,8 @@ This project complements, not competes with, those tools.
 # Getting Started
 
 ## Install as a Dependency
+
+After installing Jest, run:
 
 ```bash
 npm install --save-dev jest-geojson
@@ -213,6 +214,10 @@ _Future_
 
 # Advanced Configuration
 
+## Minimum Supported Jest Version
+
+This project requires Jest v24.0.0 or newer.
+
 ## Import the Core Engine
 
 The [core object](https://m-scott-lassiter.github.io/jest-geojson/Core.html) contains the functions grouped by category. You can then use these functions elsewhere in your code, or even port `jest-geojson` into another testing framework. To import the functions that drive the test matchers:
@@ -225,12 +230,12 @@ const core = require('jest-geojson/core')
 
 You can load matcher subsets if you only need a limited set. Available scipts are:
 
-- `jest-geojson/setup/all`
-- `jest-geojson/setup/boundingBoxes`
-- `jest-geojson/setup/coordinates`
-- `jest-geojson/setup/featureCollections`
-- `jest-geojson/setup/features`
-- `jest-geojson/setup/geometries`
+-   `jest-geojson/setup/all`
+-   `jest-geojson/setup/boundingBoxes`
+-   `jest-geojson/setup/coordinates`
+-   `jest-geojson/setup/featureCollections`
+-   `jest-geojson/setup/features`
+-   `jest-geojson/setup/geometries`
 
 For example:
 

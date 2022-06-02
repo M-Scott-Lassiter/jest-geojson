@@ -186,6 +186,8 @@ npm run test:<type> #runs the tests only in that category
 npm run watch # Runs tests in watch mode
 ```
 
+This requires at least Jest v24.0.0 (specified as a peer dependency) due to the use of `setupFilesAfterEnv`.
+
 ### Documentation
 
 API Documentation is automatically generated from [JSDoc comments](https://jsdoc.app/) within the scripts. To generate, run:
