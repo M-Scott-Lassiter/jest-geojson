@@ -39,6 +39,7 @@ const incorrectTypeValues = [
     'Polygon',
     'MultiPolygon',
     'GeometryCollection',
+    'FeatureCollection',
     'FEATURE',
     'feature'
 ]

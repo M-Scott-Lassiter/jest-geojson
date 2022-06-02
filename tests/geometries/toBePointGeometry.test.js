@@ -27,6 +27,8 @@ const incorrectTypeValues = [
     'Polygon',
     'MultiPolygon',
     'GeometryCollection',
+    'Feature',
+    'FeatureCollection',
     'POINT',
     'point'
 ]

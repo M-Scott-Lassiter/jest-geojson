@@ -132,6 +132,8 @@ const incorrectTypeValues = [
     'MultiLineString',
     'Polygon',
     'GeometryCollection',
+    'Feature',
+    'FeatureCollection',
     'MULTIPOLYGON',
     'multipolygon'
 ]
