@@ -30,6 +30,8 @@
         "./setup/all": "./src/setup/all.js",
         "./setup/boundingboxes": "./src/setup/boundingBoxes.js",
         "./setup/coordinates": "./src/setup/coordinates.js",
+        "./setup/featureCollections": "./src/setup/featureCollections.js",
+        "./setup/features": "./src/setup/features.js",
         "./setup/geometries": "./src/setup/geometries.js"
     },
     "repository": {
@@ -45,6 +47,7 @@
         "test": "jest --coverage --verbose",
         "test:coordinates": "jest tests/coordinates --coverage --verbose",
         "test:boundingboxes": "jest tests/boundingBoxes --coverage --verbose",
+        "test:featurecollections": "jest tests/featureCollections --coverage --verbose",
         "test:features": "jest tests/features --coverage --verbose",
         "test:geometries": "jest tests/geometries --coverage --verbose",
         "lint": "eslint . --ext .js --fix",

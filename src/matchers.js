@@ -17,6 +17,11 @@ exports.coordinates = {
     isValidCoordinate: require('./matchers/coordinates/isValidCoordinate').isValidCoordinate
 }
 
+exports.featureCollections = {
+    toBeFeatureCollection: require('./matchers/featureCollections/toBeFeatureCollection')
+        .toBeFeatureCollection
+}
+
 exports.features = {
     toBeFeature: require('./matchers/features/toBeFeature').toBeFeature
 }

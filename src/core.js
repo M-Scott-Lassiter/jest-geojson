@@ -12,6 +12,10 @@ exports.coordinates = {
     validCoordinate: require('./core/coordinates/validCoordinate')
 }
 
+exports.featureCollections = {
+    featureCollection: require('./core/featureCollections/featureCollection')
+}
+
 exports.features = {
     feature: require('./core/features/feature')
 }

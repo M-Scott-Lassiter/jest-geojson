@@ -30,6 +30,12 @@ describe('Coordinate Functions Exported', () => {
     })
 })
 
+describe('FeatureCollection Functions Exported', () => {
+    test('featureCollection', () => {
+        expect('featureCollection' in core.featureCollections).toBeTruthy()
+    })
+})
+
 describe('Feature Functions Exported', () => {
     test('feature', () => {
         expect('feature' in core.features).toBeTruthy()

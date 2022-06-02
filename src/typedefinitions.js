@@ -42,6 +42,13 @@
  */
 
 /**
+ * A set of matchers related to validating FeatureCollection objects.
+ *
+ * @see https://datatracker.ietf.org/doc/html/rfc7946#section-3.3
+ * @namespace Matchers.FeatureCollections
+ */
+
+/**
  * A set of matchers related to validating feature objects.
  *
  * @see https://datatracker.ietf.org/doc/html/rfc7946#section-3.2
@@ -74,6 +81,13 @@
  *
  * @private
  * @namespace Core.BoundingBoxes
+ */
+
+/**
+ * FeatureCollection object validation functions used within Core.
+ *
+ * @private
+ * @namespace Core.FeatureCollections
  */
 
 /**

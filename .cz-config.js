@@ -9,6 +9,7 @@ const coordinateMatchers = [
     { name: 'isValidCoordinate' },
     { name: 'toBeAnyGeometry' },
     { name: 'toBeFeature' },
+    { name: 'toBeFeatureCollection' },
     { name: 'toBeGeometryCollection' },
     { name: 'toBeLineStringGeometry' },
     { name: 'toBeMultiLineStringGeometry' },

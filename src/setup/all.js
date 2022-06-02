@@ -13,6 +13,7 @@ const jestExpect = global.expect
 if (jestExpect !== undefined) {
     expect.extend(matchers.coordinates)
     expect.extend(matchers.boundingBoxes)
+    expect.extend(matchers.featureCollections)
     expect.extend(matchers.features)
     expect.extend(matchers.geometries)
 } else {

@@ -36,6 +36,12 @@ describe('Feature Matchers Exported', () => {
     })
 })
 
+describe('FeatureCollection Matchers Exported', () => {
+    test('toBeFeatureCollection', () => {
+        expect('toBeFeatureCollection' in matchers.featureCollections).toBeTruthy()
+    })
+})
+
 describe('Geometry Matchers Exported', () => {
     test('toBeAnyGeometry', () => {
         expect('toBeAnyGeometry' in matchers.geometries).toBeTruthy()

@@ -125,23 +125,17 @@ Functional matchers assess more generic attributes and qualities and accept mult
 
 ## Coordiantes
 
-_1.0.0_
-
 -   [x] isValid2DCoordinate
 -   [x] isValid3DCoordinate
 -   [x] isValidCoordinate
 
 ## Bounding Boxes
 
-_1.0.0_
-
 -   [x] isValid2DBoundingBox
 -   [x] isValid3DBoundingBox
 -   [x] isValidBoundingBox
 
 ## Geometries
-
-_1.0.0_
 
 -   [x] toBePointGeometry
 -   [x] toBeMultiPointGeometry
@@ -164,8 +158,6 @@ _Future_
 
 ## Features
 
-_1.0.0_
-
 -   [x] toBeFeature
 
 ---
@@ -179,9 +171,7 @@ _Future_
 
 ## Feature Collections
 
-_1.0.0_
-
--   [ ] toBeFeatureCollection
+-   [x] toBeFeatureCollection
 
 ---
 
@@ -197,14 +187,11 @@ _Future_
 
 ## Functional
 
-_1.0.0_
-
--   [ ] toBeValidGeoJSON
-
 ---
 
 _Future_
 
+-   [ ] toBeValidGeoJSON
 -   [ ] toHave2DBoundingBox
 -   [ ] toHave3DBoundingBox
 -   [ ] toHaveBoundingBox
