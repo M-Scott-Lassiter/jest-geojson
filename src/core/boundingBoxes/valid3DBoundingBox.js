@@ -35,7 +35,7 @@ function valid3DBoundingBox(bboxArray) {
         // eslint-disable-next-line no-self-compare
         bboxArray[5] !== bboxArray[5] // Accounts for NaN
     ) {
-        throw new Error('Bounding box northern value must be a number between -90 and 90.')
+        throw new Error('Bounding box depth and altitude must be numeric and cannot be NaN.')
     }
 
     if (bboxArray[5] < bboxArray[2]) {

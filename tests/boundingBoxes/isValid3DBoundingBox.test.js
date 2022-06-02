@@ -194,13 +194,25 @@ describe('Inalid Use Cases', () => {
 })
 
 describe('Error Snapshot Testing. Throws error:', () => {
-    test('expect([10, 10, 0, 20, 20, 0]).not.isValid3DBoundingBox', () => {
+    test('Valid use case passes', () => {
         expect(() =>
             expect([10, 10, 0, 20, 20, 0]).not.isValid3DBoundingBox()
         ).toThrowErrorMatchingSnapshot()
     })
 
-    test('expect(false).isValid3DBoundingBox()', () => {
+    test('Invalid input to matcher', () => {
         expect(() => expect(false).isValid3DBoundingBox()).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Bounding box depth and altitude must be numeric and cannot be NaN', () => {
+        expect(() =>
+            expect([10, 10, false, 20, 20, true]).isValid3DBoundingBox()
+        ).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Bounding box altitude value must be greater than depth', () => {
+        expect(() =>
+            expect([10, 10, 2000, 20, 20, 0]).isValid3DBoundingBox()
+        ).toThrowErrorMatchingSnapshot()
     })
 })
