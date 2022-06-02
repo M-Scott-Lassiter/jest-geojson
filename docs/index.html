@@ -376,6 +376,14 @@
                                     <li>
                                         <a href="#import-the-core-engine">Import the Core Engine</a>
                                     </li>
+                                    <li>
+                                        <a href="#load-matchers-by-category"
+                                            >Load Matchers by Category</a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a href="#load-specific-matchers">Load Specific Matchers</a>
+                                    </li>
                                 </ul>
                             </li>
                             <li><a href="#license-and-development">License and Development</a></li>
@@ -392,30 +400,34 @@
                         <a href="https://geojson.org/">GeoJSON object</a> validity and other geodesy
                         attributes. For example:
                     </p>
-                    <pre
-                        class="prettyprint source lang-javascript"
-                    ><code>test('Object is valid GeoJSON', () => {
-    expect(myGeoJSONObject).toBeValidGeoJSON()
+                    <pre class="prettyprint source lang-javascript"><code>const testPoint = {
+    type: 'Point',
+    coordinates: [25, 10.2]
+}
+
+test('Object is valid GeoJSON Point Geometry', () => {
+    expect(testPoint).toBePointGeometry()
 })
 </code></pre>
-                    <p>This library <strong>does not</strong> create or manipulate GeoJSON.</p>
                     <p>
-                        Other projects have done that (and better), such as the venerable
-                        <a href="https://github.com/Turfjs/turf">Turf.js</a>. This library
-                        complements, not competes with, those tools.
+                        This library <strong>DOES NOT</strong> create or manipulate GeoJSON. Other
+                        tools have done that (and better), such as the venerable
+                        <a href="https://github.com/Turfjs/turf">Turf.js</a>.
                     </p>
+                    <p>This project complements, not competes with, those tools.</p>
                     <h1>Getting Started</h1>
                     <h2>Install as a Dependency</h2>
                     <pre
-                        class="prettyprint source lang-javascript"
-                    ><code>npm install --save-dev jest jest-geojson
+                        class="prettyprint source lang-bash"
+                    ><code>npm install --save-dev jest-geojson
+# or
+yard add --D jest-geojson
 </code></pre>
-                    <!-- Future expansion: Add instructions for yarn -->
                     <h2>Configure Jest</h2>
                     <p>
                         Jest
                         <a href="https://jestjs.io/docs/configuration#setupfilesafterenv-array"
-                            >allows you to run scripts</a
+                            >will run custom scripts</a
                         >
                         after its environment loads. You can take advantage of that to load all
                         <code>jest-geojson</code> matchers automatically.
@@ -434,55 +446,109 @@
     }
 }
 </code></pre>
-                    <!-- Eventually, add a tutorial for doing custom matcher loading -->
-                    <p>
-                        You can also import the matcher functions without automatically loading
-                        them.
-                    </p>
-                    <pre
-                        class="prettyprint source lang-javascript"
-                    ><code>const matchers = require('jest-geojson')
-</code></pre>
-                    <p>The matchers object contains each matcher grouped by category.</p>
-                    <!-- add link to documentation when online -->
                     <h1>Matchers</h1>
                     <p>
-                        <code>jest-geojson</code> organizes matchers by categories that correspond
-                        to the input type passed to <code>expect()</code>.
+                        <code>jest-geojson</code> organizes matchers by categories. Most correspond
+                        to the expected input type passed to <code>expect()</code>. For example, the
+                        Coordinates matchers expect a coordinate array, and geometry matchers expect
+                        a GeoJSON geometry object.
                     </p>
                     <p>
-                        Functional matchers assess more generic attributes and qualities and accept
-                        multiple input types.
-                    </p>
-                    <p>
-                        <a href="https://github.com/M-Scott-Lassiter/jest-geojson/milestone/1"
-                            >Release version 1.0.0</a
-                        >
-                        will contain the minimum matchers (listed in priority development order)
-                        needed to validate GeoJSON elements.
+                        Functional matchers assess more generic attributes and qualities and many
+                        accept multiple input types.
                     </p>
                     <h2>Coordiantes</h2>
                     <ul>
-                        <li>[x] isValid2DCoordinate</li>
-                        <li>[x] isValid3DCoordinate</li>
-                        <li>[x] isValidCoordinate</li>
+                        <li>
+                            <a
+                                href="https://m-scott-lassiter.github.io/jest-geojson/Matchers.Coordinates.html#.isValid2DCoordinate"
+                                >isValid2DCoordinate</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="https://m-scott-lassiter.github.io/jest-geojson/Matchers.Coordinates.html#.isValid3DCoordinate"
+                                >isValid3DCoordinate</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="https://m-scott-lassiter.github.io/jest-geojson/Matchers.Coordinates.html#.isValidCoordinate"
+                                >isValidCoordinate</a
+                            >
+                        </li>
                     </ul>
                     <h2>Bounding Boxes</h2>
                     <ul>
-                        <li>[x] isValid2DBoundingBox</li>
-                        <li>[x] isValid3DBoundingBox</li>
-                        <li>[x] isValidBoundingBox</li>
+                        <li>
+                            <a
+                                href="https://m-scott-lassiter.github.io/jest-geojson/Matchers.BoundingBoxes.html#.isValid2DBoundingBox"
+                                >isValid2DBoundingBox</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="https://m-scott-lassiter.github.io/jest-geojson/Matchers.BoundingBoxes.html#.isValid3DBoundingBox"
+                                >isValid3DBoundingBox</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="https://m-scott-lassiter.github.io/jest-geojson/Matchers.BoundingBoxes.html#.isValidBoundingBox"
+                                >isValidBoundingBox</a
+                            >
+                        </li>
                     </ul>
                     <h2>Geometries</h2>
                     <ul>
-                        <li>[x] toBePointGeometry</li>
-                        <li>[x] toBeMultiPointGeometry</li>
-                        <li>[x] toBeLineStringGeometry</li>
-                        <li>[x] toBeMultiLineStringGeometry</li>
-                        <li>[x] toBePolygonGeometry</li>
-                        <li>[x] toBeMultiPolygonGeometry</li>
-                        <li>[x] toBeGeometryCollection</li>
-                        <li>[x] toBeAnyGeometry</li>
+                        <li>
+                            <a
+                                href="https://m-scott-lassiter.github.io/jest-geojson/Core.Geometries.html#.pointGeometry"
+                                >toBePointGeometry</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toBeMultiPointGeometry"
+                                >toBeMultiPointGeometry</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toBeLineStringGeometry"
+                                >toBeLineStringGeometry</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toBeMultiLineStringGeometry"
+                                >toBeMultiLineStringGeometry</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toBePolygonGeometry"
+                                >toBePolygonGeometry</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toBeMultiPolygonGeometry"
+                                >toBeMultiPolygonGeometry</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toBeGeometryCollection"
+                                >toBeGeometryCollection</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toBeAnyGeometry"
+                                >toBeAnyGeometry</a
+                            >
+                        </li>
                     </ul>
                     <hr />
                     <p><em>Future</em></p>
@@ -495,7 +561,12 @@
                     </ul>
                     <h2>Features</h2>
                     <ul>
-                        <li>[x] toBeFeature</li>
+                        <li>
+                            <a
+                                href="https://m-scott-lassiter.github.io/jest-geojson/Matchers.Features.html#.toBeFeature"
+                                >toBeFeature</a
+                            >
+                        </li>
                     </ul>
                     <hr />
                     <p><em>Future</em></p>
@@ -507,7 +578,12 @@
                     </ul>
                     <h2>Feature Collections</h2>
                     <ul>
-                        <li>[x] toBeFeatureCollection</li>
+                        <li>
+                            <a
+                                href="https://m-scott-lassiter.github.io/jest-geojson/Matchers.FeatureCollections.html#.toBeFeatureCollection"
+                                >toBeFeatureCollection</a
+                            >
+                        </li>
                     </ul>
                     <hr />
                     <p><em>Future</em></p>
@@ -567,17 +643,75 @@
                     </ul>
                     <h1>Advanced Configuration</h1>
                     <h2>Import the Core Engine</h2>
-                    <p>You can import the functions that drive the test matchers.</p>
+                    <p>
+                        The
+                        <a href="https://m-scott-lassiter.github.io/jest-geojson/Core.html"
+                            >core object</a
+                        >
+                        contains the functions grouped by category. You can then use these functions
+                        elsewhere in your code, or even port <code>jest-geojson</code> into another
+                        testing framework. To import the functions that drive the test matchers:
+                    </p>
                     <pre
                         class="prettyprint source lang-javascript"
                     ><code>const core = require('jest-geojson/core')
 </code></pre>
+                    <h2>Load Matchers by Category</h2>
                     <p>
-                        The core object contains the functions grouped by category. You can then use
-                        these functions elsewhere in your code, or even port
-                        <code>jest-geojson</code> into another testing framework.
+                        You can load matcher subsets if you only need a limited set. Available
+                        scipts are:
                     </p>
-                    <!-- add link to documentation when online -->
+                    <ul>
+                        <li><code>jest-geojson/setup/all</code></li>
+                        <li><code>jest-geojson/setup/boundingBoxes</code></li>
+                        <li><code>jest-geojson/setup/coordinates</code></li>
+                        <li><code>jest-geojson/setup/featureCollections</code></li>
+                        <li><code>jest-geojson/setup/features</code></li>
+                        <li><code>jest-geojson/setup/geometries</code></li>
+                    </ul>
+                    <p>For example:</p>
+                    <pre class="prettyprint source lang-javascript"><code>module.exports = {
+    setupFilesAfterEnv: ['jest-geojson/setup/coordinates']
+}
+</code></pre>
+                    <p>
+                        To load more than one matcher set, pass a comma separated list to the
+                        <code>setupFilesAfterEnv</code> array:
+                    </p>
+                    <pre class="prettyprint source lang-javascript"><code>module.exports = {
+    setupFilesAfterEnv: [
+        'jest-geojson/setup/featureCollections',
+        'jest-geojson/setup/geometries',
+        'jest-geojson/setup/features'
+    ]
+}
+</code></pre>
+                    <h2>Load Specific Matchers</h2>
+                    <p>
+                        To load only specific matchers, create a new script and import them either
+                        one by one or by group. The
+                        <a href="https://m-scott-lassiter.github.io/jest-geojson/Matchers.html"
+                            >matcher object</a
+                        >
+                        contains each matcher grouped by category.
+                    </p>
+                    <pre
+                        class="prettyprint source lang-javascript"
+                    ><code>// ./my-custom-load-script.js
+
+const matchers = require('jest-geojson')
+
+expect.extend({ matchers.coordinates.isValidCoordinate }) // Loads single matcher
+expect.extend({ matchers.boundingBoxes.isValidBoundingBox }) // Loads single matcher
+expect.extend(matchers.geometries) // Loads all matchers in the geometries category
+</code></pre>
+                    <p>
+                        For another example, see the
+                        <a
+                            href="https://github.com/M-Scott-Lassiter/jest-geojson/blob/beta/src/setup/all.js"
+                            >setup script</a
+                        >.
+                    </p>
                     <h1>License and Development</h1>
                     <p>
                         <code>jest-geojson</code> and all other files in this repository are
@@ -623,8 +757,8 @@
         <br class="clear" />
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> on
-            Thu Jun 02 2022 08:55:03 GMT-0700 (Pacific Daylight Time) using the
+            Documentation generated by
+            <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> using the
             <a href="https://github.com/clenemt/docdash">docdash</a> theme.
         </footer>
 
