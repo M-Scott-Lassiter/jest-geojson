@@ -1,3 +1,30 @@
+## [1.0.0-beta.15](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.0.0-beta.14...v1.0.0-beta.15) (2022-06-02)
+
+
+### :gift: Feature Changes
+
+* **toBeFeature:** add new matcher ([551aa7f](https://github.com/M-Scott-Lassiter/jest-geojson/commit/551aa7f3b3875eb5fd9c0b184051ccc286bdfb0f)), closes [#32](https://github.com/M-Scott-Lassiter/jest-geojson/issues/32) [#24](https://github.com/M-Scott-Lassiter/jest-geojson/issues/24)
+
+
+### :dart: Test Changes
+
+* add 'Feature' and 'FeatureCollection' to test list of disallowed geometry type values ([f139a09](https://github.com/M-Scott-Lassiter/jest-geojson/commit/f139a09c47df09d0ccd5c71b67ad07fbb566ba6e))
+* **toBeGeometryCollection:** add an unrecognizable geometry to the invalid tests ([5c041c6](https://github.com/M-Scott-Lassiter/jest-geojson/commit/5c041c66c7b3c67858cc622533e466c707299166))
+* **toBeGeometryCollection:** add robust snapshot tests, verify coordinates treated as foreign member ([472d12d](https://github.com/M-Scott-Lassiter/jest-geojson/commit/472d12d92db9f4e799d7ea8e66e603553f133831)), closes [#32](https://github.com/M-Scott-Lassiter/jest-geojson/issues/32) [#33](https://github.com/M-Scott-Lassiter/jest-geojson/issues/33)
+* **isValid2DBoundingBox:** add robust snapshot tests ([4363710](https://github.com/M-Scott-Lassiter/jest-geojson/commit/4363710e8718ceb832882ac3f48ad6559ff85806)), closes [#32](https://github.com/M-Scott-Lassiter/jest-geojson/issues/32)
+* **isValid2DCoordinate:** add robust snapshot tests ([ae92f67](https://github.com/M-Scott-Lassiter/jest-geojson/commit/ae92f67fcee3f5a81e8f829c549f59acbde7adab)), closes [#32](https://github.com/M-Scott-Lassiter/jest-geojson/issues/32)
+* **isValid3DBoundingBox:** add robust snapshot tests ([a37ec48](https://github.com/M-Scott-Lassiter/jest-geojson/commit/a37ec485e8d2b32498c053c0252504011cb3adfc)), closes [#32](https://github.com/M-Scott-Lassiter/jest-geojson/issues/32)
+* **isValid3DCoordinate:** add robust snapshot tests ([56fbf92](https://github.com/M-Scott-Lassiter/jest-geojson/commit/56fbf921bbabf6f4ee9c99f84c83ab85b7fff180)), closes [#32](https://github.com/M-Scott-Lassiter/jest-geojson/issues/32)
+* **isValidBoundingBox:** add robust snapshot tests ([063b94e](https://github.com/M-Scott-Lassiter/jest-geojson/commit/063b94ec11198675684b52a7acfcf0303b2e5db3)), closes [#32](https://github.com/M-Scott-Lassiter/jest-geojson/issues/32)
+* **isValidCoordinate:** add robust snapshot tests ([7b4a804](https://github.com/M-Scott-Lassiter/jest-geojson/commit/7b4a8040ba2c028d07451567929b07e99fd496c4)), closes [#32](https://github.com/M-Scott-Lassiter/jest-geojson/issues/32)
+* **toBeAnyGeometry:** add robust snapshot tests ([8a6e611](https://github.com/M-Scott-Lassiter/jest-geojson/commit/8a6e61190e0c54752504590a56128c6d874f693b)), closes [#32](https://github.com/M-Scott-Lassiter/jest-geojson/issues/32)
+* **toBeLineStringGeometry:** add robust snapshot tests ([cfaed46](https://github.com/M-Scott-Lassiter/jest-geojson/commit/cfaed46a9480ef542dc7cb2b9c66be0c31469d24)), closes [#32](https://github.com/M-Scott-Lassiter/jest-geojson/issues/32)
+* **toBeMultiLineStringGeometry:** add robust snapshot tests ([57dc767](https://github.com/M-Scott-Lassiter/jest-geojson/commit/57dc7674baa69db9d83150dc85122b5b29b46753)), closes [#32](https://github.com/M-Scott-Lassiter/jest-geojson/issues/32)
+* **toBeMultiPointGeometry:** add robust snapshot tests ([36013e1](https://github.com/M-Scott-Lassiter/jest-geojson/commit/36013e114b2929f43a38d44e448e5aa1092d4327)), closes [#32](https://github.com/M-Scott-Lassiter/jest-geojson/issues/32)
+* **toBeMultiPolygonGeometry:** add robust snapshot tests ([df1c23a](https://github.com/M-Scott-Lassiter/jest-geojson/commit/df1c23af95ed197da9b4fb83180960d99326519f)), closes [#32](https://github.com/M-Scott-Lassiter/jest-geojson/issues/32)
+* **toBePointGeometry:** add robust snapshot tests ([fd5c516](https://github.com/M-Scott-Lassiter/jest-geojson/commit/fd5c5169e6bd8201a0cc25abc1a22452962debee)), closes [#32](https://github.com/M-Scott-Lassiter/jest-geojson/issues/32)
+* **toBePolygonGeometry:** add robust snapshot tests ([1c9df69](https://github.com/M-Scott-Lassiter/jest-geojson/commit/1c9df6962f49430aeb2d55983d5d833dfbdd8170)), closes [#32](https://github.com/M-Scott-Lassiter/jest-geojson/issues/32)
+
 ## [1.0.0-beta.14](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.0.0-beta.13...v1.0.0-beta.14) (2022-06-01)
 
 
