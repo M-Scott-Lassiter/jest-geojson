@@ -1,6 +1,6 @@
 <div align="center">
 
-# jest-geojson
+# Jest-GeoJSON
 
 [![NPM Version](https://img.shields.io/npm/v/jest-geojson)](https://www.npmjs.com/package/jest-geojson)
 [![NPM Package Size](https://shields.shivering-isles.com:/bundlephobia/min/jest-geojson?label=size)](https://www.npmjs.com/package/jest-geojson/v/beta)
@@ -62,7 +62,7 @@
 
 # Purpose
 
-`jest-geojson` extends the [Jest](https://github.com/facebook/jest) unit testing framework with a comprehensive set of matchers tailored to checking [GeoJSON object](https://geojson.org/) validity and other geodesy attributes. For example:
+`Jest-GeoJSON` extends the [Jest](https://github.com/facebook/jest) unit testing framework with a comprehensive set of matchers tailored to checking [GeoJSON object](https://geojson.org/) validity and other geodesy attributes. For example:
 
 ```javascript
 const testPoint = {
@@ -91,7 +91,7 @@ npm install --save-dev jest-geojson
 
 ## Configure Jest
 
-Jest [will run custom scripts](https://jestjs.io/docs/configuration#setupfilesafterenv-array) after its environment loads. You can take advantage of that to load all `jest-geojson` matchers automatically.
+Jest [will run custom scripts](https://jestjs.io/docs/configuration#setupfilesafterenv-array) after its environment loads. You can take advantage of that to load all `Jest-GeoJSON` matchers automatically.
 
 To do so, either create a `jest.config.js` file:
 
@@ -115,7 +115,7 @@ or add a key to your `package.json`:
 
 # Matchers
 
-`jest-geojson` organizes matchers by categories. Most correspond to the expected input type passed to `expect()`. For example, the Coordinates matchers expect a coordinate array, and geometry matchers expect a GeoJSON geometry object.
+`Jest-GeoJSON` organizes matchers by categories. Most correspond to the expected input type passed to `expect()`. For example, the Coordinates matchers expect a coordinate array, and geometry matchers expect a GeoJSON geometry object.
 
 Functional matchers assess more generic attributes and qualities and many accept multiple input types.
 
@@ -264,7 +264,7 @@ For another example, see the [setup script](https://github.com/M-Scott-Lassiter/
 
 ## Import the Core Engine
 
-The [core object](https://m-scott-lassiter.github.io/jest-geojson/Core.html) contains the functions grouped by category. You can then use these functions elsewhere in your code, or even port `jest-geojson` into another testing framework. To import the functions that drive the test matchers:
+The [core object](https://m-scott-lassiter.github.io/jest-geojson/Core.html) contains the functions grouped by category. You can then use these functions elsewhere in your code, or even port `Jest-GeoJSON` into another testing framework. To import the functions that drive the test matchers:
 
 ```javascript
 const core = require('jest-geojson/core')
@@ -291,7 +291,7 @@ Other Node versions and operating systems might support the library, but the tes
 
 # License and Development
 
-`jest-geojson` and all other files in this repository are distributed as free and open-source software under the [MIT License](/../../blob/main/LICENSE), © 2022.
+`Jest-GeoJSON` and all other files in this repository are distributed as free and open-source software under the [MIT License](/../../blob/main/LICENSE), © 2022.
 
 Both [contributions](/../../blob/main/CONTRIBUTING.md) and [bug reports](https://github.com/M-Scott-Lassiter/jest-geojson/issues/new/choose) welcome.
 

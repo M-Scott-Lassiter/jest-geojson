@@ -11,7 +11,7 @@
 
 </div>
 
-**Thank you for contributing to `jest-geojson`!**
+**Thank you for contributing to `Jest-GeoJSON`!**
 
 Before contributing, please take a moment to read through this document. This guide documents the standards, tooling, and processes that go into the CI/CD pipeline.
 
@@ -65,7 +65,7 @@ _For security related issues, see the [security policy](https://github.com/M-Sco
 
 These are welcome! Before submitting:
 
--   Take a moment to make sure your matcher idea fits within the scope and aims of this project. Remember, `jest-geojson` exports ONLY matchers for Jest to aide test driven developers and their core GeoJSON validation functions. This project **DOES NOT** manipulate or create GeoJSON objects. For that, refer to [Turf.js](https://github.com/Turfjs/turf).
+-   Take a moment to make sure your matcher idea fits within the scope and aims of this project. Remember, `Jest-GeoJSON` exports ONLY matchers for Jest to aide test driven developers and their core GeoJSON validation functions. This project **DOES NOT** manipulate or create GeoJSON objects. For that, refer to [Turf.js](https://github.com/Turfjs/turf).
 -   Search the issues for [new matchers](https://github.com/M-Scott-Lassiter/jest-geojson/issues?q=label%3A%22new+matcher%22+) to make sure this isn't already in the works.
 -   Be as detailed as possible, and fill out a [new matcher request](https://github.com/M-Scott-Lassiter/jest-geojson/issues/new/choose). It is up to you to make your case of why the matcher should get included.
 
@@ -220,7 +220,7 @@ Tests [reside separately](https://github.com/M-Scott-Lassiter/jest-geojson/tree/
 
 Provide 100% test coverage when creating new matchers. Use the opened issue to fully describe and document the logic on how this matcher works. This provides a persistent reference point for the logic that drives the tests.
 
-The [Jest configuration file](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/jest.config.js) calls [a setup script](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/src/setup/all.js) before the test suite runs that extends Jest's built in matchers with all of the `jest-geojson` matchers. This is consistent with how it will get used by other developers in their own projects.
+The [Jest configuration file](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/jest.config.js) calls [a setup script](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/src/setup/all.js) before the test suite runs that extends Jest's built in matchers with all of the `Jest-GeoJSON` matchers. This is consistent with how it will get used by other developers in their own projects.
 
 For consistency, organize your tests under the following three `describe` blocks:
 
