@@ -45,11 +45,12 @@
     -   [Feature Collections](#feature-collections)
     -   [Functional](#functional)
 -   [Advanced Configuration](#advanced-configuration)
-    -   [Minimum Supported Jest Version](#minimum-supported-jest-version)
-    -   [Import the Core Engine](#import-the-core-engine)
     -   [Load Matchers by Category](#load-matchers-by-category)
     -   [Load Specific Matchers](#load-specific-matchers)
--   [Node and Operating System Support Policy](#node-and-operating-system-support-policy)
+    -   [Import the Core Engine](#import-the-core-engine)
+-   [Support Policy](#support-policy)
+    -   [Minimum Supported Jest Version](#minimum-supported-jest-version)
+    -   [Node and Operating System](#node-and-operating-system)
 -   [License and Development](#license-and-development)
 -   [Contact](#contact)
 
@@ -86,8 +87,6 @@ After installing Jest, run:
 
 ```bash
 npm install --save-dev jest-geojson
-# or
-yard add --D jest-geojson
 ```
 
 ## Configure Jest
@@ -216,18 +215,6 @@ _Future_
 
 # Advanced Configuration
 
-## Minimum Supported Jest Version
-
-This project requires Jest v24.0.0 or newer.
-
-## Import the Core Engine
-
-The [core object](https://m-scott-lassiter.github.io/jest-geojson/Core.html) contains the functions grouped by category. You can then use these functions elsewhere in your code, or even port `jest-geojson` into another testing framework. To import the functions that drive the test matchers:
-
-```javascript
-const core = require('jest-geojson/core')
-```
-
 ## Load Matchers by Category
 
 You can load matcher subsets if you only need a limited set. Available scipts are:
@@ -275,7 +262,21 @@ expect.extend(matchers.geometries) // Loads all matchers in the geometries categ
 
 For another example, see the [setup script](https://github.com/M-Scott-Lassiter/jest-geojson/blob/beta/src/setup/all.js).
 
-# Node and Operating System Support Policy
+## Import the Core Engine
+
+The [core object](https://m-scott-lassiter.github.io/jest-geojson/Core.html) contains the functions grouped by category. You can then use these functions elsewhere in your code, or even port `jest-geojson` into another testing framework. To import the functions that drive the test matchers:
+
+```javascript
+const core = require('jest-geojson/core')
+```
+
+# Support Policy
+
+## Minimum Supported Jest Version
+
+This project requires Jest v24.0.0 or newer.
+
+## Node and Operating System
 
 The test suite has successfully run on all combinations of:
 

@@ -11,33 +11,25 @@ Please check if your PR fulfills the following requirements:
 -   [ ] I certify that I have the appropriate permissions to add these changes to the repository
 -   [ ] An issue is open for the changes proposed
 
-## Non-Matcher Checklist
+## New Matcher Submission Checklist
 
--   [ ] I have added/updated tests for new code changes (if applicable)
--   [ ] Documentation has been added/updated (if applicable)
--   [ ] I built (`npm run build`) locally and pushed all changes
-
-## New Matcher Checklist
-
--   <u>Create Core Function</u>
+-   [ ] Open an issue with detailed description of the purpose and required behavior
+-   <u>Create Core Function (If Applicable)</u>
     -   [ ] Create a core function under `src/core/<category>`
-    -   [ ] Document the function using JSDoc. Refer to the issue.
     -   [ ] Register the core function in `src/core.js`
+    -   [ ] Add a verification test to `tests/core.test.js`
+    -   [ ] Document the function using JSDoc. Refer to the issue. Include good and bad examples.
 -   <u>Create Matcher Function</u>
     -   [ ] Create a matcher function under `src/matchers/<category>`
-    -   [ ] Document the matcher using JSDoc. Refer to the issue.
     -   [ ] Register the matcher in `src/matchers.js`
--   <u>Add Testing</u>
-    -   [ ] Create a test for the matcher under `tests/<category>`
-    -   [ ] Add a test to `tests/core.test.js`
-    -   [ ] Add a test to `matchers.test.js`
-    -   [ ] Verify all tests pass and have 100% coverage
--   <u>Setup</u>
-    -   [ ] Register the matcher under `src/setup/all.js`
-    -   [ ] Register the matcher under `src/setup/<category>.js`
+    -   [ ] Add a verification test to `matchers.test.js`
+    -   [ ] Add the matcher to the `.cz-config.js` list (alphabetical order under the `coordinateMatchers` variable)
+    -   [ ] Document the matcher using JSDoc. Refer to the issue. Include good and bad examples.
+-   [ ] Create a test for the matcher under `tests/<category>`
+-   [ ] Verify all tests pass and have 100% coverage
 -   [ ] Add the matcher to the README.md list (alphabetical order within category)
--   [ ] Add the matcher to the `.cz-config.js` list (alphabetical order under the `coordinateMatchers` variable)
--   [ ] I built (`npm run build`) locally and pushed all changes
+-   [ ] Run the `build` script locally
+-   [ ] Push to Github then open pull request
 
 Issues Addressed: (e.g. #1, #5, #22)
 

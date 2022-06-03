@@ -27,7 +27,6 @@ Before contributing, please take a moment to read through this document. This gu
     -   [Submit Issues](#submit-issues)
     -   [Propose New Matchers](#propose-new-matchers)
     -   [Submit a Pull Request](#submit-a-pull-request)
--   [New Matcher Submission Checklist](#new-matcher-submission-checklist)
 -   [Commits](#commits)
 -   [Development](#development)
     -   [Local Installation](#local-installation)
@@ -37,6 +36,7 @@ Before contributing, please take a moment to read through this document. This gu
     -   [Running Tests](#running-tests)
     -   [Documentation](#documentation)
 -   [Adding New Matchers](#adding-new-matchers)
+    -   [Checklist](#checklist)
     -   [Creating Core Functions](#creating-core-functions)
     -   [Creating New Tests](#creating-new-tests)
     -   [Error Snapshot Testing](#error-snapshot-testing)
@@ -65,7 +65,7 @@ _For security related issues, see the [security policy](https://github.com/M-Sco
 
 These are welcome! Before submitting:
 
--   Take a moment to make sure your matcher idea fits within the scope and aims of this project. Remember, `jest-geojson` exports ONLY matchers for Jest to aide test driven developers, not generic GeoJSON functions. For that, refer to [Turf.js](https://github.com/Turfjs/turf).
+-   Take a moment to make sure your matcher idea fits within the scope and aims of this project. Remember, `jest-geojson` exports ONLY matchers for Jest to aide test driven developers and their core GeoJSON validation functions. This project **DOES NOT** manipulate or create GeoJSON objects. For that, refer to [Turf.js](https://github.com/Turfjs/turf).
 -   Search the issues for [new matchers](https://github.com/M-Scott-Lassiter/jest-geojson/issues?q=label%3A%22new+matcher%22+) to make sure this isn't already in the works.
 -   Be as detailed as possible, and fill out a [new matcher request](https://github.com/M-Scott-Lassiter/jest-geojson/issues/new/choose). It is up to you to make your case of why the matcher should get included.
 
@@ -80,26 +80,6 @@ To submit a pull request,
 1. Fork and clone the repository
 1. Create a branch for your edits
 1. Make sure your work follows the [commits](#commits) guidance
-
-## New Matcher Submission Checklist
-
--   [ ] Open an issue with detailed description of the purpose and required behavior
--   <u>Create Core Function</u>
-    -   [ ] Create a core function under `src/core/<category>`
-    -   [ ] Register the core function in `src/core.js`
-    -   [ ] Add a verification test to `tests/core.test.js`
-    -   [ ] Document the function using JSDoc. Refer to the issue. Include good and bad examples.
--   <u>Create Matcher Function</u>
-    -   [ ] Create a matcher function under `src/matchers/<category>`
-    -   [ ] Register the matcher in `src/matchers.js`
-    -   [ ] Add a verification test to `matchers.test.js`
-    -   [ ] Add the matcher to the `.cz-config.js` list (alphabetical order under the `coordinateMatchers` variable)
-    -   [ ] Document the matcher using JSDoc. Refer to the issue. Include good and bad examples.
--   [ ] Create a test for the matcher under `tests/<category>`
--   [ ] Verify all tests pass and have 100% coverage
--   [ ] Add the matcher to the README.md list (alphabetical order within category)
--   [ ] Run the `build` script locally
--   [ ] Push to Github then open pull request
 
 ## Commits
 
@@ -123,11 +103,9 @@ After installing, you should [run the build script](#building) to verify everyth
 
 ### Project Structure
 
-All distribution files are contained in the `src` folder. The `tests` folder contains the scripts used to verify the matchers work as designed (using the matchers themselves!).
+The `src` folder contains all distribution files.
 
-`core` contains the functions that `matchers` use.
-
-`setup` contains the scripts that install the matchers into the Jest runtime. `package.json` references these in entry points.
+The `tests` folder contains the Jest scripts used to verify the matchers work as designed.
 
 ```
 ├── src
@@ -141,6 +119,12 @@ All distribution files are contained in the `src` folder. The `tests` folder con
 │   ├── core.test.js
 |   └── matchers.test.js
 ```
+
+The `core` folder contains the key functionality.
+
+The `matchers` folder contains the matchers that use core functions.
+
+The `setup` folder contains the scripts that install the matchers into the Jest runtime. `package.json` references these in entry points.
 
 The `core`, `matchers`, `setup`, and `tests` folder each have the same subfolder structure:
 
@@ -204,6 +188,26 @@ npm run tableofcontents
 
 ## Adding New Matchers
 
+### Checklist
+
+-   [ ] Open an issue with detailed description of the purpose and required behavior
+-   <u>Create Core Function (If Applicable)</u>
+    -   [ ] Create a core function under `src/core/<category>`
+    -   [ ] Register the core function in `src/core.js`
+    -   [ ] Add a verification test to `tests/core.test.js`
+    -   [ ] Document the function using JSDoc. Refer to the issue. Include good and bad examples.
+-   <u>Create Matcher Function</u>
+    -   [ ] Create a matcher function under `src/matchers/<category>`
+    -   [ ] Register the matcher in `src/matchers.js`
+    -   [ ] Add a verification test to `matchers.test.js`
+    -   [ ] Add the matcher to the `.cz-config.js` list (alphabetical order under the `coordinateMatchers` variable)
+    -   [ ] Document the matcher using JSDoc. Refer to the issue. Include good and bad examples.
+-   [ ] Create a test for the matcher under `tests/<category>`
+-   [ ] Verify all tests pass and have 100% coverage
+-   [ ] Add the matcher to the README.md list (alphabetical order within category)
+-   [ ] Run the `build` script locally
+-   [ ] Push to Github then open pull request
+
 ### Creating Core Functions
 
 All matcher functionality should have a core function that goes along with it. This goes under the `src/core/<category>` folder.
@@ -212,7 +216,7 @@ The corresponding matcher goes under `src/matchers/<category>`.
 
 ### Creating New Tests
 
-Tests [reside separately](https://github.com/M-Scott-Lassiter/jest-geojson/tree/main/src) from the source code.
+Tests [reside separately](https://github.com/M-Scott-Lassiter/jest-geojson/tree/main/tests) from the source code and do not get distributed with the NPM package.
 
 Provide 100% test coverage when creating new matchers. Use the opened issue to fully describe and document the logic on how this matcher works. This provides a persistent reference point for the logic that drives the tests.
 
@@ -228,23 +232,23 @@ Refer to any of the [test files](https://github.com/M-Scott-Lassiter/jest-geojso
 
 ### Error Snapshot Testing
 
-Because matchers return the message as an arrow function, Jest doesn't actually execute these when running which prevents getting code coverage to 100% by normal methods.
+To ensure code refactoring doesn't result in [vague error messages](https://github.com/M-Scott-Lassiter/jest-geojson/issues/32), ensure there is at least one snapshot covering each expected error message.
 
-To make sure these messages work correctly, you need to use Jest's [`toThrowErrorMatchingSnapshot`](https://jestjs.io/docs/expect#tothrowerrormatchingsnapshothint) matcher. Put these in their own describe block.
+Additionally, because matchers return the message as an arrow function, Jest doesn't actually execute these when running which prevents getting code coverage to 100% by normal methods.
+
+To make sure these messages work correctly, you need to use Jest's [`toThrowErrorMatchingSnapshot`](https://jestjs.io/docs/expect#tothrowerrormatchingsnapshothint) matcher. Put these in their own describe block. For example:
 
 ```javascript
 describe('Error Snapshot Testing', () => {
-    test('.not.isValid2DCoordinate', () => {
+    test('Valid use case passes', () => {
         expect(() => expect([0, 0]).not.isValid2DCoordinate()).toThrowErrorMatchingSnapshot()
     })
 
-    test('.isValid2DCoordinate', () => {
+    test('Invalid input to matcher', () => {
         expect(() => expect(false).isValid2DCoordinate()).toThrowErrorMatchingSnapshot()
     })
 })
 ```
-
-To ensure code refactoring doesn't result in [vague error messages](https://github.com/M-Scott-Lassiter/jest-geojson/issues/32), ensure there is at least one snapshot covering each expected error message.
 
 ### Updating Error Snapshots
 

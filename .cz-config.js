@@ -1,6 +1,6 @@
-// When adding new matchers, place them in alphabetical order inside the coordinateMatchers array
+// When adding new matchers, place them in alphabetical order inside the allMatchers array
 
-const coordinateMatchers = [
+const allMatchers = [
     { name: 'isValid2DBoundingBox' },
     { name: 'isValid2DCoordinate' },
     { name: 'isValid3DBoundingBox' },
@@ -17,28 +17,6 @@ const coordinateMatchers = [
     { name: 'toBeMultiPolygonGeometry' },
     { name: 'toBePointGeometry' },
     { name: 'toBePolygonGeometry' }
-]
-
-const boundingBoxMatchers = []
-
-const geometryMatchers = []
-
-const geometryCollectionMatchers = []
-
-const featureMatchers = []
-
-const featureCollectionMatchers = []
-
-const functionalMatchers = []
-
-const allMatchers = [
-    ...coordinateMatchers,
-    ...boundingBoxMatchers,
-    ...geometryMatchers,
-    ...geometryCollectionMatchers,
-    ...featureMatchers,
-    ...featureCollectionMatchers,
-    ...functionalMatchers
 ]
 
 const documentationScopes = [

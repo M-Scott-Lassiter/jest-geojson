@@ -374,14 +374,6 @@
                                 <a href="#advanced-configuration">Advanced Configuration</a>
                                 <ul>
                                     <li>
-                                        <a href="#minimum-supported-jest-version"
-                                            >Minimum Supported Jest Version</a
-                                        >
-                                    </li>
-                                    <li>
-                                        <a href="#import-the-core-engine">Import the Core Engine</a>
-                                    </li>
-                                    <li>
                                         <a href="#load-matchers-by-category"
                                             >Load Matchers by Category</a
                                         >
@@ -389,12 +381,25 @@
                                     <li>
                                         <a href="#load-specific-matchers">Load Specific Matchers</a>
                                     </li>
+                                    <li>
+                                        <a href="#import-the-core-engine">Import the Core Engine</a>
+                                    </li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="#node-and-operating-system-support-policy"
-                                    >Node and Operating System Support Policy</a
-                                >
+                                <a href="#support-policy">Support Policy</a>
+                                <ul>
+                                    <li>
+                                        <a href="#minimum-supported-jest-version"
+                                            >Minimum Supported Jest Version</a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a href="#node-and-operating-system"
+                                            >Node and Operating System</a
+                                        >
+                                    </li>
+                                </ul>
                             </li>
                             <li><a href="#license-and-development">License and Development</a></li>
                             <li><a href="#contact">Contact</a></li>
@@ -431,8 +436,6 @@ test('Object is valid GeoJSON Point Geometry', () => {
                     <pre
                         class="prettyprint source lang-bash"
                     ><code>npm install --save-dev jest-geojson
-# or
-yard add --D jest-geojson
 </code></pre>
                     <h2>Configure Jest</h2>
                     <p>
@@ -653,22 +656,6 @@ yard add --D jest-geojson
                         <li>[ ] toBeContainedWithinPolygon</li>
                     </ul>
                     <h1>Advanced Configuration</h1>
-                    <h2>Minimum Supported Jest Version</h2>
-                    <p>This project requires Jest v24.0.0 or newer.</p>
-                    <h2>Import the Core Engine</h2>
-                    <p>
-                        The
-                        <a href="https://m-scott-lassiter.github.io/jest-geojson/Core.html"
-                            >core object</a
-                        >
-                        contains the functions grouped by category. You can then use these functions
-                        elsewhere in your code, or even port <code>jest-geojson</code> into another
-                        testing framework. To import the functions that drive the test matchers:
-                    </p>
-                    <pre
-                        class="prettyprint source lang-javascript"
-                    ><code>const core = require('jest-geojson/core')
-</code></pre>
                     <h2>Load Matchers by Category</h2>
                     <p>
                         You can load matcher subsets if you only need a limited set. Available
@@ -725,7 +712,24 @@ expect.extend(matchers.geometries) // Loads all matchers in the geometries categ
                             >setup script</a
                         >.
                     </p>
-                    <h1>Node and Operating System Support Policy</h1>
+                    <h2>Import the Core Engine</h2>
+                    <p>
+                        The
+                        <a href="https://m-scott-lassiter.github.io/jest-geojson/Core.html"
+                            >core object</a
+                        >
+                        contains the functions grouped by category. You can then use these functions
+                        elsewhere in your code, or even port <code>jest-geojson</code> into another
+                        testing framework. To import the functions that drive the test matchers:
+                    </p>
+                    <pre
+                        class="prettyprint source lang-javascript"
+                    ><code>const core = require('jest-geojson/core')
+</code></pre>
+                    <h1>Support Policy</h1>
+                    <h2>Minimum Supported Jest Version</h2>
+                    <p>This project requires Jest v24.0.0 or newer.</p>
+                    <h2>Node and Operating System</h2>
                     <p>The test suite has successfully run on all combinations of:</p>
                     <ul>
                         <li>
