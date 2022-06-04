@@ -1,3 +1,10 @@
+## [1.1.0](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.0.0...v1.1.0) (2022-06-04)
+
+
+### :gift: Feature Changes
+
+* **toBeValidGeoJSON:** add new matcher ([bf67420](https://github.com/M-Scott-Lassiter/jest-geojson/commit/bf67420c415df5a0762ad428e5ad58faca52e017)), closes [#26](https://github.com/M-Scott-Lassiter/jest-geojson/issues/26)
+
 ## 1.0.0 (2022-06-02)
 
 
