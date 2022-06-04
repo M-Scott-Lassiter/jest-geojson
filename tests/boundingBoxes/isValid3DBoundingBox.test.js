@@ -78,6 +78,7 @@ describe('Valid Use Cases', () => {
         test.each([...goodBBoxes])('expect(%p)', (bboxArray) => {
             expect(bboxArray).isValid3DBoundingBox()
             expect(bboxArray).isValidBoundingBox()
+            expect(bboxArray).not.toBeValidGeoJSON()
         })
     })
 
@@ -85,6 +86,7 @@ describe('Valid Use Cases', () => {
         test.each([...goodBoundaryCoordinates])('expect(%p)', (bboxArray) => {
             expect(bboxArray).isValid3DBoundingBox()
             expect(bboxArray).isValidBoundingBox()
+            expect(bboxArray).not.toBeValidGeoJSON()
         })
     })
 })

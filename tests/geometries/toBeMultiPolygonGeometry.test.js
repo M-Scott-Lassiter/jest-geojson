@@ -143,6 +143,7 @@ describe('Valid Use Cases', () => {
         test('Complex generic example works', () => {
             expect(genericMultiPolygonExample).toBeMultiPolygonGeometry()
             expect(genericMultiPolygonExample).toBeAnyGeometry()
+            expect(genericMultiPolygonExample).toBeValidGeoJSON()
         })
 
         test('Good in range counterclockwise coordinates: %p', () => {
@@ -152,6 +153,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiPolygon).toBeMultiPolygonGeometry()
             expect(testMultiPolygon).toBeAnyGeometry()
+            expect(testMultiPolygon).toBeValidGeoJSON()
         })
 
         test('Good in range clockwise coordinates: %p', () => {
@@ -161,6 +163,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiPolygon).toBeMultiPolygonGeometry()
             expect(testMultiPolygon).toBeAnyGeometry()
+            expect(testMultiPolygon).toBeValidGeoJSON()
         })
 
         test('Good in range counterclockwise exterior with clockwise hole: %p', () => {
@@ -170,6 +173,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiPolygon).toBeMultiPolygonGeometry()
             expect(testMultiPolygon).toBeAnyGeometry()
+            expect(testMultiPolygon).toBeValidGeoJSON()
         })
 
         test('Good in range counterclockwise exterior with counterclockwise hole: %p', () => {
@@ -179,6 +183,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiPolygon).toBeMultiPolygonGeometry()
             expect(testMultiPolygon).toBeAnyGeometry()
+            expect(testMultiPolygon).toBeValidGeoJSON()
         })
 
         test('Good in range clockwise exterior with clockwise hole: %p', () => {
@@ -188,6 +193,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiPolygon).toBeMultiPolygonGeometry()
             expect(testMultiPolygon).toBeAnyGeometry()
+            expect(testMultiPolygon).toBeValidGeoJSON()
         })
 
         test('Good in range clockwise exterior with counterclockwise hole: %p', () => {
@@ -197,6 +203,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiPolygon).toBeMultiPolygonGeometry()
             expect(testMultiPolygon).toBeAnyGeometry()
+            expect(testMultiPolygon).toBeValidGeoJSON()
         })
 
         test('Empty coordinate', () => {
@@ -206,6 +213,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiPolygon).toBeMultiPolygonGeometry()
             expect(testMultiPolygon).toBeAnyGeometry()
+            expect(testMultiPolygon).toBeValidGeoJSON()
         })
 
         test('Cutting the antimeridian', () => {
@@ -234,6 +242,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiPolygon).toBeMultiPolygonGeometry()
             expect(testMultiPolygon).toBeAnyGeometry()
+            expect(testMultiPolygon).toBeValidGeoJSON()
         })
 
         test('Spanning the antimeridian', () => {
@@ -253,6 +262,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiPolygon).toBeMultiPolygonGeometry()
             expect(testMultiPolygon).toBeAnyGeometry()
+            expect(testMultiPolygon).toBeValidGeoJSON()
         })
 
         test('Stress test with many points in many holes', () => {
@@ -272,6 +282,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiPolygon).toBeMultiPolygonGeometry()
             expect(testMultiPolygon).toBeAnyGeometry()
+            expect(testMultiPolygon).toBeValidGeoJSON()
         })
     })
 
@@ -301,6 +312,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiPolygon).toBeMultiPolygonGeometry()
             expect(testMultiPolygon).toBeAnyGeometry()
+            expect(testMultiPolygon).toBeValidGeoJSON()
         })
 
         test.each([testMultiPolygon1, testMultiPolygon2, testMultiPolygon3])(
@@ -308,6 +320,7 @@ describe('Valid Use Cases', () => {
             (testMultiPolygon) => {
                 expect(testMultiPolygon).toBeMultiPolygonGeometry()
                 expect(testMultiPolygon).toBeAnyGeometry()
+                expect(testMultiPolygon).toBeValidGeoJSON()
             }
         )
     })
@@ -342,6 +355,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiPolygon).toBeMultiPolygonGeometry()
             expect(testMultiPolygon).toBeAnyGeometry()
+            expect(testMultiPolygon).toBeValidGeoJSON()
         })
 
         test('Redundant Interior ring all the same point', () => {
@@ -351,6 +365,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiPolygon).toBeMultiPolygonGeometry()
             expect(testMultiPolygon).toBeAnyGeometry()
+            expect(testMultiPolygon).toBeValidGeoJSON()
         })
 
         test('Interior rings outside exterior rings', () => {
@@ -360,6 +375,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiPolygon).toBeMultiPolygonGeometry()
             expect(testMultiPolygon).toBeAnyGeometry()
+            expect(testMultiPolygon).toBeValidGeoJSON()
         })
 
         test('Multiple polygons Interior rings outside exterior rings', () => {
@@ -372,6 +388,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiPolygon).toBeMultiPolygonGeometry()
             expect(testMultiPolygon).toBeAnyGeometry()
+            expect(testMultiPolygon).toBeValidGeoJSON()
         })
     })
 
@@ -394,6 +411,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiPolygon).toBeMultiPolygonGeometry()
             expect(testMultiPolygon).toBeAnyGeometry()
+            expect(testMultiPolygon).toBeValidGeoJSON()
         })
 
         test('3D Bounding Box', () => {
@@ -414,6 +432,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiPolygon).toBeMultiPolygonGeometry()
             expect(testMultiPolygon).toBeAnyGeometry()
+            expect(testMultiPolygon).toBeValidGeoJSON()
         })
 
         test('Illogical Bounding Box', () => {
@@ -434,6 +453,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiPolygon).toBeMultiPolygonGeometry()
             expect(testMultiPolygon).toBeAnyGeometry()
+            expect(testMultiPolygon).toBeValidGeoJSON()
         })
 
         test('Redundant Bounding Box', () => {
@@ -454,6 +474,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiPolygon).toBeMultiPolygonGeometry()
             expect(testMultiPolygon).toBeAnyGeometry()
+            expect(testMultiPolygon).toBeValidGeoJSON()
         })
     })
 })
@@ -465,6 +486,7 @@ describe('Inalid Use Cases', () => {
             (badInput) => {
                 expect(badInput).not.toBeMultiPolygonGeometry()
                 expect(badInput).not.toBeAnyGeometry()
+                expect(badInput).not.toBeValidGeoJSON()
             }
         )
     })
@@ -479,6 +501,7 @@ describe('Inalid Use Cases', () => {
                 }
                 expect(testMultiPolygon).not.toBeMultiPolygonGeometry()
                 expect(testMultiPolygon).not.toBeAnyGeometry()
+                expect(testMultiPolygon).not.toBeValidGeoJSON()
             }
         )
 
@@ -492,6 +515,7 @@ describe('Inalid Use Cases', () => {
                 }
                 expect(testMultiPolygon).not.toBeMultiPolygonGeometry()
                 expect(testMultiPolygon).not.toBeAnyGeometry()
+                expect(testMultiPolygon).not.toBeValidGeoJSON()
             }
         )
     })
@@ -507,6 +531,7 @@ describe('Inalid Use Cases', () => {
                 }
                 expect(testMultiPolygon).not.toBeMultiPolygonGeometry()
                 expect(testMultiPolygon).not.toBeAnyGeometry()
+                expect(testMultiPolygon).not.toBeValidGeoJSON()
             }
         )
     })
@@ -519,6 +544,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testMultiPolygon).not.toBeMultiPolygonGeometry()
             expect(testMultiPolygon).not.toBeAnyGeometry()
+            expect(testMultiPolygon).not.toBeValidGeoJSON()
         })
 
         test('coordinates: [[[0, 0], [1, 1]]]', () => {
@@ -535,6 +561,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testMultiPolygon).not.toBeMultiPolygonGeometry()
             expect(testMultiPolygon).not.toBeAnyGeometry()
+            expect(testMultiPolygon).not.toBeValidGeoJSON()
         })
 
         test('coordinates: [[[0, 0], [1, 1]], [[1, 0]]]', () => {
@@ -552,6 +579,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testMultiPolygon).not.toBeMultiPolygonGeometry()
             expect(testMultiPolygon).not.toBeAnyGeometry()
+            expect(testMultiPolygon).not.toBeValidGeoJSON()
         })
 
         test('coordinates: [[[0, 0], [0, 1], [1, 1], [1, 0], [0, 0]]], [[[0, 0], [1, 1]], [[1, 0]]]]', () => {
@@ -578,6 +606,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testMultiPolygon).not.toBeMultiPolygonGeometry()
             expect(testMultiPolygon).not.toBeAnyGeometry()
+            expect(testMultiPolygon).not.toBeValidGeoJSON()
         })
     })
 
@@ -596,6 +625,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testMultiPolygon).not.toBeMultiPolygonGeometry()
             expect(testMultiPolygon).not.toBeAnyGeometry()
+            expect(testMultiPolygon).not.toBeValidGeoJSON()
         })
 
         test('Good exterior, bad hole', () => {
@@ -605,6 +635,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testMultiPolygon).not.toBeMultiPolygonGeometry()
             expect(testMultiPolygon).not.toBeAnyGeometry()
+            expect(testMultiPolygon).not.toBeValidGeoJSON()
         })
 
         test('Good exterior, two bad holes', () => {
@@ -616,6 +647,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testMultiPolygon).not.toBeMultiPolygonGeometry()
             expect(testMultiPolygon).not.toBeAnyGeometry()
+            expect(testMultiPolygon).not.toBeValidGeoJSON()
         })
 
         test('Bad exterior, good hole', () => {
@@ -625,6 +657,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testMultiPolygon).not.toBeMultiPolygonGeometry()
             expect(testMultiPolygon).not.toBeAnyGeometry()
+            expect(testMultiPolygon).not.toBeValidGeoJSON()
         })
 
         test('Bad exterior, two good holes', () => {
@@ -636,6 +669,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testMultiPolygon).not.toBeMultiPolygonGeometry()
             expect(testMultiPolygon).not.toBeAnyGeometry()
+            expect(testMultiPolygon).not.toBeValidGeoJSON()
         })
     })
 
@@ -647,6 +681,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testMultiPolygon).not.toBeMultiPolygonGeometry()
             expect(testMultiPolygon).not.toBeAnyGeometry()
+            expect(testMultiPolygon).not.toBeValidGeoJSON()
         })
     })
 
@@ -658,6 +693,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testMultiPolygon).not.toBeMultiPolygonGeometry()
             expect(testMultiPolygon).not.toBeAnyGeometry()
+            expect(testMultiPolygon).not.toBeValidGeoJSON()
         })
     })
 
@@ -673,6 +709,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testMultiPolygon).not.toBeMultiPolygonGeometry()
             expect(testMultiPolygon).not.toBeAnyGeometry()
+            expect(testMultiPolygon).not.toBeValidGeoJSON()
         })
 
         test(`Contains: 'properties'`, () => {
@@ -685,6 +722,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testMultiPolygon).not.toBeMultiPolygonGeometry()
             expect(testMultiPolygon).not.toBeAnyGeometry()
+            expect(testMultiPolygon).not.toBeValidGeoJSON()
         })
 
         test(`Contains: 'features'`, () => {
@@ -706,6 +744,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testMultiPolygon).not.toBeMultiPolygonGeometry()
             expect(testMultiPolygon).not.toBeAnyGeometry()
+            expect(testMultiPolygon).not.toBeValidGeoJSON()
         })
     })
 
@@ -716,6 +755,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testMultiPolygon).not.toBeMultiPolygonGeometry()
             expect(testMultiPolygon).not.toBeAnyGeometry()
+            expect(testMultiPolygon).not.toBeValidGeoJSON()
         })
 
         test(`Missing: 'coordinates'`, () => {
@@ -724,6 +764,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testMultiPolygon).not.toBeMultiPolygonGeometry()
             expect(testMultiPolygon).not.toBeAnyGeometry()
+            expect(testMultiPolygon).not.toBeValidGeoJSON()
         })
     })
 
@@ -755,6 +796,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testMultiPolygon).not.toBeMultiPolygonGeometry()
             expect(testMultiPolygon).not.toBeAnyGeometry()
+            expect(testMultiPolygon).not.toBeValidGeoJSON()
         })
     })
 })

@@ -86,6 +86,7 @@ describe('Valid Use Cases', () => {
         test('Known Good Collection', () => {
             expect(goodGeometryCollection).toBeGeometryCollection()
             expect(goodGeometryCollection).toBeAnyGeometry()
+            expect(goodGeometryCollection).toBeValidGeoJSON()
         })
 
         test('Point', () => {
@@ -95,6 +96,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testGeometryCollection).toBeGeometryCollection()
             expect(testGeometryCollection).toBeAnyGeometry()
+            expect(goodGeometryCollection).toBeValidGeoJSON()
         })
 
         test('MultiPoint', () => {
@@ -104,6 +106,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testGeometryCollection).toBeGeometryCollection()
             expect(testGeometryCollection).toBeAnyGeometry()
+            expect(goodGeometryCollection).toBeValidGeoJSON()
         })
 
         test('LineString', () => {
@@ -113,6 +116,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testGeometryCollection).toBeGeometryCollection()
             expect(testGeometryCollection).toBeAnyGeometry()
+            expect(goodGeometryCollection).toBeValidGeoJSON()
         })
 
         test('MultiLineString', () => {
@@ -122,6 +126,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testGeometryCollection).toBeGeometryCollection()
             expect(testGeometryCollection).toBeAnyGeometry()
+            expect(goodGeometryCollection).toBeValidGeoJSON()
         })
 
         test('Polygon', () => {
@@ -131,6 +136,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testGeometryCollection).toBeGeometryCollection()
             expect(testGeometryCollection).toBeAnyGeometry()
+            expect(goodGeometryCollection).toBeValidGeoJSON()
         })
 
         test('MultiPolygon', () => {
@@ -140,6 +146,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testGeometryCollection).toBeGeometryCollection()
             expect(testGeometryCollection).toBeAnyGeometry()
+            expect(goodGeometryCollection).toBeValidGeoJSON()
         })
 
         test('All', () => {
@@ -156,11 +163,13 @@ describe('Valid Use Cases', () => {
             }
             expect(testGeometryCollection).toBeGeometryCollection()
             expect(testGeometryCollection).toBeAnyGeometry()
+            expect(goodGeometryCollection).toBeValidGeoJSON()
         })
 
         test('Nested GeometryCollections', () => {
             expect(nestedGeometryCollection).toBeGeometryCollection()
             expect(goodGeometryCollection).toBeAnyGeometry()
+            expect(goodGeometryCollection).toBeValidGeoJSON()
         })
 
         test('Stress Test', () => {
@@ -181,6 +190,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testGeometryCollection).toBeGeometryCollection()
             expect(testGeometryCollection).toBeAnyGeometry()
+            expect(goodGeometryCollection).toBeValidGeoJSON()
         })
     })
 
@@ -193,6 +203,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testGeometryCollection).toBeGeometryCollection()
             expect(testGeometryCollection).toBeAnyGeometry()
+            expect(goodGeometryCollection).toBeValidGeoJSON()
         })
 
         test('Multiple Foreign Properties', () => {
@@ -209,6 +220,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testGeometryCollection).toBeGeometryCollection()
             expect(testGeometryCollection).toBeAnyGeometry()
+            expect(goodGeometryCollection).toBeValidGeoJSON()
         })
     })
 
@@ -219,6 +231,7 @@ describe('Valid Use Cases', () => {
         }
         expect(testGeometryCollection).toBeGeometryCollection()
         expect(testGeometryCollection).toBeAnyGeometry()
+        expect(goodGeometryCollection).toBeValidGeoJSON()
     })
 
     describe('Bounding Boxes Allowed, Must be Valid:', () => {
@@ -235,6 +248,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testGeometryCollection).toBeGeometryCollection()
             expect(testGeometryCollection).toBeAnyGeometry()
+            expect(goodGeometryCollection).toBeValidGeoJSON()
         })
 
         test('3D Bounding Box', () => {
@@ -250,6 +264,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testGeometryCollection).toBeGeometryCollection()
             expect(testGeometryCollection).toBeAnyGeometry()
+            expect(goodGeometryCollection).toBeValidGeoJSON()
         })
 
         test('Illogical Bounding Box', () => {
@@ -265,6 +280,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testGeometryCollection).toBeGeometryCollection()
             expect(testGeometryCollection).toBeAnyGeometry()
+            expect(goodGeometryCollection).toBeValidGeoJSON()
         })
 
         test('Redundant Bounding Box', () => {
@@ -280,6 +296,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testGeometryCollection).toBeGeometryCollection()
             expect(testGeometryCollection).toBeAnyGeometry()
+            expect(goodGeometryCollection).toBeValidGeoJSON()
         })
     })
 
@@ -297,6 +314,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testGeometryCollection).toBeGeometryCollection()
             expect(testGeometryCollection).toBeAnyGeometry()
+            expect(goodGeometryCollection).toBeValidGeoJSON()
         })
     })
 })
@@ -308,6 +326,7 @@ describe('Invalid Use Cases', () => {
             (badInput) => {
                 expect(badInput).not.toBeGeometryCollection()
                 expect(badInput).not.toBeAnyGeometry()
+                expect(badInput).not.toBeValidGeoJSON()
             }
         )
     })
@@ -320,6 +339,7 @@ describe('Invalid Use Cases', () => {
             }
             expect(testGeometryCollection).not.toBeGeometryCollection()
             expect(testGeometryCollection).not.toBeAnyGeometry()
+            expect(testGeometryCollection).not.toBeValidGeoJSON()
         })
 
         test('MultiPoint', () => {
@@ -329,6 +349,7 @@ describe('Invalid Use Cases', () => {
             }
             expect(testGeometryCollection).not.toBeGeometryCollection()
             expect(testGeometryCollection).not.toBeAnyGeometry()
+            expect(testGeometryCollection).not.toBeValidGeoJSON()
         })
 
         test('LineString', () => {
@@ -338,6 +359,7 @@ describe('Invalid Use Cases', () => {
             }
             expect(testGeometryCollection).not.toBeGeometryCollection()
             expect(testGeometryCollection).not.toBeAnyGeometry()
+            expect(testGeometryCollection).not.toBeValidGeoJSON()
         })
 
         test('MultiLineString', () => {
@@ -347,6 +369,7 @@ describe('Invalid Use Cases', () => {
             }
             expect(testGeometryCollection).not.toBeGeometryCollection()
             expect(testGeometryCollection).not.toBeAnyGeometry()
+            expect(testGeometryCollection).not.toBeValidGeoJSON()
         })
 
         test('Polygon', () => {
@@ -356,6 +379,7 @@ describe('Invalid Use Cases', () => {
             }
             expect(testGeometryCollection).not.toBeGeometryCollection()
             expect(testGeometryCollection).not.toBeAnyGeometry()
+            expect(testGeometryCollection).not.toBeValidGeoJSON()
         })
 
         test('MultiPolygon', () => {
@@ -365,6 +389,7 @@ describe('Invalid Use Cases', () => {
             }
             expect(testGeometryCollection).not.toBeGeometryCollection()
             expect(testGeometryCollection).not.toBeAnyGeometry()
+            expect(testGeometryCollection).not.toBeValidGeoJSON()
         })
 
         test('Unrecognized', () => {
@@ -374,6 +399,7 @@ describe('Invalid Use Cases', () => {
             }
             expect(testGeometryCollection).not.toBeGeometryCollection()
             expect(testGeometryCollection).not.toBeAnyGeometry()
+            expect(testGeometryCollection).not.toBeValidGeoJSON()
         })
 
         test('All Bad', () => {
@@ -390,6 +416,7 @@ describe('Invalid Use Cases', () => {
             }
             expect(testGeometryCollection).not.toBeGeometryCollection()
             expect(testGeometryCollection).not.toBeAnyGeometry()
+            expect(testGeometryCollection).not.toBeValidGeoJSON()
         })
 
         test('All Good With One Bad', () => {
@@ -407,6 +434,7 @@ describe('Invalid Use Cases', () => {
             }
             expect(testGeometryCollection).not.toBeGeometryCollection()
             expect(testGeometryCollection).not.toBeAnyGeometry()
+            expect(testGeometryCollection).not.toBeValidGeoJSON()
         })
     })
 
@@ -418,6 +446,7 @@ describe('Invalid Use Cases', () => {
             }
             expect(testGeometryCollection).not.toBeGeometryCollection()
             expect(testGeometryCollection).not.toBeAnyGeometry()
+            expect(testGeometryCollection).not.toBeValidGeoJSON()
         })
     })
 
@@ -429,6 +458,7 @@ describe('Invalid Use Cases', () => {
             }
             expect(testGeometryCollection).not.toBeGeometryCollection()
             expect(testGeometryCollection).not.toBeAnyGeometry()
+            expect(testGeometryCollection).not.toBeValidGeoJSON()
         })
     })
 
@@ -449,6 +479,7 @@ describe('Invalid Use Cases', () => {
             }
             expect(testGeometryCollection).not.toBeGeometryCollection()
             expect(testGeometryCollection).not.toBeAnyGeometry()
+            expect(testGeometryCollection).not.toBeValidGeoJSON()
         })
 
         test(`Contains: 'properties'`, () => {
@@ -466,6 +497,7 @@ describe('Invalid Use Cases', () => {
             }
             expect(testGeometryCollection).not.toBeGeometryCollection()
             expect(testGeometryCollection).not.toBeAnyGeometry()
+            expect(testGeometryCollection).not.toBeValidGeoJSON()
         })
 
         test(`Contains: 'features'`, () => {
@@ -492,6 +524,7 @@ describe('Invalid Use Cases', () => {
             }
             expect(testGeometryCollection).not.toBeGeometryCollection()
             expect(testGeometryCollection).not.toBeAnyGeometry()
+            expect(testGeometryCollection).not.toBeValidGeoJSON()
         })
     })
 
@@ -502,6 +535,7 @@ describe('Invalid Use Cases', () => {
             }
             expect(testGeometryCollection).not.toBeGeometryCollection()
             expect(testGeometryCollection).not.toBeAnyGeometry()
+            expect(testGeometryCollection).not.toBeValidGeoJSON()
         })
 
         test(`Missing: 'geometries'`, () => {
@@ -510,6 +544,7 @@ describe('Invalid Use Cases', () => {
             }
             expect(testGeometryCollection).not.toBeGeometryCollection()
             expect(testGeometryCollection).not.toBeAnyGeometry()
+            expect(testGeometryCollection).not.toBeValidGeoJSON()
         })
     })
 
@@ -536,6 +571,7 @@ describe('Invalid Use Cases', () => {
             }
             expect(testGeometryCollection).not.toBeGeometryCollection()
             expect(testGeometryCollection).not.toBeAnyGeometry()
+            expect(testGeometryCollection).not.toBeValidGeoJSON()
         })
     })
 })

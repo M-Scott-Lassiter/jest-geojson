@@ -15,6 +15,7 @@ if (jestExpect !== undefined) {
     expect.extend(matchers.boundingBoxes)
     expect.extend(matchers.featureCollections)
     expect.extend(matchers.features)
+    expect.extend(matchers.functional)
     expect.extend(matchers.geometries)
 } else {
     exports.throwJestRuntimeError()

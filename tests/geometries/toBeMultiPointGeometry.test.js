@@ -122,6 +122,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiPoint).toBeMultiPointGeometry()
             expect(testMultiPoint).toBeAnyGeometry()
+            expect(testMultiPoint).toBeValidGeoJSON()
         })
 
         test('Empty coordinate', () => {
@@ -131,6 +132,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiPoint).toBeMultiPointGeometry()
             expect(testMultiPoint).toBeAnyGeometry()
+            expect(testMultiPoint).toBeValidGeoJSON()
         })
     })
 
@@ -169,6 +171,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiPoint).toBeMultiPointGeometry()
             expect(testMultiPoint).toBeAnyGeometry()
+            expect(testMultiPoint).toBeValidGeoJSON()
         })
 
         test.each([testMultiPoint1, testMultiPoint2, testMultiPoint3])(
@@ -176,6 +179,7 @@ describe('Valid Use Cases', () => {
             (testMultiPoint) => {
                 expect(testMultiPoint).toBeMultiPointGeometry()
                 expect(testMultiPoint).toBeAnyGeometry()
+                expect(testMultiPoint).toBeValidGeoJSON()
             }
         )
     })
@@ -189,6 +193,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiPoint).toBeMultiPointGeometry()
             expect(testMultiPoint).toBeAnyGeometry()
+            expect(testMultiPoint).toBeValidGeoJSON()
         })
 
         test('3D Bounding Box', () => {
@@ -199,6 +204,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiPoint).toBeMultiPointGeometry()
             expect(testMultiPoint).toBeAnyGeometry()
+            expect(testMultiPoint).toBeValidGeoJSON()
         })
 
         test('Illogical Bounding Box', () => {
@@ -209,6 +215,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiPoint).toBeMultiPointGeometry()
             expect(testMultiPoint).toBeAnyGeometry()
+            expect(testMultiPoint).toBeValidGeoJSON()
         })
 
         test('Redundant Bounding Box', () => {
@@ -219,6 +226,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiPoint).toBeMultiPointGeometry()
             expect(testMultiPoint).toBeAnyGeometry()
+            expect(testMultiPoint).toBeValidGeoJSON()
         })
     })
 })
@@ -230,6 +238,7 @@ describe('Inalid Use Cases', () => {
             (badInput) => {
                 expect(badInput).not.toBeMultiPointGeometry()
                 expect(badInput).not.toBeAnyGeometry()
+                expect(badInput).not.toBeValidGeoJSON()
             }
         )
     })
@@ -244,6 +253,7 @@ describe('Inalid Use Cases', () => {
                 }
                 expect(testMultiPoint).not.toBeMultiPointGeometry()
                 expect(testMultiPoint).not.toBeAnyGeometry()
+                expect(testMultiPoint).not.toBeValidGeoJSON()
             }
         )
     })
@@ -278,6 +288,7 @@ describe('Inalid Use Cases', () => {
 
             expect(testMultiPoint).not.toBeMultiPointGeometry()
             expect(testMultiPoint).not.toBeAnyGeometry()
+            expect(testMultiPoint).not.toBeValidGeoJSON()
         })
 
         test(`Contains: 'properties'`, () => {
@@ -294,6 +305,7 @@ describe('Inalid Use Cases', () => {
 
             expect(testMultiPoint).not.toBeMultiPointGeometry()
             expect(testMultiPoint).not.toBeAnyGeometry()
+            expect(testMultiPoint).not.toBeValidGeoJSON()
         })
 
         test(`Contains: 'features'`, () => {
@@ -318,6 +330,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testMultiPoint).not.toBeMultiPointGeometry()
             expect(testMultiPoint).not.toBeAnyGeometry()
+            expect(testMultiPoint).not.toBeValidGeoJSON()
         })
     })
 
@@ -331,6 +344,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testMultiPoint).not.toBeMultiPointGeometry()
             expect(testMultiPoint).not.toBeAnyGeometry()
+            expect(testMultiPoint).not.toBeValidGeoJSON()
         })
         test(`Missing: 'coordinates'`, () => {
             const testMultiPoint = {
@@ -338,6 +352,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testMultiPoint).not.toBeMultiPointGeometry()
             expect(testMultiPoint).not.toBeAnyGeometry()
+            expect(testMultiPoint).not.toBeValidGeoJSON()
         })
     })
 
@@ -359,6 +374,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testMultiPoint).not.toBeMultiPointGeometry()
             expect(testMultiPoint).not.toBeAnyGeometry()
+            expect(testMultiPoint).not.toBeValidGeoJSON()
         })
     })
 })

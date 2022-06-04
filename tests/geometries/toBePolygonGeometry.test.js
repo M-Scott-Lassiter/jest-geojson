@@ -116,6 +116,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testPolygon).toBePolygonGeometry()
             expect(testPolygon).toBeAnyGeometry()
+            expect(testPolygon).toBeValidGeoJSON()
         })
 
         test('Good in range clockwise coordinates: %p', () => {
@@ -125,6 +126,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testPolygon).toBePolygonGeometry()
             expect(testPolygon).toBeAnyGeometry()
+            expect(testPolygon).toBeValidGeoJSON()
         })
 
         test('Good in range counterclockwise exterior with clockwise hole: %p', () => {
@@ -134,6 +136,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testPolygon).toBePolygonGeometry()
             expect(testPolygon).toBeAnyGeometry()
+            expect(testPolygon).toBeValidGeoJSON()
         })
 
         test('Good in range counterclockwise exterior with counterclockwise hole: %p', () => {
@@ -143,6 +146,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testPolygon).toBePolygonGeometry()
             expect(testPolygon).toBeAnyGeometry()
+            expect(testPolygon).toBeValidGeoJSON()
         })
 
         test('Good in range clockwise exterior with clockwise hole: %p', () => {
@@ -152,6 +156,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testPolygon).toBePolygonGeometry()
             expect(testPolygon).toBeAnyGeometry()
+            expect(testPolygon).toBeValidGeoJSON()
         })
 
         test('Good in range clockwise exterior with counterclockwise hole: %p', () => {
@@ -161,6 +166,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testPolygon).toBePolygonGeometry()
             expect(testPolygon).toBeAnyGeometry()
+            expect(testPolygon).toBeValidGeoJSON()
         })
 
         test('Empty coordinate', () => {
@@ -170,6 +176,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testPolygon).toBePolygonGeometry()
             expect(testPolygon).toBeAnyGeometry()
+            expect(testPolygon).toBeValidGeoJSON()
         })
 
         test('Spanning the antimeridian', () => {
@@ -189,6 +196,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testPolygon).toBePolygonGeometry()
             expect(testPolygon).toBeAnyGeometry()
+            expect(testPolygon).toBeValidGeoJSON()
         })
 
         test('Stress test with many points in many holes', () => {
@@ -205,6 +213,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testPolygon).toBePolygonGeometry()
             expect(testPolygon).toBeAnyGeometry()
+            expect(testPolygon).toBeValidGeoJSON()
         })
     })
 
@@ -234,6 +243,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testPolygon).toBePolygonGeometry()
             expect(testPolygon).toBeAnyGeometry()
+            expect(testPolygon).toBeValidGeoJSON()
         })
 
         test.each([testPolygon1, testPolygon2, testPolygon3])(
@@ -241,6 +251,7 @@ describe('Valid Use Cases', () => {
             (testPolygon) => {
                 expect(testPolygon).toBePolygonGeometry()
                 expect(testPolygon).toBeAnyGeometry()
+                expect(testPolygon).toBeValidGeoJSON()
             }
         )
     })
@@ -275,6 +286,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testPolygon).toBePolygonGeometry()
             expect(testPolygon).toBeAnyGeometry()
+            expect(testPolygon).toBeValidGeoJSON()
         })
 
         test('Redundant Interior ring all the same point', () => {
@@ -284,6 +296,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testPolygon).toBePolygonGeometry()
             expect(testPolygon).toBeAnyGeometry()
+            expect(testPolygon).toBeValidGeoJSON()
         })
 
         test('Interior rings outside exterior rings', () => {
@@ -293,6 +306,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testPolygon).toBePolygonGeometry()
             expect(testPolygon).toBeAnyGeometry()
+            expect(testPolygon).toBeValidGeoJSON()
         })
     })
 
@@ -313,6 +327,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testPolygon).toBePolygonGeometry()
             expect(testPolygon).toBeAnyGeometry()
+            expect(testPolygon).toBeValidGeoJSON()
         })
 
         test('3D Bounding Box', () => {
@@ -331,6 +346,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testPolygon).toBePolygonGeometry()
             expect(testPolygon).toBeAnyGeometry()
+            expect(testPolygon).toBeValidGeoJSON()
         })
 
         test('Illogical Bounding Box', () => {
@@ -349,6 +365,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testPolygon).toBePolygonGeometry()
             expect(testPolygon).toBeAnyGeometry()
+            expect(testPolygon).toBeValidGeoJSON()
         })
 
         test('Redundant Bounding Box', () => {
@@ -367,6 +384,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testPolygon).toBePolygonGeometry()
             expect(testPolygon).toBeAnyGeometry()
+            expect(testPolygon).toBeValidGeoJSON()
         })
     })
 })
@@ -376,6 +394,7 @@ describe('Inalid Use Cases', () => {
         test.each([...invalidInputValues])('expect(%p).not.toBePolygonGeometry()', (badInput) => {
             expect(badInput).not.toBePolygonGeometry()
             expect(badInput).not.toBeAnyGeometry()
+            expect(badInput).not.toBeValidGeoJSON()
         })
     })
 
@@ -389,6 +408,7 @@ describe('Inalid Use Cases', () => {
                 }
                 expect(testPolygon).not.toBePolygonGeometry()
                 expect(testPolygon).not.toBeAnyGeometry()
+                expect(testPolygon).not.toBeValidGeoJSON()
             }
         )
     })
@@ -404,6 +424,7 @@ describe('Inalid Use Cases', () => {
                 }
                 expect(testPolygon).not.toBePolygonGeometry()
                 expect(testPolygon).not.toBeAnyGeometry()
+                expect(testPolygon).not.toBeValidGeoJSON()
             }
         )
     })
@@ -416,6 +437,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testPolygon).not.toBePolygonGeometry()
             expect(testPolygon).not.toBeAnyGeometry()
+            expect(testPolygon).not.toBeValidGeoJSON()
         })
 
         test('coordinates: [[[0, 0], [1, 1]]]', () => {
@@ -430,6 +452,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testPolygon).not.toBePolygonGeometry()
             expect(testPolygon).not.toBeAnyGeometry()
+            expect(testPolygon).not.toBeValidGeoJSON()
         })
 
         test('coordinates: [[[0, 0], [1, 1]], [[1, 0]]]', () => {
@@ -445,6 +468,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testPolygon).not.toBePolygonGeometry()
             expect(testPolygon).not.toBeAnyGeometry()
+            expect(testPolygon).not.toBeValidGeoJSON()
         })
     })
 
@@ -463,6 +487,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testPolygon).not.toBePolygonGeometry()
             expect(testPolygon).not.toBeAnyGeometry()
+            expect(testPolygon).not.toBeValidGeoJSON()
         })
 
         test('Good exterior, bad hole', () => {
@@ -472,6 +497,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testPolygon).not.toBePolygonGeometry()
             expect(testPolygon).not.toBeAnyGeometry()
+            expect(testPolygon).not.toBeValidGeoJSON()
         })
 
         test('Good exterior, two bad holes', () => {
@@ -485,6 +511,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testPolygon).not.toBePolygonGeometry()
             expect(testPolygon).not.toBeAnyGeometry()
+            expect(testPolygon).not.toBeValidGeoJSON()
         })
 
         test('Bad exterior, good hole', () => {
@@ -494,6 +521,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testPolygon).not.toBePolygonGeometry()
             expect(testPolygon).not.toBeAnyGeometry()
+            expect(testPolygon).not.toBeValidGeoJSON()
         })
 
         test('Bad exterior, two good holes', () => {
@@ -503,6 +531,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testPolygon).not.toBePolygonGeometry()
             expect(testPolygon).not.toBeAnyGeometry()
+            expect(testPolygon).not.toBeValidGeoJSON()
         })
     })
 
@@ -514,6 +543,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testPolygon).not.toBePolygonGeometry()
             expect(testPolygon).not.toBeAnyGeometry()
+            expect(testPolygon).not.toBeValidGeoJSON()
         })
     })
 
@@ -540,6 +570,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testPolygon).not.toBePolygonGeometry()
             expect(testPolygon).not.toBeAnyGeometry()
+            expect(testPolygon).not.toBeValidGeoJSON()
         })
 
         test(`Contains: 'properties'`, () => {
@@ -552,6 +583,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testPolygon).not.toBePolygonGeometry()
             expect(testPolygon).not.toBeAnyGeometry()
+            expect(testPolygon).not.toBeValidGeoJSON()
         })
 
         test(`Contains: 'features'`, () => {
@@ -573,6 +605,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testPolygon).not.toBePolygonGeometry()
             expect(testPolygon).not.toBeAnyGeometry()
+            expect(testPolygon).not.toBeValidGeoJSON()
         })
     })
 
@@ -583,6 +616,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testPolygon).not.toBePolygonGeometry()
             expect(testPolygon).not.toBeAnyGeometry()
+            expect(testPolygon).not.toBeValidGeoJSON()
         })
 
         test(`Missing: 'coordinates'`, () => {
@@ -591,6 +625,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testPolygon).not.toBePolygonGeometry()
             expect(testPolygon).not.toBeAnyGeometry()
+            expect(testPolygon).not.toBeValidGeoJSON()
         })
     })
 
@@ -620,6 +655,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testPolygon).not.toBePolygonGeometry()
             expect(testPolygon).not.toBeAnyGeometry()
+            expect(testPolygon).not.toBeValidGeoJSON()
         })
     })
 })

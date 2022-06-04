@@ -42,6 +42,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testPoint).toBePointGeometry()
             expect(testPoint).toBeAnyGeometry()
+            expect(testPoint).toBeValidGeoJSON()
         })
 
         test('Good 3D coordinate', () => {
@@ -51,6 +52,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testPoint).toBePointGeometry()
             expect(testPoint).toBeAnyGeometry()
+            expect(testPoint).toBeValidGeoJSON()
         })
 
         test('Empty coordinate', () => {
@@ -60,6 +62,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testPoint).toBePointGeometry()
             expect(testPoint).toBeAnyGeometry()
+            expect(testPoint).toBeValidGeoJSON()
         })
     })
 
@@ -89,11 +92,13 @@ describe('Valid Use Cases', () => {
             }
             expect(testPoint).toBePointGeometry()
             expect(testPoint).toBeAnyGeometry()
+            expect(testPoint).toBeValidGeoJSON()
         })
 
         test.each([testPoint1, testPoint2, testPoint3])('Non-alphanumeric ID', (testPoint) => {
             expect(testPoint).toBePointGeometry()
             expect(testPoint).toBeAnyGeometry()
+            expect(testPoint).toBeValidGeoJSON()
         })
     })
 
@@ -106,6 +111,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testPoint).toBePointGeometry()
             expect(testPoint).toBeAnyGeometry()
+            expect(testPoint).toBeValidGeoJSON()
         })
 
         test('3D Bounding Box', () => {
@@ -116,6 +122,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testPoint).toBePointGeometry()
             expect(testPoint).toBeAnyGeometry()
+            expect(testPoint).toBeValidGeoJSON()
         })
 
         test('Illogical Bounding Box', () => {
@@ -126,6 +133,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testPoint).toBePointGeometry()
             expect(testPoint).toBeAnyGeometry()
+            expect(testPoint).toBeValidGeoJSON()
         })
 
         test('Redundant Bounding Box', () => {
@@ -136,6 +144,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testPoint).toBePointGeometry()
             expect(testPoint).toBeAnyGeometry()
+            expect(testPoint).toBeValidGeoJSON()
         })
     })
 })
@@ -145,6 +154,7 @@ describe('Inalid Use Cases', () => {
         test.each([...invalidInputValues])('expect(%p).not.toBePointGeometry()', (badInput) => {
             expect(badInput).not.toBePointGeometry()
             expect(badInput).not.toBeAnyGeometry()
+            expect(badInput).not.toBeValidGeoJSON()
         })
     })
 
@@ -158,6 +168,7 @@ describe('Inalid Use Cases', () => {
                 }
                 expect(testPoint).not.toBePointGeometry()
                 expect(testPoint).not.toBeAnyGeometry()
+                expect(testPoint).not.toBeValidGeoJSON()
             }
         )
     })
@@ -185,6 +196,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testPoint).not.toBePointGeometry()
             expect(testPoint).not.toBeAnyGeometry()
+            expect(testPoint).not.toBeValidGeoJSON()
         })
 
         test(`Contains: 'properties'`, () => {
@@ -197,6 +209,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testPoint).not.toBePointGeometry()
             expect(testPoint).not.toBeAnyGeometry()
+            expect(testPoint).not.toBeValidGeoJSON()
         })
 
         test(`Contains: 'features'`, () => {
@@ -218,6 +231,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testPoint).not.toBePointGeometry()
             expect(testPoint).not.toBeAnyGeometry()
+            expect(testPoint).not.toBeValidGeoJSON()
         })
     })
 
@@ -228,6 +242,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testPoint).not.toBePointGeometry()
             expect(testPoint).not.toBeAnyGeometry()
+            expect(testPoint).not.toBeValidGeoJSON()
         })
 
         test(`Missing: 'coordinates'`, () => {
@@ -236,6 +251,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testPoint).not.toBePointGeometry()
             expect(testPoint).not.toBeAnyGeometry()
+            expect(testPoint).not.toBeValidGeoJSON()
         })
     })
 
@@ -257,6 +273,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testPoint).not.toBePointGeometry()
             expect(testPoint).not.toBeAnyGeometry()
+            expect(testPoint).not.toBeValidGeoJSON()
         })
     })
 })

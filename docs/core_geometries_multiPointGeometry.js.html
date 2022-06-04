@@ -135,6 +135,9 @@
                                 >commonGeometryValidation</a
                             >
                         </li>
+                        <li data-type="method">
+                            <a href="Core.Utilities.html#.validGeoJSON">validGeoJSON</a>
+                        </li>
                     </ul>
                 </li>
                 <li><a href="Matchers.html">Matchers</a></li>
@@ -197,6 +200,16 @@
                     </ul>
                 </li>
                 <li>
+                    <a href="Matchers.Functional.html">Matchers.Functional</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Matchers.Functional.html#.toBeValidGeoJSON"
+                                >toBeValidGeoJSON</a
+                            >
+                        </li>
+                    </ul>
+                </li>
+                <li>
                     <a href="Matchers.Geometries.html">Matchers.Geometries</a>
                     <ul class="methods">
                         <li data-type="method">
@@ -250,7 +263,7 @@
                     <pre
                         class="prettyprint source linenums"
                     ><code>const { validCoordinate } = require('../coordinates/validCoordinate')
-const { commonGeometryValidation } = require('../utilities')
+const { commonGeometryValidation } = require('../utilities/commonGeometryValidation')
 
 /**
  * Verifies an object is a valid GeoJSON MultiPoint Geometry. This geometry requires a

@@ -30,15 +30,21 @@ describe('Coordinate Matchers Exported', () => {
     })
 })
 
+describe('FeatureCollection Matchers Exported', () => {
+    test('toBeFeatureCollection', () => {
+        expect('toBeFeatureCollection' in matchers.featureCollections).toBeTruthy()
+    })
+})
+
 describe('Feature Matchers Exported', () => {
     test('toBeFeature', () => {
         expect('toBeFeature' in matchers.features).toBeTruthy()
     })
 })
 
-describe('FeatureCollection Matchers Exported', () => {
-    test('toBeFeatureCollection', () => {
-        expect('toBeFeatureCollection' in matchers.featureCollections).toBeTruthy()
+describe('Functional Matchers Exported', () => {
+    test('toBeValidGeoJSON', () => {
+        expect('toBeValidGeoJSON' in matchers.functional).toBeTruthy()
     })
 })
 

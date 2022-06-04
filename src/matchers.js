@@ -26,6 +26,10 @@ exports.features = {
     toBeFeature: require('./matchers/features/toBeFeature').toBeFeature
 }
 
+exports.functional = {
+    toBeValidGeoJSON: require('./matchers/functional/toBeValidGeoJSON').toBeValidGeoJSON
+}
+
 exports.geometries = {
     toBeAnyGeometry: require('./matchers/geometries/toBeAnyGeometry').toBeAnyGeometry,
     toBeGeometryCollection: require('./matchers/geometries/toBeGeometryCollection')
