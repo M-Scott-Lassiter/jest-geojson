@@ -56,6 +56,12 @@
  */
 
 /**
+ * Functional matchers assess more generic attributes and qualities and many accept multiple input types.
+ *
+ * @namespace Matchers.Functional
+ */
+
+/**
  * A set of matchers related to validating the seven geometry objects.
  *
  * @see https://datatracker.ietf.org/doc/html/rfc7946#section-3.1

@@ -136,6 +136,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiLineString).toBeMultiLineStringGeometry()
             expect(testMultiLineString).toBeAnyGeometry()
+            expect(testMultiLineString).toBeValidGeoJSON()
         })
 
         test('Empty coordinate', () => {
@@ -145,6 +146,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiLineString).toBeMultiLineStringGeometry()
             expect(testMultiLineString).toBeAnyGeometry()
+            expect(testMultiLineString).toBeValidGeoJSON()
         })
 
         test('Stress test with many points in many linestrings', () => {
@@ -160,6 +162,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiLineString).toBeMultiLineStringGeometry()
             expect(testMultiLineString).toBeAnyGeometry()
+            expect(testMultiLineString).toBeValidGeoJSON()
         })
     })
 
@@ -209,6 +212,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiLineString).toBeMultiLineStringGeometry()
             expect(testMultiLineString).toBeAnyGeometry()
+            expect(testMultiLineString).toBeValidGeoJSON()
         })
 
         test.each([testMultiLineString1, testMultiLineString2, testMultiLineString3])(
@@ -216,6 +220,7 @@ describe('Valid Use Cases', () => {
             (testMultiLineString) => {
                 expect(testMultiLineString).toBeMultiLineStringGeometry()
                 expect(testMultiLineString).toBeAnyGeometry()
+                expect(testMultiLineString).toBeValidGeoJSON()
             }
         )
     })
@@ -234,6 +239,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiLineString).toBeMultiLineStringGeometry()
             expect(testMultiLineString).toBeAnyGeometry()
+            expect(testMultiLineString).toBeValidGeoJSON()
         })
 
         test('3D Bounding Box', () => {
@@ -249,6 +255,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiLineString).toBeMultiLineStringGeometry()
             expect(testMultiLineString).toBeAnyGeometry()
+            expect(testMultiLineString).toBeValidGeoJSON()
         })
 
         test('Illogical Bounding Box', () => {
@@ -264,6 +271,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiLineString).toBeMultiLineStringGeometry()
             expect(testMultiLineString).toBeAnyGeometry()
+            expect(testMultiLineString).toBeValidGeoJSON()
         })
 
         test('Redundant Bounding Box', () => {
@@ -279,6 +287,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testMultiLineString).toBeMultiLineStringGeometry()
             expect(testMultiLineString).toBeAnyGeometry()
+            expect(testMultiLineString).toBeValidGeoJSON()
         })
     })
 })
@@ -290,6 +299,7 @@ describe('Inalid Use Cases', () => {
             (badInput) => {
                 expect(badInput).not.toBeMultiLineStringGeometry()
                 expect(badInput).not.toBeAnyGeometry()
+                expect(badInput).not.toBeValidGeoJSON()
             }
         )
     })
@@ -304,6 +314,7 @@ describe('Inalid Use Cases', () => {
                 }
                 expect(testMultiLineString).not.toBeMultiLineStringGeometry()
                 expect(testMultiLineString).not.toBeAnyGeometry()
+                expect(testMultiLineString).not.toBeValidGeoJSON()
             }
         )
     })
@@ -317,6 +328,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testMultiLineString).not.toBeMultiLineStringGeometry()
             expect(testMultiLineString).not.toBeAnyGeometry()
+            expect(testMultiLineString).not.toBeValidGeoJSON()
         })
     })
 
@@ -328,6 +340,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testMultiLineString).not.toBeMultiLineStringGeometry()
             expect(testMultiLineString).not.toBeAnyGeometry()
+            expect(testMultiLineString).not.toBeValidGeoJSON()
         })
     })
 
@@ -339,6 +352,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testMultiLineString).not.toBeMultiLineStringGeometry()
             expect(testMultiLineString).not.toBeAnyGeometry()
+            expect(testMultiLineString).not.toBeValidGeoJSON()
         })
     })
 
@@ -375,6 +389,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testMultiLineString).not.toBeMultiLineStringGeometry()
             expect(testMultiLineString).not.toBeAnyGeometry()
+            expect(testMultiLineString).not.toBeValidGeoJSON()
         })
 
         test(`Contains: 'properties'`, () => {
@@ -392,6 +407,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testMultiLineString).not.toBeMultiLineStringGeometry()
             expect(testMultiLineString).not.toBeAnyGeometry()
+            expect(testMultiLineString).not.toBeValidGeoJSON()
         })
 
         test(`Contains: 'features'`, () => {
@@ -418,6 +434,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testMultiLineString).not.toBeMultiLineStringGeometry()
             expect(testMultiLineString).not.toBeAnyGeometry()
+            expect(testMultiLineString).not.toBeValidGeoJSON()
         })
     })
 
@@ -433,6 +450,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testMultiLineString).not.toBeMultiLineStringGeometry()
             expect(testMultiLineString).not.toBeAnyGeometry()
+            expect(testMultiLineString).not.toBeValidGeoJSON()
         })
 
         test(`Missing: 'coordinates'`, () => {
@@ -441,6 +459,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testMultiLineString).not.toBeMultiLineStringGeometry()
             expect(testMultiLineString).not.toBeAnyGeometry()
+            expect(testMultiLineString).not.toBeValidGeoJSON()
         })
     })
 
@@ -467,6 +486,7 @@ describe('Inalid Use Cases', () => {
             }
             expect(testMultiLineString).not.toBePointGeometry()
             expect(testMultiLineString).not.toBeAnyGeometry()
+            expect(testMultiLineString).not.toBeValidGeoJSON()
         })
     })
 })

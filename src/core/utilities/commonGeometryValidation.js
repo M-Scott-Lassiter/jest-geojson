@@ -1,4 +1,4 @@
-const { validBoundingBox } = require('./boundingBoxes/validBoundingBox')
+const { validBoundingBox } = require('../boundingBoxes/validBoundingBox')
 
 /**
  * This tests an object to see if it meets common required criteria between all GeoJSON

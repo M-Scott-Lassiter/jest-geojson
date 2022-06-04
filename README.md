@@ -183,11 +183,12 @@ _Future_
 
 ## Functional
 
+-   [toBeValidGeoJSON](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Functional.html#.toBeValidGeoJSON)
+
 ---
 
 _Future_
 
--   [ ] toBeValidGeoJSON
 -   [ ] toHave2DBoundingBox
 -   [ ] toHave3DBoundingBox
 -   [ ] toHaveBoundingBox

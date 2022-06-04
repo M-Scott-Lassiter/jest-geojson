@@ -1,5 +1,5 @@
 const { validCoordinate } = require('../coordinates/validCoordinate')
-const { commonGeometryValidation } = require('../utilities')
+const { commonGeometryValidation } = require('../utilities/commonGeometryValidation')
 
 /**
  * Verifies an object is a valid GeoJSON LineString Geometry. This geometry requires a

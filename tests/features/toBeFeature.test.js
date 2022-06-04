@@ -59,6 +59,7 @@ describe('Valid Use Cases', () => {
             expect(testFeature).toBeFeature()
             expect(testFeature).toBeFeature('Point')
             expect(testFeature).not.toBeFeature('MultiPoint')
+            expect(testFeature).toBeValidGeoJSON()
         })
 
         test('MultiPoint', () => {
@@ -66,6 +67,7 @@ describe('Valid Use Cases', () => {
             expect(testFeature).toBeFeature()
             expect(testFeature).toBeFeature('MultiPoint')
             expect(testFeature).not.toBeFeature('Point')
+            expect(testFeature).toBeValidGeoJSON()
         })
 
         test('LineString', () => {
@@ -73,6 +75,7 @@ describe('Valid Use Cases', () => {
             expect(testFeature).toBeFeature()
             expect(testFeature).toBeFeature('LineString')
             expect(testFeature).not.toBeFeature('MultiLineString')
+            expect(testFeature).toBeValidGeoJSON()
         })
 
         test('MultiLineString', () => {
@@ -80,6 +83,7 @@ describe('Valid Use Cases', () => {
             expect(testFeature).toBeFeature()
             expect(testFeature).toBeFeature('MultiLineString')
             expect(testFeature).not.toBeFeature('LineString')
+            expect(testFeature).toBeValidGeoJSON()
         })
 
         test('Polygon', () => {
@@ -87,6 +91,7 @@ describe('Valid Use Cases', () => {
             expect(testFeature).toBeFeature()
             expect(testFeature).toBeFeature('Polygon')
             expect(testFeature).not.toBeFeature('MultiPolygon')
+            expect(testFeature).toBeValidGeoJSON()
         })
 
         test('MultiPolygon', () => {
@@ -94,6 +99,7 @@ describe('Valid Use Cases', () => {
             expect(testFeature).toBeFeature()
             expect(testFeature).toBeFeature('MultiPolygon')
             expect(testFeature).not.toBeFeature('Polygon')
+            expect(testFeature).toBeValidGeoJSON()
         })
 
         test('Nested GeometryCollections', () => {
@@ -101,6 +107,7 @@ describe('Valid Use Cases', () => {
             expect(testFeature).toBeFeature()
             expect(testFeature).toBeFeature('GeometryCollection')
             expect(testFeature).not.toBeFeature('Polygon')
+            expect(testFeature).toBeValidGeoJSON()
         })
 
         test('Geometry May be a Null Value', () => {
@@ -108,6 +115,7 @@ describe('Valid Use Cases', () => {
             testFeature.properties.prop2 = true
             expect(testFeature).toBeFeature()
             expect(testFeature).not.toBeFeature('Polygon')
+            expect(testFeature).toBeValidGeoJSON()
         })
     })
 
@@ -120,6 +128,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testFeature).toBeFeature()
             expect(testFeature).not.toBeFeature('MultiPoint')
+            expect(testFeature).toBeValidGeoJSON()
         })
 
         test('properties: {}', () => {
@@ -130,6 +139,7 @@ describe('Valid Use Cases', () => {
             }
             expect(testFeature).toBeFeature()
             expect(testFeature).not.toBeFeature('Point')
+            expect(testFeature).toBeValidGeoJSON()
         })
     })
 
@@ -154,6 +164,7 @@ describe('Valid Use Cases', () => {
                 properties: null
             }
             expect(testFeature).toBeFeature()
+            expect(testFeature).toBeValidGeoJSON()
         })
     })
 
@@ -166,6 +177,7 @@ describe('Valid Use Cases', () => {
                 foreign: true
             }
             expect(testFeature).toBeFeature()
+            expect(testFeature).toBeValidGeoJSON()
         })
 
         test('Multiple Foreign Properties', () => {
@@ -178,6 +190,7 @@ describe('Valid Use Cases', () => {
                 foreign2: 33
             }
             expect(testFeature).toBeFeature()
+            expect(testFeature).toBeValidGeoJSON()
         })
 
         test('Foreign Property That Would Normally be a Valid GeoJSON Object', () => {
@@ -197,6 +210,7 @@ describe('Valid Use Cases', () => {
             }
 
             expect(testFeature).toBeFeature()
+            expect(testFeature).toBeValidGeoJSON()
         })
     })
 
@@ -220,6 +234,7 @@ describe('Valid Use Cases', () => {
             }
 
             expect(testFeature).toBeFeature()
+            expect(testFeature).toBeValidGeoJSON()
         })
 
         test('3D Bounding Box', () => {
@@ -241,6 +256,7 @@ describe('Valid Use Cases', () => {
             }
 
             expect(testFeature).toBeFeature()
+            expect(testFeature).toBeValidGeoJSON()
         })
 
         test('Illogical Bounding Box', () => {
@@ -262,6 +278,7 @@ describe('Valid Use Cases', () => {
             }
 
             expect(testFeature).toBeFeature()
+            expect(testFeature).toBeValidGeoJSON()
         })
 
         test('Redundant Bounding Box', () => {
@@ -273,6 +290,7 @@ describe('Valid Use Cases', () => {
             }
 
             expect(testFeature).toBeFeature()
+            expect(testFeature).toBeValidGeoJSON()
         })
     })
 })
@@ -281,6 +299,7 @@ describe('Invalid Use Cases', () => {
     describe('Expect to fail with bad inputs:', () => {
         test.each([...invalidInputValues, null])('expect(%p).not.toBeFeature()', (badInput) => {
             expect(badInput).not.toBeFeature()
+            expect(badInput).not.toBeValidGeoJSON()
         })
     })
 
@@ -297,42 +316,49 @@ describe('Invalid Use Cases', () => {
             testFeature.geometry = badGeometry.point
             expect(testFeature).not.toBeFeature()
             expect(testFeature).not.toBeFeature('MultiPoint')
+            expect(testFeature).not.toBeValidGeoJSON()
         })
 
         test('MultiPoint', () => {
             testFeature.geometry = badGeometry.multiPoint
             expect(testFeature).not.toBeFeature()
             expect(testFeature).not.toBeFeature('Point')
+            expect(testFeature).not.toBeValidGeoJSON()
         })
 
         test('LineString', () => {
             testFeature.geometry = badGeometry.lineString
             expect(testFeature).not.toBeFeature()
             expect(testFeature).not.toBeFeature('MultiLineString')
+            expect(testFeature).not.toBeValidGeoJSON()
         })
 
         test('MultiLineString', () => {
             testFeature.geometry = badGeometry.multiLineString
             expect(testFeature).not.toBeFeature()
             expect(testFeature).not.toBeFeature('LineString')
+            expect(testFeature).not.toBeValidGeoJSON()
         })
 
         test('Polygon', () => {
             testFeature.geometry = badGeometry.polygon
             expect(testFeature).not.toBeFeature()
             expect(testFeature).not.toBeFeature('MultiPolygon')
+            expect(testFeature).not.toBeValidGeoJSON()
         })
 
         test('MultiPolygon', () => {
             testFeature.geometry = badGeometry.multiPolygon
             expect(testFeature).not.toBeFeature()
             expect(testFeature).not.toBeFeature('Polygon')
+            expect(testFeature).not.toBeValidGeoJSON()
         })
 
         test('Unrecognized', () => {
             testFeature.geometry = badGeometry.unrecognized
             expect(testFeature).not.toBeFeature()
             expect(testFeature).not.toBeFeature('Polygon')
+            expect(testFeature).not.toBeValidGeoJSON()
         })
 
         test('All', () => {
@@ -346,6 +372,7 @@ describe('Invalid Use Cases', () => {
             ]
             expect(testFeature).not.toBeFeature()
             expect(testFeature).not.toBeFeature('Polygon')
+            expect(testFeature).not.toBeValidGeoJSON()
         })
     })
 
@@ -357,6 +384,7 @@ describe('Invalid Use Cases', () => {
                 properties: null
             }
             expect(testFeature).not.toBeFeature()
+            expect(testFeature).not.toBeValidGeoJSON()
         })
     })
 
@@ -381,6 +409,7 @@ describe('Invalid Use Cases', () => {
                 bbox: input
             }
             expect(testFeature).not.toBeFeature()
+            expect(testFeature).not.toBeValidGeoJSON()
         })
     })
 
@@ -407,6 +436,7 @@ describe('Invalid Use Cases', () => {
                 id: input
             }
             expect(testFeature).not.toBeFeature()
+            expect(testFeature).not.toBeValidGeoJSON()
         })
     })
 
@@ -425,6 +455,7 @@ describe('Invalid Use Cases', () => {
                 properties: null
             }
             expect(testFeature).not.toBeFeature()
+            expect(testFeature).not.toBeValidGeoJSON()
         })
 
         test(`Contains: 'geometries'`, () => {
@@ -448,6 +479,7 @@ describe('Invalid Use Cases', () => {
             }
 
             expect(testFeature).not.toBeFeature()
+            expect(testFeature).not.toBeValidGeoJSON()
         })
 
         test(`Contains: 'features'`, () => {
@@ -474,6 +506,7 @@ describe('Invalid Use Cases', () => {
             }
 
             expect(testFeature).not.toBeFeature()
+            expect(testFeature).not.toBeValidGeoJSON()
         })
 
         describe('Expect to fail when missing required properties:', () => {
@@ -486,6 +519,7 @@ describe('Invalid Use Cases', () => {
                     }
                 }
                 expect(testFeature).not.toBeFeature()
+                expect(testFeature).not.toBeValidGeoJSON()
             })
 
             test(`Missing: 'geometry'`, () => {
@@ -494,6 +528,7 @@ describe('Invalid Use Cases', () => {
                     properties: null
                 }
                 expect(testFeature).not.toBeFeature()
+                expect(testFeature).not.toBeValidGeoJSON()
             })
 
             test(`Missing: 'properties'`, () => {
@@ -502,6 +537,7 @@ describe('Invalid Use Cases', () => {
                     geometry: null
                 }
                 expect(testFeature).not.toBeFeature()
+                expect(testFeature).not.toBeValidGeoJSON()
             })
         })
 
@@ -514,6 +550,7 @@ describe('Invalid Use Cases', () => {
                 }
 
                 expect(testFeature).not.toBeFeature()
+                expect(testFeature).not.toBeValidGeoJSON()
             })
 
             test(`Single Element Array`, () => {
@@ -529,6 +566,7 @@ describe('Invalid Use Cases', () => {
                 }
 
                 expect(testFeature).not.toBeFeature()
+                expect(testFeature).not.toBeValidGeoJSON()
             })
 
             test(`Multiple Elements Array`, () => {
@@ -547,6 +585,7 @@ describe('Invalid Use Cases', () => {
                     ]
                 }
                 expect(testFeature).not.toBeFeature()
+                expect(testFeature).not.toBeValidGeoJSON()
             })
         })
 
@@ -559,6 +598,7 @@ describe('Invalid Use Cases', () => {
                 }
 
                 expect(testFeature).not.toBeFeature()
+                expect(testFeature).not.toBeValidGeoJSON()
             })
         })
     })

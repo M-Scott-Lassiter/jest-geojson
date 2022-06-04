@@ -135,6 +135,9 @@
                                 >commonGeometryValidation</a
                             >
                         </li>
+                        <li data-type="method">
+                            <a href="Core.Utilities.html#.validGeoJSON">validGeoJSON</a>
+                        </li>
                     </ul>
                 </li>
                 <li><a href="Matchers.html">Matchers</a></li>
@@ -193,6 +196,16 @@
                     <ul class="methods">
                         <li data-type="method">
                             <a href="Matchers.Features.html#.toBeFeature">toBeFeature</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Matchers.Functional.html">Matchers.Functional</a>
+                    <ul class="methods">
+                        <li data-type="method">
+                            <a href="Matchers.Functional.html#.toBeValidGeoJSON"
+                                >toBeValidGeoJSON</a
+                            >
                         </li>
                     </ul>
                 </li>
@@ -262,7 +275,7 @@
                                 <ul class="dummy">
                                     <li>
                                         <a href="typedefinitions.js.html">typedefinitions.js</a>,
-                                        <a href="typedefinitions.js.html#line107">line 107</a>
+                                        <a href="typedefinitions.js.html#line113">line 113</a>
                                     </li>
                                 </ul>
                             </dd>
@@ -287,8 +300,12 @@
                         <dd class="tag-source">
                             <ul class="dummy">
                                 <li>
-                                    <a href="core_utilities.js.html">core/utilities.js</a>,
-                                    <a href="core_utilities.js.html#line18">line 18</a>
+                                    <a href="core_utilities_commonGeometryValidation.js.html"
+                                        >core/utilities/commonGeometryValidation.js</a
+                                    >,
+                                    <a href="core_utilities_commonGeometryValidation.js.html#line18"
+                                        >line 18</a
+                                    >
                                 </li>
                             </ul>
                         </dd>
@@ -483,6 +500,189 @@
                     <div class="param-desc">
                         True if all common validations passed. Will throw a specific error if it
                         encounters a problem.
+                    </div>
+
+                    <dl class="param-type">
+                        <dt>Type</dt>
+                        <dd>
+                            <span class="param-type">boolean</span>
+                        </dd>
+                    </dl>
+
+                    <h4 class="name" id=".validGeoJSON">
+                        <span class="type-signature">(static) </span>validGeoJSON<span
+                            class="signature"
+                            >(geoObject)</span
+                        ><span class="type-signature"> &rarr; {boolean}</span>
+                    </h4>
+
+                    <dl class="details">
+                        <dt class="tag-source">Source:</dt>
+                        <dd class="tag-source">
+                            <ul class="dummy">
+                                <li>
+                                    <a href="core_utilities_validGeoJSON.js.html"
+                                        >core/utilities/validGeoJSON.js</a
+                                    >,
+                                    <a href="core_utilities_validGeoJSON.js.html#line95">line 95</a>
+                                </li>
+                            </ul>
+                        </dd>
+
+                        <dt class="tag-see">See:</dt>
+                        <dd class="tag-see">
+                            <ul>
+                                <li>
+                                    <a
+                                        href="https://github.com/M-Scott-Lassiter/jest-geojson/issues/26"
+                                        >https://github.com/M-Scott-Lassiter/jest-geojson/issues/26</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+                    </dl>
+
+                    <div class="description usertext">
+                        This tests an object to see if it meets validation criteria for any of the
+                        seven GeoJSON Geometry types, Features, or FeatureCollections.
+                    </div>
+
+                    <h5>Examples</h5>
+
+                    <pre class="prettyprint"><code>point = {
+    "type": "Point",
+    "coordinates": [100.0, 0.0]
+}
+lineString = {
+    "type": "LineString",
+    "coordinates": [
+        [
+            [180.0, 40.0],
+            [180.0, 50.0],
+            [170.0, 50.0],
+            [170.0, 40.0],
+            [180.0, 40.0]
+        ]
+    ]
+}
+polygon = {
+    "type": "Polygon",
+    "coordinates": [
+        [
+            [100.0, 0.0],
+            [101.0, 0.0],
+            [101.0, 1.0],
+            [100.0, 1.0],
+            [100.0, 0.0]
+        ]
+    ]
+}
+feature = {
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": [102.0, 0.5]
+    }
+}
+geometryCollection = {
+    "type": "GeometryCollection",
+    "geometries": [{
+        "type": "Point",
+        "coordinates": [100.0, 0.0]
+    }, {
+        "type": "LineString",
+        "coordinates": [
+            [101.0, 0.0],
+            [102.0, 1.0]
+        ]
+    }, {
+        "type": "Polygon",
+        "coordinates": [
+            [
+                [102.0, 2.0],
+                [103.0, 2.0],
+                [103.0, 3.0],
+                [102.0, 3.0],
+                [102.0, 2.0]
+            ]
+        ]
+    }, {
+        "type": "Point",
+        "coordinates": [150.0, 73.0]
+    }]
+}
+
+// All of these will return true:
+
+validGeoJSON(point)
+validGeoJSON(lineString)
+validGeoJSON(polygon)
+validGeoJSON(feature)
+validGeoJSON(feature.geometry)
+validGeoJSON(geometryCollection)
+validGeoJSON(geometryCollection.geometries[1])</code></pre>
+
+                    <pre class="prettyprint"><code>// All of these throw errors:
+
+validGeoJSON(polygon.coordinates)
+validGeoJSON(geometryCollection.geometries)
+validGeoJSON([322, -34.549, 0])
+validGeoJSON({coordinates: [22, -34.549, 22]})</code></pre>
+
+                    <h5>Parameters:</h5>
+
+                    <table class="params">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+
+                                <th>Type</th>
+
+                                <th class="last">Description</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="name"><code>geoObject</code></td>
+
+                                <td class="type">
+                                    <span class="param-type">object</span>
+                                </td>
+
+                                <td class="description last">
+                                    Any GeoJSON Geometry, Feature, or FeatureCollection object
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h5>Throws:</h5>
+
+                    <dl>
+                        <dt>
+                            <div class="param-desc usertext">
+                                Argument must be a GeoJSON Geometry, Feature, or FeatureCollection
+                                object.
+                            </div>
+                        </dt>
+                        <dd></dd>
+                        <dt>
+                            <dl class="param-type">
+                                <dt>Type</dt>
+                                <dd>
+                                    <span class="param-type">Error</span>
+                                </dd>
+                            </dl>
+                        </dt>
+                        <dd></dd>
+                    </dl>
+
+                    <h5>Returns:</h5>
+
+                    <div class="param-desc">
+                        True if a valid GeoJSON object. Will throw a specific error if it encounters
+                        a problem.
                     </div>
 
                     <dl class="param-type">

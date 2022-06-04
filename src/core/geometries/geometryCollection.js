@@ -1,5 +1,5 @@
 const { anyGeometry } = require('./anyGeometry')
-const { commonGeometryValidation } = require('../utilities')
+const { commonGeometryValidation } = require('../utilities/commonGeometryValidation')
 
 /**
  * Verifies an object is a valid GeoJSON GeometryCollection. This object requires a

@@ -63,6 +63,7 @@ describe('Valid Use Cases', () => {
         test.each([...goodCoordinates])('expect(%p)', (coordinate) => {
             expect(coordinate).isValid3DCoordinate()
             expect(coordinate).isValidCoordinate()
+            expect(coordinate).not.toBeValidGeoJSON()
         })
     })
 
@@ -70,6 +71,7 @@ describe('Valid Use Cases', () => {
         test.each([...goodBoundaryCoordinates])('expect([%p])', (coordinate) => {
             expect(coordinate).isValid3DCoordinate()
             expect(coordinate).isValidCoordinate()
+            expect(coordinate).not.toBeValidGeoJSON()
         })
     })
 })

@@ -80,4 +80,8 @@ describe('Utility Functions Exported', () => {
     test('commonGeometryValidation', () => {
         expect('commonGeometryValidation' in core.utilities).toBeTruthy()
     })
+
+    test('validGeoJSON', () => {
+        expect('validGeoJSON' in core.utilities).toBeTruthy()
+    })
 })

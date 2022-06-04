@@ -32,5 +32,7 @@ exports.geometries = {
 }
 
 exports.utilities = {
-    commonGeometryValidation: require('./core/utilities').commonGeometryValidation
+    commonGeometryValidation: require('./core/utilities/commonGeometryValidation')
+        .commonGeometryValidation,
+    validGeoJSON: require('./core/utilities/validGeoJSON').validGeoJSON
 }

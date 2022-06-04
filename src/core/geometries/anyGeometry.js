@@ -4,7 +4,7 @@ const { lineStringGeometry } = require('./lineStringGeometry')
 const { multiLineStringGeometry } = require('./multiLineStringGeometry')
 const { polygonGeometry } = require('./polygonGeometry')
 const { multiPolygonGeometry } = require('./multiPolygonGeometry')
-const { commonGeometryValidation } = require('../utilities')
+const { commonGeometryValidation } = require('../utilities/commonGeometryValidation')
 
 /**
  * Verifies an object meets validity requirements for one of the six basic GeoJSON geometry types:

@@ -103,44 +103,31 @@ After installing, you should [run the build script](#building) to verify everyth
 
 ### Project Structure
 
-The `src` folder contains all distribution files.
-
-The `tests` folder contains the Jest scripts used to verify the matchers work as designed.
-
 ```
 ├── src
 │   ├── core
+|   │   └── <categories>
 │   ├── matchers
+|   │   └── <categories>
 │   ├── setup
 |   ├── core.js
 |   ├── matchers.js
 |   └── typedefinitions.js
 ├── tests
+|   ├── <categories>
 │   ├── core.test.js
 |   └── matchers.test.js
 ```
 
-The `core` folder contains the key functionality.
+-   `src`: contains all distribution files
+    -   `core`: contains the key functionality used throughout
+    -   `matchers`: contains the matchers powered by the core functions
+    -   `setup`: contains the scripts that install the matchers into the Jest runtime
+    -   `core.js` and `matchers.js`: export a single object containing their categories as object members, each with their respective functions
+    -   `typedefinitions.js`: documents the project's JSDoc type definitions and contains no actual code
+-   `tests`: the Jest scripts used to verify the matchers work as designed
 
-The `matchers` folder contains the matchers that use core functions.
-
-The `setup` folder contains the scripts that install the matchers into the Jest runtime. `package.json` references these in entry points.
-
-The `core`, `matchers`, `setup`, and `tests` folder each have the same subfolder structure:
-
-```
-├── boundingBoxes
-├── coordinates
-├── features
-├── featureCollections
-├── functional
-├── geometries
-└── geometryCollections
-```
-
-The `core.js` and `matchers.js` consolidate and export their respective elements grouped by folder structure category. When adding a new matcher, refer to the instructions in the comments at the top of these files.
-
-`typedefinitions.js` document the project's JSDoc type definitions and contains no actual code.
+`package.json` contains entry points for `core.js`, `matchers.js`, and each of the loading scripts in `setup`.
 
 ### Building
 
@@ -166,7 +153,9 @@ This project provides high working confidence to developers by uses Jest itself 
 
 ```bash
 npm run test # Runs all tests and generates coverage report
+
 npm run test:<type> #runs the tests only in that category
+
 npm run watch # Runs tests in watch mode
 ```
 

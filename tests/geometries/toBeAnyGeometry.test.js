@@ -63,27 +63,7 @@ const featureCollection = {
     ]
 }
 
-describe('Valid Use Cases', () => {
-    test('Expect to pass with GeometryCollection', () => {
-        const geometryCollection = {
-            type: 'GeometryCollection',
-            geometries: [
-                {
-                    type: 'Point',
-                    coordinates: [100.0, 0.0]
-                },
-                {
-                    type: 'LineString',
-                    coordinates: [
-                        [101.0, 0.0],
-                        [102.0, 1.0]
-                    ]
-                }
-            ]
-        }
-        expect(geometryCollection).toBeAnyGeometry()
-    })
-})
+// All valid use cases contained within the other Geometry tests.
 
 describe('Invalid Use Cases', () => {
     test('Expect to fail with Feature', () => {
