@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>typedefinitions.js - Jest-GeoJSON</title>
+        <title>matchers/features/toHaveID.js - Jest-GeoJSON</title>
 
         <meta
             name="description"
@@ -283,130 +283,106 @@
         </nav>
 
         <div id="main">
-            <h1 class="page-title">typedefinitions.js</h1>
+            <h1 class="page-title">matchers/features/toHaveID.js</h1>
 
             <section>
                 <article>
                     <pre
                         class="prettyprint source linenums"
-                    ><code>/* eslint-disable global-require */
-/* This is the entry point the jest-geojson package. Example usage in other projects:
+                    ><code>const { hasID } = require('../../core/features/hasID')
 
-       import * as matchers from 'jest-extended'
-       expect.extend(matchers)
-
-    The top half of this file contains the project's namespace and type definitions.
-    The bottom half contains the exported matcher functions. Adding any other type
-    of function to these exports will cause a Jest runtime error.
-
-    Add new exports to this file in alphabetical order by folder structure to
-    make it easier to find and maintain.
-*/
-
+// eslint-disable-next-line jsdoc/require-returns
 /**
- * GeoJSON tailored matchers used to extend the Jest testing framework.
- * All matchers should return an object like the examples below.
+ * Checks if a GeoJSON Feature has an ID. Passes if the Feature object has any ID (no argument provided), or
+ * if the ID exactly matches the optional argument (single string, number, or RegExp provided), or any value
+ * within an array of any combination of strings, numbers, or RegExp.
  *
- * @private
- * @namespace Matchers
- * @see https://jestjs.io/docs/expect#expectextendmatchers
+ * The test fails if the object does not have an ID, or if it has an ID that does not match the SearchID.
+ *
+ * @memberof Matchers.Features
+ * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/36
+ * @param {object} featureObject any GeoJSON Feature object
+ * @param {string|number|RegExp|string[]|number[]|RegExp[]} [SearchID] Specific value or array of possible values
+ * to search for.
  * @example
- * // Passing
- * { pass: true, message: () => 'This test passed' }
+ * const testFeature1 = {
+ *     type: 'Feature',
+ *     id: 'f1',
+ *     geometry: {...},
+ *     properties: {...}
+ * }
+ *
+ * test('Feature Has an ID', () => {
+ *     expect(testFeature1).toHaveID()
+ *     expect(testFeature1).toHaveID([])
+ *     expect(testFeature1).toHaveID('f1')
+ *     expect(testFeature1).toHaveID([1, 'F', 'F12', /[a-z]+[0-9]+/])
+ *
+ *     expect(testFeature1).not.toHaveID('f2')
+ *     expect(testFeature1).not.toHaveID([1, 'F', 'F12', /SomeID/])
+ * })
  * @example
- * // Failing
- * { pass: false, message: () => 'This test failed' }
- */
-
-/**
- * A set of matchers related to validating bounding boxes.
+ * const testFeature2 = {
+ *     type: 'Feature',
+ *     geometry: {...},
+ *     properties: {...}
+ * }
  *
- * @see https://datatracker.ietf.org/doc/html/rfc7946#section-5
- * @namespace Matchers.BoundingBoxes
+ * test('Feature Does not Have an ID', () => {
+ *     expect(testFeature2).not.toHaveID()
+ *     expect(testFeature2).not.toHaveID(2)
+ * })
  */
+function toHaveID(featureObject, SearchID) {
+    const { printReceived, matcherHint } = this.utils
+    const optionalIDMessage = () => {
+        if (SearchID !== undefined &amp;&amp; SearchID?.length !== 0) {
+            return ` of ${SearchID}`
+        }
+        return ''
+    }
+    const passMessage =
+        // eslint-disable-next-line prefer-template
+        matcherHint('.not.toHaveID', 'FeatureObject', 'SearchID') +
+        '\n\n' +
+        `Expected input to not be a valid GeoJSON Feature object with ID` +
+        optionalIDMessage() +
+        `.\n\n` +
+        `Received:  ${printReceived(featureObject)}`
 
-/**
- * A set of matchers related to validating coordinates and coordinate properties.
- *
- * @see https://datatracker.ietf.org/doc/html/rfc7946#section-4
- * @namespace Matchers.Coordinates
- */
+    /**
+     * Combines a custom error message with built in Jest tools to provide a more descriptive error
+     * meessage to the end user.
+     *
+     * @param {string} errorMessage Error message text to return to the user
+     * @returns {string} Concatenated Jest test result string
+     */
+    function failMessage(errorMessage) {
+        return (
+            // eslint-disable-next-line prefer-template, no-unused-expressions
+            matcherHint('.toHaveID', 'FeatureObject', 'SearchID') +
+            '\n\n' +
+            `${errorMessage}\n\n` +
+            `Received:  ${printReceived(featureObject)}`
+        )
+    }
 
-/**
- * A set of matchers related to validating FeatureCollection objects.
- *
- * @see https://datatracker.ietf.org/doc/html/rfc7946#section-3.3
- * @namespace Matchers.FeatureCollections
- */
+    let idIsPresent
+    // Provide error handling in case of invalid inputs to the matcher
+    try {
+        idIsPresent = hasID(featureObject, SearchID)
+    } catch (err) {
+        return { pass: false, message: () => failMessage(err.message) }
+    }
 
-/**
- * A set of matchers related to validating feature objects.
- *
- * @see https://datatracker.ietf.org/doc/html/rfc7946#section-3.2
- * @namespace Matchers.Features
- */
+    // Input was valid, now return either pass or fail
+    if (idIsPresent) {
+        return { pass: true, message: () => passMessage }
+    }
+    return { pass: false, message: () => failMessage(`Did not find the ID ${SearchID}.`) }
+}
 
-/**
- * Functional matchers assess more generic attributes and qualities and many accept multiple input types.
- *
- * @namespace Matchers.Functional
- */
-
-/**
- * A set of matchers related to validating the seven geometry objects.
- *
- * @see https://datatracker.ietf.org/doc/html/rfc7946#section-3.1
- * @namespace Matchers.Geometries
- */
-
-/**
- * Core functionality used internal to jest-geojson.
- *
- * @private
- * @namespace Core
- */
-
-/**
- * Coordinate validation functions used within Core.
- *
- * @private
- * @namespace Core.Coordinates
- */
-
-/**
- * Bounding Box validation functions used within Core.
- *
- * @private
- * @namespace Core.BoundingBoxes
- */
-
-/**
- * FeatureCollection object validation functions used within Core.
- *
- * @private
- * @namespace Core.FeatureCollections
- */
-
-/**
- * Feature object validation functions used within Core.
- *
- * @private
- * @namespace Core.Features
- */
-
-/**
- * Geometry object validation functions used within Core.
- *
- * @private
- * @namespace Core.Geometries
- */
-
-/**
- * Various helper functions used within Core.
- *
- * @private
- * @namespace Core.Utilities
- */
+exports.toHaveID = toHaveID
 </code></pre>
                 </article>
             </section>

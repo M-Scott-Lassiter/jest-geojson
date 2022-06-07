@@ -1,14 +1,15 @@
 <div align="center">
 
-# Jest-GeoJSON
+[<img src="images/banner.svg" alt="Jest-GeoJSON - GeoJSON Validation Matchers for Jest" width=500>](https://www.npmjs.com/package/jest-geojson)
+
+---
 
 [![NPM Version](https://img.shields.io/npm/v/jest-geojson)](https://www.npmjs.com/package/jest-geojson)
-[![NPM Package Size](https://shields.shivering-isles.com:/bundlephobia/min/jest-geojson?label=size)](https://www.npmjs.com/package/jest-geojson/v/beta)
-[![License](https://img.shields.io/github/license/M-Scott-Lassiter/jest-geojson?color=blue)](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/LICENSE)
-
-[![Powered by Jest](https://img.shields.io/badge/Powered%20by-Jest-99424f?logo=jest&labelColor=white&logoColor=99424f)](https://github.com/facebook/jest)
 [![Completed and deployed matchers](https://img.shields.io/github/issues-search/m-scott-lassiter/jest-geojson?color=brightgreen&label=matchers&query=is%3Aissue%20is%3Aclosed%20label%3A%22matchers%2Fboundingbox%22%2C%22matchers%2Fcoordinates%22%2C%22matchers%2Fgeometries%22%2C%22matchers%2Fgeometrycollections%22%2C%22matchers%2Ffeatures%22%2C%22matchers%2Ffeaturecollections%22%2C%22matchers%2Ffunctional%22)](#matchers)
 [![Proposed new matchers](https://img.shields.io/github/issues-search/m-scott-lassiter/jest-geojson?color=important&label=proposed&query=is%3Aissue%20is%3Aopen%20label%3A%22new%20matcher%20proposal%22)](https://github.com/M-Scott-Lassiter/jest-geojson/issues?q=is%3Aissue+is%3Aopen+label%3A%22new+matcher+proposal%22)
+
+[![Powered by Jest](https://img.shields.io/badge/Powered%20by-Jest-99424f?logo=jest&labelColor=white&logoColor=99424f)](https://github.com/facebook/jest)
+[![License](https://img.shields.io/github/license/M-Scott-Lassiter/jest-geojson?color=blue)](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/LICENSE)
 
 [![This project has reached initial release!](https://img.shields.io/github/milestones/progress-percent/m-scott-lassiter/jest-geojson/1)](https://github.com/M-Scott-Lassiter/jest-geojson/milestone/1)
 
@@ -155,12 +156,12 @@ _Future_
 ## Features
 
 -   [toBeFeature](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Features.html#.toBeFeature)
+-   [toHaveID](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Features.html#.toHaveID)
 
 ---
 
 _Future_
 
--   [ ] toHaveID
 -   [ ] toHaveStringID
 -   [ ] toHaveNumericID
 -   [ ] toHaveProperties (array of [property, optional values])

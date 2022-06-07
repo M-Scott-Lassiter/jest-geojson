@@ -2,7 +2,30 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Features - Documentation</title>
+        <title>Features - Jest-GeoJSON</title>
+
+        <meta
+            name="description"
+            content="An extended set of matcher functions for the Jest Javascript unit testing framework tailored to evaluating with GeoJSON data."
+        />
+
+        <meta
+            name="keywords"
+            content="jest-geojson, jest, testing, validation, geojson, test, gis, assertions, matchers, jest-tests, jest-matchers, javascript, node, npm"
+        />
+        <meta
+            name="keyword"
+            content="jest-geojson, jest, testing, validation, geojson, test, gis, assertions, matchers, jest-tests, jest-matchers, javascript, node, npm"
+        />
+
+        <meta property="og:title" content="Jest-GeoJSON Documentation" />
+        <meta property="og:type" content="article" />
+        <meta
+            property="og:image"
+            content="https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/images/banner.svg"
+        />
+        <meta property="og:site_name" content="Jest-GeoJSON" />
+        <meta property="og:url" content="https://github.com/M-Scott-Lassiter/jest-geojson" />
 
         <script src="scripts/prettify/prettify.js"></script>
         <script src="scripts/prettify/lang-css.js"></script>
@@ -22,7 +45,7 @@
 
         <label for="nav-trigger" class="overlay"></label>
 
-        <nav>
+        <nav class="wrap">
             <input type="text" id="nav-search" placeholder="Search" />
 
             <h2><a href="index.html">Home</a></h2>
@@ -32,7 +55,7 @@
                     target="_blank"
                     class="menu-item"
                     id="repository"
-                    >Github repo</a
+                    >Github Repo</a
                 >
             </h2>
             <h3>Namespaces</h3>
@@ -86,6 +109,7 @@
                         <li data-type="method">
                             <a href="Core.Features.html#.feature">feature</a>
                         </li>
+                        <li data-type="method"><a href="Core.Features.html#.hasID">hasID</a></li>
                     </ul>
                 </li>
                 <li>
@@ -196,6 +220,9 @@
                     <ul class="methods">
                         <li data-type="method">
                             <a href="Matchers.Features.html#.toBeFeature">toBeFeature</a>
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.Features.html#.toHaveID">toHaveID</a>
                         </li>
                     </ul>
                 </li>
@@ -520,6 +547,208 @@ const badExample3 = feature(testFeature.geometry, 'Polygon')) // throws error</c
 
                     <div class="param-desc">
                         True if a valid GeoJSON Feature. If invalid, it will throw an error.
+                    </div>
+
+                    <dl class="param-type">
+                        <dt>Type</dt>
+                        <dd>
+                            <span class="param-type">boolean</span>
+                        </dd>
+                    </dl>
+
+                    <h4 class="name" id=".hasID">
+                        <span class="type-signature">(static) </span>hasID<span class="signature"
+                            >(featureObject, SearchID<span class="signature-attributes">opt</span
+                            >)</span
+                        ><span class="type-signature"> &rarr; {boolean}</span>
+                    </h4>
+
+                    <dl class="details">
+                        <dt class="tag-source">Source:</dt>
+                        <dd class="tag-source">
+                            <ul class="dummy">
+                                <li>
+                                    <a href="core_features_hasID.js.html">core/features/hasID.js</a
+                                    >, <a href="core_features_hasID.js.html#line43">line 43</a>
+                                </li>
+                            </ul>
+                        </dd>
+
+                        <dt class="tag-see">See:</dt>
+                        <dd class="tag-see">
+                            <ul>
+                                <li>
+                                    <a
+                                        href="https://github.com/M-Scott-Lassiter/jest-geojson/issues/36"
+                                        >https://github.com/M-Scott-Lassiter/jest-geojson/issues/36</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+                    </dl>
+
+                    <div class="description usertext">
+                        Checks if a GeoJSON Feature has an ID. Providing an optional SearchID
+                        argument will check for that exact ID or array of possible ID values.
+                    </div>
+
+                    <h5>Examples</h5>
+
+                    <pre class="prettyprint"><code>const testFeature = {
+    type: 'Feature',
+    id: 'f1',
+    geometry: {...},
+    properties: {...}
+}
+
+// All of these return true
+const goodExample1 = hasID(testFeature)
+const goodExample2 = hasID(testFeature, 'f1')
+const goodExample3 = hasID(testFeature, [1, 'F', 'F12', /[a-z]+[0-9]+/])
+
+// Both of these return false
+const badExample1 = hasID(testFeature, 'f12')
+const badExample2 = hasID(testFeature, [1, 'F', 'F12', /SomeID/])</code></pre>
+
+                    <pre class="prettyprint"><code>const testFeature = {
+    type: 'Feature',
+    geometry: {...},
+    properties: {...}
+}
+
+const example = hasID(testFeature) // false</code></pre>
+
+                    <h5>Parameters:</h5>
+
+                    <table class="params">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+
+                                <th>Type</th>
+
+                                <th>Attributes</th>
+
+                                <th class="last">Description</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="name"><code>featureObject</code></td>
+
+                                <td class="type">
+                                    <span class="param-type">object</span>
+                                </td>
+
+                                <td class="attributes"></td>
+
+                                <td class="description last">a GeoJSON Feature object</td>
+                            </tr>
+
+                            <tr>
+                                <td class="name"><code>SearchID</code></td>
+
+                                <td class="type">
+                                    <span class="param-type">string</span>
+                                    |
+
+                                    <span class="param-type">number</span>
+                                    |
+
+                                    <span class="param-type">RegExp</span>
+                                    |
+
+                                    <span class="param-type">Array.&lt;string></span>
+                                    |
+
+                                    <span class="param-type">Array.&lt;number></span>
+                                    |
+
+                                    <span class="param-type">Array.&lt;RegExp></span>
+                                </td>
+
+                                <td class="attributes">&lt;optional><br /></td>
+
+                                <td class="description last">
+                                    Specific value or array of possible values to search for.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h5>Throws:</h5>
+                    <ul>
+                        <li>
+                            <dl>
+                                <dt>
+                                    <div class="param-desc usertext">
+                                        Argument must be a GeoJSON Feature object
+                                    </div>
+                                </dt>
+                                <dd></dd>
+                                <dt>
+                                    <dl class="param-type">
+                                        <dt>Type</dt>
+                                        <dd>
+                                            <span class="param-type">Error</span>
+                                        </dd>
+                                    </dl>
+                                </dt>
+                                <dd></dd>
+                            </dl>
+                        </li>
+
+                        <li>
+                            <dl>
+                                <dt>
+                                    <div class="param-desc usertext">
+                                        Feature object must have an "id" member
+                                    </div>
+                                </dt>
+                                <dd></dd>
+                                <dt>
+                                    <dl class="param-type">
+                                        <dt>Type</dt>
+                                        <dd>
+                                            <span class="param-type">Error</span>
+                                        </dd>
+                                    </dl>
+                                </dt>
+                                <dd></dd>
+                            </dl>
+                        </li>
+
+                        <li>
+                            <dl>
+                                <dt>
+                                    <div class="param-desc usertext">
+                                        Optional SearchID must be either a number, string, RegExp,
+                                        or array of any of these values
+                                    </div>
+                                </dt>
+                                <dd></dd>
+                                <dt>
+                                    <dl class="param-type">
+                                        <dt>Type</dt>
+                                        <dd>
+                                            <span class="param-type">Error</span>
+                                        </dd>
+                                    </dl>
+                                </dt>
+                                <dd></dd>
+                            </dl>
+                        </li>
+                    </ul>
+
+                    <h5>Returns:</h5>
+
+                    <div class="param-desc">
+                        True if the Feature object has any ID (no argument provided), or if the ID
+                        exactly matches the optional argument (single string, number, or RegExp
+                        provided), or any value within an array of any combination of strings,
+                        numbers, or RegExp. If the object has an ID that does not match SearchID, it
+                        returns false.
                     </div>
 
                     <dl class="param-type">

@@ -40,6 +40,10 @@ describe('Feature Functions Exported', () => {
     test('feature', () => {
         expect('feature' in core.features).toBeTruthy()
     })
+
+    test('hasID', () => {
+        expect('hasID' in core.features).toBeTruthy()
+    })
 })
 
 describe('Geometry Functions Exported', () => {
