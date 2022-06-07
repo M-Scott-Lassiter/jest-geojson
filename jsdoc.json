@@ -7,8 +7,22 @@
         "typedefs": true,
         "removeQuotes": "none",
         "scripts": [],
+        "wrap": true,
+        "commonNav": true,
+        "meta": {
+            "title": "Jest-GeoJSON",
+            "description": "An extended set of matcher functions for the Jest Javascript unit testing framework tailored to evaluating with GeoJSON data.",
+            "keyword": "jest-geojson, jest, testing, validation, geojson, test, gis, assertions, matchers, jest-tests, jest-matchers, javascript, node, npm"
+        },
+        "openGraph": {
+            "title": "Jest-GeoJSON Documentation",
+            "type": "article",
+            "image": "https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/images/banner.svg",
+            "site_name": "Jest-GeoJSON",
+            "url": "https://github.com/M-Scott-Lassiter/jest-geojson"
+        },
         "menu": {
-            "Github repo": {
+            "Github Repo": {
                 "href": "https://github.com/M-Scott-Lassiter/jest-geojson",
                 "target": "_blank",
                 "class": "menu-item",

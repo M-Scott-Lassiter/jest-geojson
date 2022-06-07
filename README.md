@@ -1,6 +1,8 @@
 <div align="center">
 
-<img src="banner.png" alt="Jest-GeoJSON - GeoJSON Validation Matchers for Jest"/>
+<img src="images/banner.svg" alt="Jest-GeoJSON - GeoJSON Validation Matchers for Jest" width=500/>
+
+<br>
 
 [![NPM Version](https://img.shields.io/npm/v/jest-geojson)](https://www.npmjs.com/package/jest-geojson)
 [![NPM Package Size](https://shields.shivering-isles.com:/bundlephobia/min/jest-geojson?label=size)](https://www.npmjs.com/package/jest-geojson/v/beta)
