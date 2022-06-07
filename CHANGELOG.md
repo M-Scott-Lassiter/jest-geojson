@@ -1,3 +1,15 @@
+## [1.2.0](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.1.0...v1.2.0) (2022-06-07)
+
+
+### :gift: Feature Changes
+
+* **toHaveID:** add new matcher ([5bae7f0](https://github.com/M-Scott-Lassiter/jest-geojson/commit/5bae7f042d79c7e01ab2189792def2d7e462b285)), closes [#36](https://github.com/M-Scott-Lassiter/jest-geojson/issues/36)
+
+
+### :compass: API Documentation Changes
+
+* **toHaveID:** fix documentation typo. ([c0f731b](https://github.com/M-Scott-Lassiter/jest-geojson/commit/c0f731bc8625df4ab49772e11cefa8342ee84d64))
+
 ## [1.1.0](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.0.0...v1.1.0) (2022-06-04)
 
 
