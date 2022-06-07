@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Features - Jest-GeoJSON</title>
+        <title>core/features/hasID.js - Jest-GeoJSON</title>
 
         <meta
             name="description"
@@ -283,307 +283,101 @@
         </nav>
 
         <div id="main">
-            <h1 class="page-title">Features</h1>
+            <h1 class="page-title">core/features/hasID.js</h1>
 
             <section>
-                <header>
-                    <h2>
-                        <span class="ancestors"><a href="Matchers.html">Matchers</a>.</span>
-
-                        Features
-                    </h2>
-                </header>
-
                 <article>
-                    <div class="container-overview">
-                        <dl class="details">
-                            <dt class="tag-source">Source:</dt>
-                            <dd class="tag-source">
-                                <ul class="dummy">
-                                    <li>
-                                        <a href="typedefinitions.js.html">typedefinitions.js</a>,
-                                        <a href="typedefinitions.js.html#line51">line 51</a>
-                                    </li>
-                                </ul>
-                            </dd>
+                    <pre
+                        class="prettyprint source linenums"
+                    ><code>const { feature } = require('./feature')
 
-                            <dt class="tag-see">See:</dt>
-                            <dd class="tag-see">
-                                <ul>
-                                    <li>
-                                        <a
-                                            href="https://datatracker.ietf.org/doc/html/rfc7946#section-3.2"
-                                            >https://datatracker.ietf.org/doc/html/rfc7946#section-3.2</a
-                                        >
-                                    </li>
-                                </ul>
-                            </dd>
-                        </dl>
+/**
+ * Checks if a GeoJSON Feature has an ID. Providing an optional SearchID argument will check for that exact ID
+ * or array of possible ID values.
+ *
+ * @memberof Core.Features
+ * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/36
+ * @param {object} featureObject a GeoJSON Feature object
+ * @param {string|number|RegExp|string[]|number[]|RegExp[]} [SearchID] Specific value or array of possible values
+ * to search for.
+ * @returns {boolean} True if the Feature object has any ID (no argument provided), or if the ID exactly matches
+ * the optional argument (single string, number, or RegExp provided), or any value within an array of any
+ * combination of strings, numbers, or RegExp. If the object has an ID that does not match SearchID, it returns false.
+ * @throws {Error} Argument must be a GeoJSON Feature object
+ * @throws {Error} Feature object must have an "id" member
+ * @throws {Error} Optional SearchID must be either a number, string, RegExp, or array of any of these values
+ * @example
+ * const testFeature = {
+ *     type: 'Feature',
+ *     id: 'f1',
+ *     geometry: {...},
+ *     properties: {...}
+ * }
+ *
+ * // All of these return true
+ * const goodExample1 = hasID(testFeature)
+ * const goodExample2 = hasID(testFeature, 'f1')
+ * const goodExample3 = hasID(testFeature, [1, 'F', 'F12', /[a-z]+[0-9]+/])
+ *
+ * // Both of these return false
+ * const badExample1 = hasID(testFeature, 'f12')
+ * const badExample2 = hasID(testFeature, [1, 'F', 'F12', /SomeID/])
+ * @example
+ * const testFeature = {
+ *     type: 'Feature',
+ *     geometry: {...},
+ *     properties: {...}
+ * }
+ *
+ * const example = hasID(testFeature) // false
+ */
+function hasID(featureObject, SearchID) {
+    feature(featureObject) // All validation handled here. Let it throw errors if needed.
 
-                        <div class="description usertext">
-                            A set of matchers related to validating feature objects.
-                        </div>
-                    </div>
-
-                    <h3 class="subsection-title">Methods</h3>
-
-                    <h4 class="name" id=".toBeFeature">
-                        <span class="type-signature">(static) </span>toBeFeature<span
-                            class="signature"
-                            >(featureObject, geometryType)</span
-                        ><span class="type-signature"></span>
-                    </h4>
-
-                    <dl class="details">
-                        <dt class="tag-source">Source:</dt>
-                        <dd class="tag-source">
-                            <ul class="dummy">
-                                <li>
-                                    <a href="matchers_features_toBeFeature.js.html"
-                                        >matchers/features/toBeFeature.js</a
-                                    >,
-                                    <a href="matchers_features_toBeFeature.js.html#line59"
-                                        >line 59</a
-                                    >
-                                </li>
-                            </ul>
-                        </dd>
-
-                        <dt class="tag-see">See:</dt>
-                        <dd class="tag-see">
-                            <ul>
-                                <li>
-                                    <a
-                                        href="https://github.com/M-Scott-Lassiter/jest-geojson/issues/24"
-                                        >https://github.com/M-Scott-Lassiter/jest-geojson/issues/24</a
-                                    >
-                                </li>
-                            </ul>
-                        </dd>
-                    </dl>
-
-                    <div class="description usertext">
-                        Verifies an object is a valid GeoJSON Feature. This object requires a "type"
-                        member that must equal 'Feature', a "geometry" member that contains either
-                        one of the seven valid GeoJSON geometry objects or an empty array, and a
-                        "properties" member that is either an object of any composition or null.
-                        Foreign members are allowed with the exception of 'coordinates',
-                        'geometries', 'properties', or 'features'. If present, bounding boxes must
-                        be valid.
-                    </div>
-
-                    <h5>Examples</h5>
-
-                    <pre class="prettyprint"><code>const testFeature = {
-    "type": "Feature",
-    "bbox": [-10.0, -10.0, 10.0, 10.0],
-    "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-            [
-                [-10.0, -10.0],
-                [10.0, -10.0],
-                [10.0, 10.0],
-                [-10.0, -10.0]
-            ]
-        ]
-    },
-    "properties": {
-        "prop0": "value0",
-        "prop1": {
-            "this": "that"
-        }
+    if (!('id' in featureObject)) {
+        throw new Error('Feature does not have an "id" member.')
     }
+
+    // After guard, ID exists, no SearchID provided. Pass.
+    if (SearchID === undefined || (Array.isArray(SearchID) &amp;&amp; SearchID.length === 0)) {
+        return true
+    }
+
+    // Parse the SearchID into a safe array for further use
+    let safeArray = []
+    if (Array.isArray(SearchID)) {
+        safeArray = [...SearchID]
+    } else if (
+        typeof SearchID === 'string' ||
+        (typeof SearchID === 'number' &amp;&amp; !Number.isNaN(SearchID))
+    ) {
+        safeArray = [SearchID]
+    } else if (SearchID instanceof RegExp) {
+        safeArray = [new RegExp(SearchID)]
+    } else {
+        throw new Error('SearchID must be a number, string, RegExp, or array of any of these.')
+    }
+
+    let idFound = false
+    safeArray.forEach((id) => {
+        if (idFound) {
+            return
+        }
+        if (featureObject.id === id) {
+            idFound = true
+        }
+        if (id instanceof RegExp) {
+            if (featureObject.id.toString().match(id)) {
+                idFound = true
+            }
+        }
+    })
+
+    return idFound
 }
 
- test('Object is valid GeoJSON Feature', () => {
-    expect(testFeature).toBeFeature()
-    expect(testFeature).toBeFeature('Polygon')
-})</code></pre>
-
-                    <pre class="prettyprint"><code>const multiPoint = {
-    type: "MultiPoint",
-    coordinates: [
-        [101.0, 0.0],
-        [102.0, 1.0]
-    ]
-}
-
-test('Object is NOT valid GeoJSON Geometry Object', () => {
-    expect(multiPoint).not.toBeFeature()
-    expect(testFeature).not.toBeFeature('LineString')
-    expect(testFeature.geometry).not.toBeFeature('Polygon')
-})</code></pre>
-
-                    <h5>Parameters:</h5>
-
-                    <table class="params">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-
-                                <th>Type</th>
-
-                                <th class="last">Description</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td class="name"><code>featureObject</code></td>
-
-                                <td class="type">
-                                    <span class="param-type">object</span>
-                                </td>
-
-                                <td class="description last">any GeoJSON Feature object</td>
-                            </tr>
-
-                            <tr>
-                                <td class="name"><code>geometryType</code></td>
-
-                                <td class="type">
-                                    <span class="param-type">string</span>
-                                </td>
-
-                                <td class="description last">
-                                    Optional string representing one of the seven GeoJSON geometry
-                                    types
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <h4 class="name" id=".toHaveID">
-                        <span class="type-signature">(static) </span>toHaveID<span class="signature"
-                            >(featureObject, SearchID<span class="signature-attributes">opt</span
-                            >)</span
-                        ><span class="type-signature"></span>
-                    </h4>
-
-                    <dl class="details">
-                        <dt class="tag-source">Source:</dt>
-                        <dd class="tag-source">
-                            <ul class="dummy">
-                                <li>
-                                    <a href="matchers_features_toHaveID.js.html"
-                                        >matchers/features/toHaveID.js</a
-                                    >,
-                                    <a href="matchers_features_toHaveID.js.html#line45">line 45</a>
-                                </li>
-                            </ul>
-                        </dd>
-
-                        <dt class="tag-see">See:</dt>
-                        <dd class="tag-see">
-                            <ul>
-                                <li>
-                                    <a
-                                        href="https://github.com/M-Scott-Lassiter/jest-geojson/issues/36"
-                                        >https://github.com/M-Scott-Lassiter/jest-geojson/issues/36</a
-                                    >
-                                </li>
-                            </ul>
-                        </dd>
-                    </dl>
-
-                    <div class="description usertext">
-                        Checks if a GeoJSON Feature has an ID. Passes if the Feature object has any
-                        ID (no argument provided), or if the ID exactly matches the optional
-                        argument (single string, number, or RegExp provided), or any value within an
-                        array of any combination of strings, numbers, or RegExp. The test fails if
-                        the object does not have an ID, or if it has an ID that does not match the
-                        searchID.
-                    </div>
-
-                    <h5>Examples</h5>
-
-                    <pre class="prettyprint"><code>const testFeature1 = {
-    type: 'Feature',
-    id: 'f1',
-    geometry: {...},
-    properties: {...}
-}
-
-test('Feature Has an ID', () => {
-    expect(testFeature1).toHaveID()
-    expect(testFeature1).toHaveID([])
-    expect(testFeature1).toHaveID('f1')
-    expect(testFeature1).toHaveID([1, 'F', 'F12', /[a-z]+[0-9]+/])
-
-    expect(testFeature1).not.toHaveID('f2')
-    expect(testFeature1).not.toHaveID([1, 'F', 'F12', /SomeID/])
-})</code></pre>
-
-                    <pre class="prettyprint"><code>const testFeature2 = {
-    type: 'Feature',
-    geometry: {...},
-    properties: {...}
-}
-
-test('Feature Does not Have an ID', () => {
-    expect(testFeature2).not.toHaveID()
-    expect(testFeature2).not.toHaveID(2)
-})</code></pre>
-
-                    <h5>Parameters:</h5>
-
-                    <table class="params">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-
-                                <th>Type</th>
-
-                                <th>Attributes</th>
-
-                                <th class="last">Description</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td class="name"><code>featureObject</code></td>
-
-                                <td class="type">
-                                    <span class="param-type">object</span>
-                                </td>
-
-                                <td class="attributes"></td>
-
-                                <td class="description last">any GeoJSON Feature object</td>
-                            </tr>
-
-                            <tr>
-                                <td class="name"><code>SearchID</code></td>
-
-                                <td class="type">
-                                    <span class="param-type">string</span>
-                                    |
-
-                                    <span class="param-type">number</span>
-                                    |
-
-                                    <span class="param-type">RegExp</span>
-                                    |
-
-                                    <span class="param-type">Array.&lt;string></span>
-                                    |
-
-                                    <span class="param-type">Array.&lt;number></span>
-                                    |
-
-                                    <span class="param-type">Array.&lt;RegExp></span>
-                                </td>
-
-                                <td class="attributes">&lt;optional><br /></td>
-
-                                <td class="description last">
-                                    Specific value or array of possible values to search for.
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+exports.hasID = hasID
+</code></pre>
                 </article>
             </section>
         </div>

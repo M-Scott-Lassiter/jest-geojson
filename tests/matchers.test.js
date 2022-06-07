@@ -40,6 +40,10 @@ describe('Feature Matchers Exported', () => {
     test('toBeFeature', () => {
         expect('toBeFeature' in matchers.features).toBeTruthy()
     })
+
+    test('toHaveID', () => {
+        expect('toHaveID' in matchers.features).toBeTruthy()
+    })
 })
 
 describe('Functional Matchers Exported', () => {

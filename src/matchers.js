@@ -23,7 +23,8 @@ exports.featureCollections = {
 }
 
 exports.features = {
-    toBeFeature: require('./matchers/features/toBeFeature').toBeFeature
+    toBeFeature: require('./matchers/features/toBeFeature').toBeFeature,
+    toHaveID: require('./matchers/features/toHaveID').toHaveID
 }
 
 exports.functional = {

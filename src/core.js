@@ -17,7 +17,8 @@ exports.featureCollections = {
 }
 
 exports.features = {
-    feature: require('./core/features/feature')
+    feature: require('./core/features/feature'),
+    hasID: require('./core/features/hasID')
 }
 
 exports.geometries = {

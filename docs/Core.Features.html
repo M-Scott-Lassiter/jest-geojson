@@ -558,7 +558,7 @@ const badExample3 = feature(testFeature.geometry, 'Polygon')) // throws error</c
 
                     <h4 class="name" id=".hasID">
                         <span class="type-signature">(static) </span>hasID<span class="signature"
-                            >(featureObject, searchID<span class="signature-attributes">opt</span
+                            >(featureObject, SearchID<span class="signature-attributes">opt</span
                             >)</span
                         ><span class="type-signature"> &rarr; {boolean}</span>
                     </h4>
@@ -569,7 +569,7 @@ const badExample3 = feature(testFeature.geometry, 'Polygon')) // throws error</c
                             <ul class="dummy">
                                 <li>
                                     <a href="core_features_hasID.js.html">core/features/hasID.js</a
-                                    >, <a href="core_features_hasID.js.html#line42">line 42</a>
+                                    >, <a href="core_features_hasID.js.html#line43">line 43</a>
                                 </li>
                             </ul>
                         </dd>
@@ -588,7 +588,7 @@ const badExample3 = feature(testFeature.geometry, 'Polygon')) // throws error</c
                     </dl>
 
                     <div class="description usertext">
-                        Checks if a GeoJSON Feature has an ID. Providing an optional searchID
+                        Checks if a GeoJSON Feature has an ID. Providing an optional SearchID
                         argument will check for that exact ID or array of possible ID values.
                     </div>
 
@@ -647,7 +647,7 @@ const example = hasID(testFeature) // false</code></pre>
                             </tr>
 
                             <tr>
-                                <td class="name"><code>searchID</code></td>
+                                <td class="name"><code>SearchID</code></td>
 
                                 <td class="type">
                                     <span class="param-type">string</span>
@@ -703,7 +703,27 @@ const example = hasID(testFeature) // false</code></pre>
                             <dl>
                                 <dt>
                                     <div class="param-desc usertext">
-                                        Optional searchID must be either a number, string, RegExp,
+                                        Feature object must have an "id" member
+                                    </div>
+                                </dt>
+                                <dd></dd>
+                                <dt>
+                                    <dl class="param-type">
+                                        <dt>Type</dt>
+                                        <dd>
+                                            <span class="param-type">Error</span>
+                                        </dd>
+                                    </dl>
+                                </dt>
+                                <dd></dd>
+                            </dl>
+                        </li>
+
+                        <li>
+                            <dl>
+                                <dt>
+                                    <div class="param-desc usertext">
+                                        Optional SearchID must be either a number, string, RegExp,
                                         or array of any of these values
                                     </div>
                                 </dt>
@@ -726,8 +746,9 @@ const example = hasID(testFeature) // false</code></pre>
                     <div class="param-desc">
                         True if the Feature object has any ID (no argument provided), or if the ID
                         exactly matches the optional argument (single string, number, or RegExp
-                        provided), or any value within an array of acceptable input types. Returns
-                        false otherwise.
+                        provided), or any value within an array of any combination of strings,
+                        numbers, or RegExp. If the object has an ID that does not match SearchID, it
+                        returns false.
                     </div>
 
                     <dl class="param-type">

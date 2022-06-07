@@ -149,6 +149,10 @@ const badGeometry = {
             ]
         ]
     },
+    geometryCollection: {
+        type: 'GeometryCollection',
+        geometries: false
+    },
     unrecognized: {
         type: 'UnrecognizedPoint', // Not a valid GeoJSON type
         coordinates: [100.0, 0.0]
