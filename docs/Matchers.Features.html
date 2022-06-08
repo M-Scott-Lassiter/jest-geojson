@@ -224,6 +224,9 @@
                         <li data-type="method">
                             <a href="Matchers.Features.html#.toHaveID">toHaveID</a>
                         </li>
+                        <li data-type="method">
+                            <a href="Matchers.Features.html#.toHaveStringID">toHaveStringID</a>
+                        </li>
                     </ul>
                 </li>
                 <li>
@@ -571,6 +574,145 @@ test('Feature Does not Have an ID', () => {
                                     |
 
                                     <span class="param-type">Array.&lt;number></span>
+                                    |
+
+                                    <span class="param-type">Array.&lt;RegExp></span>
+                                </td>
+
+                                <td class="attributes">&lt;optional><br /></td>
+
+                                <td class="description last">
+                                    Specific value or array of possible values to search for.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4 class="name" id=".toHaveStringID">
+                        <span class="type-signature">(static) </span>toHaveStringID<span
+                            class="signature"
+                            >(featureObject, SearchID<span class="signature-attributes">opt</span
+                            >)</span
+                        ><span class="type-signature"></span>
+                    </h4>
+
+                    <dl class="details">
+                        <dt class="tag-source">Source:</dt>
+                        <dd class="tag-source">
+                            <ul class="dummy">
+                                <li>
+                                    <a href="matchers_features_toHaveStringID.js.html"
+                                        >matchers/features/toHaveStringID.js</a
+                                    >,
+                                    <a href="matchers_features_toHaveStringID.js.html#line57"
+                                        >line 57</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+
+                        <dt class="tag-see">See:</dt>
+                        <dd class="tag-see">
+                            <ul>
+                                <li>
+                                    <a
+                                        href="https://github.com/M-Scott-Lassiter/jest-geojson/issues/37"
+                                        >https://github.com/M-Scott-Lassiter/jest-geojson/issues/37</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+                    </dl>
+
+                    <div class="description usertext">
+                        Checks if a GeoJSON Feature has a string ID. Passes if the Feature object
+                        has any string ID (no argument provided), or if the ID exactly matches the
+                        optional argument (single string or RegExp provided), or any value within an
+                        array of any combination of strings or RegExp. The test fails if the object
+                        does not have an ID, or if it has an ID that does not match the SearchID.
+                        Passing a number type to SearchID will not pass the test, even if the ID
+                        exactly matches.
+                    </div>
+
+                    <h5>Examples</h5>
+
+                    <pre class="prettyprint"><code>const testFeature = {
+    type: 'Feature',
+    id: 'f1',
+    geometry: {...},
+    properties: {...}
+}
+
+test('Feature Has an ID', () => {
+    expect(testFeature).toHaveStringID()
+    expect(testFeature).toHaveStringID([])
+    expect(testFeature).toHaveStringID('f1')
+    expect(testFeature).toHaveStringID(['1', 'F', 'F12', /[a-z]+[0-9]+/])
+
+    expect(testFeature).not.toHaveStringID('f2')
+    expect(testFeature).not.toHaveStringID([1, 'F', 'F12', /SomeID/])
+})</code></pre>
+
+                    <pre class="prettyprint"><code>const testFeatureNoID = {
+    type: 'Feature',
+    geometry: {...},
+    properties: {...}
+}
+const testFeatureNumID = {
+    type: 'Feature',
+    id: 2,
+    geometry: {...},
+    properties: {...}
+}
+
+test('Feature Does not Have an ID', () => {
+    expect(testFeature).not.toHaveStringID('f2')
+    expect(testFeature).not.toHaveStringID([1, 'F', 'F12', /SomeID/])
+
+    expect(testFeatureNoID).not.toHaveStringID()
+    expect(testFeatureNumID).not.toHaveStringID()
+    expect(testFeatureNumID).not.toHaveStringID(2)
+})</code></pre>
+
+                    <h5>Parameters:</h5>
+
+                    <table class="params">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+
+                                <th>Type</th>
+
+                                <th>Attributes</th>
+
+                                <th class="last">Description</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="name"><code>featureObject</code></td>
+
+                                <td class="type">
+                                    <span class="param-type">object</span>
+                                </td>
+
+                                <td class="attributes"></td>
+
+                                <td class="description last">any GeoJSON Feature object</td>
+                            </tr>
+
+                            <tr>
+                                <td class="name"><code>SearchID</code></td>
+
+                                <td class="type">
+                                    <span class="param-type">string</span>
+                                    |
+
+                                    <span class="param-type">RegExp</span>
+                                    |
+
+                                    <span class="param-type">Array.&lt;string></span>
                                     |
 
                                     <span class="param-type">Array.&lt;RegExp></span>

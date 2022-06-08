@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>matchers/geometries/toBePointGeometry.js - Jest-GeoJSON</title>
+        <title>matchers/features/toHaveStringID.js - Jest-GeoJSON</title>
 
         <meta
             name="description"
@@ -286,56 +286,84 @@
         </nav>
 
         <div id="main">
-            <h1 class="page-title">matchers/geometries/toBePointGeometry.js</h1>
+            <h1 class="page-title">matchers/features/toHaveStringID.js</h1>
 
             <section>
                 <article>
                     <pre
                         class="prettyprint source linenums"
-                    ><code>const { pointGeometry } = require('../../core/geometries/pointGeometry')
+                    ><code>const { hasID } = require('../../core/features/hasID')
 
 // eslint-disable-next-line jsdoc/require-returns
 /**
- * Verifies an object is a valid GeoJSON Point Geometry. This geometry requires a
- * 'type' property that must equal "Point", and a 'coordinates' property that contains
- * a single valid WGS-84 GeoJSON coordinate. The coordinates may be an empty array.
+ * Checks if a GeoJSON Feature has a string ID. Passes if the Feature object has any string ID (no argument provided), or
+ * if the ID exactly matches the optional argument (single string or RegExp provided), or any value
+ * within an array of any combination of strings or RegExp.
  *
- * Foreign members are allowed with the exception of 'geometry', 'properties', or 'features'.
- * If present, bounding boxes must be valid.
+ * The test fails if the object does not have an ID, or if it has an ID that does not match the SearchID.
  *
- * @memberof Matchers.Geometries
- * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/9
- * @param {object} geometryObject a GeoJSON Point Geometry object
+ * Passing a number type to SearchID will not pass the test, even if the ID exactly matches.
+ *
+ * @memberof Matchers.Features
+ * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/37
+ * @param {object} featureObject any GeoJSON Feature object
+ * @param {string|RegExp|string[]|RegExp[]} [SearchID] Specific value or array of possible values
+ * to search for.
  * @example
- * const testPoint = {
- *     type: 'Point',
- *     coordinates: [25, 10.2]
+ * const testFeature = {
+ *     type: 'Feature',
+ *     id: 'f1',
+ *     geometry: {...},
+ *     properties: {...}
  * }
  *
- * test('Object is valid GeoJSON Point Geometry', () => {
- *     expect(testPoint).toBePointGeometry()
+ * test('Feature Has an ID', () => {
+ *     expect(testFeature).toHaveStringID()
+ *     expect(testFeature).toHaveStringID([])
+ *     expect(testFeature).toHaveStringID('f1')
+ *     expect(testFeature).toHaveStringID(['1', 'F', 'F12', /[a-z]+[0-9]+/])
+ *
+ *     expect(testFeature).not.toHaveStringID('f2')
+ *     expect(testFeature).not.toHaveStringID([1, 'F', 'F12', /SomeID/])
  * })
  * @example
- * const multiPoint = {
- *     type: 'MultiPoint',
- *     coordinates: [
- *         [25, 10.2],
- *         [120, 45]
- *     ]
+ * const testFeatureNoID = {
+ *     type: 'Feature',
+ *     geometry: {...},
+ *     properties: {...}
+ * }
+ * const testFeatureNumID = {
+ *     type: 'Feature',
+ *     id: 2,
+ *     geometry: {...},
+ *     properties: {...}
  * }
  *
- * test('Object is NOT valid GeoJSON Point Geometry', () => {
- *     expect(multiPoint).not.toBePointGeometry()
+ * test('Feature Does not Have an ID', () => {
+ *     expect(testFeature).not.toHaveStringID('f2')
+ *     expect(testFeature).not.toHaveStringID([1, 'F', 'F12', /SomeID/])
+ *
+ *     expect(testFeatureNoID).not.toHaveStringID()
+ *     expect(testFeatureNumID).not.toHaveStringID()
+ *     expect(testFeatureNumID).not.toHaveStringID(2)
  * })
  */
-function toBePointGeometry(geometryObject) {
+function toHaveStringID(featureObject, SearchID) {
     const { printReceived, matcherHint } = this.utils
+    const optionalIDMessage = () => {
+        if (SearchID !== undefined &amp;&amp; SearchID?.length !== 0) {
+            return ` of ${SearchID}`
+        }
+        return ''
+    }
     const passMessage =
         // eslint-disable-next-line prefer-template
-        matcherHint('.not.toBePointGeometry', 'GeometryObject', '') +
+        matcherHint('.not.toHaveStringID', 'FeatureObject', 'SearchID') +
         '\n\n' +
-        `Expected input to not be a valid GeoJSON Point geometry.\n\n` +
-        `Received:  ${printReceived(geometryObject)}`
+        `Expected input to not be a valid GeoJSON Feature object with string type ID` +
+        optionalIDMessage() +
+        `.\n\n` +
+        `Received:  ${printReceived(featureObject)}`
 
     /**
      * Combines a custom error message with built in Jest tools to provide a more descriptive error
@@ -347,22 +375,33 @@ function toBePointGeometry(geometryObject) {
     function failMessage(errorMessage) {
         return (
             // eslint-disable-next-line prefer-template, no-unused-expressions
-            matcherHint('.toBePointGeometry', 'GeometryObject', '') +
+            matcherHint('.toHaveStringID', 'FeatureObject', 'SearchID') +
             '\n\n' +
             `${errorMessage}\n\n` +
-            `Received:  ${printReceived(geometryObject)}`
+            `Received:  ${printReceived(featureObject)}`
         )
     }
 
+    let idIsPresent
+    // Provide error handling in case of invalid inputs to the matcher
     try {
-        pointGeometry(geometryObject)
+        idIsPresent = hasID(featureObject, SearchID)
+
+        if (typeof featureObject.id === 'number') {
+            throw new Error('ID is a number, expected a string.')
+        }
     } catch (err) {
         return { pass: false, message: () => failMessage(err.message) }
     }
-    return { pass: true, message: () => passMessage }
+
+    // Input was valid, now return either pass or fail
+    if (idIsPresent) {
+        return { pass: true, message: () => passMessage }
+    }
+    return { pass: false, message: () => failMessage(`Did not find the ID ${SearchID}.`) }
 }
 
-exports.toBePointGeometry = toBePointGeometry
+exports.toHaveStringID = toHaveStringID
 </code></pre>
                 </article>
             </section>
