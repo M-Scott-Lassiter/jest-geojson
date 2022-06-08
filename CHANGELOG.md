@@ -1,3 +1,11 @@
+## [1.3.0](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.2.0...v1.3.0) (2022-06-08)
+
+
+### :gift: Feature Changes
+
+* **toHaveNumericID:** add new matcher ([56e3e4c](https://github.com/M-Scott-Lassiter/jest-geojson/commit/56e3e4c5c2c79aec9380ab82ad525f3d0efa9c47)), closes [#38](https://github.com/M-Scott-Lassiter/jest-geojson/issues/38)
+* **toHaveStringID:** add new matcher ([cefddd6](https://github.com/M-Scott-Lassiter/jest-geojson/commit/cefddd674204402299f569bfbb2df21287a2c8e9)), closes [#37](https://github.com/M-Scott-Lassiter/jest-geojson/issues/37)
+
 ## [1.2.0](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.1.0...v1.2.0) (2022-06-07)
 
 
