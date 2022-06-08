@@ -24,7 +24,9 @@ exports.featureCollections = {
 
 exports.features = {
     toBeFeature: require('./matchers/features/toBeFeature').toBeFeature,
-    toHaveID: require('./matchers/features/toHaveID').toHaveID
+    toHaveID: require('./matchers/features/toHaveID').toHaveID,
+    toHaveStringID: require('./matchers/features/toHaveStringID').toHaveStringID,
+    toHaveNumericID: require('./matchers/features/toHaveNumericID').toHaveNumericID
 }
 
 exports.functional = {

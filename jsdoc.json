@@ -8,10 +8,10 @@
         "removeQuotes": "none",
         "scripts": [],
         "wrap": true,
-        "commonNav": true,
+        "commonNav": false,
         "meta": {
             "title": "Jest-GeoJSON",
-            "description": "An extended set of matcher functions for the Jest Javascript unit testing framework tailored to evaluating with GeoJSON data.",
+            "description": "An extended set of matcher functions for the Jest Javascript unit testing framework tailored to evaluating GeoJSON data.",
             "keyword": "jest-geojson, jest, testing, validation, geojson, test, gis, assertions, matchers, jest-tests, jest-matchers, javascript, node, npm"
         },
         "openGraph": {

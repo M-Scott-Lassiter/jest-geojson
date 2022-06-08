@@ -44,6 +44,14 @@ describe('Feature Matchers Exported', () => {
     test('toHaveID', () => {
         expect('toHaveID' in matchers.features).toBeTruthy()
     })
+
+    test('toHaveStringID', () => {
+        expect('toHaveStringID' in matchers.features).toBeTruthy()
+    })
+
+    test('toHaveNumericID', () => {
+        expect('toHaveNumericID' in matchers.features).toBeTruthy()
+    })
 })
 
 describe('Functional Matchers Exported', () => {

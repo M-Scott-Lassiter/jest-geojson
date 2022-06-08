@@ -1,6 +1,6 @@
 <div align="center">
 
-[<img src="images/banner.svg" alt="Jest-GeoJSON - GeoJSON Validation Matchers for Jest" width=500>](https://www.npmjs.com/package/jest-geojson)
+[<img src="https://raw.githubusercontent.com/M-Scott-Lassiter/jest-geojson/main/images/banner.svg" alt="Jest-GeoJSON - GeoJSON Validation Matchers for Jest" width=500>](https://www.npmjs.com/package/jest-geojson)
 
 ---
 
@@ -157,13 +157,13 @@ _Future_
 
 -   [toBeFeature](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Features.html#.toBeFeature)
 -   [toHaveID](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Features.html#.toHaveID)
+-   [toHaveNumericID](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Features.html#.toHaveNumericID)
+-   [toHaveStringID](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Features.html#.toHaveStringID)
 
 ---
 
 _Future_
 
--   [ ] toHaveStringID
--   [ ] toHaveNumericID
 -   [ ] toHaveProperties (array of [property, optional values])
 
 ## Feature Collections

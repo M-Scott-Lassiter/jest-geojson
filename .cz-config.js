@@ -18,7 +18,9 @@ const allMatchers = [
     { name: 'toBePointGeometry' },
     { name: 'toBePolygonGeometry' },
     { name: 'toBeValidGeoJSON' },
-    { name: 'toHaveID' }
+    { name: 'toHaveID' },
+    { name: 'toHaveNumericID' },
+    { name: 'toHaveStringID' }
 ]
 
 const documentationScopes = [

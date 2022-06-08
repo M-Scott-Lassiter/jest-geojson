@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>core/geometries/geometryCollection.js - Jest-GeoJSON</title>
+        <title>matchers/features/toHaveStringID.js - Jest-GeoJSON</title>
 
         <meta
             name="description"
@@ -289,95 +289,119 @@
         </nav>
 
         <div id="main">
-            <h1 class="page-title">core/geometries/geometryCollection.js</h1>
+            <h1 class="page-title">matchers/features/toHaveStringID.js</h1>
 
             <section>
                 <article>
                     <pre
                         class="prettyprint source linenums"
-                    ><code>const { anyGeometry } = require('./anyGeometry')
-const { commonGeometryValidation } = require('../utilities/commonGeometryValidation')
+                    ><code>const { hasID } = require('../../core/features/hasID')
 
+// eslint-disable-next-line jsdoc/require-returns
 /**
- * Verifies an object is a valid GeoJSON GeometryCollection. This object requires a
- * 'type' property that must equal "GeometryCollection", and a 'geometries' property that contains
- * an array of GeoJSON Geometry objects (Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon)
+ * Checks if a GeoJSON Feature has a string ID. Passes if the Feature object has any string ID (no argument provided), or
+ * if the ID exactly matches the optional argument (single string or RegExp provided), or any value
+ * within an array of any combination of strings or RegExp.
  *
- * The geometries may be an empty array, but may not be an array of empty arrays or objects.
+ * The test fails if the object does not have an ID, or if it has an ID that does not match the SearchID.
  *
- * Foreign members are allowed with the exceptions thrown below.
- * If present, bounding boxes must be valid.
+ * Passing a number type to SearchID will not pass the test, even if the ID exactly matches.
  *
- * @memberof Core.Geometries
- * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/16
- * @param {object} geometryObject a GeoJSON Geometry object
- * @returns {boolean} True if a valid GeoJSON GeometryCollection Geometry. If invalid, it will throw an error.
- * @throws {Error} Argument not an object
- * @throws {Error} Must have a type property with value 'GeometryCollection'
- * @throws {Error} Forbidden from having a property 'geometry', 'properties', or 'features'
+ * @memberof Matchers.Features
+ * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/37
+ * @param {object} featureObject any GeoJSON Feature object
+ * @param {string|RegExp|string[]|RegExp[]} [SearchID] Specific value or array of possible values
+ * to search for.
  * @example
- * const collection = {
- *     type: 'GeometryCollection',
- *     geometries: [{
- *         "type": 'Point',
- *         "coordinates": [100.0, 0.0]
- *     }, {
- *         type: 'LineString',
- *         coordinates: [
- *             [101.0, 0.0],
- *             [102.0, 1.0]
- *         ]
- *     }, {
- *         type: 'Polygon',
- *         coordinates: [
- *             [
- *                 [102.0, 2.0],
- *                 [103.0, 2.0],
- *                 [103.0, 3.0],
- *                 [102.0, 3.0],
- *                 [102.0, 2.0]
- *             ]
- *         ]
- *     }, {
- *         type: 'Point',
- *         coordinates: [150.0, 73.0]
- *     }]
+ * const testFeature = {
+ *     type: 'Feature',
+ *     id: 'f1',
+ *     geometry: {...},
+ *     properties: {...}
  * }
  *
- * const goodExample = geometryCollection(collection) // true
+ * test('Feature Has an ID', () => {
+ *     expect(testFeature).toHaveStringID()
+ *     expect(testFeature).toHaveStringID([])
+ *     expect(testFeature).toHaveStringID('f1')
+ *     expect(testFeature).toHaveStringID(['1', 'F', 'F12', /[a-z]+[0-9]+/])
+ * })
+ * @example
+ * const testFeatureNoID = {
+ *     type: 'Feature',
+ *     geometry: {...},
+ *     properties: {...}
+ * }
+ * const testFeatureNumID = {
+ *     type: 'Feature',
+ *     id: 2,
+ *     geometry: {...},
+ *     properties: {...}
+ * }
  *
- * const badExample1 = geometryCollection(collection.geometries) // throws error
- * const badExample2 = geometryCollection(collection.geometries[1]) // throws error
+ * test('Feature Does not Have an ID', () => {
+ *     expect(testFeature).not.toHaveStringID('f2')
+ *     expect(testFeature).not.toHaveStringID([1, 'F', 'F12', /SomeID/])
+ *
+ *     expect(testFeatureNoID).not.toHaveStringID()
+ *     expect(testFeatureNumID).not.toHaveStringID()
+ *     expect(testFeatureNumID).not.toHaveStringID(2)
+ * })
  */
-function geometryCollection(geometryObject) {
-    if (geometryObject.type !== 'GeometryCollection') {
-        throw new Error(`Must have a type property with value 'GeometryCollection'.`)
+function toHaveStringID(featureObject, SearchID) {
+    const { printReceived, matcherHint } = this.utils
+    const optionalIDMessage = () => {
+        if (SearchID !== undefined &amp;&amp; SearchID?.length !== 0) {
+            return ` of ${SearchID}`
+        }
+        return ''
     }
+    const passMessage =
+        // eslint-disable-next-line prefer-template
+        matcherHint('.not.toHaveStringID', 'FeatureObject', 'SearchID') +
+        '\n\n' +
+        `Expected input to not be a valid GeoJSON Feature object with string type ID` +
+        optionalIDMessage() +
+        `.\n\n` +
+        `Received:  ${printReceived(featureObject)}`
 
-    commonGeometryValidation(geometryObject)
-
-    if (typeof geometryObject === 'object' &amp;&amp; !('geometries' in geometryObject)) {
-        throw new Error(
-            `GeoJSON GeometryCollection must contain a 'geometries' with an array of GeoJSON geometries.`
+    /**
+     * Combines a custom error message with built in Jest tools to provide a more descriptive error
+     * meessage to the end user.
+     *
+     * @param {string} errorMessage Error message text to return to the user
+     * @returns {string} Concatenated Jest test result string
+     */
+    function failMessage(errorMessage) {
+        return (
+            // eslint-disable-next-line prefer-template, no-unused-expressions
+            matcherHint('.toHaveStringID', 'FeatureObject', 'SearchID') +
+            '\n\n' +
+            `${errorMessage}\n\n` +
+            `Received:  ${printReceived(featureObject)}`
         )
     }
 
-    if (geometryObject.type === 'GeometryCollection' &amp;&amp; !Array.isArray(geometryObject.geometries)) {
-        throw new Error('Geometries property must be an array of valid GeoJSON geometry objects.')
+    let idIsPresent
+    // Provide error handling in case of invalid inputs to the matcher
+    try {
+        idIsPresent = hasID(featureObject, SearchID)
+
+        if (typeof featureObject.id === 'number') {
+            throw new Error('ID is a number, expected a string.')
+        }
+    } catch (err) {
+        return { pass: false, message: () => failMessage(err.message) }
     }
 
-    geometryObject.geometries.forEach((geometry) => {
-        if (geometry?.type === 'GeometryCollection') {
-            geometryCollection(geometry)
-        } else {
-            anyGeometry(geometry)
-        }
-    })
-
-    return true
+    // Input was valid, now return either pass or fail
+    if (idIsPresent) {
+        return { pass: true, message: () => passMessage }
+    }
+    return { pass: false, message: () => failMessage(`Did not find the ID ${SearchID}.`) }
 }
 
-exports.geometryCollection = geometryCollection
+exports.toHaveStringID = toHaveStringID
 </code></pre>
                 </article>
             </section>
