@@ -8,7 +8,7 @@
         "removeQuotes": "none",
         "scripts": [],
         "wrap": true,
-        "commonNav": true,
+        "commonNav": false,
         "meta": {
             "title": "Jest-GeoJSON",
             "description": "An extended set of matcher functions for the Jest Javascript unit testing framework tailored to evaluating GeoJSON data.",

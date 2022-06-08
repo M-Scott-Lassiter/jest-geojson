@@ -157,13 +157,13 @@ _Future_
 
 -   [toBeFeature](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Features.html#.toBeFeature)
 -   [toHaveID](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Features.html#.toHaveID)
+-   [toHaveNumericID](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Features.html#.toHaveNumericID)
 -   [toHaveStringID](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Features.html#.toHaveStringID)
 
 ---
 
 _Future_
 
--   [ ] toHaveNumericID
 -   [ ] toHaveProperties (array of [property, optional values])
 
 ## Feature Collections

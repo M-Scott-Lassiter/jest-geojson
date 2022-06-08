@@ -19,6 +19,7 @@ const allMatchers = [
     { name: 'toBePolygonGeometry' },
     { name: 'toBeValidGeoJSON' },
     { name: 'toHaveID' },
+    { name: 'toHaveNumericID' },
     { name: 'toHaveStringID' }
 ]
 
