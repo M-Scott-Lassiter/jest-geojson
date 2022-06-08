@@ -28,9 +28,6 @@ const { hasID } = require('../../core/features/hasID')
  *     expect(testFeature).toHaveStringID([])
  *     expect(testFeature).toHaveStringID('f1')
  *     expect(testFeature).toHaveStringID(['1', 'F', 'F12', /[a-z]+[0-9]+/])
- *
- *     expect(testFeature).not.toHaveStringID('f2')
- *     expect(testFeature).not.toHaveStringID([1, 'F', 'F12', /SomeID/])
  * })
  * @example
  * const testFeatureNoID = {

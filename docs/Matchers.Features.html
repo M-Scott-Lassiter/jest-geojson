@@ -739,8 +739,8 @@ test('Feature Does not Have an ID', () => {
                                     <a href="matchers_features_toHaveStringID.js.html"
                                         >matchers/features/toHaveStringID.js</a
                                     >,
-                                    <a href="matchers_features_toHaveStringID.js.html#line57"
-                                        >line 57</a
+                                    <a href="matchers_features_toHaveStringID.js.html#line54"
+                                        >line 54</a
                                     >
                                 </li>
                             </ul>
@@ -783,9 +783,6 @@ test('Feature Has an ID', () => {
     expect(testFeature).toHaveStringID([])
     expect(testFeature).toHaveStringID('f1')
     expect(testFeature).toHaveStringID(['1', 'F', 'F12', /[a-z]+[0-9]+/])
-
-    expect(testFeature).not.toHaveStringID('f2')
-    expect(testFeature).not.toHaveStringID([1, 'F', 'F12', /SomeID/])
 })</code></pre>
 
                     <pre class="prettyprint"><code>const testFeatureNoID = {
