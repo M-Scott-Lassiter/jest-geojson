@@ -1,6 +1,6 @@
 <div align="center">
 
-[<img src="images/banner.svg" alt="Jest-GeoJSON - GeoJSON Validation Matchers for Jest" width=500>](https://www.npmjs.com/package/jest-geojson)
+[<img src="https://raw.githubusercontent.com/M-Scott-Lassiter/jest-geojson/main/images/banner.svg" alt="Jest-GeoJSON - GeoJSON Validation Matchers for Jest" width=500>](https://www.npmjs.com/package/jest-geojson)
 
 ---
 
