@@ -38,6 +38,7 @@
 -   [Getting Started](#getting-started)
     -   [Install as a Dependency](#install-as-a-dependency)
     -   [Configure Jest](#configure-jest)
+    -   [Configure Typescript](#configure-typescript)
 -   [Matchers](#matchers)
     -   [Coordiantes](#coordiantes)
     -   [Bounding Boxes](#bounding-boxes)
@@ -111,6 +112,26 @@ or add a key to your `package.json`:
     "jest": {
         "setupFilesAfterEnv": ["jest-geojson/setup/all"]
     }
+}
+```
+
+## Configure Typescript
+
+If your editor does not recognize the custom `Jest-GeoJSON` matchers, add a `global.d.ts` file to your project with:
+
+```typescript
+import 'jest-geojson'
+```
+
+Then add a `files` key in your `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    ...
+  },
+  ...
+  "files": ["global.d.ts"]
 }
 ```
 

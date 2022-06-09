@@ -22,8 +22,9 @@ Please check if your PR fulfills the following requirements:
 -   <u>Create Matcher Function</u>
     -   [ ] Create a matcher function under `src/matchers/<category>`
     -   [ ] Register the matcher in `src/matchers.js`
-    -   [ ] Add a verification test to `matchers.test.js`
-    -   [ ] Add the matcher to the `.cz-config.js` list (alphabetical order under the `coordinateMatchers` variable)
+    -   [ ] Add a verification test to `tests/matchers.test.js`
+    -   [ ] Add the matcher to `src/index.d.ts`
+    -   [ ] Add the matcher to the `.cz-config.js` list (alphabetical order under the `allMatchers` variable)
     -   [ ] Document the matcher using JSDoc. Refer to the issue. Include good and bad examples.
 -   [ ] Create a test for the matcher under `tests/<category>`
 -   [ ] Verify all tests pass and have 100% coverage

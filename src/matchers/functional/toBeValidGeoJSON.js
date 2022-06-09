@@ -5,7 +5,6 @@ const { validGeoJSON } = require('../../core/utilities/validGeoJSON')
  * This tests an object to see if it meets validation criteria for any of the seven GeoJSON
  * Geometry types, Features, or FeatureCollections.
  *
- *
  * @memberof Matchers.Functional
  * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/26
  * @param {object} geoObject Any GeoJSON Geometry, Feature, or FeatureCollection object

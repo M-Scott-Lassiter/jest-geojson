@@ -406,6 +406,9 @@
                                         >
                                     </li>
                                     <li><a href="#configure-jest">Configure Jest</a></li>
+                                    <li>
+                                        <a href="#configure-typescript">Configure Typescript</a>
+                                    </li>
                                 </ul>
                             </li>
                             <li>
@@ -507,6 +510,23 @@ test('Object is valid GeoJSON Point Geometry', () => {
     &quot;jest&quot;: {
         &quot;setupFilesAfterEnv&quot;: [&quot;jest-geojson/setup/all&quot;]
     }
+}
+</code></pre>
+                    <h2>Configure Typescript</h2>
+                    <p>
+                        If your editor does not recognize the custom
+                        <code>Jest-GeoJSON</code> matchers, add a <code>global.d.ts</code> file to
+                        your project with:
+                    </p>
+                    <pre class="prettyprint source lang-typescript"><code>import 'jest-geojson'
+</code></pre>
+                    <p>Then add a <code>files</code> key in your <code>tsconfig.json</code>:</p>
+                    <pre class="prettyprint source lang-json"><code>{
+  &quot;compilerOptions&quot;: {
+    ...
+  },
+  ...
+  &quot;files&quot;: [&quot;global.d.ts&quot;]
 }
 </code></pre>
                     <h1>Matchers</h1>

@@ -371,7 +371,7 @@
                     <div class="description usertext">
                         Verifies an object meets validity requirements for one of the six basic
                         GeoJSON geometry types: Point, MultiPoint, LineString, MultiLineString,
-                        Polygon, MultiPolygon, GeometryCollection
+                        Polygon, MultiPolygon, GeometryCollection.
                     </div>
 
                     <h5>Examples</h5>
@@ -491,7 +491,7 @@ test('Object is NOT valid GeoJSON Geometry Object', () => {
                         Verifies an object is a valid GeoJSON GeometryCollection. This object
                         requires a 'type' property that must equal "GeometryCollection", and a
                         'geometries' property that contains an array of GeoJSON Geometry objects
-                        (Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon) The
+                        (Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon). The
                         geometries may be an empty array, but may not be an array of empty arrays or
                         objects. Foreign members are allowed with the exception of 'geometry',
                         'properties', or 'features'. If present, bounding boxes must be valid.
