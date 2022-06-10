@@ -1,3 +1,12 @@
+## [1.4.0](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.3.0...v1.4.0) (2022-06-10)
+
+
+### :gift: Feature Changes
+
+* **toBeMultiPolygonWithHole:** add new matcher ([6668a1b](https://github.com/M-Scott-Lassiter/jest-geojson/commit/6668a1be664d1873958cde50e6ad7b0d76bd646f)), closes [#44](https://github.com/M-Scott-Lassiter/jest-geojson/issues/44)
+* **toBePolygonWithHole:** add new matcher ([3eb435c](https://github.com/M-Scott-Lassiter/jest-geojson/commit/3eb435c518df590543a59cc4816d2ac9714ee9a5)), closes [#43](https://github.com/M-Scott-Lassiter/jest-geojson/issues/43)
+* add Typescript support for the matchers ([602c33b](https://github.com/M-Scott-Lassiter/jest-geojson/commit/602c33bc11b58f831a2994e14da4e4ad5910e739)), closes [#42](https://github.com/M-Scott-Lassiter/jest-geojson/issues/42)
+
 ## [1.3.0](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.2.0...v1.3.0) (2022-06-08)
 
 
