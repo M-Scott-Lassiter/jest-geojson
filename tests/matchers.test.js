@@ -92,4 +92,8 @@ describe('Geometry Matchers Exported', () => {
     test('toBePolygonGeometry', () => {
         expect('toBePolygonGeometry' in matchers.geometries).toBeTruthy()
     })
+
+    test('toBePolygonWithHole', () => {
+        expect('toBePolygonWithHole' in matchers.geometries).toBeTruthy()
+    })
 })

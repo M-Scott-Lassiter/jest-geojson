@@ -192,6 +192,11 @@ declare global {
              * If present, bounding boxes must be valid.
              */
             toBePolygonGeometry<E = Object>(): R
+
+            /**
+             * Verifies an object is a valid GeoJSON Polygon Geometry with a hole.
+             */
+            toBePolygonWithHole<E = Object>(): R
         }
     }
 }

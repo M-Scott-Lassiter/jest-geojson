@@ -17,6 +17,7 @@ const allMatchers = [
     { name: 'toBeMultiPolygonGeometry' },
     { name: 'toBePointGeometry' },
     { name: 'toBePolygonGeometry' },
+    { name: 'toBePolygonWithHole' },
     { name: 'toBeValidGeoJSON' },
     { name: 'toHaveID' },
     { name: 'toHaveNumericID' },

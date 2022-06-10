@@ -283,6 +283,11 @@
                                 >toBePolygonGeometry</a
                             >
                         </li>
+                        <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toBePolygonWithHole"
+                                >toBePolygonWithHole</a
+                            >
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -1196,6 +1201,128 @@ const polygonEndDoesNotEqualStart = {
 test('Object is valid GeoJSON', () => {
     expect(point).not.toBePolygonGeometry()
     expect(polygonEndDoesNotEqualStart).not.toBePolygonGeometry()
+})</code></pre>
+
+                    <h5>Parameters:</h5>
+
+                    <table class="params">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+
+                                <th>Type</th>
+
+                                <th class="last">Description</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="name"><code>geometryObject</code></td>
+
+                                <td class="type">
+                                    <span class="param-type">object</span>
+                                </td>
+
+                                <td class="description last">a GeoJSON Polygon Geometry object</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4 class="name" id=".toBePolygonWithHole">
+                        <span class="type-signature">(static) </span>toBePolygonWithHole<span
+                            class="signature"
+                            >(geometryObject)</span
+                        ><span class="type-signature"></span>
+                    </h4>
+
+                    <dl class="details">
+                        <dt class="tag-source">Source:</dt>
+                        <dd class="tag-source">
+                            <ul class="dummy">
+                                <li>
+                                    <a href="matchers_geometries_toBePolygonWithHole.js.html"
+                                        >matchers/geometries/toBePolygonWithHole.js</a
+                                    >,
+                                    <a href="matchers_geometries_toBePolygonWithHole.js.html#line66"
+                                        >line 66</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+
+                        <dt class="tag-see">See:</dt>
+                        <dd class="tag-see">
+                            <ul>
+                                <li>
+                                    <a
+                                        href="https://github.com/M-Scott-Lassiter/jest-geojson/issues/43"
+                                        >https://github.com/M-Scott-Lassiter/jest-geojson/issues/43</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+                    </dl>
+
+                    <div class="description usertext">
+                        Verifies an object is a valid GeoJSON Polygon Geometry with a hole.
+                    </div>
+
+                    <h5>Examples</h5>
+
+                    <pre class="prettyprint"><code>const polygon1 = {
+    "type": "Polygon",
+    "coordinates": [
+        [
+            [100.0, 0.0],
+            [101.0, 0.0],
+            [101.0, 1.0],
+            [100.0, 1.0],
+            [100.0, 0.0]
+        ],
+        [
+            [100.8, 0.8],
+            [100.8, 0.2],
+            [100.2, 0.2],
+            [100.2, 0.8],
+            [100.8, 0.8]
+        ]
+    ]
+}
+
+test('Object is valid Polygon With Hole', () => {
+    expect(polygon1).toBePolygonWithHole()
+})</code></pre>
+
+                    <pre class="prettyprint"><code>const polygon2 = {
+    type: 'Polygon',
+    coordinates: [
+        [
+            [120.0, 0.0],
+            [121.0, 0.0],
+            [121.0, 1.0],
+            [120.0, 1.0],
+            [120.0, 0.0]
+        ]
+    ]
+}
+const point = {
+    type: 'Polygon',
+    coordinates: [
+        [
+            [120.0, 0.0],
+            [121.0, 0.0],
+            [121.0, 1.0],
+            [120.0, 1.0],
+            [120.0, 0.0]
+        ]
+    ]
+}
+
+test('Not a polygon, or doesn't have a hole', () => {
+    expect(polygon2).not.toBePolygonWithHole()
+    expect(polygon1.coordinates[1]).not.toBePolygonWithHole()
+    expect(point).not.toBePolygonWithHole()
 })</code></pre>
 
                     <h5>Parameters:</h5>
