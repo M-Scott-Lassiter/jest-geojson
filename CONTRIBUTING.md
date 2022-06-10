@@ -125,6 +125,7 @@ After installing, you should [run the build script](#building) to verify everyth
     -   `setup`: contains the scripts that install the matchers into the Jest runtime
     -   `core.js` and `matchers.js`: export a single object containing their categories as object members, each with their respective functions
     -   `typedefinitions.js`: documents the project's JSDoc type definitions and contains no actual code
+    -   `index.d.ts`: Typescript definitions for the matchers
 -   `tests`: the Jest scripts used to verify the matchers work as designed
 
 `package.json` contains entry points for `core.js`, `matchers.js`, and each of the loading scripts in `setup`.
@@ -188,8 +189,9 @@ npm run tableofcontents
 -   <u>Create Matcher Function</u>
     -   [ ] Create a matcher function under `src/matchers/<category>`
     -   [ ] Register the matcher in `src/matchers.js`
-    -   [ ] Add a verification test to `matchers.test.js`
-    -   [ ] Add the matcher to the `.cz-config.js` list (alphabetical order under the `coordinateMatchers` variable)
+    -   [ ] Add a verification test to `tests/matchers.test.js`
+    -   [ ] Add the matcher to `src/index.d.ts`
+    -   [ ] Add the matcher to the `.cz-config.js` list (alphabetical order under the `allMatchers` variable)
     -   [ ] Document the matcher using JSDoc. Refer to the issue. Include good and bad examples.
 -   [ ] Create a test for the matcher under `tests/<category>`
 -   [ ] Verify all tests pass and have 100% coverage

@@ -1,7 +1,7 @@
-name: Documentation Request
-description: Recommend clarifications, additions, examples, or more to existing documentation
+name: Enhancement Request
+description: Request additional functionality to existing matchers, features, or components
 title: 'Description'
-labels: ['documentation']
+labels: ['enhancement']
 assignees:
   - m-scott-lassiter
 body:
@@ -13,15 +13,15 @@ body:
     id: component
     attributes:
       label: Component
-      description: What part of the project are you requesting documentation on?
-      placeholder: i.e. JSDoc, function (specify name), README, API, CONTRIBUTING, etc.
+      description: What part of the project are you requesting an enhancement to?
+      placeholder: i.e. specific matcher, Typescript support, etc.
     validations:
       required: true
   - type: textarea
     id: description
     attributes:
       label: Description
-      description: How specifically can the documentation improve?
+      description: How specifically can this improve?
       placeholder: By adding...
     validations:
       required: true

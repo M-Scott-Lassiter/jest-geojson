@@ -4,7 +4,7 @@ const { geometryCollection } = require('../../core/geometries/geometryCollection
 /**
  * Verifies an object is a valid GeoJSON GeometryCollection. This object requires a
  * 'type' property that must equal "GeometryCollection", and a 'geometries' property that contains
- * an array of GeoJSON Geometry objects (Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon)
+ * an array of GeoJSON Geometry objects (Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon).
  *
  * The geometries may be an empty array, but may not be an array of empty arrays or objects.
  *

@@ -85,11 +85,19 @@ describe('Geometry Matchers Exported', () => {
         expect('toBeMultiPolygonGeometry' in matchers.geometries).toBeTruthy()
     })
 
+    test('toBeMultiPolygonWithHole', () => {
+        expect('toBeMultiPolygonWithHole' in matchers.geometries).toBeTruthy()
+    })
+
     test('toBePointGeometry', () => {
         expect('toBePointGeometry' in matchers.geometries).toBeTruthy()
     })
 
     test('toBePolygonGeometry', () => {
         expect('toBePolygonGeometry' in matchers.geometries).toBeTruthy()
+    })
+
+    test('toBePolygonWithHole', () => {
+        expect('toBePolygonWithHole' in matchers.geometries).toBeTruthy()
     })
 })

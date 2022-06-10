@@ -38,6 +38,7 @@
 -   [Getting Started](#getting-started)
     -   [Install as a Dependency](#install-as-a-dependency)
     -   [Configure Jest](#configure-jest)
+    -   [Configure Typescript](#configure-typescript)
 -   [Matchers](#matchers)
     -   [Coordiantes](#coordiantes)
     -   [Bounding Boxes](#bounding-boxes)
@@ -114,6 +115,26 @@ or add a key to your `package.json`:
 }
 ```
 
+## Configure Typescript
+
+If your editor does not recognize the custom `Jest-GeoJSON` matchers, add a `global.d.ts` file to your project with:
+
+```typescript
+import 'jest-geojson'
+```
+
+Then add a `files` key in your `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    ...
+  },
+  ...
+  "files": ["global.d.ts"]
+}
+```
+
 # Matchers
 
 `Jest-GeoJSON` organizes matchers by categories. Most correspond to the expected input type passed to `expect()`. For example, the Coordinates matchers expect a coordinate array, and geometry matchers expect a GeoJSON geometry object.
@@ -134,21 +155,21 @@ Functional matchers assess more generic attributes and qualities and many accept
 
 ## Geometries
 
--   [toBePointGeometry](https://m-scott-lassiter.github.io/jest-geojson/Core.Geometries.html#.pointGeometry)
--   [toBeMultiPointGeometry](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toBeMultiPointGeometry)
+-   [toBeAnyGeometry](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toBeAnyGeometry)
+-   [toBeGeometryCollection](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toBeGeometryCollection)
 -   [toBeLineStringGeometry](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toBeLineStringGeometry)
 -   [toBeMultiLineStringGeometry](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toBeMultiLineStringGeometry)
--   [toBePolygonGeometry](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toBePolygonGeometry)
+-   [toBeMultiPointGeometry](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toBeMultiPointGeometry)
 -   [toBeMultiPolygonGeometry](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toBeMultiPolygonGeometry)
--   [toBeGeometryCollection](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toBeGeometryCollection)
--   [toBeAnyGeometry](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toBeAnyGeometry)
+-   [toBeMultiPolygonWithHole](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toBeMultiPolygonWithHole)
+-   [toBePointGeometry](https://m-scott-lassiter.github.io/jest-geojson/Core.Geometries.html#.pointGeometry)
+-   [toBePolygonGeometry](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toBePolygonGeometry)
+-   [toBePolygonWithHole](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toBePolygonWithHole)
 
 ---
 
 _Future_
 
--   [ ] isPolygonWithHole
--   [ ] isMultiPolygonWithHole
 -   [ ] toHaveMinGeometryCount
 -   [ ] toHaveMaxGeometeyCount
 -   [ ] toHaveGeometeyCount (equal/min, max)

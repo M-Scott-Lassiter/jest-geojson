@@ -274,6 +274,11 @@
                             >
                         </li>
                         <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toBeMultiPolygonWithHole"
+                                >toBeMultiPolygonWithHole</a
+                            >
+                        </li>
+                        <li data-type="method">
                             <a href="Matchers.Geometries.html#.toBePointGeometry"
                                 >toBePointGeometry</a
                             >
@@ -281,6 +286,11 @@
                         <li data-type="method">
                             <a href="Matchers.Geometries.html#.toBePolygonGeometry"
                                 >toBePolygonGeometry</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toBePolygonWithHole"
+                                >toBePolygonWithHole</a
                             >
                         </li>
                     </ul>
@@ -371,7 +381,7 @@
                     <div class="description usertext">
                         Verifies an object meets validity requirements for one of the six basic
                         GeoJSON geometry types: Point, MultiPoint, LineString, MultiLineString,
-                        Polygon, MultiPolygon, GeometryCollection
+                        Polygon, MultiPolygon, GeometryCollection.
                     </div>
 
                     <h5>Examples</h5>
@@ -491,7 +501,7 @@ test('Object is NOT valid GeoJSON Geometry Object', () => {
                         Verifies an object is a valid GeoJSON GeometryCollection. This object
                         requires a 'type' property that must equal "GeometryCollection", and a
                         'geometries' property that contains an array of GeoJSON Geometry objects
-                        (Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon) The
+                        (Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon). The
                         geometries may be an empty array, but may not be an array of empty arrays or
                         objects. Foreign members are allowed with the exception of 'geometry',
                         'properties', or 'features'. If present, bounding boxes must be valid.
@@ -1020,6 +1030,150 @@ test('Object is NOT valid GeoJSON MultiPolygon Geometry', () => {
                         </tbody>
                     </table>
 
+                    <h4 class="name" id=".toBeMultiPolygonWithHole">
+                        <span class="type-signature">(static) </span>toBeMultiPolygonWithHole<span
+                            class="signature"
+                            >(geometryObject)</span
+                        ><span class="type-signature"></span>
+                    </h4>
+
+                    <dl class="details">
+                        <dt class="tag-source">Source:</dt>
+                        <dd class="tag-source">
+                            <ul class="dummy">
+                                <li>
+                                    <a href="matchers_geometries_toBeMultiPolygonWithHole.js.html"
+                                        >matchers/geometries/toBeMultiPolygonWithHole.js</a
+                                    >,
+                                    <a
+                                        href="matchers_geometries_toBeMultiPolygonWithHole.js.html#line86"
+                                        >line 86</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+
+                        <dt class="tag-see">See:</dt>
+                        <dd class="tag-see">
+                            <ul>
+                                <li>
+                                    <a
+                                        href="https://github.com/M-Scott-Lassiter/jest-geojson/issues/44"
+                                        >https://github.com/M-Scott-Lassiter/jest-geojson/issues/44</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+                    </dl>
+
+                    <div class="description usertext">
+                        Verifies an object is a valid GeoJSON MultiPolygon Geometry with at least
+                        one polygon having a hole.
+                    </div>
+
+                    <h5>Examples</h5>
+
+                    <pre class="prettyprint"><code>const multiPolygon1 = {
+    type: 'MultiPolygon',
+    coordinates: [
+        [
+            [
+                [102.0, 2.0],
+                [103.0, 2.0],
+                [103.0, 3.0],
+                [102.0, 3.0],
+                [102.0, 2.0]
+            ]
+        ],
+        [
+            [
+                [100.0, 0.0],
+                [101.0, 0.0],
+                [101.0, 1.0],
+                [100.0, 1.0],
+                [100.0, 0.0]
+            ],
+            [
+                [100.2, 0.2],
+                [100.2, 0.8],
+                [100.8, 0.8],
+                [100.8, 0.2],
+                [100.2, 0.2]
+            ]
+        ]
+    ]
+}
+
+test('Object is valid MultiPolygon With Hole', () => {
+    expect(multiPolygon1).toBeMultiPolygonWithHole()
+})</code></pre>
+
+                    <pre class="prettyprint"><code>const multiPolygon2 = {
+    type: 'MultiPolygon',
+    coordinates: [
+        [
+            [
+                [102.0, 2.0],
+                [103.0, 2.0],
+                [103.0, 3.0],
+                [102.0, 3.0],
+                [102.0, 2.0]
+            ]
+        ]
+    ]
+}
+const polygon = {
+    type: 'Polygon',
+    coordinates: [
+        [
+            [100.0, 0.0],
+            [101.0, 0.0],
+            [101.0, 1.0],
+            [100.0, 1.0],
+            [100.0, 0.0]
+        ],
+        [
+            [100.2, 0.2],
+            [100.2, 0.8],
+            [100.8, 0.8],
+            [100.8, 0.2],
+            [100.2, 0.2]
+        ]
+    ]
+}
+
+test('Not a MultiPolygon, or does not have a hole', () => {
+    expect(multiPolygon2).not.toBeMultiPolygonWithHole()
+    expect(multiPolygon1.coordinates[2][1]).not.toBeMultiPolygonWithHole()
+    expect(polygon).not.toBeMultiPolygonWithHole()
+})</code></pre>
+
+                    <h5>Parameters:</h5>
+
+                    <table class="params">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+
+                                <th>Type</th>
+
+                                <th class="last">Description</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="name"><code>geometryObject</code></td>
+
+                                <td class="type">
+                                    <span class="param-type">object</span>
+                                </td>
+
+                                <td class="description last">a GeoJSON Polygon Geometry object</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
                     <h4 class="name" id=".toBePointGeometry">
                         <span class="type-signature">(static) </span>toBePointGeometry<span
                             class="signature"
@@ -1196,6 +1350,128 @@ const polygonEndDoesNotEqualStart = {
 test('Object is valid GeoJSON', () => {
     expect(point).not.toBePolygonGeometry()
     expect(polygonEndDoesNotEqualStart).not.toBePolygonGeometry()
+})</code></pre>
+
+                    <h5>Parameters:</h5>
+
+                    <table class="params">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+
+                                <th>Type</th>
+
+                                <th class="last">Description</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="name"><code>geometryObject</code></td>
+
+                                <td class="type">
+                                    <span class="param-type">object</span>
+                                </td>
+
+                                <td class="description last">a GeoJSON Polygon Geometry object</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4 class="name" id=".toBePolygonWithHole">
+                        <span class="type-signature">(static) </span>toBePolygonWithHole<span
+                            class="signature"
+                            >(geometryObject)</span
+                        ><span class="type-signature"></span>
+                    </h4>
+
+                    <dl class="details">
+                        <dt class="tag-source">Source:</dt>
+                        <dd class="tag-source">
+                            <ul class="dummy">
+                                <li>
+                                    <a href="matchers_geometries_toBePolygonWithHole.js.html"
+                                        >matchers/geometries/toBePolygonWithHole.js</a
+                                    >,
+                                    <a href="matchers_geometries_toBePolygonWithHole.js.html#line66"
+                                        >line 66</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+
+                        <dt class="tag-see">See:</dt>
+                        <dd class="tag-see">
+                            <ul>
+                                <li>
+                                    <a
+                                        href="https://github.com/M-Scott-Lassiter/jest-geojson/issues/43"
+                                        >https://github.com/M-Scott-Lassiter/jest-geojson/issues/43</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+                    </dl>
+
+                    <div class="description usertext">
+                        Verifies an object is a valid GeoJSON Polygon Geometry with a hole.
+                    </div>
+
+                    <h5>Examples</h5>
+
+                    <pre class="prettyprint"><code>const polygon1 = {
+    "type": "Polygon",
+    "coordinates": [
+        [
+            [100.0, 0.0],
+            [101.0, 0.0],
+            [101.0, 1.0],
+            [100.0, 1.0],
+            [100.0, 0.0]
+        ],
+        [
+            [100.8, 0.8],
+            [100.8, 0.2],
+            [100.2, 0.2],
+            [100.2, 0.8],
+            [100.8, 0.8]
+        ]
+    ]
+}
+
+test('Object is valid Polygon With Hole', () => {
+    expect(polygon1).toBePolygonWithHole()
+})</code></pre>
+
+                    <pre class="prettyprint"><code>const polygon2 = {
+    type: 'Polygon',
+    coordinates: [
+        [
+            [120.0, 0.0],
+            [121.0, 0.0],
+            [121.0, 1.0],
+            [120.0, 1.0],
+            [120.0, 0.0]
+        ]
+    ]
+}
+const point = {
+    type: 'Polygon',
+    coordinates: [
+        [
+            [120.0, 0.0],
+            [121.0, 0.0],
+            [121.0, 1.0],
+            [120.0, 1.0],
+            [120.0, 0.0]
+        ]
+    ]
+}
+
+test('Not a Polygon, or does not have a hole', () => {
+    expect(polygon2).not.toBePolygonWithHole()
+    expect(polygon1.coordinates[1]).not.toBePolygonWithHole()
+    expect(point).not.toBePolygonWithHole()
 })</code></pre>
 
                     <h5>Parameters:</h5>
