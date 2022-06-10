@@ -180,6 +180,8 @@ npm run tableofcontents
 
 ### Checklist
 
+Before pushing to Github and opening a pull request:
+
 -   [ ] Open an issue with detailed description of the purpose and required behavior
 -   <u>Create Core Function (If Applicable)</u>
     -   [ ] Create a core function under `src/core/<category>`
@@ -197,7 +199,6 @@ npm run tableofcontents
 -   [ ] Verify all tests pass and have 100% coverage
 -   [ ] Add the matcher to the README.md list (alphabetical order within category)
 -   [ ] Run the `build` script locally
--   [ ] Push to Github then open pull request
 
 ### Creating Core Functions
 

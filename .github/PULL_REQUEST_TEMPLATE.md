@@ -9,7 +9,6 @@ Please check if your PR fulfills the following requirements:
 -   [ ] I have read the [CONTRIBUTING](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/CONTRIBUTING.md) guidelines
 -   [ ] My commits follow the [appropriate guidance](https://github.com/M-Scott-Lassiter/jest-geojson/blob/main/CONTRIBUTING.md#commits)
 -   [ ] I certify that I have the appropriate permissions to add these changes to the repository
--   [ ] An issue is open for the changes proposed
 
 ## New Matcher Submission Checklist
 
@@ -30,7 +29,6 @@ Please check if your PR fulfills the following requirements:
 -   [ ] Verify all tests pass and have 100% coverage
 -   [ ] Add the matcher to the README.md list (alphabetical order within category)
 -   [ ] Run the `build` script locally
--   [ ] Push to Github then open pull request
 
 Issues Addressed: (e.g. #1, #5, #22)
 
