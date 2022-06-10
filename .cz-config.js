@@ -75,7 +75,7 @@ module.exports = {
     // it needs to match the value for field type. Eg.: 'fix'
     scopeOverrides: {
         api: allMatchers,
-        ci: [{ name: 'publish' }, { name: 'test' }, { name: 'hooks' }, { name: 'templates' }],
+        ci: [{ name: 'publish' }, { name: 'test' }, { name: 'templates' }],
         build: [
             { name: 'dependencies' },
             { name: 'devDependencies' },
