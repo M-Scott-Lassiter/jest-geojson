@@ -171,6 +171,11 @@ declare global {
             toBeMultiPolygonGeometry<E = Object>(): R
 
             /**
+             * Verifies an object is a valid GeoJSON MultiPolygon Geometry with at least one polygon having a hole.
+             */
+            toBeMultiPolygonWithHole<E = Object>(): R
+
+            /**
              * Verifies an object is a valid GeoJSON Point Geometry. This geometry requires a
              * 'type' property that must equal "Point", and a 'coordinates' property that contains
              * a single valid WGS-84 GeoJSON coordinate. The coordinates may be an empty array.
