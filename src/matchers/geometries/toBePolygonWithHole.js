@@ -57,7 +57,7 @@ const { polygonGeometry } = require('../../core/geometries/polygonGeometry')
  *     ]
  * }
  *
- * test('Not a polygon, or doesn't have a hole', () => {
+ * test('Not a Polygon, or does not have a hole', () => {
  *     expect(polygon2).not.toBePolygonWithHole()
  *     expect(polygon1.coordinates[1]).not.toBePolygonWithHole()
  *     expect(point).not.toBePolygonWithHole()

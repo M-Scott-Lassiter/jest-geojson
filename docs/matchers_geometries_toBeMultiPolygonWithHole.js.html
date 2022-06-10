@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>matchers/geometries/toBePointGeometry.js - Jest-GeoJSON</title>
+        <title>matchers/geometries/toBeMultiPolygonWithHole.js - Jest-GeoJSON</title>
 
         <meta
             name="description"
@@ -299,55 +299,104 @@
         </nav>
 
         <div id="main">
-            <h1 class="page-title">matchers/geometries/toBePointGeometry.js</h1>
+            <h1 class="page-title">matchers/geometries/toBeMultiPolygonWithHole.js</h1>
 
             <section>
                 <article>
                     <pre
                         class="prettyprint source linenums"
-                    ><code>const { pointGeometry } = require('../../core/geometries/pointGeometry')
+                    ><code>const { multiPolygonGeometry } = require('../../core/geometries/multiPolygonGeometry')
 
 // eslint-disable-next-line jsdoc/require-returns
 /**
- * Verifies an object is a valid GeoJSON Point Geometry. This geometry requires a
- * 'type' property that must equal "Point", and a 'coordinates' property that contains
- * a single valid WGS-84 GeoJSON coordinate. The coordinates may be an empty array.
- *
- * Foreign members are allowed with the exception of 'geometry', 'properties', or 'features'.
- * If present, bounding boxes must be valid.
+ * Verifies an object is a valid GeoJSON MultiPolygon Geometry with at least one polygon having a hole.
  *
  * @memberof Matchers.Geometries
- * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/9
- * @param {object} geometryObject a GeoJSON Point Geometry object
+ * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/44
+ * @param {object} geometryObject a GeoJSON Polygon Geometry object
  * @example
- * const testPoint = {
- *     type: 'Point',
- *     coordinates: [25, 10.2]
- * }
- *
- * test('Object is valid GeoJSON Point Geometry', () => {
- *     expect(testPoint).toBePointGeometry()
- * })
- * @example
- * const multiPoint = {
- *     type: 'MultiPoint',
+ * const multiPolygon1 = {
+ *     type: 'MultiPolygon',
  *     coordinates: [
- *         [25, 10.2],
- *         [120, 45]
+ *         [
+ *             [
+ *                 [102.0, 2.0],
+ *                 [103.0, 2.0],
+ *                 [103.0, 3.0],
+ *                 [102.0, 3.0],
+ *                 [102.0, 2.0]
+ *             ]
+ *         ],
+ *         [
+ *             [
+ *                 [100.0, 0.0],
+ *                 [101.0, 0.0],
+ *                 [101.0, 1.0],
+ *                 [100.0, 1.0],
+ *                 [100.0, 0.0]
+ *             ],
+ *             [
+ *                 [100.2, 0.2],
+ *                 [100.2, 0.8],
+ *                 [100.8, 0.8],
+ *                 [100.8, 0.2],
+ *                 [100.2, 0.2]
+ *             ]
+ *         ]
  *     ]
  * }
  *
- * test('Object is NOT valid GeoJSON Point Geometry', () => {
- *     expect(multiPoint).not.toBePointGeometry()
+ * test('Object is valid MultiPolygon With Hole', () => {
+ *     expect(multiPolygon1).toBeMultiPolygonWithHole()
+ * })
+ * @example
+ * const multiPolygon2 = {
+ *     type: 'MultiPolygon',
+ *     coordinates: [
+ *         [
+ *             [
+ *                 [102.0, 2.0],
+ *                 [103.0, 2.0],
+ *                 [103.0, 3.0],
+ *                 [102.0, 3.0],
+ *                 [102.0, 2.0]
+ *             ]
+ *         ]
+ *     ]
+ * }
+ * const polygon = {
+ *     type: 'Polygon',
+ *     coordinates: [
+ *         [
+ *             [100.0, 0.0],
+ *             [101.0, 0.0],
+ *             [101.0, 1.0],
+ *             [100.0, 1.0],
+ *             [100.0, 0.0]
+ *         ],
+ *         [
+ *             [100.2, 0.2],
+ *             [100.2, 0.8],
+ *             [100.8, 0.8],
+ *             [100.8, 0.2],
+ *             [100.2, 0.2]
+ *         ]
+ *     ]
+ * }
+ *
+ * test('Not a MultiPolygon, or does not have a hole', () => {
+ *     expect(multiPolygon2).not.toBeMultiPolygonWithHole()
+ *     expect(multiPolygon1.coordinates[2][1]).not.toBeMultiPolygonWithHole()
+ *     expect(polygon).not.toBeMultiPolygonWithHole()
  * })
  */
-function toBePointGeometry(geometryObject) {
+function toBeMultiPolygonWithHole(geometryObject) {
     const { printReceived, matcherHint } = this.utils
     const passMessage =
         // eslint-disable-next-line prefer-template
-        matcherHint('.not.toBePointGeometry', 'GeometryObject', '') +
+        matcherHint('.not.toBeMultiPolygonWithHole', 'GeometryObject', '') +
         '\n\n' +
-        `Expected input to not be a valid GeoJSON Point geometry.\n\n` +
+        `Expected input to not be a valid GeoJSON MultiPolygon geometry with at least one hole.\n\n` +
         `Received:  ${printReceived(geometryObject)}`
 
     /**
@@ -360,7 +409,7 @@ function toBePointGeometry(geometryObject) {
     function failMessage(errorMessage) {
         return (
             // eslint-disable-next-line prefer-template, no-unused-expressions
-            matcherHint('.toBePointGeometry', 'GeometryObject', '') +
+            matcherHint('.toBeMultiPolygonWithHole', 'GeometryObject', '') +
             '\n\n' +
             `${errorMessage}\n\n` +
             `Received:  ${printReceived(geometryObject)}`
@@ -368,14 +417,29 @@ function toBePointGeometry(geometryObject) {
     }
 
     try {
-        pointGeometry(geometryObject)
+        multiPolygonGeometry(geometryObject)
     } catch (err) {
         return { pass: false, message: () => failMessage(err.message) }
     }
-    return { pass: true, message: () => passMessage }
+
+    let foundHole = false
+    geometryObject.coordinates.forEach((polygon) => {
+        if (polygon.length > 1) {
+            foundHole = true
+        }
+    })
+    if (foundHole) {
+        return { pass: true, message: () => passMessage }
+    }
+
+    return {
+        pass: false,
+        message: () =>
+            failMessage('MultiPolygon has no polygons with holes, expected at least one.')
+    }
 }
 
-exports.toBePointGeometry = toBePointGeometry
+exports.toBeMultiPolygonWithHole = toBeMultiPolygonWithHole
 </code></pre>
                 </article>
             </section>

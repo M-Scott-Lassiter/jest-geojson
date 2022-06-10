@@ -15,6 +15,7 @@ const allMatchers = [
     { name: 'toBeMultiLineStringGeometry' },
     { name: 'toBeMultiPointGeometry' },
     { name: 'toBeMultiPolygonGeometry' },
+    { name: 'toBeMultiPolygonWithHole' },
     { name: 'toBePointGeometry' },
     { name: 'toBePolygonGeometry' },
     { name: 'toBePolygonWithHole' },
