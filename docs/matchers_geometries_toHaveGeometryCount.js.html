@@ -328,11 +328,13 @@
  *
  * Will fail if Range1 or Range2 less than 0, Range2 less than Range1, or Range2 is defined and Range1 is not.
  *
+ * Nested GeometryCollections are only counted as a single geometry object.
+ *
  * @memberof Matchers.Geometries
  * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/48
  * @param {object} geometryObject A GeoJSON GeometryCollection object
- * @param {number} Range1 Minimum geometry object count, or exact count if omitting Range2
- * @param {number} Range2 Maximum geometry object count
+ * @param {number} [Range1] Minimum geometry object count, or exact count if omitting Range2
+ * @param {number} [Range2] Maximum geometry object count
  * @example
  * const testCollection = {
  *     "type": "GeometryCollection",
@@ -429,14 +431,16 @@ function toHaveGeometryCount(geometryObject, Range1, Range2) {
     if (Range1 &lt; 0) {
         return {
             pass: false,
-            message: () => failMessage(`Range1 (${printExpected(Range1)}) must be greater than 0.`)
+            message: () =>
+                failMessage(`Range1 must be greater than 0. Provided: ${printExpected(Range1)}`)
         }
     }
 
     if (Range2 &lt; 0) {
         return {
             pass: false,
-            message: () => failMessage(`Range2 (${printExpected(Range2)}) must be greater than 0.`)
+            message: () =>
+                failMessage(`Range2 must be greater than 0. Provided: ${printExpected(Range2)}`)
         }
     }
 
@@ -447,7 +451,7 @@ function toHaveGeometryCount(geometryObject, Range1, Range2) {
                 failMessage(
                     `Range2 (${printExpected(
                         Range2
-                    )}) must be greater than or equal to Range1 (${printExpected(Range1)})`
+                    )}) must be greater than or equal to Range1 (${printExpected(Range1)}).`
                 )
         }
     }
@@ -487,7 +491,7 @@ function toHaveGeometryCount(geometryObject, Range1, Range2) {
         }
         return {
             pass: false,
-            message: () => failMessage('Expected no objects in the "geometries" property')
+            message: () => failMessage('Expected no objects in the "geometries" property.')
         }
     } else {
         // Check for an exact value
@@ -500,7 +504,7 @@ function toHaveGeometryCount(geometryObject, Range1, Range2) {
                         // eslint-disable-next-line prefer-template, no-unused-expressions
                         matcherHint('.toHaveGeometryCount', 'GeometryObject', 'Range1') +
                         '\n\n' +
-                        'Geometries2 has count of ' +
+                        'Geometries has count of ' +
                         printReceived(geometryObject.geometries.length) +
                         ', expected ' +
                         printExpected(Range1) +

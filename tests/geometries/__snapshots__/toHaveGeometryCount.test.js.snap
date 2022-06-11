@@ -19,7 +19,7 @@ Received:  [31mfalse[39m"
 exports[`Error Snapshot Testing. Throws error: No objects in geometries 1`] = `
 "[2mexpect([22m[31mGeometryObject[39m[2m).toHaveGeometryCount([22m[32mRange1, Range2[39m[2m)[22m
 
-Expected no objects in the \\"geometries\\" property
+Expected no objects in the \\"geometries\\" property.
 
 Received:  [31m{\\"geometries\\": [], \\"type\\": \\"GeometryCollection\\"}[39m"
 `;
@@ -35,7 +35,7 @@ Received:  [31m{\\"geometries\\": [{\\"coordinates\\": [100, 0], \\"type\\": \\
 exports[`Error Snapshot Testing. Throws error: Range1 is negative 1`] = `
 "[2mexpect([22m[31mGeometryObject[39m[2m).toHaveGeometryCount([22m[32mRange1, Range2[39m[2m)[22m
 
-Range1 ([32m-1[39m) must be greater than 0.
+Range1 must be greater than 0. Provided: [32m-1[39m
 
 Received:  [31m{\\"geometries\\": [{\\"coordinates\\": [100, 0], \\"type\\": \\"Point\\"}, {\\"coordinates\\": [[101, 0], [102, 1]], \\"type\\": \\"LineString\\"}, {\\"coordinates\\": [[[102, 2], [103, 2], [103, 3], [102, 3], [102, 2]]], \\"type\\": \\"Polygon\\"}, {\\"coordinates\\": [150, 73], \\"type\\": \\"Point\\"}], \\"type\\": \\"GeometryCollection\\"}[39m"
 `;
@@ -51,7 +51,7 @@ Received:  [31m{\\"geometries\\": [{\\"coordinates\\": [100, 0], \\"type\\": \\
 exports[`Error Snapshot Testing. Throws error: Range2 is negative 1`] = `
 "[2mexpect([22m[31mGeometryObject[39m[2m).toHaveGeometryCount([22m[32mRange1, Range2[39m[2m)[22m
 
-Range2 ([32m-1[39m) must be greater than 0.
+Range2 must be greater than 0. Provided: [32m-1[39m
 
 Received:  [31m{\\"geometries\\": [{\\"coordinates\\": [100, 0], \\"type\\": \\"Point\\"}, {\\"coordinates\\": [[101, 0], [102, 1]], \\"type\\": \\"LineString\\"}, {\\"coordinates\\": [[[102, 2], [103, 2], [103, 3], [102, 3], [102, 2]]], \\"type\\": \\"Polygon\\"}, {\\"coordinates\\": [150, 73], \\"type\\": \\"Point\\"}], \\"type\\": \\"GeometryCollection\\"}[39m"
 `;
@@ -67,7 +67,7 @@ Received:  [31m{\\"geometries\\": [{\\"coordinates\\": [100, 0], \\"type\\": \\
 exports[`Error Snapshot Testing. Throws error: Searching for wrong number of geometries 1`] = `
 "[2mexpect([22m[31mGeometryObject[39m[2m).toHaveGeometryCount([22m[32mRange1[39m[2m)[22m
 
-Geometries2 has count of [31m4[39m, expected [32m3[39m.
+Geometries has count of [31m4[39m, expected [32m3[39m.
 
 Received:  [31m{\\"geometries\\": [{\\"coordinates\\": [100, 0], \\"type\\": \\"Point\\"}, {\\"coordinates\\": [[101, 0], [102, 1]], \\"type\\": \\"LineString\\"}, {\\"coordinates\\": [[[102, 2], [103, 2], [103, 3], [102, 3], [102, 2]]], \\"type\\": \\"Polygon\\"}, {\\"coordinates\\": [150, 73], \\"type\\": \\"Point\\"}], \\"type\\": \\"GeometryCollection\\"}[39m"
 `;
@@ -83,7 +83,7 @@ Received:  [31m{\\"geometries\\": [{\\"coordinates\\": [100, 0], \\"type\\": \\
 exports[`Error Snapshot Testing. Throws error: Valid Range2 less than valid Range1 1`] = `
 "[2mexpect([22m[31mGeometryObject[39m[2m).toHaveGeometryCount([22m[32mRange1, Range2[39m[2m)[22m
 
-Range2 ([32m1[39m) must be greater than or equal to Range1 ([32m2[39m)
+Range2 ([32m1[39m) must be greater than or equal to Range1 ([32m2[39m).
 
 Received:  [31m{\\"geometries\\": [{\\"coordinates\\": [100, 0], \\"type\\": \\"Point\\"}, {\\"coordinates\\": [[101, 0], [102, 1]], \\"type\\": \\"LineString\\"}, {\\"coordinates\\": [[[102, 2], [103, 2], [103, 3], [102, 3], [102, 2]]], \\"type\\": \\"Polygon\\"}, {\\"coordinates\\": [150, 73], \\"type\\": \\"Point\\"}], \\"type\\": \\"GeometryCollection\\"}[39m"
 `;

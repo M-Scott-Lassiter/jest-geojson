@@ -1513,7 +1513,8 @@ test('Not a Polygon, or does not have a hole', () => {
                     <h4 class="name" id=".toHaveGeometryCount">
                         <span class="type-signature">(static) </span>toHaveGeometryCount<span
                             class="signature"
-                            >(geometryObject, Range1, Range2)</span
+                            >(geometryObject, Range1<span class="signature-attributes">opt</span>,
+                            Range2<span class="signature-attributes">opt</span>)</span
                         ><span class="type-signature"></span>
                     </h4>
 
@@ -1525,8 +1526,8 @@ test('Not a Polygon, or does not have a hole', () => {
                                     <a href="matchers_geometries_toHaveGeometryCount.js.html"
                                         >matchers/geometries/toHaveGeometryCount.js</a
                                     >,
-                                    <a href="matchers_geometries_toHaveGeometryCount.js.html#line78"
-                                        >line 78</a
+                                    <a href="matchers_geometries_toHaveGeometryCount.js.html#line80"
+                                        >line 80</a
                                     >
                                 </li>
                             </ul>
@@ -1553,7 +1554,8 @@ test('Not a Polygon, or does not have a hole', () => {
                         Range1 and Range2 are specified, it checks that the geometry count is
                         between those values. Decimals get truncated on both Range1 and Range2. Will
                         fail if Range1 or Range2 less than 0, Range2 less than Range1, or Range2 is
-                        defined and Range1 is not.
+                        defined and Range1 is not. Nested GeometryCollections are only counted as a
+                        single geometry object.
                     </div>
 
                     <h5>Examples</h5>
@@ -1625,6 +1627,8 @@ test('Object is not a GeometryCollection or does not have specified geometry cou
 
                                 <th>Type</th>
 
+                                <th>Attributes</th>
+
                                 <th class="last">Description</th>
                             </tr>
                         </thead>
@@ -1636,6 +1640,8 @@ test('Object is not a GeometryCollection or does not have specified geometry cou
                                 <td class="type">
                                     <span class="param-type">object</span>
                                 </td>
+
+                                <td class="attributes"></td>
 
                                 <td class="description last">
                                     A GeoJSON GeometryCollection object
@@ -1649,6 +1655,8 @@ test('Object is not a GeometryCollection or does not have specified geometry cou
                                     <span class="param-type">number</span>
                                 </td>
 
+                                <td class="attributes">&lt;optional><br /></td>
+
                                 <td class="description last">
                                     Minimum geometry object count, or exact count if omitting Range2
                                 </td>
@@ -1660,6 +1668,8 @@ test('Object is not a GeometryCollection or does not have specified geometry cou
                                 <td class="type">
                                     <span class="param-type">number</span>
                                 </td>
+
+                                <td class="attributes">&lt;optional><br /></td>
 
                                 <td class="description last">Maximum geometry object count</td>
                             </tr>

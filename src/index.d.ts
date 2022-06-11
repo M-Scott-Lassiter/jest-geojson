@@ -212,6 +212,8 @@ declare global {
              * Decimals get truncated on both Range1 and Range2.
              *
              * Will fail if Range1 or Range2 less than 0, Range2 less than Range1, or Range2 is defined and Range1 is not.
+             *
+             * Nested GeometryCollections are only counted as a single geometry object.
              */
             toHaveGeometryCount<E = Object>(Range1: Number, Range2: Number): R
 
@@ -224,7 +226,7 @@ declare global {
              *
              * Nested GeometryCollections are only counted as a single geometry object.
              */
-            toHaveGeometryCount<E = Object>(MinCount: Number): R
+            toHaveMinGeometryCount<E = Object>(MinCount: Number): R
         }
     }
 }
