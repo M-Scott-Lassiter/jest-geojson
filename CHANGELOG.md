@@ -1,3 +1,10 @@
+## [1.5.0](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.4.0...v1.5.0) (2022-06-11)
+
+
+### :gift: Feature Changes
+
+* **toHaveGeometryCount:** add new matcher ([b4bff1c](https://github.com/M-Scott-Lassiter/jest-geojson/commit/b4bff1c21213e86fde3e56f05a71f76b1120956e)), closes [#48](https://github.com/M-Scott-Lassiter/jest-geojson/issues/48)
+
 ## [1.4.0](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.3.0...v1.4.0) (2022-06-10)
 
 

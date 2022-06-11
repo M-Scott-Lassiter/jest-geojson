@@ -1,6 +1,6 @@
 {
     "name": "jest-geojson",
-    "version": "1.4.0",
+    "version": "1.5.0",
     "description": "Additional Jest matchers for GeoJSON",
     "keywords": [
         "jest",
