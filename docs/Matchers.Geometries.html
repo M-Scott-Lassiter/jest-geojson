@@ -293,6 +293,11 @@
                                 >toBePolygonWithHole</a
                             >
                         </li>
+                        <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toHaveGeometryCount"
+                                >toHaveGeometryCount</a
+                            >
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -537,7 +542,7 @@ test('Object is NOT valid GeoJSON Geometry Object', () => {
     }]
 }
 
- test('Object is valid GeoJSON Geometry Object', () => {
+ test('Object is valid GeoJSON GeometryCollection Object', () => {
     expect(collection).toBeGeometryCollection()
 })</code></pre>
 
@@ -548,7 +553,7 @@ test('Object is NOT valid GeoJSON Geometry Object', () => {
         [102.0, 1.0]
     ]
 }
-test('Object is NOT valid GeoJSON Geometry Object', () => {
+test('Object is NOT valid GeoJSON GeometryCollection Object', () => {
     expect(collection.geometries).not.toBeGeometryCollection()
     expect(lineString).not.toBeGeometryCollection()
 })</code></pre>
@@ -1496,6 +1501,162 @@ test('Not a Polygon, or does not have a hole', () => {
                                 </td>
 
                                 <td class="description last">a GeoJSON Polygon Geometry object</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4 class="name" id=".toHaveGeometryCount">
+                        <span class="type-signature">(static) </span>toHaveGeometryCount<span
+                            class="signature"
+                            >(geometryObject, Range1, Range2)</span
+                        ><span class="type-signature"></span>
+                    </h4>
+
+                    <dl class="details">
+                        <dt class="tag-source">Source:</dt>
+                        <dd class="tag-source">
+                            <ul class="dummy">
+                                <li>
+                                    <a href="matchers_geometries_toHaveGeometryCount.js.html"
+                                        >matchers/geometries/toHaveGeometryCount.js</a
+                                    >,
+                                    <a href="matchers_geometries_toHaveGeometryCount.js.html#line78"
+                                        >line 78</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+
+                        <dt class="tag-see">See:</dt>
+                        <dd class="tag-see">
+                            <ul>
+                                <li>
+                                    <a
+                                        href="https://github.com/M-Scott-Lassiter/jest-geojson/issues/48"
+                                        >https://github.com/M-Scott-Lassiter/jest-geojson/issues/48</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+                    </dl>
+
+                    <div class="description usertext">
+                        Verifies a valid GeoJSON GeometryCollection has a specific number of
+                        geometries. If omitting both `Range1` and `Range2`, it passes if at least
+                        one geometry object is contained in "geometries". If only Range1 is
+                        specified, it checks that there are exactly that number of geometries. If
+                        Range1 and Range2 are specified, it checks that the geometry count is
+                        between those values. Decimals get truncated on both Range1 and Range2. Will
+                        fail if Range1 or Range2 less than 0, Range2 less than Range1, or Range2 is
+                        defined and Range1 is not.
+                    </div>
+
+                    <h5>Examples</h5>
+
+                    <pre class="prettyprint"><code>const testCollection = {
+    "type": "GeometryCollection",
+    "geometries": [{
+        "type": "Point",
+        "coordinates": [100.0, 0.0]
+    }, {
+        "type": "LineString",
+        "coordinates": [
+            [101.0, 0.0],
+            [102.0, 1.0]
+        ]
+    }, {
+        "type": "Polygon",
+        "coordinates": [
+            [
+                [102.0, 2.0],
+                [103.0, 2.0],
+                [103.0, 3.0],
+                [102.0, 3.0],
+                [102.0, 2.0]
+            ]
+        ]
+    }, {
+        "type": "Point",
+        "coordinates": [150.0, 73.0]
+    }]
+}
+
+ test('GeometryCollection has specified geometry count', () => {
+    expect(testCollection).toHaveGeometryCount(1, 8)
+    expect(testCollection).toHaveGeometryCount(4)
+    expect(testCollection).toHaveGeometryCount()
+})</code></pre>
+
+                    <pre class="prettyprint"><code>const emptyCollection = {
+    "type": "GeometryCollection",
+    "geometries": []
+}
+const polygon = {
+    type: 'Polygon',
+    coordinates: [
+        [
+            [100.0, 0.0],
+            [101.0, 0.0],
+            [101.0, 1.0],
+            [100.0, 1.0],
+            [100.0, 0.0]
+        ]
+    ]
+}
+
+test('Object is not a GeometryCollection or does not have specified geometry count', () => {
+    expect(testCollection).not.toHaveGeometryCount(5, 15)
+    expect(testCollection).not.toHaveGeometryCount(2, 3.99)
+    expect(emptyCollection).not.toHaveGeometryCount()
+    expect(polygon).not.toHaveGeometryCount(1)
+})</code></pre>
+
+                    <h5>Parameters:</h5>
+
+                    <table class="params">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+
+                                <th>Type</th>
+
+                                <th class="last">Description</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="name"><code>geometryObject</code></td>
+
+                                <td class="type">
+                                    <span class="param-type">object</span>
+                                </td>
+
+                                <td class="description last">
+                                    A GeoJSON GeometryCollection object
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="name"><code>Range1</code></td>
+
+                                <td class="type">
+                                    <span class="param-type">number</span>
+                                </td>
+
+                                <td class="description last">
+                                    Minimum geometry object count, or exact count if omitting Range2
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="name"><code>Range2</code></td>
+
+                                <td class="type">
+                                    <span class="param-type">number</span>
+                                </td>
+
+                                <td class="description last">Maximum geometry object count</td>
                             </tr>
                         </tbody>
                     </table>

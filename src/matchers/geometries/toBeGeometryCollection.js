@@ -43,7 +43,7 @@ const { geometryCollection } = require('../../core/geometries/geometryCollection
  *     }]
  * }
  *
- *  test('Object is valid GeoJSON Geometry Object', () => {
+ *  test('Object is valid GeoJSON GeometryCollection Object', () => {
  *     expect(collection).toBeGeometryCollection()
  * })
  * @example
@@ -54,7 +54,7 @@ const { geometryCollection } = require('../../core/geometries/geometryCollection
  *         [102.0, 1.0]
  *     ]
  * }
- * test('Object is NOT valid GeoJSON Geometry Object', () => {
+ * test('Object is NOT valid GeoJSON GeometryCollection Object', () => {
  *     expect(collection.geometries).not.toBeGeometryCollection()
  *     expect(lineString).not.toBeGeometryCollection()
  * })

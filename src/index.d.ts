@@ -202,6 +202,18 @@ declare global {
              * Verifies an object is a valid GeoJSON Polygon Geometry with a hole.
              */
             toBePolygonWithHole<E = Object>(): R
+
+            /**
+             * Verifies a valid GeoJSON GeometryCollection has a specific number of geometries.
+             *
+             * If omitting both `Range1` and `Range2`, it passes if at least one geometry object is contained in "geometries".
+             * If only Range1 is specified, it checks that there are exactly that number of geometries.
+             * If Range1 and Range2 are specified, it checks that the geometry count is between those values.
+             * Decimals get truncated on both Range1 and Range2.
+             *
+             * Will fail if Range1 or Range2 less than 0, Range2 less than Range1, or Range2 is defined and Range1 is not.
+             */
+            toBePolygonWithHole<E = Object>(Range1: Number, Range2: Number): R
         }
     }
 }
