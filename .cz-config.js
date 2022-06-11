@@ -20,6 +20,7 @@ const allMatchers = [
     { name: 'toBePolygonGeometry' },
     { name: 'toBePolygonWithHole' },
     { name: 'toBeValidGeoJSON' },
+    { name: 'toHaveGeometryCount' },
     { name: 'toHaveID' },
     { name: 'toHaveNumericID' },
     { name: 'toHaveStringID' }

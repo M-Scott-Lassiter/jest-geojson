@@ -49,5 +49,6 @@ exports.geometries = {
         .toBeMultiPolygonWithHole,
     toBePointGeometry: require('./matchers/geometries/toBePointGeometry').toBePointGeometry,
     toBePolygonGeometry: require('./matchers/geometries/toBePolygonGeometry').toBePolygonGeometry,
-    toBePolygonWithHole: require('./matchers/geometries/toBePolygonWithHole').toBePolygonWithHole
+    toBePolygonWithHole: require('./matchers/geometries/toBePolygonWithHole').toBePolygonWithHole,
+    toHaveGeometryCount: require('./matchers/geometries/toHaveGeometryCount').toHaveGeometryCount
 }

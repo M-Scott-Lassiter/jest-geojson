@@ -293,6 +293,11 @@
                                 >toBePolygonWithHole</a
                             >
                         </li>
+                        <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toHaveGeometryCount"
+                                >toHaveGeometryCount</a
+                            >
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -350,7 +355,7 @@
  *     }]
  * }
  *
- *  test('Object is valid GeoJSON Geometry Object', () => {
+ *  test('Object is valid GeoJSON GeometryCollection Object', () => {
  *     expect(collection).toBeGeometryCollection()
  * })
  * @example
@@ -361,7 +366,7 @@
  *         [102.0, 1.0]
  *     ]
  * }
- * test('Object is NOT valid GeoJSON Geometry Object', () => {
+ * test('Object is NOT valid GeoJSON GeometryCollection Object', () => {
  *     expect(collection.geometries).not.toBeGeometryCollection()
  *     expect(lineString).not.toBeGeometryCollection()
  * })
