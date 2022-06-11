@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Functional - Jest-GeoJSON</title>
+        <title>matchers/geometries/toHaveMinGeometryCount.js - Jest-GeoJSON</title>
 
         <meta
             name="description"
@@ -309,190 +309,174 @@
         </nav>
 
         <div id="main">
-            <h1 class="page-title">Functional</h1>
+            <h1 class="page-title">matchers/geometries/toHaveMinGeometryCount.js</h1>
 
             <section>
-                <header>
-                    <h2>
-                        <span class="ancestors"><a href="Matchers.html">Matchers</a>.</span>
-
-                        Functional
-                    </h2>
-                </header>
-
                 <article>
-                    <div class="container-overview">
-                        <dl class="details">
-                            <dt class="tag-source">Source:</dt>
-                            <dd class="tag-source">
-                                <ul class="dummy">
-                                    <li>
-                                        <a href="typedefinitions.js.html">typedefinitions.js</a>,
-                                        <a href="typedefinitions.js.html#line58">line 58</a>
-                                    </li>
-                                </ul>
-                            </dd>
-                        </dl>
-
-                        <div class="description usertext">
-                            Functional matchers assess more generic attributes and qualities and
-                            many accept multiple input types.
-                        </div>
-                    </div>
-
-                    <h3 class="subsection-title">Methods</h3>
-
-                    <h4 class="name" id=".toBeValidGeoJSON">
-                        <span class="type-signature">(static) </span>toBeValidGeoJSON<span
-                            class="signature"
-                            >(geoObject)</span
-                        ><span class="type-signature"></span>
-                    </h4>
-
-                    <dl class="details">
-                        <dt class="tag-source">Source:</dt>
-                        <dd class="tag-source">
-                            <ul class="dummy">
-                                <li>
-                                    <a href="matchers_functional_toBeValidGeoJSON.js.html"
-                                        >matchers/functional/toBeValidGeoJSON.js</a
-                                    >,
-                                    <a href="matchers_functional_toBeValidGeoJSON.js.html#line92"
-                                        >line 92</a
-                                    >
-                                </li>
-                            </ul>
-                        </dd>
-
-                        <dt class="tag-see">See:</dt>
-                        <dd class="tag-see">
-                            <ul>
-                                <li>
-                                    <a
-                                        href="https://github.com/M-Scott-Lassiter/jest-geojson/issues/26"
-                                        >https://github.com/M-Scott-Lassiter/jest-geojson/issues/26</a
-                                    >
-                                </li>
-                            </ul>
-                        </dd>
-                    </dl>
-
-                    <div class="description usertext">
-                        This tests an object to see if it meets validation criteria for any of the
-                        seven GeoJSON Geometry types, Features, or FeatureCollections.
-                    </div>
-
-                    <h5>Examples</h5>
-
-                    <pre class="prettyprint"><code>point = {
-    "type": "Point",
-    "coordinates": [100.0, 0.0]
-}
-lineString = {
-    "type": "LineString",
-    "coordinates": [
-        [
-            [180.0, 40.0],
-            [180.0, 50.0],
-            [170.0, 50.0],
-            [170.0, 40.0],
-            [180.0, 40.0]
-        ]
-    ]
-}
-polygon = {
-    "type": "Polygon",
-    "coordinates": [
-        [
-            [100.0, 0.0],
-            [101.0, 0.0],
-            [101.0, 1.0],
-            [100.0, 1.0],
-            [100.0, 0.0]
-        ]
-    ]
-}
-feature = {
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": [102.0, 0.5]
-    }
-}
-geometryCollection = {
-    "type": "GeometryCollection",
-    "geometries": [{
-        "type": "Point",
-        "coordinates": [100.0, 0.0]
-    }, {
-        "type": "LineString",
-        "coordinates": [
-            [101.0, 0.0],
-            [102.0, 1.0]
-        ]
-    }, {
-        "type": "Polygon",
-        "coordinates": [
-            [
-                [102.0, 2.0],
-                [103.0, 2.0],
-                [103.0, 3.0],
-                [102.0, 3.0],
-                [102.0, 2.0]
-            ]
-        ]
-    }, {
-        "type": "Point",
-        "coordinates": [150.0, 73.0]
-    }]
-}
-
-test('Object is valid GeoJSON Feature', () => {
-     expect(point).toBeValidGeoJSON()
-     expect(lineString).toBeValidGeoJSON()
-     expect(polygon).toBeValidGeoJSON()
-     expect(feature).toBeValidGeoJSON()
-     expect(feature.geometry).toBeValidGeoJSON()
-     expect(geometryCollection).toBeValidGeoJSON()
-     expect(geometryCollection.geometries[1]).toBeValidGeoJSON()
-})</code></pre>
-
                     <pre
-                        class="prettyprint"
-                    ><code>test('Object is NOT valid GeoJSON Geometry Object', () => {
-     expect(polygon.coordinates).not.toBeValidGeoJSON()
-     expect(geometryCollection.geometries).toBeValidGeoJSON()
-     expect([322, -34.549, 0]).not.toBeValidGeoJSON()
-     expect({coordinates: [22, -34.549, 22]}).not.toBeValidGeoJSON()
-})</code></pre>
+                        class="prettyprint source linenums"
+                    ><code>const { geometryCollection } = require('../../core/geometries/geometryCollection')
 
-                    <h5>Parameters:</h5>
+// eslint-disable-next-line jsdoc/require-returns
+/**
+ * Verifies a valid GeoJSON GeometryCollection has more than or equal to a specified number of geometries.
+ *
+ * If omitting MinCount, it passes if at least one geometry object is contained in "geometries".
+ *
+ * Will fail if MinCount is not a number or less than zero.
+ *
+ * Nested GeometryCollections are only counted as a single geometry object.
+ *
+ * @memberof Matchers.Geometries
+ * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/45
+ * @param {object} geometryObject A GeoJSON GeometryCollection object
+ * @param {number} [MinCount] Minimum geometry object count to check for. Omit to assume 1.
+ * @example
+ * const testCollection = {
+ *     "type": "GeometryCollection",
+ *     "geometries": [{
+ *         "type": "Point",
+ *         "coordinates": [100.0, 0.0]
+ *     }, {
+ *         "type": "LineString",
+ *         "coordinates": [
+ *             [101.0, 0.0],
+ *             [102.0, 1.0]
+ *         ]
+ *     }, {
+ *         "type": "Polygon",
+ *         "coordinates": [
+ *             [
+ *                 [102.0, 2.0],
+ *                 [103.0, 2.0],
+ *                 [103.0, 3.0],
+ *                 [102.0, 3.0],
+ *                 [102.0, 2.0]
+ *             ]
+ *         ]
+ *     }, {
+ *         "type": "Point",
+ *         "coordinates": [150.0, 73.0]
+ *     }]
+ * }
+ *
+ *  test('GeometryCollection has minimum geometry count', () => {
+ *     expect(testCollection).toHaveMinGeometryCount()
+ *     expect(testCollection).toHaveMinGeometryCount(4)
+ * })
+ * @example
+ * const emptyCollection = {
+ *     "type": "GeometryCollection",
+ *     "geometries": []
+ * }
+ * const polygon = {
+ *     type: 'Polygon',
+ *     coordinates: [
+ *         [
+ *             [100.0, 0.0],
+ *             [101.0, 0.0],
+ *             [101.0, 1.0],
+ *             [100.0, 1.0],
+ *             [100.0, 0.0]
+ *         ]
+ *     ]
+ * }
+ *
+ * test('Object is not a GeometryCollection or does not have minimum geometry count', () => {
+ *     expect(testCollection).not.toHaveMinGeometryCount(5)
+ *     expect(emptyCollection).not.toHaveMinGeometryCount()
+ *     expect(polygon).not.toHaveMinGeometryCount(1)
+ * })
+ */
+function toHaveMinGeometryCount(geometryObject, MinCount) {
+    const { printReceived, printExpected, matcherHint } = this.utils
+    const countMessage = () => {
+        if (MinCount) {
+            return `with at least ${printExpected(MinCount)} geometry objects.`
+        }
+        return 'with at least 1 geometry object.'
+    }
+    const passMessage =
+        // eslint-disable-next-line prefer-template
+        matcherHint('.not.toHaveMinGeometryCount', 'GeometryObject', 'MinCount') +
+        '\n\n' +
+        `Expected input to not be a valid GeoJSON GeometryCollection object ` +
+        countMessage() +
+        `\n\nReceived:  ${printReceived(geometryObject)}`
 
-                    <table class="params">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
+    /**
+     * Combines a custom error message with built in Jest tools to provide a more descriptive error
+     * meessage to the end user.
+     *
+     * @param {string} errorMessage Error message text to return to the user
+     * @returns {string} Concatenated Jest test result string
+     */
+    function failMessage(errorMessage) {
+        return (
+            // eslint-disable-next-line prefer-template, no-unused-expressions
+            matcherHint('.toHaveMinGeometryCount', 'GeometryObject', 'MinCount') +
+            '\n\n' +
+            `${errorMessage}\n\n` +
+            `Received:  ${printReceived(geometryObject)}`
+        )
+    }
 
-                                <th>Type</th>
+    if (!(typeof MinCount === 'number' || MinCount === undefined) || Number.isNaN(MinCount)) {
+        return { pass: false, message: () => failMessage('MinCount must be a number.') }
+    }
 
-                                <th class="last">Description</th>
-                            </tr>
-                        </thead>
+    // if (!(typeof Range2 === 'number' || Range2 === undefined) || Number.isNaN(Range2)) {
+    //     return { pass: false, message: () => failMessage('Range2 must be a number or undefined.') }
+    // }
 
-                        <tbody>
-                            <tr>
-                                <td class="name"><code>geoObject</code></td>
+    if (MinCount &lt; 0) {
+        return {
+            pass: false,
+            message: () =>
+                failMessage(`MinCount must be greater than 0. Provided: ${printExpected(MinCount)}`)
+        }
+    }
 
-                                <td class="type">
-                                    <span class="param-type">object</span>
-                                </td>
+    try {
+        geometryCollection(geometryObject)
+    } catch (err) {
+        return { pass: false, message: () => failMessage(err.message) }
+    }
 
-                                <td class="description last">
-                                    Any GeoJSON Geometry, Feature, or FeatureCollection object
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+    if (MinCount === undefined) {
+        if (geometryObject.geometries.length >= 1) {
+            return { pass: true, message: () => passMessage }
+        }
+        return {
+            pass: false,
+            message: () => failMessage('Expected at least one object in the "geometries" property.')
+        }
+    }
+
+    if (geometryObject.geometries.length &lt; Math.floor(MinCount)) {
+        return {
+            pass: false,
+            message: () => {
+                return (
+                    // eslint-disable-next-line prefer-template, no-unused-expressions
+                    matcherHint('.toHaveMinGeometryCount', 'GeometryObject', 'MinCount') +
+                    '\n\n' +
+                    'Geometries has count of ' +
+                    printReceived(geometryObject.geometries.length) +
+                    ', expected at least ' +
+                    printExpected(MinCount) +
+                    '.\n\n' +
+                    `Received:  ${printReceived(geometryObject)}`
+                )
+            }
+        }
+    }
+
+    return { pass: true, message: () => passMessage }
+}
+
+exports.toHaveMinGeometryCount = toHaveMinGeometryCount
+</code></pre>
                 </article>
             </section>
         </div>

@@ -213,7 +213,18 @@ declare global {
              *
              * Will fail if Range1 or Range2 less than 0, Range2 less than Range1, or Range2 is defined and Range1 is not.
              */
-            toBePolygonWithHole<E = Object>(Range1: Number, Range2: Number): R
+            toHaveGeometryCount<E = Object>(Range1: Number, Range2: Number): R
+
+            /**
+             * Verifies a valid GeoJSON GeometryCollection has more than or equal to a specified number of geometries.
+             *
+             * If omitting MinCount, it passes if at least one geometry object is contained in "geometries".
+             *
+             * Will fail if MinCount is not a number or less than zero.
+             *
+             * Nested GeometryCollections are only counted as a single geometry object.
+             */
+            toHaveGeometryCount<E = Object>(MinCount: Number): R
         }
     }
 }
