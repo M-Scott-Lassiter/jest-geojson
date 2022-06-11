@@ -9,7 +9,7 @@ const { geometryCollection } = require('../../core/geometries/geometryCollection
  * If Range1 and Range2 are specified, it checks that the geometry count is between those values.
  * Decimals get truncated on both Range1 and Range2.
  *
- * Will fail if Range1 or Range2 less than 0, Range2 less than Range1, or Range2 is defined and Range1 is not.
+ * Will fail if Range1 or Range2 are not numbers or less than 0, Range2 less than Range1, or Range2 is defined and Range1 is not.
  *
  * Nested GeometryCollections are only counted as a single geometry object.
  *
@@ -152,23 +152,27 @@ function toHaveGeometryCount(geometryObject, Range1, Range2) {
         return { pass: false, message: () => failMessage(err.message) }
     }
 
+    // Check a range of values between Range1 and Range2
     if (Range2) {
-        // Check a range of values between Range1 and Range2
-        const min = Math.floor(Range1 || 1)
+        const min = Math.floor(Range1)
         const max = Math.floor(Range2)
 
-        if (geometryObject.geometries.length < min || geometryObject.geometries.length > max) {
-            return {
-                pass: false,
-                message: () =>
-                    failMessage(
-                        `Geometries has has count of ${printReceived(
-                            geometryObject.geometries.length
-                        )}, expected between ${printExpected(Range1)} and ${printExpected(Range2)}.`
-                    )
-            }
+        if (geometryObject.geometries.length >= min && geometryObject.geometries.length <= max) {
+            return { pass: true, message: () => passMessage }
         }
-    } else if (Range1 === undefined) {
+        return {
+            pass: false,
+            message: () =>
+                failMessage(
+                    `Geometries has has count of ${printReceived(
+                        geometryObject.geometries.length
+                    )}, expected between ${printExpected(Range1)} and ${printExpected(Range2)}.`
+                )
+        }
+    }
+
+    // Check that there is at least one object
+    if (Range1 === undefined) {
         if (geometryObject.geometries.length >= 1) {
             return { pass: true, message: () => passMessage }
         }
@@ -176,25 +180,24 @@ function toHaveGeometryCount(geometryObject, Range1, Range2) {
             pass: false,
             message: () => failMessage('Expected no objects in the "geometries" property.')
         }
-    } else {
-        // Check for an exact value
-        // eslint-disable-next-line no-lonely-if
-        if (geometryObject.geometries.length !== Math.floor(Range1)) {
-            return {
-                pass: false,
-                message: () => {
-                    return (
-                        // eslint-disable-next-line prefer-template, no-unused-expressions
-                        matcherHint('.toHaveGeometryCount', 'GeometryObject', 'Range1') +
-                        '\n\n' +
-                        'Geometries has count of ' +
-                        printReceived(geometryObject.geometries.length) +
-                        ', expected ' +
-                        printExpected(Range1) +
-                        '.\n\n' +
-                        `Received:  ${printReceived(geometryObject)}`
-                    )
-                }
+    }
+
+    // Check for an exact value
+    if (geometryObject.geometries.length !== Math.floor(Range1)) {
+        return {
+            pass: false,
+            message: () => {
+                return (
+                    // eslint-disable-next-line prefer-template, no-unused-expressions
+                    matcherHint('.toHaveGeometryCount', 'GeometryObject', 'Range1') +
+                    '\n\n' +
+                    'Geometries has count of ' +
+                    printReceived(geometryObject.geometries.length) +
+                    ', expected ' +
+                    printExpected(Range1) +
+                    '.\n\n' +
+                    `Received:  ${printReceived(geometryObject)}`
+                )
             }
         }
     }

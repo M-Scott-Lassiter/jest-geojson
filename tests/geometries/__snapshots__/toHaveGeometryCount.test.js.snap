@@ -8,6 +8,22 @@ Expected input to not be a valid GeoJSON GeometryCollection object.
 Received:  [31m{\\"geometries\\": [{\\"coordinates\\": [100, 0], \\"type\\": \\"Point\\"}, {\\"coordinates\\": [[101, 0], [102, 1]], \\"type\\": \\"LineString\\"}, {\\"coordinates\\": [[[102, 2], [103, 2], [103, 3], [102, 3], [102, 2]]], \\"type\\": \\"Polygon\\"}, {\\"coordinates\\": [150, 73], \\"type\\": \\"Point\\"}], \\"type\\": \\"GeometryCollection\\"}[39m"
 `;
 
+exports[`Error Snapshot Testing. Throws error: Empty Collection with exact value specified 1`] = `
+"[2mexpect([22m[31mGeometryObject[39m[2m).not.toHaveGeometryCount([22m[32mRange1, Range2[39m[2m)[22m
+
+Expected input to not be a valid GeoJSON GeometryCollection object.
+
+Received:  [31m{\\"geometries\\": [], \\"type\\": \\"GeometryCollection\\"}[39m"
+`;
+
+exports[`Error Snapshot Testing. Throws error: Empty Collection with range specified 1`] = `
+"[2mexpect([22m[31mGeometryObject[39m[2m).not.toHaveGeometryCount([22m[32mRange1, Range2[39m[2m)[22m
+
+Expected input to not be a valid GeoJSON GeometryCollection object.
+
+Received:  [31m{\\"geometries\\": [], \\"type\\": \\"GeometryCollection\\"}[39m"
+`;
+
 exports[`Error Snapshot Testing. Throws error: Invalid input to matcher 1`] = `
 "[2mexpect([22m[31mGeometryObject[39m[2m).toHaveGeometryCount([22m[32mRange1, Range2[39m[2m)[22m
 

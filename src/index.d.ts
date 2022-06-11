@@ -211,7 +211,7 @@ declare global {
              * If Range1 and Range2 are specified, it checks that the geometry count is between those values.
              * Decimals get truncated on both Range1 and Range2.
              *
-             * Will fail if Range1 or Range2 less than 0, Range2 less than Range1, or Range2 is defined and Range1 is not.
+             * Will fail if Range1 or Range2 are not numbers or less than 0, Range2 less than Range1, or Range2 is defined and Range1 is not.
              *
              * Nested GeometryCollections are only counted as a single geometry object.
              */
