@@ -299,6 +299,11 @@
                             >
                         </li>
                         <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toHaveMaxGeometryCount"
+                                >toHaveMaxGeometryCount</a
+                            >
+                        </li>
+                        <li data-type="method">
                             <a href="Matchers.Geometries.html#.toHaveMinGeometryCount"
                                 >toHaveMinGeometryCount</a
                             >
@@ -1672,6 +1677,157 @@ test('Object is not a GeometryCollection or does not have specified geometry cou
                                 <td class="attributes">&lt;optional><br /></td>
 
                                 <td class="description last">Maximum geometry object count</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4 class="name" id=".toHaveMaxGeometryCount">
+                        <span class="type-signature">(static) </span>toHaveMaxGeometryCount<span
+                            class="signature"
+                            >(geometryObject, MaxCount<span class="signature-attributes">opt</span
+                            >)</span
+                        ><span class="type-signature"></span>
+                    </h4>
+
+                    <dl class="details">
+                        <dt class="tag-source">Source:</dt>
+                        <dd class="tag-source">
+                            <ul class="dummy">
+                                <li>
+                                    <a href="matchers_geometries_toHaveMaxGeometryCount.js.html"
+                                        >matchers/geometries/toHaveMaxGeometryCount.js</a
+                                    >,
+                                    <a
+                                        href="matchers_geometries_toHaveMaxGeometryCount.js.html#line76"
+                                        >line 76</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+
+                        <dt class="tag-see">See:</dt>
+                        <dd class="tag-see">
+                            <ul>
+                                <li>
+                                    <a
+                                        href="https://github.com/M-Scott-Lassiter/jest-geojson/issues/47"
+                                        >https://github.com/M-Scott-Lassiter/jest-geojson/issues/47</a
+                                    >
+                                </li>
+                            </ul>
+                        </dd>
+                    </dl>
+
+                    <div class="description usertext">
+                        Verifies a valid GeoJSON GeometryCollection has less than or equal to a
+                        specified number of geometries. If omitting MaxCount, it passes if
+                        "geometries" contains no more than one object. Will fail if MaxCount is not
+                        a number or less than zero. Nested GeometryCollections are only counted as a
+                        single geometry object.
+                    </div>
+
+                    <h5>Examples</h5>
+
+                    <pre class="prettyprint"><code>const testCollection = {
+    "type": "GeometryCollection",
+    "geometries": [{
+        "type": "Point",
+        "coordinates": [100.0, 0.0]
+    }, {
+        "type": "LineString",
+        "coordinates": [
+            [101.0, 0.0],
+            [102.0, 1.0]
+        ]
+    }, {
+        "type": "Polygon",
+        "coordinates": [
+            [
+                [102.0, 2.0],
+                [103.0, 2.0],
+                [103.0, 3.0],
+                [102.0, 3.0],
+                [102.0, 2.0]
+            ]
+        ]
+    }, {
+        "type": "Point",
+        "coordinates": [150.0, 73.0]
+    }]
+}
+const emptyCollection = {
+    "type": "GeometryCollection",
+    "geometries": []
+}
+
+ test('GeometryCollection has maximum geometry count', () => {
+    expect(testCollection).toHaveMaxGeometryCount(4)
+    expect(testCollection).toHaveMaxGeometryCount(22)
+    expect(emptyCollection).toHaveMaxGeometryCount()
+    expect(emptyCollection).toHaveMaxGeometryCount(0)
+})</code></pre>
+
+                    <pre class="prettyprint"><code>const polygon = {
+    type: 'Polygon',
+    coordinates: [
+        [
+            [100.0, 0.0],
+            [101.0, 0.0],
+            [101.0, 1.0],
+            [100.0, 1.0],
+            [100.0, 0.0]
+        ]
+    ]
+}
+
+test('Object is not a GeometryCollection or does not have maximum geometry count', () => {
+    expect(testCollection).not.toHaveMaxGeometryCount(2)
+    expect(testCollection).not.toHaveMaxGeometryCount(3.99)
+    expect(polygon).not.toHaveMaxGeometryCount(1)
+})</code></pre>
+
+                    <h5>Parameters:</h5>
+
+                    <table class="params">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+
+                                <th>Type</th>
+
+                                <th>Attributes</th>
+
+                                <th class="last">Description</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="name"><code>geometryObject</code></td>
+
+                                <td class="type">
+                                    <span class="param-type">object</span>
+                                </td>
+
+                                <td class="attributes"></td>
+
+                                <td class="description last">
+                                    A GeoJSON GeometryCollection object
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="name"><code>MaxCount</code></td>
+
+                                <td class="type">
+                                    <span class="param-type">number</span>
+                                </td>
+
+                                <td class="attributes">&lt;optional><br /></td>
+
+                                <td class="description last">
+                                    Maximum geometry object count to check for. Omit to assume 1.
+                                </td>
                             </tr>
                         </tbody>
                     </table>

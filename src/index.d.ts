@@ -218,6 +218,17 @@ declare global {
             toHaveGeometryCount<E = Object>(Range1: Number, Range2: Number): R
 
             /**
+             * Verifies a valid GeoJSON GeometryCollection has less than or equal to a specified number of geometries.
+             *
+             * If omitting MaxCount, it passes if "geometries" contains no more than one object.
+             *
+             * Will fail if MaxCount is not a number or less than zero.
+             *
+             * Nested GeometryCollections are only counted as a single geometry object.
+             */
+            toHaveMaxGeometryCount<E = Object>(MaxCount: Number): R
+
+            /**
              * Verifies a valid GeoJSON GeometryCollection has more than or equal to a specified number of geometries.
              *
              * If omitting MinCount, it passes if at least one geometry object is contained in "geometries".

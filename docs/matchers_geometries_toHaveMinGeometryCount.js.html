@@ -299,6 +299,11 @@
                             >
                         </li>
                         <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toHaveMaxGeometryCount"
+                                >toHaveMaxGeometryCount</a
+                            >
+                        </li>
+                        <li data-type="method">
                             <a href="Matchers.Geometries.html#.toHaveMinGeometryCount"
                                 >toHaveMinGeometryCount</a
                             >
@@ -424,10 +429,6 @@ function toHaveMinGeometryCount(geometryObject, MinCount) {
     if (!(typeof MinCount === 'number' || MinCount === undefined) || Number.isNaN(MinCount)) {
         return { pass: false, message: () => failMessage('MinCount must be a number.') }
     }
-
-    // if (!(typeof Range2 === 'number' || Range2 === undefined) || Number.isNaN(Range2)) {
-    //     return { pass: false, message: () => failMessage('Range2 must be a number or undefined.') }
-    // }
 
     if (MinCount &lt; 0) {
         return {

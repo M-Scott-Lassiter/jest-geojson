@@ -105,6 +105,10 @@ describe('Geometry Matchers Exported', () => {
         expect('toHaveGeometryCount' in matchers.geometries).toBeTruthy()
     })
 
+    test('toHaveMaxGeometryCount', () => {
+        expect('toHaveMaxGeometryCount' in matchers.geometries).toBeTruthy()
+    })
+
     test('toHaveMinGeometryCount', () => {
         expect('toHaveMinGeometryCount' in matchers.geometries).toBeTruthy()
     })

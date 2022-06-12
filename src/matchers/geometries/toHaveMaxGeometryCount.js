@@ -2,18 +2,18 @@ const { geometryCollection } = require('../../core/geometries/geometryCollection
 
 // eslint-disable-next-line jsdoc/require-returns
 /**
- * Verifies a valid GeoJSON GeometryCollection has more than or equal to a specified number of geometries.
+ * Verifies a valid GeoJSON GeometryCollection has less than or equal to a specified number of geometries.
  *
- * If omitting MinCount, it passes if at least one geometry object is contained in "geometries".
+ * If omitting MaxCount, it passes if "geometries" contains no more than one object.
  *
- * Will fail if MinCount is not a number or less than zero.
+ * Will fail if MaxCount is not a number or less than zero.
  *
  * Nested GeometryCollections are only counted as a single geometry object.
  *
  * @memberof Matchers.Geometries
- * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/45
+ * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/47
  * @param {object} geometryObject A GeoJSON GeometryCollection object
- * @param {number} [MinCount] Minimum geometry object count to check for. Omit to assume 1.
+ * @param {number} [MaxCount] Maximum geometry object count to check for. Omit to assume 1.
  * @example
  * const testCollection = {
  *     "type": "GeometryCollection",
@@ -42,16 +42,18 @@ const { geometryCollection } = require('../../core/geometries/geometryCollection
  *         "coordinates": [150.0, 73.0]
  *     }]
  * }
- *
- *  test('GeometryCollection has minimum geometry count', () => {
- *     expect(testCollection).toHaveMinGeometryCount()
- *     expect(testCollection).toHaveMinGeometryCount(4)
- * })
- * @example
  * const emptyCollection = {
  *     "type": "GeometryCollection",
  *     "geometries": []
  * }
+ *
+ *  test('GeometryCollection has maximum geometry count', () => {
+ *     expect(testCollection).toHaveMaxGeometryCount(4)
+ *     expect(testCollection).toHaveMaxGeometryCount(22)
+ *     expect(emptyCollection).toHaveMaxGeometryCount()
+ *     expect(emptyCollection).toHaveMaxGeometryCount(0)
+ * })
+ * @example
  * const polygon = {
  *     type: 'Polygon',
  *     coordinates: [
@@ -65,23 +67,23 @@ const { geometryCollection } = require('../../core/geometries/geometryCollection
  *     ]
  * }
  *
- * test('Object is not a GeometryCollection or does not have minimum geometry count', () => {
- *     expect(testCollection).not.toHaveMinGeometryCount(5)
- *     expect(emptyCollection).not.toHaveMinGeometryCount()
- *     expect(polygon).not.toHaveMinGeometryCount(1)
+ * test('Object is not a GeometryCollection or does not have maximum geometry count', () => {
+ *     expect(testCollection).not.toHaveMaxGeometryCount(2)
+ *     expect(testCollection).not.toHaveMaxGeometryCount(3.99)
+ *     expect(polygon).not.toHaveMaxGeometryCount(1)
  * })
  */
-function toHaveMinGeometryCount(geometryObject, MinCount) {
+function toHaveMaxGeometryCount(geometryObject, MaxCount) {
     const { printReceived, printExpected, matcherHint } = this.utils
     const countMessage = () => {
-        if (MinCount) {
-            return `with at least ${printExpected(MinCount)} geometry objects.`
+        if (MaxCount) {
+            return `with no more than ${printExpected(MaxCount)} geometry objects.`
         }
-        return 'with at least 1 geometry object.'
+        return 'with no more than 1 geometry object.'
     }
     const passMessage =
         // eslint-disable-next-line prefer-template
-        matcherHint('.not.toHaveMinGeometryCount', 'GeometryObject', 'MinCount') +
+        matcherHint('.not.toHaveMaxGeometryCount', 'GeometryObject', 'MaxCount') +
         '\n\n' +
         `Expected input to not be a valid GeoJSON GeometryCollection object ` +
         countMessage() +
@@ -97,22 +99,22 @@ function toHaveMinGeometryCount(geometryObject, MinCount) {
     function failMessage(errorMessage) {
         return (
             // eslint-disable-next-line prefer-template, no-unused-expressions
-            matcherHint('.toHaveMinGeometryCount', 'GeometryObject', 'MinCount') +
+            matcherHint('.toHaveMaxGeometryCount', 'GeometryObject', 'MaxCount') +
             '\n\n' +
             `${errorMessage}\n\n` +
             `Received:  ${printReceived(geometryObject)}`
         )
     }
 
-    if (!(typeof MinCount === 'number' || MinCount === undefined) || Number.isNaN(MinCount)) {
-        return { pass: false, message: () => failMessage('MinCount must be a number.') }
+    if (!(typeof MaxCount === 'number' || MaxCount === undefined) || Number.isNaN(MaxCount)) {
+        return { pass: false, message: () => failMessage('MaxCount must be a number.') }
     }
 
-    if (MinCount < 0) {
+    if (MaxCount < 0) {
         return {
             pass: false,
             message: () =>
-                failMessage(`MinCount must be greater than 0. Provided: ${printExpected(MinCount)}`)
+                failMessage(`MaxCount must be greater than 0. Provided: ${printExpected(MaxCount)}`)
         }
     }
 
@@ -122,28 +124,29 @@ function toHaveMinGeometryCount(geometryObject, MinCount) {
         return { pass: false, message: () => failMessage(err.message) }
     }
 
-    if (MinCount === undefined) {
-        if (geometryObject.geometries.length >= 1) {
+    if (MaxCount === undefined) {
+        if (geometryObject.geometries.length <= 1) {
             return { pass: true, message: () => passMessage }
         }
         return {
             pass: false,
-            message: () => failMessage('Expected at least one object in the "geometries" property.')
+            message: () =>
+                failMessage('Expected no more than one object in the "geometries" property.')
         }
     }
 
-    if (geometryObject.geometries.length < Math.floor(MinCount)) {
+    if (geometryObject.geometries.length > Math.floor(MaxCount)) {
         return {
             pass: false,
             message: () => {
                 return (
                     // eslint-disable-next-line prefer-template, no-unused-expressions
-                    matcherHint('.toHaveMinGeometryCount', 'GeometryObject', 'MinCount') +
+                    matcherHint('.toHaveMaxGeometryCount', 'GeometryObject', 'MaxCount') +
                     '\n\n' +
                     'Geometries has count of ' +
                     printReceived(geometryObject.geometries.length) +
-                    ', expected at least ' +
-                    printExpected(MinCount) +
+                    ', expected no more than ' +
+                    printExpected(MaxCount) +
                     '.\n\n' +
                     `Received:  ${printReceived(geometryObject)}`
                 )
@@ -154,4 +157,4 @@ function toHaveMinGeometryCount(geometryObject, MinCount) {
     return { pass: true, message: () => passMessage }
 }
 
-exports.toHaveMinGeometryCount = toHaveMinGeometryCount
+exports.toHaveMaxGeometryCount = toHaveMaxGeometryCount
