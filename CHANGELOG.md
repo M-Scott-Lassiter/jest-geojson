@@ -1,3 +1,21 @@
+## [1.6.0](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.5.0...v1.6.0) (2022-06-12)
+
+
+### :compass: API Documentation Changes
+
+* **toHaveGeometryCount:** improve error messages and description for nested GeometryCollections behavior ([01fe745](https://github.com/M-Scott-Lassiter/jest-geojson/commit/01fe745a8880d097fefc029a44bdde58e7bd872d))
+
+
+### :lady_beetle: Bug Fixes
+
+* **toHaveGeometryCount:** correct issue where empty collections would fail when provided with a valid range ([93dadff](https://github.com/M-Scott-Lassiter/jest-geojson/commit/93dadff88e1f7aba0102696960efc35257a54e2d)), closes [#58](https://github.com/M-Scott-Lassiter/jest-geojson/issues/58)
+
+
+### :gift: Feature Changes
+
+* **toHaveMaxGeometryCount:** add new matcher ([8a1f103](https://github.com/M-Scott-Lassiter/jest-geojson/commit/8a1f103e13a5cf1ec423cc6e769ef007b78227dd)), closes [#47](https://github.com/M-Scott-Lassiter/jest-geojson/issues/47)
+* **toHaveMinGeometryCount:** add new matcher ([c71c21a](https://github.com/M-Scott-Lassiter/jest-geojson/commit/c71c21af35fc4d7d167f2b5757610e56620a3fff)), closes [#45](https://github.com/M-Scott-Lassiter/jest-geojson/issues/45)
+
 ## [1.5.0](https://github.com/M-Scott-Lassiter/jest-geojson/compare/v1.4.0...v1.5.0) (2022-06-11)
 
 
