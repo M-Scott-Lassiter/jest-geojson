@@ -22,6 +22,8 @@ const allMatchers = [
     { name: 'toBeValidGeoJSON' },
     { name: 'toHaveGeometryCount' },
     { name: 'toHaveID' },
+    { name: 'toHaveMaxGeometryCount' },
+    { name: 'toHaveMinGeometryCount' },
     { name: 'toHaveNumericID' },
     { name: 'toHaveStringID' }
 ]

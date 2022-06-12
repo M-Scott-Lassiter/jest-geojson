@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>matchers/functional/toBeValidGeoJSON.js - Jest-GeoJSON</title>
+        <title>matchers/geometries/toHaveMaxGeometryCount.js - Jest-GeoJSON</title>
 
         <meta
             name="description"
@@ -314,59 +314,30 @@
         </nav>
 
         <div id="main">
-            <h1 class="page-title">matchers/functional/toBeValidGeoJSON.js</h1>
+            <h1 class="page-title">matchers/geometries/toHaveMaxGeometryCount.js</h1>
 
             <section>
                 <article>
                     <pre
                         class="prettyprint source linenums"
-                    ><code>const { validGeoJSON } = require('../../core/utilities/validGeoJSON')
+                    ><code>const { geometryCollection } = require('../../core/geometries/geometryCollection')
 
 // eslint-disable-next-line jsdoc/require-returns
 /**
- * This tests an object to see if it meets validation criteria for any of the seven GeoJSON
- * Geometry types, Features, or FeatureCollections.
+ * Verifies a valid GeoJSON GeometryCollection has less than or equal to a specified number of geometries.
  *
- * @memberof Matchers.Functional
- * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/26
- * @param {object} geoObject Any GeoJSON Geometry, Feature, or FeatureCollection object
+ * If omitting MaxCount, it passes if "geometries" contains no more than one object.
+ *
+ * Will fail if MaxCount is not a number or less than zero.
+ *
+ * Nested GeometryCollections are only counted as a single geometry object.
+ *
+ * @memberof Matchers.Geometries
+ * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/47
+ * @param {object} geometryObject A GeoJSON GeometryCollection object
+ * @param {number} [MaxCount] Maximum geometry object count to check for. Omit to assume 1.
  * @example
- * point = {
- *     "type": "Point",
- *     "coordinates": [100.0, 0.0]
- * }
- * lineString = {
- *     "type": "LineString",
- *     "coordinates": [
- *         [
- *             [180.0, 40.0],
- *             [180.0, 50.0],
- *             [170.0, 50.0],
- *             [170.0, 40.0],
- *             [180.0, 40.0]
- *         ]
- *     ]
- * }
- * polygon = {
- *     "type": "Polygon",
- *     "coordinates": [
- *         [
- *             [100.0, 0.0],
- *             [101.0, 0.0],
- *             [101.0, 1.0],
- *             [100.0, 1.0],
- *             [100.0, 0.0]
- *         ]
- *     ]
- * }
- * feature = {
- *     "type": "Feature",
- *     "geometry": {
- *         "type": "Point",
- *         "coordinates": [102.0, 0.5]
- *     }
- * }
- * geometryCollection = {
+ * const testCollection = {
  *     "type": "GeometryCollection",
  *     "geometries": [{
  *         "type": "Point",
@@ -393,32 +364,52 @@
  *         "coordinates": [150.0, 73.0]
  *     }]
  * }
+ * const emptyCollection = {
+ *     "type": "GeometryCollection",
+ *     "geometries": []
+ * }
  *
- * test('Object is valid GeoJSON Feature', () => {
- *      expect(point).toBeValidGeoJSON()
- *      expect(lineString).toBeValidGeoJSON()
- *      expect(polygon).toBeValidGeoJSON()
- *      expect(feature).toBeValidGeoJSON()
- *      expect(feature.geometry).toBeValidGeoJSON()
- *      expect(geometryCollection).toBeValidGeoJSON()
- *      expect(geometryCollection.geometries[1]).toBeValidGeoJSON()
+ *  test('GeometryCollection has maximum geometry count', () => {
+ *     expect(testCollection).toHaveMaxGeometryCount(4)
+ *     expect(testCollection).toHaveMaxGeometryCount(22)
+ *     expect(emptyCollection).toHaveMaxGeometryCount()
+ *     expect(emptyCollection).toHaveMaxGeometryCount(0)
  * })
  * @example
- * test('Object is NOT valid GeoJSON Geometry Object', () => {
- *      expect(polygon.coordinates).not.toBeValidGeoJSON()
- *      expect(geometryCollection.geometries).toBeValidGeoJSON()
- *      expect([322, -34.549, 0]).not.toBeValidGeoJSON()
- *      expect({coordinates: [22, -34.549, 22]}).not.toBeValidGeoJSON()
+ * const polygon = {
+ *     type: 'Polygon',
+ *     coordinates: [
+ *         [
+ *             [100.0, 0.0],
+ *             [101.0, 0.0],
+ *             [101.0, 1.0],
+ *             [100.0, 1.0],
+ *             [100.0, 0.0]
+ *         ]
+ *     ]
+ * }
+ *
+ * test('Object is not a GeometryCollection or does not have maximum geometry count', () => {
+ *     expect(testCollection).not.toHaveMaxGeometryCount(2)
+ *     expect(testCollection).not.toHaveMaxGeometryCount(3.99)
+ *     expect(polygon).not.toHaveMaxGeometryCount(1)
  * })
  */
-function toBeValidGeoJSON(geoObject) {
-    const { printReceived, matcherHint } = this.utils
+function toHaveMaxGeometryCount(geometryObject, MaxCount) {
+    const { printReceived, printExpected, matcherHint } = this.utils
+    const countMessage = () => {
+        if (MaxCount) {
+            return `with no more than ${printExpected(MaxCount)} geometry objects.`
+        }
+        return 'with no more than 1 geometry object.'
+    }
     const passMessage =
         // eslint-disable-next-line prefer-template
-        matcherHint('.not.toBeValidGeoJSON', 'GeoJSONObject', '') +
+        matcherHint('.not.toHaveMaxGeometryCount', 'GeometryObject', 'MaxCount') +
         '\n\n' +
-        `Expected input to not be a valid GeoJSON Geometry, Feature, or FeatureCollection object.\n\n` +
-        `Received:  ${printReceived(geoObject)}`
+        `Expected input to not be a valid GeoJSON GeometryCollection object ` +
+        countMessage() +
+        `\n\nReceived:  ${printReceived(geometryObject)}`
 
     /**
      * Combines a custom error message with built in Jest tools to provide a more descriptive error
@@ -430,22 +421,65 @@ function toBeValidGeoJSON(geoObject) {
     function failMessage(errorMessage) {
         return (
             // eslint-disable-next-line prefer-template, no-unused-expressions
-            matcherHint('.toBeValidGeoJSON', 'GeoJSONObject', '') +
+            matcherHint('.toHaveMaxGeometryCount', 'GeometryObject', 'MaxCount') +
             '\n\n' +
             `${errorMessage}\n\n` +
-            `Received:  ${printReceived(geoObject)}`
+            `Received:  ${printReceived(geometryObject)}`
         )
     }
 
+    if (!(typeof MaxCount === 'number' || MaxCount === undefined) || Number.isNaN(MaxCount)) {
+        return { pass: false, message: () => failMessage('MaxCount must be a number.') }
+    }
+
+    if (MaxCount &lt; 0) {
+        return {
+            pass: false,
+            message: () =>
+                failMessage(`MaxCount must be greater than 0. Provided: ${printExpected(MaxCount)}`)
+        }
+    }
+
     try {
-        validGeoJSON(geoObject)
+        geometryCollection(geometryObject)
     } catch (err) {
         return { pass: false, message: () => failMessage(err.message) }
     }
+
+    if (MaxCount === undefined) {
+        if (geometryObject.geometries.length &lt;= 1) {
+            return { pass: true, message: () => passMessage }
+        }
+        return {
+            pass: false,
+            message: () =>
+                failMessage('Expected no more than one object in the "geometries" property.')
+        }
+    }
+
+    if (geometryObject.geometries.length > Math.floor(MaxCount)) {
+        return {
+            pass: false,
+            message: () => {
+                return (
+                    // eslint-disable-next-line prefer-template, no-unused-expressions
+                    matcherHint('.toHaveMaxGeometryCount', 'GeometryObject', 'MaxCount') +
+                    '\n\n' +
+                    'Geometries has count of ' +
+                    printReceived(geometryObject.geometries.length) +
+                    ', expected no more than ' +
+                    printExpected(MaxCount) +
+                    '.\n\n' +
+                    `Received:  ${printReceived(geometryObject)}`
+                )
+            }
+        }
+    }
+
     return { pass: true, message: () => passMessage }
 }
 
-exports.toBeValidGeoJSON = toBeValidGeoJSON
+exports.toHaveMaxGeometryCount = toHaveMaxGeometryCount
 </code></pre>
                 </article>
             </section>

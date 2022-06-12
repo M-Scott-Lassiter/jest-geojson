@@ -171,10 +171,7 @@ describe('Valid Use Cases', () => {
 
     test('Empty Collection', () => {
         expect(emptyCollection).toHaveGeometryCount(0)
-        expect(testCollection100Objects).toHaveGeometryCount(100)
-        expect(testCollection100Objects).toHaveGeometryCount(100, 100)
-        expect(testCollection100Objects).toHaveGeometryCount(49, 100000)
-        expect(testCollection100Objects).toHaveGeometryCount(0, Infinity)
+        expect(emptyCollection).toHaveGeometryCount(0, Infinity)
     })
 
     test('Nested Collection Has Only 1 Geometry', () => {
@@ -371,6 +368,18 @@ describe('Error Snapshot Testing. Throws error:', () => {
     test('At least one geometry when no argument provided to Range1', () => {
         expect(() =>
             expect(testCollectionFourObjects).not.toHaveGeometryCount()
+        ).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Empty Collection with range specified', () => {
+        expect(() =>
+            expect(emptyCollection).not.toHaveGeometryCount(0, 10)
+        ).toThrowErrorMatchingSnapshot()
+    })
+
+    test('Empty Collection with exact value specified', () => {
+        expect(() =>
+            expect(emptyCollection).not.toHaveGeometryCount(0)
         ).toThrowErrorMatchingSnapshot()
     })
 })

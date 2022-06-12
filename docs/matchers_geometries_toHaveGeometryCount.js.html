@@ -298,6 +298,16 @@
                                 >toHaveGeometryCount</a
                             >
                         </li>
+                        <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toHaveMaxGeometryCount"
+                                >toHaveMaxGeometryCount</a
+                            >
+                        </li>
+                        <li data-type="method">
+                            <a href="Matchers.Geometries.html#.toHaveMinGeometryCount"
+                                >toHaveMinGeometryCount</a
+                            >
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -321,13 +331,15 @@
  * If Range1 and Range2 are specified, it checks that the geometry count is between those values.
  * Decimals get truncated on both Range1 and Range2.
  *
- * Will fail if Range1 or Range2 less than 0, Range2 less than Range1, or Range2 is defined and Range1 is not.
+ * Will fail if Range1 or Range2 are not numbers or less than 0, Range2 less than Range1, or Range2 is defined and Range1 is not.
+ *
+ * Nested GeometryCollections are only counted as a single geometry object.
  *
  * @memberof Matchers.Geometries
  * @see https://github.com/M-Scott-Lassiter/jest-geojson/issues/48
  * @param {object} geometryObject A GeoJSON GeometryCollection object
- * @param {number} Range1 Minimum geometry object count, or exact count if omitting Range2
- * @param {number} Range2 Maximum geometry object count
+ * @param {number} [Range1] Minimum geometry object count, or exact count if omitting Range2
+ * @param {number} [Range2] Maximum geometry object count
  * @example
  * const testCollection = {
  *     "type": "GeometryCollection",
@@ -424,14 +436,16 @@ function toHaveGeometryCount(geometryObject, Range1, Range2) {
     if (Range1 &lt; 0) {
         return {
             pass: false,
-            message: () => failMessage(`Range1 (${printExpected(Range1)}) must be greater than 0.`)
+            message: () =>
+                failMessage(`Range1 must be greater than 0. Provided: ${printExpected(Range1)}`)
         }
     }
 
     if (Range2 &lt; 0) {
         return {
             pass: false,
-            message: () => failMessage(`Range2 (${printExpected(Range2)}) must be greater than 0.`)
+            message: () =>
+                failMessage(`Range2 must be greater than 0. Provided: ${printExpected(Range2)}`)
         }
     }
 
@@ -442,7 +456,7 @@ function toHaveGeometryCount(geometryObject, Range1, Range2) {
                 failMessage(
                     `Range2 (${printExpected(
                         Range2
-                    )}) must be greater than or equal to Range1 (${printExpected(Range1)})`
+                    )}) must be greater than or equal to Range1 (${printExpected(Range1)}).`
                 )
         }
     }
@@ -460,49 +474,52 @@ function toHaveGeometryCount(geometryObject, Range1, Range2) {
         return { pass: false, message: () => failMessage(err.message) }
     }
 
+    // Check a range of values between Range1 and Range2
     if (Range2) {
-        // Check a range of values between Range1 and Range2
-        const min = Math.floor(Range1 || 1)
+        const min = Math.floor(Range1)
         const max = Math.floor(Range2)
 
-        if (geometryObject.geometries.length &lt; min || geometryObject.geometries.length > max) {
-            return {
-                pass: false,
-                message: () =>
-                    failMessage(
-                        `Geometries has has count of ${printReceived(
-                            geometryObject.geometries.length
-                        )}, expected between ${printExpected(Range1)} and ${printExpected(Range2)}.`
-                    )
-            }
+        if (geometryObject.geometries.length >= min &amp;&amp; geometryObject.geometries.length &lt;= max) {
+            return { pass: true, message: () => passMessage }
         }
-    } else if (Range1 === undefined) {
+        return {
+            pass: false,
+            message: () =>
+                failMessage(
+                    `Geometries has has count of ${printReceived(
+                        geometryObject.geometries.length
+                    )}, expected between ${printExpected(Range1)} and ${printExpected(Range2)}.`
+                )
+        }
+    }
+
+    // Check that there is at least one object
+    if (Range1 === undefined) {
         if (geometryObject.geometries.length >= 1) {
             return { pass: true, message: () => passMessage }
         }
         return {
             pass: false,
-            message: () => failMessage('Expected no objects in the "geometries" property')
+            message: () => failMessage('Expected no objects in the "geometries" property.')
         }
-    } else {
-        // Check for an exact value
-        // eslint-disable-next-line no-lonely-if
-        if (geometryObject.geometries.length !== Math.floor(Range1)) {
-            return {
-                pass: false,
-                message: () => {
-                    return (
-                        // eslint-disable-next-line prefer-template, no-unused-expressions
-                        matcherHint('.toHaveGeometryCount', 'GeometryObject', 'Range1') +
-                        '\n\n' +
-                        'Geometries2 has count of ' +
-                        printReceived(geometryObject.geometries.length) +
-                        ', expected ' +
-                        printExpected(Range1) +
-                        '.\n\n' +
-                        `Received:  ${printReceived(geometryObject)}`
-                    )
-                }
+    }
+
+    // Check for an exact value
+    if (geometryObject.geometries.length !== Math.floor(Range1)) {
+        return {
+            pass: false,
+            message: () => {
+                return (
+                    // eslint-disable-next-line prefer-template, no-unused-expressions
+                    matcherHint('.toHaveGeometryCount', 'GeometryObject', 'Range1') +
+                    '\n\n' +
+                    'Geometries has count of ' +
+                    printReceived(geometryObject.geometries.length) +
+                    ', expected ' +
+                    printExpected(Range1) +
+                    '.\n\n' +
+                    `Received:  ${printReceived(geometryObject)}`
+                )
             }
         }
     }

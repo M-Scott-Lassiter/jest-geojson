@@ -165,14 +165,9 @@ Functional matchers assess more generic attributes and qualities and many accept
 -   [toBePointGeometry](https://m-scott-lassiter.github.io/jest-geojson/Core.Geometries.html#.pointGeometry)
 -   [toBePolygonGeometry](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toBePolygonGeometry)
 -   [toBePolygonWithHole](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toBePolygonWithHole)
--   [toHaveGeometeyCount](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toHaveGeometeyCount)
-
----
-
-_Future_
-
--   [ ] toHaveMinGeometryCount
--   [ ] toHaveMaxGeometeyCount
+-   [toHaveGeometryCount](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toHaveGeometryCount)
+-   [toHaveMaxGeometryCount](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toHaveMaxGeometryCount)
+-   [toHaveMinGeometryCount](https://m-scott-lassiter.github.io/jest-geojson/Matchers.Geometries.html#.toHaveMinGeometryCount)
 
 ## Features
 

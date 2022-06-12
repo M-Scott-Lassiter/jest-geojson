@@ -211,9 +211,33 @@ declare global {
              * If Range1 and Range2 are specified, it checks that the geometry count is between those values.
              * Decimals get truncated on both Range1 and Range2.
              *
-             * Will fail if Range1 or Range2 less than 0, Range2 less than Range1, or Range2 is defined and Range1 is not.
+             * Will fail if Range1 or Range2 are not numbers or less than 0, Range2 less than Range1, or Range2 is defined and Range1 is not.
+             *
+             * Nested GeometryCollections are only counted as a single geometry object.
              */
-            toBePolygonWithHole<E = Object>(Range1: Number, Range2: Number): R
+            toHaveGeometryCount<E = Object>(Range1: Number, Range2: Number): R
+
+            /**
+             * Verifies a valid GeoJSON GeometryCollection has less than or equal to a specified number of geometries.
+             *
+             * If omitting MaxCount, it passes if "geometries" contains no more than one object.
+             *
+             * Will fail if MaxCount is not a number or less than zero.
+             *
+             * Nested GeometryCollections are only counted as a single geometry object.
+             */
+            toHaveMaxGeometryCount<E = Object>(MaxCount: Number): R
+
+            /**
+             * Verifies a valid GeoJSON GeometryCollection has more than or equal to a specified number of geometries.
+             *
+             * If omitting MinCount, it passes if at least one geometry object is contained in "geometries".
+             *
+             * Will fail if MinCount is not a number or less than zero.
+             *
+             * Nested GeometryCollections are only counted as a single geometry object.
+             */
+            toHaveMinGeometryCount<E = Object>(MinCount: Number): R
         }
     }
 }
